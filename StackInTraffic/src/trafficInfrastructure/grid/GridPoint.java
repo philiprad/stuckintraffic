@@ -1,0 +1,20 @@
+package trafficInfrastructure.grid;
+
+public class GridPoint {
+
+		private int x;
+		private int y;
+		
+		public GridPoint (int x, int y){
+			this.x = x;
+			this.y = y;
+		}
+		
+		public int getX(){
+			return this.x;
+		}
+		
+		public int getY(){
+			return this.y;
+		}
+}
