@@ -30,8 +30,8 @@ public class TrafficLight {
 	
 	/** The grid y. */
 	private int gridY;
-	//private int linePositionX;
-	//private int linePositionY;
+	private int linePositionX;
+	private int linePositionY;
 	/** The traffic light state. */
 	private short trafficLightState = AgentConfig.TRAFFIC_LIGHT_RED;
 	
@@ -50,22 +50,41 @@ public class TrafficLight {
 	public TrafficLight(short direction, short roadBlock , int x , int y, short number){
 		this.number = number;
 		this.direction = direction;
-		//this.linePositionX = linePositionX;
-		//this.linePositionY = linePositionY;
 		this.gridX = x;
 		this.gridY = y;
 		this.roadBlock = roadBlock;
 		
 	}
 	
-	/*public int getDistanceToTrafficLight(int x, int y){
+	/**
+	 * Gets the distance to traffic light.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @return the distance to traffic light
+	 */
+	public int getDistanceToTrafficLight(int x, int y){
 		if (this.roadBlock == RoadConfig.HORIZONTAL_BLOCK || this.roadBlock == RoadConfig.HORIZONTAL_ENTER_BLOCK || this.roadBlock == RoadConfig.HORIZONTAL_EXIT_BLOCK){
-			return Math.abs(this.linePositionX - x);
+			if (this.direction==RoadConfig.ORIGINAL_TRAFFIC_DIRECTION){
+				return Math.abs(this.gridX*GraphicsConfig.BLOCK_SIDE_SIZE+49 - x)-GraphicsConfig.CAR_LENGTH/2;
+			}
+			else {
+				return Math.abs(this.gridX*GraphicsConfig.BLOCK_SIDE_SIZE - x)-GraphicsConfig.CAR_LENGTH/2;
+			}
 		}
-		else {
-			return Math.abs(this.linePositionY - y);
+		else if (this.roadBlock == RoadConfig.VERTICAL_BLOCK || this.roadBlock == RoadConfig.VERTICAL_ENTER_BLOCK || this.roadBlock == RoadConfig.VERTICAL_EXIT_BLOCK){
+			if (this.direction==RoadConfig.ORIGINAL_TRAFFIC_DIRECTION){
+				return Math.abs(this.gridY*GraphicsConfig.BLOCK_SIDE_SIZE+49 - y)-GraphicsConfig.CAR_LENGTH/2;
+			}
+			else {
+				return Math.abs(this.gridY*GraphicsConfig.BLOCK_SIDE_SIZE - y)-GraphicsConfig.CAR_LENGTH/2;
+			}
 		}
-	}*/
+		
+		return 0;
+	}
 	
 	/**
 	 * Draw traffic lights.
@@ -119,5 +138,18 @@ public class TrafficLight {
 	 */
 	public void changeTrafficLightState(short state){
 		this.trafficLightState = state;
+	}
+	
+	/**
+	 * Gets the direction.
+	 *
+	 * @return the direction
+	 */
+	public short getDirection(){
+		return  this.direction;
+	}
+	
+	public short getState(){
+		return this.trafficLightState;
 	}
 }

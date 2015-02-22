@@ -43,7 +43,12 @@ public class RoadBlock {
 		this.arrCar.add(car);
 	}
 	
-	public boolean carInside(){
+	/**
+	 * Checks if is car inside.
+	 *
+	 * @return true, if is car inside
+	 */
+	public boolean isCarInside(){
 		if (this.arrCar.isEmpty()){
 			return false;
 		}
@@ -71,6 +76,15 @@ public class RoadBlock {
 	
 	public void clearCarList(){
 		this.arrCar.clear();
+	}
+	
+	/**
+	 * Gets the car list.
+	 *
+	 * @return the car list
+	 */
+	public ArrayList<Car> getCarList(){
+		return this.arrCar;
 	}
 	
 	/**

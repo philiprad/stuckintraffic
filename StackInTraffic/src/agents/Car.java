@@ -21,6 +21,9 @@ import trafficInfrastructure.roadPath.PathPoint;
  */
 public class Car {
 	
+	private short carType;
+	private double coEmission;
+	
 	/** The path. */
 	private Path path;
 	
@@ -32,6 +35,8 @@ public class Car {
 	
 	/** The path end. */
 	private short pathEnd = -1;
+	
+	private short remove = 0;
 	
 	/**
 	 * Instantiates a new car.
@@ -106,6 +111,10 @@ public class Car {
 		return this.path.getPathPoints().get(this.counter).getX();
 	}
 	
+	public int getCarXAfter(int n){
+		return this.path.getPathPoints().get(this.counter+n).getX();
+	}
+	
 	/**
 	 * Gets the car y.
 	 *
@@ -115,11 +124,32 @@ public class Car {
 		return this.path.getPathPoints().get(this.counter).getY();
 	}
 	
+	public int getCarYAfter(int n){
+		return this.path.getPathPoints().get(this.counter+n).getY();
+	}
+	
+	public short getRoadBlockType(){
+		return this.path.getPathPoints().get(this.counter).getBlockType();
+	}
+	
+	public RoadBlock getNextBlock(Object [][] rdBlocks){
+		int dist = 49;
+		if (this.getRoadBlockType() == RoadConfig.INTERSECTION_BLOCK){
+			dist = 54;
+		}
+		while(this.getCarXAfter(dist)/GraphicsConfig.BLOCK_SIDE_SIZE!=this.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE && this.getCarYAfter(dist)/GraphicsConfig.BLOCK_SIDE_SIZE!=this.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE){
+			dist-=5;
+		}
+		return (RoadBlock)rdBlocks[this.getCarXAfter(dist)/GraphicsConfig.BLOCK_SIDE_SIZE][this.getCarYAfter(dist)/GraphicsConfig.BLOCK_SIDE_SIZE];
+	}
+	
 	/**
 	 * Gets the direction.
+	 * @param rdBlocks 
 	 *
 	 * @return the direction
 	 */
+	
 	public int getDirection(){
 		return this.path.getPathPoints().get(this.counter).getDirection();
 	}
@@ -130,6 +160,88 @@ public class Car {
 	 * @param rdBlocks the rd blocks
 	 */
 	public void speedManagement(Object [] [] rdBlocks , ArrayList<TrafficLight> trafficLightList){
+		//Traffic Light Rule 1
+		this.speed = 10;
+		boolean trafficLightOnPath = false;
+		short trafficLightIndex = -1;
+		if(((RoadBlock)rdBlocks[this.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE][this.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE]).isTrafficLightInside()){
+			
+			ArrayList<Short> trafficLightIndexList = ((RoadBlock)rdBlocks[this.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE][this.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE]).getTrafficLightIndexList();
+			for(Short index : trafficLightIndexList){
+				if(trafficLightList.get(index).getDirection()==this.getDirection()){
+					trafficLightOnPath = true;
+					trafficLightIndex = index;
+				}
+			}
+		}
+		
+		if (trafficLightOnPath == true){
+			if (trafficLightList.get(trafficLightIndex).getState()!=AgentConfig.TRAFFIC_LIGHT_GREEN){
+				if (trafficLightList.get(trafficLightIndex).getDistanceToTrafficLight(this.getCarX(), this.getCarY())<GraphicsConfig.BLOCK_SIDE_SIZE/5){
+					this.speed=0;
+				} else if(trafficLightList.get(trafficLightIndex).getDistanceToTrafficLight(this.getCarX(), this.getCarY())<GraphicsConfig.BLOCK_SIDE_SIZE/2){
+					this.speed = 5;
+				}
+			}
+		}
+		
+		//Other Cars Rule 2
+		int distance = 0;
+		if (((RoadBlock)rdBlocks[this.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE][this.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE]).isCarInside()){
+			ArrayList<Car> carList = ((RoadBlock)rdBlocks[this.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE][this.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE]).getCarList();
+			for(Car carFromList : carList){
+				if (!this.equals(carFromList)){
+					if(this.getDirection()==carFromList.getDirection()){
+						if ((carFromList.getCarX()-this.getCarX())*this.getDirection()>=0 && this.getDirection()*(carFromList.getCarY()-this.getCarY())>=0){
+							distance = (int) (Math.sqrt(Math.pow(carFromList.getCarX()-this.getCarX(), 2.0)+Math.pow(carFromList.getCarY()-this.getCarY(), 2.0)));
+							if(distance>0 && distance < 35){
+								this.speed = 0;
+							}
+							else if (distance>0 && distance<40){
+								this.speed=5;
+							}
+						}
+					}
+				}
+			}
+			int end = 0;
+			/*if (this.getDirection()==RoadConfig.ORIGINAL_TRAFFIC_DIRECTION){
+				if(this.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE < (GraphicsConfig.GRID_WIDTH-1) || this.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE < (GraphicsConfig.GRID_HEIGHT-1)){
+					end = 1; 
+				}
+			} else if (this.getDirection()==RoadConfig.INVERSE_TRAFFIC_DIRECTION){
+				if(this.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE < 2 || this.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE < 2){
+					end = 1; 
+				}
+			}*/
+			if (this.getDirection()==RoadConfig.ORIGINAL_TRAFFIC_DIRECTION){
+				if (this.getRoadBlockType() == RoadConfig.HORIZONTAL_EXIT_BLOCK || this.getRoadBlockType() == RoadConfig.VERTICAL_EXIT_BLOCK ){
+					end = 1;
+				}
+			} else {
+				if (this.getRoadBlockType() == RoadConfig.HORIZONTAL_ENTER_BLOCK || this.getRoadBlockType() == RoadConfig.VERTICAL_ENTER_BLOCK ){
+					end = 1;
+				}
+			}
+			if (end == 0){
+				carList = this.getNextBlock(rdBlocks).getCarList();
+				for(Car carFromList : carList){
+					if (!this.equals(carFromList)){
+						if(this.getDirection()==carFromList.getDirection()){
+							if ((carFromList.getCarX()-this.getCarX())*this.getDirection()>=0 && this.getDirection()*(carFromList.getCarY()-this.getCarY())>=0){
+								distance = (int) (Math.sqrt(Math.pow(carFromList.getCarX()-this.getCarX(), 2.0)+Math.pow(carFromList.getCarY()-this.getCarY(), 2.0)));
+								if(distance>0 && distance < 35){
+									speed = 0;
+								}
+								else if (distance>0 && distance<40){
+									this.deceleration(35);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 		
 	}
 	
@@ -148,11 +260,12 @@ public class Car {
 	 * @param dist the dist
 	 */
 	public void deceleration(int dist){
-		
-		float sp = (float)speed/(float)dist;
-		this.speed += speed/dist;
-		if(sp-(float)(speed/dist)>0.5){
-			this.speed--;
+		if (this.speed>2){
+			float sp = (float)speed/(float)dist;
+			this.speed += speed/dist;
+			if(sp-(float)(speed/dist)>0.5){
+				this.speed--;
+			}
 		}
 	}
 	
@@ -161,6 +274,10 @@ public class Car {
 	 */
 	public void stop(){
 		this.speed = 0;
+	}
+	
+	public void setRemove(){
+		this.remove = 1;
 	}
 	
 	

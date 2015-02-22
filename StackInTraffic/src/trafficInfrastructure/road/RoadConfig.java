@@ -35,6 +35,30 @@ public class RoadConfig {
 	public static final short ORIGINAL_TRAFFIC_DIRECTION = 1;
 	
 	/** The Constant INVERSE_TRAFFIC_DIRECTION_DIRECTION. */
-	public static final short INVERSE_TRAFFIC_DIRECTION_DIRECTION = -1;
+	public static final short INVERSE_TRAFFIC_DIRECTION = -1;
+	
+	/** The Constant LEFT_TO_BOTTOM_DIRECTION. */
+	public static final short LEFT_TO_BOTTOM_DIRECTION = 2;
+	
+	/** The Constant LEFT_TO_TOP_DIRECTION. */
+	public static final short LEFT_TO_TOP_DIRECTION = 3;
+	
+	/** The Constant RIGHT_TO_BOTTOM_DIRECTION. */
+	public static final short RIGHT_TO_BOTTOM_DIRECTION = 4;
+	
+	/** The Constant RIGHT_TO_TOP_DIRECTION. */
+	public static final short RIGHT_TO_TOP_DIRECTION = 5;
+	
+	/** The Constant TOP_TO_LEFT_DIRECTION. */
+	public static final short TOP_TO_LEFT_DIRECTION = 6;
+	
+	/** The Constant TOP_TO_RIGHT_DIRECTION. */
+	public static final short TOP_TO_RIGHT_DIRECTION = 7;
+	
+	/** The Constant BOTTOM_TO_LEFT_DIRECTION. */
+	public static final short BOTTOM_TO_LEFT_DIRECTION = 8;
+	
+	/** The Constant BOTTOM_TO_RIGHT_DIRECTION. */
+	public static final short BOTTOM_TO_RIGHT_DIRECTION = 9;
 	
 }

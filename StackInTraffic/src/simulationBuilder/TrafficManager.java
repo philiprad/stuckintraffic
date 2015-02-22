@@ -81,7 +81,7 @@ public class TrafficManager {
 					((RoadBlock) this.rdBlocks[i][j-1]).addTrafficLightIndex(trafficLightCounter);
 					trafficLightCounter++;
 					
-					this.arrTrafficLights.add(new TrafficLight(RoadConfig.INVERSE_TRAFFIC_DIRECTION_DIRECTION, grid.getGrid()[i][j+1], i, j+1, (short) 2));
+					this.arrTrafficLights.add(new TrafficLight(RoadConfig.INVERSE_TRAFFIC_DIRECTION, grid.getGrid()[i][j+1], i, j+1, (short) 2));
 					((RoadBlock) this.rdBlocks[i][j+1]).addTrafficLightIndex(trafficLightCounter);
 					trafficLightCounter++;
 					
@@ -89,8 +89,8 @@ public class TrafficManager {
 					((RoadBlock) this.rdBlocks[i-1][j]).addTrafficLightIndex(trafficLightCounter);
 					trafficLightCounter++;
 					
-					this.arrTrafficLights.add(new TrafficLight(RoadConfig.INVERSE_TRAFFIC_DIRECTION_DIRECTION, grid.getGrid()[i+1][j], i+1, j,(short) 4));
-					((RoadBlock) this.rdBlocks[i-1][j]).addTrafficLightIndex(trafficLightCounter);
+					this.arrTrafficLights.add(new TrafficLight(RoadConfig.INVERSE_TRAFFIC_DIRECTION, grid.getGrid()[i+1][j], i+1, j,(short) 4));
+					((RoadBlock) this.rdBlocks[i+1][j]).addTrafficLightIndex(trafficLightCounter);
 					trafficLightCounter++;
 				}
 			}

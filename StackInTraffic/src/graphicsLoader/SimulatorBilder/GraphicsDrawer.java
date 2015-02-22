@@ -13,6 +13,7 @@ import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -55,7 +56,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	private ArrayList<Path> arrPath;
 	
 	/** The car list. */
-	private ArrayList<Car> carList;
+	private ArrayList<Car> carList ;
 	
 	/** The traffic light list. */
 	private ArrayList<TrafficLight> trafficLightList;
@@ -74,6 +75,8 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	/** The is next yellow. */
 	private short isNextYellow = 0;
 	
+	private int carAddCounter = 0;
+	
 	/**
 	 * Instantiates a new graphics drawer.
 	 *
@@ -85,7 +88,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	@SuppressWarnings("unchecked")
 	public GraphicsDrawer(int delay , String fileName , ArrayList<BlockGraphicPoint> arrBG , ImagesBuilder ib){
 		this.delay =  delay;
-		this.timer = new Timer (this.delay, this);
+		
 		this.ib = ib;
 		this.arrBG = arrBG;
 		this.arrPath = (ArrayList<Path>)FileRW.readObject(MainConfig.PATHS_PATH + "/" + fileName + MainConfig.PATH_SUFFIX);
@@ -93,6 +96,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		this.trafficLightList = tm.getTrafficLightList();
 		this.roadBlockGrid = tm.getRoadBlockArray();
 		this.carList = new ArrayList<Car>();
+		this.timer = new Timer (this.delay, this);
 	}
 	
 	/**
@@ -130,7 +134,9 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
         }
         if (!this.carList.isEmpty()){
         	Graphics2D g2d=(Graphics2D)g;
-        	carList.get(0).drawCar(g2d, ib);
+        	for(Car cr :this.carList){
+        		cr.drawCar(g2d, ib);
+        	}
         }
         timer.start();
 	}
@@ -140,9 +146,10 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		this.carAddCounter++;
 		this.trafficLightCounter++;
 		if (isNextYellow==1){
-			if (this.trafficLightCounter>=80){
+			if (this.trafficLightCounter>=50){
 				TrafficManager.intersection1YellowLight(this.trafficLightNumber, this.trafficLightList);
 				this.incTrafficLightNumber();
 				this.trafficLightCounter=0;
@@ -157,21 +164,36 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 			}
 		}
 		if (this.carList.isEmpty()){
-			this.carList.add(new Car(this.arrPath.get(pathCounter)));
+			
+				this.putCarOnEveryPath();
+				
+				
 		} else {
-			if (carList.get(0).ifPathEnd()){
-				this.carList.clear();
-				if (this.pathCounter < this.arrPath.size()-1){
-					this.pathCounter ++;
-				}
-				else {
-					this.pathCounter = 0;
-				}
-			} else {
-				carList.get(0).move();
+			this.carAddCounter++;
+			if(this.carAddCounter>30){
+				this.putCarOnEveryPath();
+				this.carAddCounter = 0;
 			}
-		}
+			ArrayList <Integer> arr = new ArrayList <Integer>();
+			for (int i=0; i<this.carList.size(); i++){
+				if (this.carList.get(i).ifPathEnd()){
+					arr.add((Integer)i);
+					
+					
+				} else {
+					
+					this.carList.get(i).speedManagement(this.roadBlockGrid, this.trafficLightList);
+					this.carList.get(i).move();
+					
+				}
+				
+					
+			}
+			for(int i=0; i<arr.size(); i++){
+				this.carList.remove((int)arr.get(i));
+			}
 		
+		}
 		this.carGridPositionUpdate();
 		
 		repaint();
@@ -208,29 +230,18 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 				}
 			}
 		}
-		for (Car car : this.carList){
+		if (!this.carList.isEmpty()){
+			for (Car car : this.carList){
 				int i = car.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE;
 				int j = car.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE;
 				((RoadBlock)this.roadBlockGrid[i][j]).addCar(car);
-		}
-		
-		for(int i = 0; i<GraphicsConfig.GRID_WIDTH; i++){
-			for(int j = 0; j<GraphicsConfig.GRID_HEIGHT; j++){
-				if(this.roadBlockGrid[i][j]!=null){
-					if(((RoadBlock) this.roadBlockGrid[i][j]).carInside()){
-						System.out.print(1);
-					}
-					else {
-						System.out.print(0);
-					}
-				}
-				else {
-					System.out.print(0);
-				}
-				
 			}
-			System.out.print("\n");
 		}
-		System.out.print("\n");
+	}
+	public void putCarOnEveryPath(){
+		Random rand = new Random();
+		int x = rand.nextInt(this.arrPath.size());
+	
+		this.carList.add(new Car(this.arrPath.get(x)));
 	}
 }
