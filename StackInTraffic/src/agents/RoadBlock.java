@@ -1,3 +1,7 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 1.0
+ */
 package agents;
 
 import java.util.ArrayList;
@@ -8,11 +12,11 @@ import java.util.ArrayList;
  */
 public class RoadBlock {
 	
-	/** The ArrayList with cars */
-	private ArrayList<Car> arrCar;
+	/** The ArrayList with cars. */
+	private ArrayList<Car> arrCar = new ArrayList<Car>();
 	
 	/** The traffic light index. */
-	private ArrayList <Short> trafficLightIndex;
+	private ArrayList <Short> trafficLightIndex = new ArrayList <Short>();
 	
 	/** The block type. */
 	private short blockType;
@@ -30,18 +34,26 @@ public class RoadBlock {
 	}
 	
 	/**
-	 * Adds the car to the block container
+	 * Adds the car to the block container.
 	 *
-	 * @param car the car
+	 * @param car
+	 *            the car
 	 */
 	public void addCar(Car car){
 		this.arrCar.add(car);
 	}
 	
+	public boolean carInside(){
+		if (this.arrCar.isEmpty()){
+			return false;
+		}
+		else return true;
+	}
 	/**
-	 * Delete car
+	 * Delete car.
 	 *
-	 * @param car the car
+	 * @param car
+	 *            the car
 	 */
 	public void deleteCar(Car car){
 		int k = -1;
@@ -57,20 +69,58 @@ public class RoadBlock {
 		}
 	}
 	
+	public void clearCarList(){
+		this.arrCar.clear();
+	}
+	
 	/**
 	 * Gets the block type.
 	 *
 	 * @return the block type
 	 */
+	
 	public short getBlockType(){
 		return this.blockType;
 	}
 	
+	/**
+	 * Adds the traffic light index.
+	 *
+	 * @param index
+	 *            the index
+	 */
 	public void addTrafficLightIndex (short index){ //Verify !!!
 		this.trafficLightIndex.add(index);
 	}
 	
+	public ArrayList <Short> getTrafficLightIndexList(){
+		return this.trafficLightIndex;
+	}
+	
+	/**
+	 * Checks if is traffic light inside.
+	 *
+	 * @return true, if is traffic light inside
+	 */
+	public boolean isTrafficLightInside(){
+		if (this.trafficLightIndex.isEmpty()) return false;
+		else return true;
+	}
+	/**
+	 * Nb traffic lights.
+	 *
+	 * @return the int
+	 */
 	public int nbTrafficLights(){
 		return this.trafficLightIndex.size();
+	}
+	
+	/**
+	 * Gets the speed limit.
+	 *
+	 * @return the speed limit
+	 */
+	public int getSpeedLimit(){
+		return this.getSpeedLimit();
 	}
 }

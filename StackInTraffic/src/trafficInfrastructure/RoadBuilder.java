@@ -1,3 +1,7 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 1.0
+ */
 package trafficInfrastructure;
 
 import graphicsLoader.GraphicsConfig;
@@ -17,25 +21,49 @@ import trafficInfrastructure.roadPath.PathPoint;
 import trafficInfrastructure.roadPath.VisitedIntersectionsOnPath;
 import util.FileRW;
 
+// TODO: Auto-generated Javadoc
 /**
- * RoadBuilder is for to create and edit road infrastructure
- * The result is saved in Components directory
- * 
+ * RoadBuilder is for to create and edit road infrastructure The result is saved
+ * in Components directory.
+ *
  * @author Maxim Vasilishin
  * @version 1.0
  */
 
 public class RoadBuilder {
 	
+	/** The road inf name. */
 	private String roadInfName;
+	
+	/** The road grid. */
 	private GridBuilder roadGrid;
+	
+	/** The arr path. */
 	private ArrayList<Path> arrPath; //TODO Move in LOCAL to the function
+	
+	/** The current x1. */
 	private int currentX1;
+	
+	/** The current y1. */
 	private int currentY1;
+	
+	/** The current x2. */
 	private int currentX2 = 0; // for feature use
+	
+	/** The current y2. */
 	private int currentY2 = 0; // for feature use
 	
 	
+	/**
+	 * Instantiates a new road builder.
+	 *
+	 * @param roadInfName
+	 *            the road inf name
+	 * @param currentX
+	 *            the current x
+	 * @param currentY
+	 *            the current y
+	 */
 	public RoadBuilder (String roadInfName, int currentX, int currentY){
 		this.roadInfName = roadInfName;
 		this.currentX1 = currentX;
@@ -44,6 +72,9 @@ public class RoadBuilder {
 		this.arrPath = new ArrayList<Path>();
 	}
 	
+	/**
+	 * Builds the road.
+	 */
 	public void buildRoad(){
 		this.addRoadBlock(RoadConfig.VERTICAL_ENTER_BLOCK);
 		for (int i = 0; i < 14; i++){
@@ -108,12 +139,15 @@ public class RoadBuilder {
 	}
 	FileRW.writeObject(this.roadGrid, MainConfig.GRID_PATH + "/" + this.roadInfName + MainConfig.GRID_SUFFIX);
 	this.roadGraphicBuilder();
-	this.getPaths();
-	TrafficManager tm = new TrafficManager(this.roadInfName);	
+	this.getPaths();	
 		
 	}
+	
 	/**
+	 * Adds the road block.
+	 *
 	 * @param blockNb
+	 *            the block nb
 	 */
 	public void addRoadBlock (short blockNb){ 
 		
@@ -140,6 +174,9 @@ public class RoadBuilder {
 		}
 	}
 	
+	/**
+	 * Road graphic builder.
+	 */
 	public void roadGraphicBuilder(){
 		ArrayList<BlockGraphicPoint> roadGB = new ArrayList<BlockGraphicPoint>();
 		for (int i = 0; i<GraphicsConfig.MAIN_WIDTH/GraphicsConfig.BLOCK_SIDE_SIZE; i++){
@@ -153,6 +190,11 @@ public class RoadBuilder {
 		
 	}
 	
+	/**
+	 * Gets the paths.
+	 *
+	 * @return the paths
+	 */
 	public void getPaths (){
 		 ArrayList <BlockGraphicPoint> endPoints = new ArrayList <BlockGraphicPoint>();
 		 for (int i = 0; i<GraphicsConfig.MAIN_WIDTH/GraphicsConfig.BLOCK_SIDE_SIZE; i++){
@@ -203,6 +245,24 @@ public class RoadBuilder {
 		 FileRW.writeObject(this.arrPath, MainConfig.PATHS_PATH + "/" + this.roadInfName + MainConfig.PATH_SUFFIX);
 	}
 	
+	/**
+	 * Discover paths.
+	 *
+	 * @param arrPathPoint
+	 *            the arr path point
+	 * @param viop
+	 *            the viop
+	 * @param direction
+	 *            the direction
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param prevX
+	 *            the prev x
+	 * @param prevY
+	 *            the prev y
+	 */
 	public void discoverPaths(ArrayList<PathPoint> arrPathPoint, VisitedIntersectionsOnPath viop, int direction, int x, int y ,int prevX,int prevY){
 		int previousX = prevX;
 		int previousY = prevY;

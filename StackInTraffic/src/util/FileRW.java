@@ -1,3 +1,7 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 1.0
+ */
 package util;
 
 import java.io.FileInputStream;
@@ -5,8 +9,19 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FileRW.
+ */
 public class FileRW {
 	
+	/**
+	 * Read object.
+	 *
+	 * @param path
+	 *            the path
+	 * @return the object
+	 */
 	public static Object readObject (String path){
 		
 		Object obj = new Object();
@@ -23,6 +38,14 @@ public class FileRW {
 		return obj;
 	}
 	
+	/**
+	 * Write object.
+	 *
+	 * @param object
+	 *            the object
+	 * @param path
+	 *            the path
+	 */
 	public static void writeObject(Object object, String path){
 	
 		try{

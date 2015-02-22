@@ -1,3 +1,7 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 1.0
+ */
 package main;
 
 import java.io.File;
@@ -6,7 +10,15 @@ import java.util.ArrayList;
 import util.DirBuilder;
 import util.FileRW;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AppDirBuilder.
+ */
 public class AppDirBuilder {
+	
+	/**
+	 * Builds the.
+	 */
 	public static void build(){
 		DirBuilder.createDir(MainConfig.HOME_PATH);
 		DirBuilder.createDir(MainConfig.COMPONENTS_PATH);

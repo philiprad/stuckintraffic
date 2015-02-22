@@ -1,3 +1,7 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 1.0
+ */
 package graphicsLoader.SimulatorBilder;
 
 import graphicsLoader.ImagesBuilder;
@@ -6,7 +10,19 @@ import java.awt.Image;
 
 import trafficInfrastructure.road.RoadConfig;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ImagesSelector.
+ */
 public class ImagesSelector {
+	
+	/**
+	 * Select road image.
+	 *
+	 * @param blockType the block type
+	 * @param ib the ib
+	 * @return the image
+	 */
 	public static Image selectRoadImage(int blockType, ImagesBuilder ib){
 		
 		Image img = null;
@@ -28,6 +44,14 @@ public class ImagesSelector {
 		return img;
 	}
 	
+/**
+ * Select car image.
+ *
+ * @param blockType the block type
+ * @param direction the direction
+ * @param ib the ib
+ * @return the image
+ */
 public static Image selectCarImage(int blockType, int direction, ImagesBuilder ib){
 		
 		if  (blockType == RoadConfig.HORIZONTAL_BLOCK ||blockType == RoadConfig.HORIZONTAL_ENTER_BLOCK || blockType == RoadConfig.HORIZONTAL_EXIT_BLOCK){

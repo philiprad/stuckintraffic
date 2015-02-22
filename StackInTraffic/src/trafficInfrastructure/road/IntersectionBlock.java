@@ -1,3 +1,7 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 1.0
+ */
 package trafficInfrastructure.road;
 
 import graphicsLoader.GraphicsConfig;
@@ -6,8 +10,23 @@ import java.util.ArrayList;
 
 import trafficInfrastructure.roadPath.PathPoint;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class IntersectionBlock.
+ */
 public class IntersectionBlock {
 	
+	/**
+	 * Gets the left to top path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the left to top path
+	 */
 	public static ArrayList<PathPoint> getLeftToTopPath(int x, int y, short blockType){
 
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
@@ -30,6 +49,17 @@ public class IntersectionBlock {
 		return arrPathPoints;
 	}
 	
+	/**
+	 * Gets the left to bottom path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the left to bottom path
+	 */
 	public static ArrayList<PathPoint> getLeftToBottomPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		y+=GraphicsConfig.BLOCK_SIDE_SIZE;
@@ -51,6 +81,17 @@ public class IntersectionBlock {
 	return arrPathPoints;
 	}
 	
+	/**
+	 * Gets the right to top path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the right to top path
+	 */
 	public static ArrayList<PathPoint> getRightToTopPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		x+=GraphicsConfig.BLOCK_SIDE_SIZE;
@@ -74,6 +115,17 @@ public class IntersectionBlock {
 	return arrPathPoints;
 	}
 	
+	/**
+	 * Gets the right to bottom path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the right to bottom path
+	 */
 	public static ArrayList<PathPoint> getRightToBottomPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		y+=GraphicsConfig.BLOCK_SIDE_SIZE;
@@ -96,6 +148,17 @@ public class IntersectionBlock {
 	return arrPathPoints;
 	}
 	
+	/**
+	 * Gets the top to right path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the top to right path
+	 */
 	public static ArrayList<PathPoint> getTopToRightPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		x+=GraphicsConfig.BLOCK_SIDE_SIZE;
@@ -119,6 +182,17 @@ public class IntersectionBlock {
 	return arrPathPoints;
 	}
 	
+	/**
+	 * Gets the top to left path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the top to left path
+	 */
 	public static ArrayList<PathPoint> getTopToLeftPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		float theta = 0;
@@ -139,6 +213,17 @@ public class IntersectionBlock {
 	return arrPathPoints;
 	}
 	
+	/**
+	 * Gets the bottom to right path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the bottom to right path
+	 */
 	public static ArrayList<PathPoint> getBottomToRightPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		x+=GraphicsConfig.BLOCK_SIDE_SIZE;
@@ -162,6 +247,17 @@ public class IntersectionBlock {
 	return arrPathPoints;
 	}
 	
+	/**
+	 * Gets the bottom to left path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the bottom to left path
+	 */
 	public static ArrayList<PathPoint> getBottomToLeftPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		y+=GraphicsConfig.BLOCK_SIDE_SIZE;

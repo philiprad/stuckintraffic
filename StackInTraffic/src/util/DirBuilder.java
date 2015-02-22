@@ -1,9 +1,23 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 1.0
+ */
 package util;
 
 import java.io.File;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DirBuilder.
+ */
 public class DirBuilder {
 	
+	/**
+	 * Creates the dir.
+	 *
+	 * @param path
+	 *            the path
+	 */
 	public static void createDir(String path){
 		File file =  new File(path);
 		if (!file.exists()){
