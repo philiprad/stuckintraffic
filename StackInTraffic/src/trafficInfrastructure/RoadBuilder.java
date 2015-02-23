@@ -82,7 +82,7 @@ public class RoadBuilder {
 		}
 		this.addRoadBlock(RoadConfig.VERTICAL_EXIT_BLOCK);
 		
-		/*this.currentX1 = 500;
+		this.currentX1 = 500;
 		this.currentY1 = 0;
 		
 		this.addRoadBlock(RoadConfig.VERTICAL_ENTER_BLOCK);
@@ -90,7 +90,7 @@ public class RoadBuilder {
 			this.addRoadBlock(RoadConfig.VERTICAL_BLOCK);
 		}
 		this.addRoadBlock(RoadConfig.VERTICAL_EXIT_BLOCK);
-		*/
+		
 		
 		this.currentX1 = 0;
 		this.currentY1 = 150;
@@ -100,16 +100,16 @@ public class RoadBuilder {
 			this.addRoadBlock(RoadConfig.HORIZONTAL_BLOCK);
 		}
 		this.addRoadBlock(RoadConfig.HORIZONTAL_EXIT_BLOCK);
-		/*
+		
 		this.currentX1 = 0;
-		this.currentY1 = 200;
+		this.currentY1 = 400;
 		
 		this.addRoadBlock(RoadConfig.HORIZONTAL_ENTER_BLOCK);
-		for (int i = 0; i < 3; i++){
+		for (int i = 0; i < 14; i++){
 			this.addRoadBlock(RoadConfig.HORIZONTAL_BLOCK);
 		}
 		this.addRoadBlock(RoadConfig.HORIZONTAL_EXIT_BLOCK);
-		*/
+		
 		
 		
 		/*this.currentX1 = 0;
