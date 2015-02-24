@@ -55,7 +55,7 @@ public class TrafficManager {
 		
 		for (int i = 0; i < GraphicsConfig.GRID_WIDTH; i++){
 			for (int j = 0; j < GraphicsConfig.GRID_HEIGHT; j++){
-				if (grid.getGrid()[i][j]!=0){
+				if (grid.getGrid()[i][j]!=0 && grid.getGrid()[i][j]!=-100){
 					this.rdBlocks [i][j] = new RoadBlock(grid.getGrid()[i][j]);
 					System.out.println(((RoadBlock) this.rdBlocks[i][j]).getBlockType());
 				}

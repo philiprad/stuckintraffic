@@ -147,7 +147,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.carAddCounter++;
-		this.trafficLightCounter++;
+		/*this.trafficLightCounter++;
 		if (isNextYellow==1){
 			if (this.trafficLightCounter>=50){
 				TrafficManager.intersection1YellowLight(this.trafficLightNumber, this.trafficLightList);
@@ -163,14 +163,14 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 				this.isNextYellow = 1;
 			}
 		}
-		if (this.carList.isEmpty()){
+		*/if (this.carList.isEmpty()){
 			
 				this.putCarOnEveryPath();
 				
 				
 		} else {
 			this.carAddCounter++;
-			if(this.carAddCounter>30){
+			if(this.carAddCounter>40){
 				this.putCarOnEveryPath();
 				this.carAddCounter = 0;
 			}
@@ -182,7 +182,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 					
 				} else {
 					
-					this.carList.get(i).speedManagement(this.roadBlockGrid, this.trafficLightList);
+					//this.carList.get(i).speedManagement(this.roadBlockGrid, this.trafficLightList);
 					this.carList.get(i).move();
 					
 				}
@@ -194,7 +194,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 			}
 		
 		}
-		this.carGridPositionUpdate();
+		//this.carGridPositionUpdate();
 		
 		repaint();
 	}
@@ -206,7 +206,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	 */
 	public void drawRoads(Graphics g){
 		for (BlockGraphicPoint blockGP : arrBG){
-			g.drawImage(ImagesSelector.selectRoadImage(blockGP.getBlockType(), ib), blockGP.getX(),blockGP.getY(),GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE, null);
+				g.drawImage(ImagesSelector.selectRoadImage(blockGP.getBlockType(), ib), blockGP.getX(),blockGP.getY(),blockGP.getBlockSize(), blockGP.getBlockSize(), null);
 		}
 	}
 	//public void

@@ -19,6 +19,9 @@ public class GraphicsConfig {
 	/** The Constant BLOCK_SIDE_SIZE. */
 	public static final int BLOCK_SIDE_SIZE = 50;
 	
+	/** The Constant DOUBLE_BLOCK_SIZE. */
+	public static final int DOUBLE_BLOCK_SIZE = 100;
+	
 	/** The Constant GRID_HEIGHT. */
 	public static final int GRID_HEIGHT = MAIN_HEIGHT/BLOCK_SIDE_SIZE;
 	
@@ -30,6 +33,12 @@ public class GraphicsConfig {
 	
 	/** The Constant HORIZONTAL_ROAD_IMG. */
 	public static final String HORIZONTAL_ROAD_IMG = "./images/horizontalRoad.png";
+	
+	/** The Constant VERTICAL_DOUBLE_ROAD_IMG. */
+	public static final String VERTICAL_DOUBLE_ROAD_IMG = "./images/verticalDoubleRoad.png";
+	
+	/** The Constant HORIZONTAL_ROAD_IMG. */
+	public static final String HORIZONTAL_DOUBLE_ROAD_IMG = "./images/horizontalDoubleRoad.png";
 	
 	/** The Constant VERTICAL_GREEN_LIGHT_IMG. */
 	public static final String VERTICAL_GREEN_LIGHT_IMG = "./images/verticalGreenLight.png";
@@ -88,5 +97,9 @@ public class GraphicsConfig {
 	/** The Constant TRAFFIC_LIGHT_POSITION_WIDTH_DISTANCE. */
 	public static final int TRAFFIC_LIGHT_POSITION_WIDTH_DISTANCE = BLOCK_SIDE_SIZE-TRAFFIC_LIGHT_LINE_WIDTH;
 	
+	/** The Constant CAR_POSITION_DOUBLE_LANE. */
+	public static final int CAR_POSITION_DOUBLE_LANE = BLOCK_SIDE_SIZE*40/100;
 	
+	/** The Constant CAR_INVERSE_POSITION. */
+	public static final int CAR_INVERSE_POSITION_DOUBLE_LANE = BLOCK_SIDE_SIZE*2-(CAR_POSITION+BLOCK_SIDE_SIZE*2*5/100);
 }

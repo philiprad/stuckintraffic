@@ -37,6 +37,14 @@ public class ImagesSelector {
 		case RoadConfig.VERTICAL_ENTER_BLOCK: return img = ib.getVerticalRd();
 		case RoadConfig.VERTICAL_EXIT_BLOCK: return img = ib.getVerticalRd();
 		
+		case RoadConfig.HORIZONTAL_DOUBLE_BLOCK: return img = ib.getHorizontalDoubleRd();
+		case RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK: return img = ib.getHorizontalDoubleRd();
+		case RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK: return img = ib.getHorizontalDoubleRd();
+		
+		case RoadConfig.VERTICAL_DOUBLE_BLOCK: return img = ib.getVerticalDoubleRd();
+		case RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK: return img = ib.getVerticalDoubleRd();
+		case RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK: return img = ib.getVerticalDoubleRd();
+		
 		case RoadConfig.INTERSECTION_BLOCK: return img = ib.getIntersection();
 		
 		}
@@ -54,11 +62,13 @@ public class ImagesSelector {
  */
 public static Image selectCarImage(int blockType, int direction, ImagesBuilder ib){
 		
-		if  (blockType == RoadConfig.HORIZONTAL_BLOCK ||blockType == RoadConfig.HORIZONTAL_ENTER_BLOCK || blockType == RoadConfig.HORIZONTAL_EXIT_BLOCK){
+		if  (blockType == RoadConfig.HORIZONTAL_BLOCK ||blockType == RoadConfig.HORIZONTAL_ENTER_BLOCK || blockType == RoadConfig.HORIZONTAL_EXIT_BLOCK ||
+			blockType == RoadConfig.HORIZONTAL_DOUBLE_BLOCK ||blockType == RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK || blockType == RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK){
 			if (direction == 1) return ib.getCarRight();
 			else return ib.getCarLeft();
 		}
-		else if (blockType == RoadConfig.VERTICAL_BLOCK || blockType == RoadConfig.VERTICAL_ENTER_BLOCK || blockType == RoadConfig.VERTICAL_EXIT_BLOCK){
+		else if (blockType == RoadConfig.VERTICAL_BLOCK || blockType == RoadConfig.VERTICAL_ENTER_BLOCK || blockType == RoadConfig.VERTICAL_EXIT_BLOCK ||
+				blockType == RoadConfig.VERTICAL_DOUBLE_BLOCK || blockType == RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK || blockType == RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK){
 			if (direction == 1) return ib.getCarDown();
 			else return ib.getCarUp();
 		} else {

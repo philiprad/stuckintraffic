@@ -21,7 +21,10 @@ import trafficInfrastructure.roadPath.PathPoint;
  */
 public class Car {
 	
+	/** The car type. */
 	private short carType;
+	
+	/** The co emission. */
 	private double coEmission;
 	
 	/** The path. */
@@ -36,7 +39,6 @@ public class Car {
 	/** The path end. */
 	private short pathEnd = -1;
 	
-	private short remove = 0;
 	
 	/**
 	 * Instantiates a new car.
@@ -56,11 +58,13 @@ public class Car {
 	 */
 	public void drawCar(Graphics2D g2d, ImagesBuilder ib){
 		PathPoint pathP = this.path.getPathPoints().get(counter);
-		if  (pathP.getBlockType() == RoadConfig.HORIZONTAL_BLOCK || pathP.getBlockType() == RoadConfig.HORIZONTAL_ENTER_BLOCK || pathP.getBlockType() == RoadConfig.HORIZONTAL_EXIT_BLOCK){
+		if  (pathP.getBlockType() == RoadConfig.HORIZONTAL_BLOCK || pathP.getBlockType() == RoadConfig.HORIZONTAL_ENTER_BLOCK || pathP.getBlockType() == RoadConfig.HORIZONTAL_EXIT_BLOCK || 
+				pathP.getBlockType() == RoadConfig.HORIZONTAL_DOUBLE_BLOCK || pathP.getBlockType() == RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK || pathP.getBlockType() == RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK){
 			if (pathP.getDirection() == 1) g2d.drawImage(ib.getCarRight(),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
 			else g2d.drawImage(ib.getCarLeft(),pathP.getX() - GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
 		}
-		else if (pathP.getBlockType() == RoadConfig.VERTICAL_BLOCK || pathP.getBlockType() == RoadConfig.VERTICAL_ENTER_BLOCK || pathP.getBlockType() == RoadConfig.VERTICAL_EXIT_BLOCK){
+		else if (pathP.getBlockType() == RoadConfig.VERTICAL_BLOCK || pathP.getBlockType() == RoadConfig.VERTICAL_ENTER_BLOCK || pathP.getBlockType() == RoadConfig.VERTICAL_EXIT_BLOCK ||
+				pathP.getBlockType() == RoadConfig.VERTICAL_DOUBLE_BLOCK || pathP.getBlockType() == RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK || pathP.getBlockType() == RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK){
 			if (pathP.getDirection() == 1) g2d.drawImage(ib.getCarDown(),pathP.getX()-GraphicsConfig.CAR_WIDTH/2, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
 			else g2d.drawImage(ib.getCarUp(),pathP.getX()-GraphicsConfig.CAR_WIDTH/2, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
 		} else if (pathP.getBlockType() == RoadConfig.INTERSECTION_BLOCK){
@@ -85,7 +89,7 @@ public class Car {
 	 * Move.
 	 */
 	public void move(){
-		if (this.path.getPathPoints().size()-speed>this.counter){		
+		if (this.path.getPathPoints().size()-speed > this.counter){		
 			this.counter+= speed;
 		} else {
 			this.pathEnd = 1;
@@ -111,6 +115,13 @@ public class Car {
 		return this.path.getPathPoints().get(this.counter).getX();
 	}
 	
+	/**
+	 * Gets the car x after.
+	 *
+	 * @param n
+	 *            the n
+	 * @return the car x after
+	 */
 	public int getCarXAfter(int n){
 		return this.path.getPathPoints().get(this.counter+n).getX();
 	}
@@ -124,14 +135,33 @@ public class Car {
 		return this.path.getPathPoints().get(this.counter).getY();
 	}
 	
+	/**
+	 * Gets the car y after.
+	 *
+	 * @param n
+	 *            the n
+	 * @return the car y after
+	 */
 	public int getCarYAfter(int n){
 		return this.path.getPathPoints().get(this.counter+n).getY();
 	}
 	
+	/**
+	 * Gets the road block type.
+	 *
+	 * @return the road block type
+	 */
 	public short getRoadBlockType(){
 		return this.path.getPathPoints().get(this.counter).getBlockType();
 	}
 	
+	/**
+	 * Gets the next block.
+	 *
+	 * @param rdBlocks
+	 *            the rd blocks
+	 * @return the next block
+	 */
 	public RoadBlock getNextBlock(Object [][] rdBlocks){
 		int dist = 49;
 		if (this.getRoadBlockType() == RoadConfig.INTERSECTION_BLOCK){
@@ -145,7 +175,6 @@ public class Car {
 	
 	/**
 	 * Gets the direction.
-	 * @param rdBlocks 
 	 *
 	 * @return the direction
 	 */
@@ -157,7 +186,10 @@ public class Car {
 	/**
 	 * Speed management.
 	 *
-	 * @param rdBlocks the rd blocks
+	 * @param rdBlocks
+	 *            the rd blocks
+	 * @param trafficLightList
+	 *            the traffic light list
 	 */
 	public void speedManagement(Object [] [] rdBlocks , ArrayList<TrafficLight> trafficLightList){
 		//Traffic Light Rule 1
@@ -182,8 +214,30 @@ public class Car {
 				} else if(trafficLightList.get(trafficLightIndex).getDistanceToTrafficLight(this.getCarX(), this.getCarY())<GraphicsConfig.BLOCK_SIDE_SIZE/2){
 					this.speed = 5;
 				}
+			} else {
+				//TrafficLight Rule 1.1
+				
+				if (this.getNextBlock(rdBlocks).getBlockType() == RoadConfig.INTERSECTION_BLOCK){
+					if (((RoadBlock) (rdBlocks[this.getCarXAfter(70)/GraphicsConfig.BLOCK_SIDE_SIZE][this.getCarYAfter(70)/GraphicsConfig.BLOCK_SIDE_SIZE])).isCarInside()){
+						ArrayList <Car> carList = ((RoadBlock) (rdBlocks[this.getCarXAfter(70)/GraphicsConfig.BLOCK_SIDE_SIZE][this.getCarYAfter(70)/GraphicsConfig.BLOCK_SIDE_SIZE])).getCarList();
+						short carCounter = 0;
+						if(carList.size()>1){
+							for(Car cr: carList){
+								if ((this.path.getPathPoints().get(counter+70).getDirection() == cr.getDirection() ) && (cr.getCarSpeed() < 4)){
+									carCounter++;
+								}
+							}
+							
+							if (carCounter>1){
+								this.speed = 0;
+							}
+						}
+					}
+				}
 			}
 		}
+		
+		
 		
 		//Other Cars Rule 2
 		int distance = 0;
@@ -205,15 +259,9 @@ public class Car {
 				}
 			}
 			int end = 0;
-			/*if (this.getDirection()==RoadConfig.ORIGINAL_TRAFFIC_DIRECTION){
-				if(this.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE < (GraphicsConfig.GRID_WIDTH-1) || this.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE < (GraphicsConfig.GRID_HEIGHT-1)){
-					end = 1; 
-				}
-			} else if (this.getDirection()==RoadConfig.INVERSE_TRAFFIC_DIRECTION){
-				if(this.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE < 2 || this.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE < 2){
-					end = 1; 
-				}
-			}*/
+			
+			
+			
 			if (this.getDirection()==RoadConfig.ORIGINAL_TRAFFIC_DIRECTION){
 				if (this.getRoadBlockType() == RoadConfig.HORIZONTAL_EXIT_BLOCK || this.getRoadBlockType() == RoadConfig.VERTICAL_EXIT_BLOCK ){
 					end = 1;
@@ -246,9 +294,16 @@ public class Car {
 	}
 	
 	/**
-	 * Acceleration.
+	 * Gets the car speed.
 	 *
-	 * @param dist the dist
+	 * @return the car speed
+	 */
+	public int getCarSpeed(){
+		return this.speed;
+	}
+	
+	/**
+	 * Acceleration.
 	 */
 	public void acceleration(){
 		this.speed++;
@@ -275,10 +330,6 @@ public class Car {
 	public void stop(){
 		this.speed = 0;
 	}
-	
-	public void setRemove(){
-		this.remove = 1;
-	}
-	
+
 	
 }

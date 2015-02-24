@@ -22,6 +22,29 @@ public class RoadConfig {
 	/** The Constant VERTICAL_EXIT_BLOCK. */
 	public static final short VERTICAL_EXIT_BLOCK = -10;
 	
+	/** The Constant HORIZONTAL_ENTER_DOUBLE_BLOCK. */
+	public static final short HORIZONTAL_ENTER_DOUBLE_BLOCK = 11;
+	
+	/** The Constant HORIZONTAL_EXIT_DOUBLE_BLOCK. */
+	public static final short HORIZONTAL_EXIT_DOUBLE_BLOCK = 12;
+	
+	/** The Constant VERTICAL_ENTER_DOUBLE_BLOCK. */
+	public static final short VERTICAL_ENTER_DOUBLE_BLOCK = 13;
+	
+	/** The Constant VERTICAL_EXIT_DOUBLE_BLOCK. */
+	public static final short VERTICAL_EXIT_DOUBLE_BLOCK = 14;
+	
+	/** The Constant HORIZONTAL_DOUBLE_BLOCK. */
+	public static final short HORIZONTAL_DOUBLE_BLOCK = 15;
+	
+	/** The Constant VERTICAL_DOUBLE_BLOCK. */
+	public static final short VERTICAL_DOUBLE_BLOCK = 16;
+	
+	public static final short INTERSECTION_DOUBLE_BLOCK = 17;
+	
+	/** The Constant INTERSECTION_MIXED_BLOCK. */
+	public static final short INTERSECTION_MIXED_BLOCK = 18;
+	
 	/** The Constant HORIZONTAL_BLOCK. */
 	public static final short HORIZONTAL_BLOCK = 2;
 	

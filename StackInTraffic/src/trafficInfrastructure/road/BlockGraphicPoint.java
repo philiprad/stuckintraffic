@@ -24,6 +24,8 @@ public class BlockGraphicPoint implements Serializable {
 	/** The block type. */
 	private short blockType;
 	
+	private int blockSize;
+	
 	
 	/**
 	 * Instantiates a new block graphic point.
@@ -35,10 +37,11 @@ public class BlockGraphicPoint implements Serializable {
 	 * @param blockType
 	 *            the block type
 	 */
-	public BlockGraphicPoint(int x, int y, short blockType){
+	public BlockGraphicPoint(int x, int y, short blockType, int blockSize){
 		this.x = x;
 		this.y = y;
 		this.blockType = blockType;
+		this.blockSize = blockSize;
 		
 	}
 	
@@ -67,5 +70,9 @@ public class BlockGraphicPoint implements Serializable {
 	 */
 	public short getBlockType(){
 		return this.blockType;
+	}
+	
+	public int getBlockSize(){
+		return this.blockSize;
 	}
 }

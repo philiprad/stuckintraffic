@@ -23,6 +23,11 @@ public class ImagesBuilder {
 	/** The horizontal road. */
 	private Image horizontalRoad;
 	
+	private Image vericalDoubleRoad;
+	
+	/** The horizontal road. */
+	private Image horizontalDoubleRoad;
+	
 	/** The intersection. */
 	private Image intersection;
 	
@@ -62,6 +67,8 @@ public class ImagesBuilder {
 	public ImagesBuilder(){
 		this.vericalRoad = loadImage(GraphicsConfig.VERTICAL_ROAD_IMG);
 		this.horizontalRoad = loadImage(GraphicsConfig.HORIZONTAL_ROAD_IMG);
+		this.vericalDoubleRoad = loadImage(GraphicsConfig.VERTICAL_DOUBLE_ROAD_IMG);
+		this.horizontalDoubleRoad = loadImage(GraphicsConfig.HORIZONTAL_DOUBLE_ROAD_IMG);
 		this.intersection = loadImage(GraphicsConfig.INTERSECTION_IMG);
 		this.carDown = loadImage(GraphicsConfig.CAR_DOWN_IMG);
 		this.carLeft= loadImage(GraphicsConfig.CAR_LEFT_IMG);
@@ -111,6 +118,19 @@ public class ImagesBuilder {
 	 */
 	public Image getVerticalRd(){
 		return this.vericalRoad;
+	}
+	
+	public Image getHorizontalDoubleRd(){
+		return this.horizontalDoubleRoad;
+	}
+	
+	/**
+	 * Gets the vertical rd.
+	 *
+	 * @return the vertical rd
+	 */
+	public Image getVerticalDoubleRd(){
+		return this.vericalDoubleRoad;
 	}
 	
 	/**
