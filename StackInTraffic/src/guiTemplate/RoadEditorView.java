@@ -45,7 +45,13 @@ public class RoadEditorView extends JPanel {
 		toolbar.add(verticalButton);
 		toolbar.add(intersectionButton);
 		
-		
+			
+//		//Test code for GridButtons
+//		Dimension dimension = new Dimension(16550, 16500);
+//		List<Component> buttons = GridButtons.gridButtons(dimension);
+//		for(int i=0;i < buttons.size();i++)
+//			grid.add(buttons.get(i));
+	
 	}
 	
 	public class MainMenuListener implements ActionListener{
