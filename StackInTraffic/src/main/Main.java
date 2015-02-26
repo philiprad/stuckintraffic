@@ -37,7 +37,7 @@ public class Main {
 	public static void main (String[] args){
 		String rdName = "test";
 		AppDirBuilder.build();
-		RoadBuilder rb = new RoadBuilder("test", 0 , 200);
+		RoadBuilder rb = new RoadBuilder("test", 150 , 0);
 		rb.buildRoad();
 		
 		JFrame frame = new JFrame();

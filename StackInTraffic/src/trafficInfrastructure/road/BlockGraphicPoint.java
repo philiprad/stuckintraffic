@@ -24,6 +24,7 @@ public class BlockGraphicPoint implements Serializable {
 	/** The block type. */
 	private short blockType;
 	
+	/** The block size. */
 	private int blockSize;
 	
 	
@@ -36,6 +37,8 @@ public class BlockGraphicPoint implements Serializable {
 	 *            the y
 	 * @param blockType
 	 *            the block type
+	 * @param blockSize
+	 *            the block size
 	 */
 	public BlockGraphicPoint(int x, int y, short blockType, int blockSize){
 		this.x = x;
@@ -72,6 +75,11 @@ public class BlockGraphicPoint implements Serializable {
 		return this.blockType;
 	}
 	
+	/**
+	 * Gets the block size.
+	 *
+	 * @return the block size
+	 */
 	public int getBlockSize(){
 		return this.blockSize;
 	}

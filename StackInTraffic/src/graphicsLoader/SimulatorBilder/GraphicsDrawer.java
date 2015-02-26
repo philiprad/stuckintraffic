@@ -61,6 +61,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	/** The traffic light list. */
 	private ArrayList<TrafficLight> trafficLightList;
 	
+	/** The road block grid. */
 	private Object [][] roadBlockGrid;
 	
 	/** The path counter. */
@@ -75,6 +76,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	/** The is next yellow. */
 	private short isNextYellow = 0;
 	
+	/** The car add counter. */
 	private int carAddCounter = 0;
 	
 	/**
@@ -147,7 +149,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.carAddCounter++;
-		/*this.trafficLightCounter++;
+		this.trafficLightCounter++;
 		if (isNextYellow==1){
 			if (this.trafficLightCounter>=50){
 				TrafficManager.intersection1YellowLight(this.trafficLightNumber, this.trafficLightList);
@@ -163,7 +165,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 				this.isNextYellow = 1;
 			}
 		}
-		*/if (this.carList.isEmpty()){
+		if (this.carList.isEmpty()){
 			
 				this.putCarOnEveryPath();
 				
@@ -182,7 +184,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 					
 				} else {
 					
-					//this.carList.get(i).speedManagement(this.roadBlockGrid, this.trafficLightList);
+					this.carList.get(i).speedManagement(this.roadBlockGrid, this.trafficLightList);
 					this.carList.get(i).move();
 					
 				}
@@ -194,7 +196,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 			}
 		
 		}
-		//this.carGridPositionUpdate();
+		this.carGridPositionUpdate();
 		
 		repaint();
 	}
@@ -222,6 +224,9 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		}
 	}
 	
+	/**
+	 * Car grid position update.
+	 */
 	private void carGridPositionUpdate(){
 		for(int i = 0; i<GraphicsConfig.GRID_WIDTH; i++){
 			for(int j = 0; j<GraphicsConfig.GRID_HEIGHT; j++){
@@ -238,6 +243,10 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 			}
 		}
 	}
+	
+	/**
+	 * Put car on every path.
+	 */
 	public void putCarOnEveryPath(){
 		Random rand = new Random();
 		int x = rand.nextInt(this.arrPath.size());

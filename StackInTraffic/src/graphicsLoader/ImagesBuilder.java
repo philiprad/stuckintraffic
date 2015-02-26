@@ -23,6 +23,7 @@ public class ImagesBuilder {
 	/** The horizontal road. */
 	private Image horizontalRoad;
 	
+	/** The verical double road. */
 	private Image vericalDoubleRoad;
 	
 	/** The horizontal road. */
@@ -120,6 +121,11 @@ public class ImagesBuilder {
 		return this.vericalRoad;
 	}
 	
+	/**
+	 * Gets the horizontal double rd.
+	 *
+	 * @return the horizontal double rd
+	 */
 	public Image getHorizontalDoubleRd(){
 		return this.horizontalDoubleRoad;
 	}

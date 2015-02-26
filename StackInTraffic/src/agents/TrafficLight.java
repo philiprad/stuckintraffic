@@ -30,7 +30,11 @@ public class TrafficLight {
 	
 	/** The grid y. */
 	private int gridY;
+	
+	/** The line position x. */
 	private int linePositionX;
+	
+	/** The line position y. */
 	private int linePositionY;
 	/** The traffic light state. */
 	private short trafficLightState = AgentConfig.TRAFFIC_LIGHT_RED;
@@ -149,6 +153,11 @@ public class TrafficLight {
 		return  this.direction;
 	}
 	
+	/**
+	 * Gets the state.
+	 *
+	 * @return the state
+	 */
 	public short getState(){
 		return this.trafficLightState;
 	}

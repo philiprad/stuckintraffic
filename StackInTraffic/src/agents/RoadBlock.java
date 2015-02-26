@@ -74,6 +74,9 @@ public class RoadBlock {
 		}
 	}
 	
+	/**
+	 * Clear car list.
+	 */
 	public void clearCarList(){
 		this.arrCar.clear();
 	}
@@ -107,6 +110,11 @@ public class RoadBlock {
 		this.trafficLightIndex.add(index);
 	}
 	
+	/**
+	 * Gets the traffic light index list.
+	 *
+	 * @return the traffic light index list
+	 */
 	public ArrayList <Short> getTrafficLightIndexList(){
 		return this.trafficLightIndex;
 	}
