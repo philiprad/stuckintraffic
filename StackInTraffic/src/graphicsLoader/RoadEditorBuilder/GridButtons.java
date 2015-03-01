@@ -6,7 +6,7 @@ package graphicsLoader.RoadEditorBuilder;
 
 import graphicsLoader.GraphicsConfig;
 import graphicsLoader.ImagesBuilder;
-import graphicsLoader.SimulatorBilder.ImagesSelector;
+import graphicsLoader.ImagesSelector;
 
 import java.awt.Component;
 import java.awt.Cursor;
@@ -35,10 +35,7 @@ public class GridButtons {
 	 */
 	public static  Component [][] gridButtons(short[][] s, ImagesBuilder ib){
 		GridButtonMouseListener gridButtonMouseListener = new GridButtonMouseListener();
-		Toolkit toolkit = Toolkit.getDefaultToolkit();  
-		Image image = toolkit.getImage("./images/car.png");
-		Point hotSpot = new Point(0,0);  
-		Cursor cursor = toolkit.createCustomCursor(image, hotSpot, "car");  
+		
 		//Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
 		Component [][] buttons = new Component [s.length] [s[0].length];
 		//Border emptyBorder = BorderFactory.createEmptyBorder();
@@ -59,7 +56,6 @@ public class GridButtons {
 				}
 				tempButton.setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE));
 				tempButton.setBorder(null);
-				tempButton.setCursor(cursor);
 				tempButton.setRolloverEnabled(true);
 			//tempButton.setRolloverIcon(rolloverIcon);
 			//tempButton.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.GREEN,Color.GREEN));//(Color.GREEN, 10));//(BevelBorder.RAISED,Color.GREEN,Color.BLACK));

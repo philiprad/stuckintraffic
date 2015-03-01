@@ -6,6 +6,7 @@ package graphicsLoader.SimulatorBilder;
 
 import graphicsLoader.GraphicsConfig;
 import graphicsLoader.ImagesBuilder;
+import graphicsLoader.ImagesSelector;
 
 import java.awt.Color;
 import java.awt.Graphics;

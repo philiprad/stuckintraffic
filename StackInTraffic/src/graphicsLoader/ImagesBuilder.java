@@ -46,6 +46,26 @@ public class ImagesBuilder {
 	/** The intersection. */
 	private Image intersectionSc;
 	
+	/** The verical double road. */
+	private Image vericalDoubleRoadTb;
+	
+	/** The horizontal road. */
+	private Image horizontalDoubleRoadTb;
+	
+	private Image vericalRoadCr;
+	
+	/** The horizontal road. */
+	private Image horizontalRoadCr;
+	
+	/** The verical double road. */
+	private Image vericalDoubleRoadCr;
+	
+	/** The horizontal road. */
+	private Image horizontalDoubleRoadCr;
+	
+	/** The intersection. */
+	private Image intersectionCr;
+	
 	/** The car up. */
 	private Image carUp;
 	
@@ -101,6 +121,16 @@ public class ImagesBuilder {
 		this.vericalDoubleRoadSc = loadImage(GraphicsConfig.VERTICAL_DOUBLE_ROAD_IMG_SCALED);
 		this.horizontalDoubleRoadSc = loadImage(GraphicsConfig.HORIZONTAL_DOUBLE_ROAD_IMG_SCALED);
 		this.intersectionSc = loadImage(GraphicsConfig.INTERSECTION_IMG_SCALED);
+		
+		this.vericalRoadCr = loadImage(GraphicsConfig.VERTICAL_ROAD_IMG_CURSOR);
+		this.horizontalRoadCr = loadImage(GraphicsConfig.HORIZONTAL_ROAD_IMG_CURSOR);
+		this.vericalDoubleRoadCr = loadImage(GraphicsConfig.VERTICAL_DOUBLE_ROAD_IMG_CURSOR);
+		this.horizontalDoubleRoadCr = loadImage(GraphicsConfig.HORIZONTAL_DOUBLE_ROAD_IMG_CURSOR);
+		this.intersectionCr = loadImage(GraphicsConfig.INTERSECTION_IMG_CURSOR);
+		
+		this.horizontalDoubleRoadTb = loadImage(GraphicsConfig.HORIZONTAL_DOUBLE_ROAD_IMG_TOOLBAR);
+		this.vericalDoubleRoadTb = loadImage(GraphicsConfig.VERTICAL_DOUBLE_ROAD_IMG_TOOLBAR);
+		
 	}
 	
 	/**
@@ -301,5 +331,58 @@ public class ImagesBuilder {
 		return this.intersectionSc;
 	}
 	
+	
+	public Image getHorizontalDoubleRdTb(){
+		return this.horizontalDoubleRoadTb;
+	}
+	
+	/**
+	 * Gets the vertical rd.
+	 *
+	 * @return the vertical rd
+	 */
+	public Image getVerticalDoubleRdTb(){
+		return this.vericalDoubleRoadTb;
+	}
+	
+	public Image getHorizontalRdCr(){
+		return this.horizontalRoadCr;
+	}
+	
+	/**
+	 * Gets the vertical rd.
+	 *
+	 * @return the vertical rd
+	 */
+	public Image getVerticalRdCr(){
+		return this.vericalRoadCr;
+	}
+	
+	/**
+	 * Gets the horizontal double rd.
+	 *
+	 * @return the horizontal double rd
+	 */
+	public Image getHorizontalDoubleRdCr(){
+		return this.horizontalDoubleRoadCr;
+	}
+	
+	/**
+	 * Gets the vertical rd.
+	 *
+	 * @return the vertical rd
+	 */
+	public Image getVerticalDoubleRdCr(){
+		return this.vericalDoubleRoadCr;
+	}
+	
+	/**
+	 * Gets the intersection.
+	 *
+	 * @return the intersection
+	 */
+	public Image getIntersectionCr(){
+		return this.intersectionCr;
+	}
 }
 

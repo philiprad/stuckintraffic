@@ -2,9 +2,7 @@
  * @author  Maxim Vasilishin
  * @version 1.0
  */
-package graphicsLoader.SimulatorBilder;
-
-import graphicsLoader.ImagesBuilder;
+package graphicsLoader;
 
 import java.awt.Image;
 
@@ -81,6 +79,36 @@ public static Image selectRoadImageSc(int blockType, ImagesBuilder ib){
 		return img;
 	}
 	
+
+
+public static Image selectRoadImageTb(int blockType, ImagesBuilder ib){
+	
+	Image img = null;
+	
+	switch (blockType){
+	
+		case RoadConfig.HORIZONTAL_DOUBLE_BLOCK: return img = ib.getHorizontalDoubleRdTb();
+		case RoadConfig.VERTICAL_DOUBLE_BLOCK: return img = ib.getVerticalDoubleRdTb();
+	}
+	
+	return img;
+}
+
+public static Image selectRoadImageCr(int blockType, ImagesBuilder ib){
+	
+	Image img = null;
+	
+	switch (blockType){
+	
+		case RoadConfig.HORIZONTAL_BLOCK: return img = ib.getHorizontalRdCr();
+		case RoadConfig.VERTICAL_BLOCK: return img = ib.getVerticalRdCr();
+		case RoadConfig.HORIZONTAL_DOUBLE_BLOCK: return img = ib.getHorizontalDoubleRdCr();
+		case RoadConfig.VERTICAL_DOUBLE_BLOCK: return img = ib.getVerticalDoubleRdCr();
+		case RoadConfig.INTERSECTION_BLOCK: return img = ib.getIntersectionCr();
+	}
+	
+	return img;
+}
 /**
  * Select car image.
  *

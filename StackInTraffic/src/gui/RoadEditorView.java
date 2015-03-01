@@ -6,8 +6,10 @@ package gui;
 
 import graphicsLoader.GraphicsConfig;
 import graphicsLoader.ImagesBuilder;
+import graphicsLoader.ImagesSelector;
+import graphicsLoader.RoadEditorBuilder.CursorManager;
 import graphicsLoader.RoadEditorBuilder.GridButtons;
-import graphicsLoader.SimulatorBilder.ImagesSelector;
+import graphicsLoader.RoadEditorBuilder.ToolBarButtonMouseListener;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -95,25 +97,53 @@ public class RoadEditorView extends JPanel {
 		this.add(toolbar, BorderLayout.EAST);
 		this.add(this.scrollPane, BorderLayout.CENTER);
 		
-		JButton button1= new JButton("Horizontal Road Block", new ImageIcon(ImagesSelector.selectRoadImageSc(RoadConfig.HORIZONTAL_BLOCK, ib)));
-	        button1.setHorizontalAlignment(SwingConstants.LEFT);
-	        button1.setIconTextGap(30);
-	        button1.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
-		toolbar.add(button1);
+		JButton button = null;
 		
-		JButton button2= new JButton("Vertical Road Block", new ImageIcon(ImagesSelector.selectRoadImageSc(RoadConfig.VERTICAL_BLOCK, ib)));
-        button2.setHorizontalAlignment(SwingConstants.LEFT);
-        button2.setIconTextGap(30);
-        button2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
-        toolbar.add(button2);
+			button= new JButton("Horizontal Road Block", new ImageIcon(ImagesSelector.selectRoadImageSc(RoadConfig.HORIZONTAL_BLOCK, ib)));
+			ToolBarButtonMouseListener toolBarButtonMouseListener = new ToolBarButtonMouseListener(RoadConfig.HORIZONTAL_BLOCK, ib, componentGrid);
+			button.setHorizontalAlignment(SwingConstants.LEFT);
+	        button.setIconTextGap(30);
+	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
+	        button.addMouseListener(toolBarButtonMouseListener);
+	        button.setCursor(CursorManager.handCursor());
+	        toolbar.add(button);
+		
+	        button= new JButton("Vertical Road Block", new ImageIcon(ImagesSelector.selectRoadImageSc(RoadConfig.VERTICAL_BLOCK, ib)));
+	        toolBarButtonMouseListener = new ToolBarButtonMouseListener(RoadConfig.VERTICAL_BLOCK, ib, componentGrid);
+	        button.setHorizontalAlignment(SwingConstants.LEFT);
+	        button.setIconTextGap(30);
+	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
+	        button.addMouseListener(toolBarButtonMouseListener);
+	        button.setCursor(CursorManager.handCursor());
+	        toolbar.add(button);
         
-        JButton button3= new JButton("Intersection Road Block", new ImageIcon(ImagesSelector.selectRoadImageSc(RoadConfig.INTERSECTION_BLOCK, ib)));
-        button3.setHorizontalAlignment(SwingConstants.LEFT);
-        button3.setIconTextGap(30);
-        button3.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
-        toolbar.add(button3);
-		
-		
+	        button= new JButton("Intersection Road Block", new ImageIcon(ImagesSelector.selectRoadImageSc(RoadConfig.INTERSECTION_BLOCK, ib)));
+	        toolBarButtonMouseListener = new ToolBarButtonMouseListener(RoadConfig.INTERSECTION_BLOCK, ib, componentGrid);
+	        button.setHorizontalAlignment(SwingConstants.LEFT);
+	        button.setIconTextGap(30);
+	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
+	        button.addMouseListener(toolBarButtonMouseListener);
+	        button.setCursor(CursorManager.handCursor());
+	        toolbar.add(button);
+	        
+	        button= new JButton("Horizontal 2xlane Block", new ImageIcon(ImagesSelector.selectRoadImageTb(RoadConfig.HORIZONTAL_DOUBLE_BLOCK, ib)));
+	        toolBarButtonMouseListener = new ToolBarButtonMouseListener(RoadConfig.HORIZONTAL_DOUBLE_BLOCK, ib, componentGrid);
+	        button.setHorizontalAlignment(SwingConstants.LEFT);
+	        button.setIconTextGap(30);
+	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
+	        button.addMouseListener(toolBarButtonMouseListener);
+	        button.setCursor(CursorManager.handCursor());
+	        toolbar.add(button);
+	        
+	        button= new JButton("Vertical 2xlane Block", new ImageIcon(ImagesSelector.selectRoadImageTb(RoadConfig.VERTICAL_DOUBLE_BLOCK, ib)));
+	        toolBarButtonMouseListener = new ToolBarButtonMouseListener(RoadConfig.VERTICAL_DOUBLE_BLOCK, ib, componentGrid);
+	        button.setHorizontalAlignment(SwingConstants.LEFT);
+	        button.setIconTextGap(30);
+	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
+	        button.addMouseListener(toolBarButtonMouseListener);
+	        button.setCursor(CursorManager.handCursor());
+	        toolbar.add(button);
+       
 			
 //		//Test code for GridButtons
 //		Dimension dimension = new Dimension(16550, 16500);
