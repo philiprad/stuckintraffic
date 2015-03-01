@@ -2,7 +2,7 @@
  * @author  Maxim Vasilishin
  * @version 1.0
  */
-package guiTemplate;
+package gui;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -26,6 +26,8 @@ public class ApplicationFrame extends JFrame{
 	/**
 	 * Gets the frame.
 	 *
+	 * @param panelView
+	 *            the panel view
 	 * @return the frame
 	 */
 	public void addView(JPanel panelView){
@@ -33,6 +35,9 @@ public class ApplicationFrame extends JFrame{
 		this.setVisible(true);
 	}
 	
+	/**
+	 * Removes the view.
+	 */
 	public void removeView(){
 		this.getContentPane().removeAll();
 		this.getContentPane().invalidate();

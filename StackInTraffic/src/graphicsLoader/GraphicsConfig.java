@@ -61,6 +61,24 @@ public class GraphicsConfig {
 	/** The Constant INTERSECTION_IMG. */
 	public static final String INTERSECTION_IMG = "./images/intersection.png";
 	
+	
+	/** The Constant VERTICAL_ROAD_IMG_SCALED. */
+	public static final String VERTICAL_ROAD_IMG_SCALED = "./images/scaledPictures/verticalRoad.png";
+	
+	/** The Constant HORIZONTAL_ROAD_IMG. */
+	public static final String HORIZONTAL_ROAD_IMG_SCALED = "./images/scaledPictures/horizontalRoad.png";
+	
+	/** The Constant INTERSECTION_IMG_SCALED. */
+	public static final String INTERSECTION_IMG_SCALED = "./images/scaledPictures/intersection.png";
+	
+	/** The Constant VERTICAL_DOUBLE_ROAD_IMG. */
+	public static final String VERTICAL_DOUBLE_ROAD_IMG_SCALED = "./images/scaledPictures/verticalDoubleRoad.png";
+	
+	/** The Constant HORIZONTAL_ROAD_IMG. */
+	public static final String HORIZONTAL_DOUBLE_ROAD_IMG_SCALED = "./images/scaledPictures/horizontalDoubleRoad.png";
+	
+	
+	
 	/** The Constant CAR_UP_IMG. */
 	public static final String CAR_UP_IMG = "./images/carUp.png";
 	

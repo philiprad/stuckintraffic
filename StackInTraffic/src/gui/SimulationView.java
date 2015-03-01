@@ -1,4 +1,8 @@
-package guiTemplate;
+/*
+ * @author  Maxim Vasilishin
+ * @version 1.0
+ */
+package gui;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -9,10 +13,21 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SimulationView.
+ */
 public class SimulationView extends JPanel{
 	
+	/** The frame. */
 	public ApplicationFrame frame;
 	
+	/**
+	 * Instantiates a new simulation view.
+	 *
+	 * @param frame
+	 *            the frame
+	 */
 	public SimulationView(ApplicationFrame frame){
 		this.frame = frame;
 		this.setLayout(new BorderLayout());
@@ -49,6 +64,16 @@ public class SimulationView extends JPanel{
 		
 	}
 	
+	/**
+	 * The listener interface for receiving mainMenu events. The class that is
+	 * interested in processing a mainMenu event implements this interface, and
+	 * the object created with that class is registered with a component using
+	 * the component's <code>addMainMenuListener<code> method. When
+	 * the mainMenu event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see MainMenuEvent
+	 */
 	public class MainMenuListener implements ActionListener{
 		
 		/* (non-Javadoc)

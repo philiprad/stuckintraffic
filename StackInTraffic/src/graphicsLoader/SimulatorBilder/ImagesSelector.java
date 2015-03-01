@@ -52,6 +52,35 @@ public class ImagesSelector {
 		return img;
 	}
 	
+public static Image selectRoadImageSc(int blockType, ImagesBuilder ib){
+		
+		Image img = null;
+		
+		switch (blockType){
+			
+		case RoadConfig.HORIZONTAL_BLOCK: return img = ib.getHorizontalRdSc();
+		case RoadConfig.HORIZONTAL_ENTER_BLOCK: return img = ib.getHorizontalRdSc();
+		case RoadConfig.HORIZONTAL_EXIT_BLOCK: return img = ib.getHorizontalRdSc();
+		
+		case RoadConfig.VERTICAL_BLOCK: return img = ib.getVerticalRdSc();
+		case RoadConfig.VERTICAL_ENTER_BLOCK: return img = ib.getVerticalRdSc();
+		case RoadConfig.VERTICAL_EXIT_BLOCK: return img = ib.getVerticalRdSc();
+		
+		case RoadConfig.HORIZONTAL_DOUBLE_BLOCK: return img = ib.getHorizontalDoubleRdSc();
+		case RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK: return img = ib.getHorizontalDoubleRdSc();
+		case RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK: return img = ib.getHorizontalDoubleRdSc();
+		
+		case RoadConfig.VERTICAL_DOUBLE_BLOCK: return img = ib.getVerticalDoubleRdSc();
+		case RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK: return img = ib.getVerticalDoubleRdSc();
+		case RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK: return img = ib.getVerticalDoubleRdSc();
+		
+		case RoadConfig.INTERSECTION_BLOCK: return img = ib.getIntersectionSc();
+		
+		}
+		
+		return img;
+	}
+	
 /**
  * Select car image.
  *

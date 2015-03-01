@@ -32,6 +32,20 @@ public class ImagesBuilder {
 	/** The intersection. */
 	private Image intersection;
 	
+	private Image vericalRoadSc;
+	
+	/** The horizontal road. */
+	private Image horizontalRoadSc;
+	
+	/** The verical double road. */
+	private Image vericalDoubleRoadSc;
+	
+	/** The horizontal road. */
+	private Image horizontalDoubleRoadSc;
+	
+	/** The intersection. */
+	private Image intersectionSc;
+	
 	/** The car up. */
 	private Image carUp;
 	
@@ -81,6 +95,12 @@ public class ImagesBuilder {
 		this.verticalRedLight = loadImage(GraphicsConfig.VERTICAL_RED_LIGHT_IMG);
 		this.horizontalYellowLight = loadImage(GraphicsConfig.HORIZONTAL_YELLOW_LIGHT_IMG);
 		this.verticalYellowLight = loadImage(GraphicsConfig.VERTICAL_YELLOW_LIGHT_IMG);
+		
+		this.vericalRoadSc = loadImage(GraphicsConfig.VERTICAL_ROAD_IMG_SCALED);
+		this.horizontalRoadSc = loadImage(GraphicsConfig.HORIZONTAL_ROAD_IMG_SCALED);
+		this.vericalDoubleRoadSc = loadImage(GraphicsConfig.VERTICAL_DOUBLE_ROAD_IMG_SCALED);
+		this.horizontalDoubleRoadSc = loadImage(GraphicsConfig.HORIZONTAL_DOUBLE_ROAD_IMG_SCALED);
+		this.intersectionSc = loadImage(GraphicsConfig.INTERSECTION_IMG_SCALED);
 	}
 	
 	/**
@@ -238,6 +258,47 @@ public class ImagesBuilder {
 	 */
 	public Image getYellowLightV(){
 		return this.verticalYellowLight;
+	}
+	
+	
+	public Image getHorizontalRdSc(){
+		return this.horizontalRoadSc;
+	}
+	
+	/**
+	 * Gets the vertical rd.
+	 *
+	 * @return the vertical rd
+	 */
+	public Image getVerticalRdSc(){
+		return this.vericalRoadSc;
+	}
+	
+	/**
+	 * Gets the horizontal double rd.
+	 *
+	 * @return the horizontal double rd
+	 */
+	public Image getHorizontalDoubleRdSc(){
+		return this.horizontalDoubleRoadSc;
+	}
+	
+	/**
+	 * Gets the vertical rd.
+	 *
+	 * @return the vertical rd
+	 */
+	public Image getVerticalDoubleRdSc(){
+		return this.vericalDoubleRoadSc;
+	}
+	
+	/**
+	 * Gets the intersection.
+	 *
+	 * @return the intersection
+	 */
+	public Image getIntersectionSc(){
+		return this.intersectionSc;
 	}
 	
 }

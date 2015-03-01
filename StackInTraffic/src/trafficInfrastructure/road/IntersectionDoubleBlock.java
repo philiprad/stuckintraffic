@@ -1,3 +1,7 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 1.0
+ */
 package trafficInfrastructure.road;
 
 import graphicsLoader.GraphicsConfig;
@@ -6,6 +10,10 @@ import java.util.ArrayList;
 
 import trafficInfrastructure.roadPath.PathPoint;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class IntersectionDoubleBlock.
+ */
 public class IntersectionDoubleBlock {
 		
 		/**
@@ -19,12 +27,49 @@ public class IntersectionDoubleBlock {
 		 *            the block type
 		 * @return the left to top path
 		 */
-		public static ArrayList<PathPoint> getLeftToTopPath(int x, int y, short blockType){
+		public static ArrayList<PathPoint> getLeftToTop1To1LanePath(int x, int y, short blockType){
 
 			ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 			
 				float theta = 90;
-				float radius = GraphicsConfig.CAR_POSITION;
+				float radius = GraphicsConfig.CAR_POSITION_DOUBLE_LANE;
+				System.out.println("Radius" + radius);
+				float stepsNb = (float) (radius*Math.PI/2) ;
+				
+				System.out.println("StepNB" + stepsNb);
+				float step = 90/(stepsNb);
+				System.out.println("Step" + step);
+				for (int i = 0; i < stepsNb-1; i++){
+					theta-=step;
+					int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
+					int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
+					System.out.println(xp + " "+ yp);
+					arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_TO_TOP_DIRECTION,(int) theta ));
+				}
+			return arrPathPoints;
+		}
+		
+		/**
+		 * Gets the left to top1 to2 lane path.
+		 *
+		 * @param x
+		 *            the x
+		 * @param y
+		 *            the y
+		 * @param blockType
+		 *            the block type
+		 * @return the left to top1 to2 lane path
+		 */
+		public static ArrayList<PathPoint> getLeftToTop1To2LanePath(int x, int y, short blockType){
+
+			ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
+			
+				for (int i = 0; i < GraphicsConfig.BLOCK_SIDE_SIZE/2; i++){
+					arrPathPoints.add(new PathPoint(blockType, x+i, y+GraphicsConfig.CAR_POSITION_DOUBLE_LANE, 1 , -1));
+				}
+			 
+				float theta = 90;
+				float radius = GraphicsConfig.CAR_POSITION_DOUBLE_LANE;
 				System.out.println("Radius" + radius);
 				float stepsNb = (float) (radius*Math.PI/2) ;
 				

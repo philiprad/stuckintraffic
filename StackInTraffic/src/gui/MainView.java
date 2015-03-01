@@ -2,7 +2,7 @@
  * @author  Maxim Vasilishin
  * @version 1.0
  */
-package guiTemplate;
+package gui;
 
 import java.awt.Component;
 import java.awt.Frame;
@@ -28,6 +28,12 @@ public class MainView extends JPanel {
 	
 	private ApplicationFrame frame;
 	
+	/**
+	 * Instantiates a new main view.
+	 *
+	 * @param frame
+	 *            the frame
+	 */
 	public MainView (ApplicationFrame frame){
 		this.frame = frame;
 		 BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
