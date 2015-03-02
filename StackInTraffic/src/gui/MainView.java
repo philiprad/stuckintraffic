@@ -4,13 +4,26 @@
  */
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -43,10 +56,14 @@ public class MainView extends JPanel {
 	     JButton button2 = new JButton("Exit");
 	     button2.setAlignmentX(Component.CENTER_ALIGNMENT);
 	     this.add(button2);
+	     JButton button3 = new JButton("Browse");
+	     button3.setAlignmentX(Component.CENTER_ALIGNMENT);
+	     this.add(button3);
 	     
 	     button2.addActionListener(new ExitListener());
 		 button.addActionListener(new SimulationListener());
 		 button1.addActionListener(new MapBuilderListener());
+		 button3.addActionListener(new MapChoiceListener());
 	}
 	
 	//Functionality of SimulationButton-New Window (Main.java)
@@ -114,5 +131,49 @@ public class MainView extends JPanel {
 				public void actionPerformed(ActionEvent arg0){
 					System.exit(0);
 				}
+			}
+			
+
+			public class MapChoiceListener implements ActionListener{
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					//frame.removeView();
+					MapChoiceView mp = new MapChoiceView();
+					
+				}
+			}
+
+			
+			public class PopUpListener implements ActionListener{
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					Object[] options = {"Yes, please",
+		                    "No, thanks",
+		                    "No eggs, no ham!"};
+					   JPanel jpanel = new JPanel();
+					   JOptionPane jOptionPane = new JOptionPane();
+					   jOptionPane.showOptionDialog(frame, "Please choose which map you wish to open.", "Choose Map", jOptionPane.YES_NO_OPTION, jOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+					 //  jOptionPane.ad
+					   jpanel.add(jOptionPane);
+					   frame.addView(jpanel);
+					   
+					
+				}
+				
+			}
+			
+			public class FileBrowserListener implements ActionListener{
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						JFileChooser fc = new JFileChooser(".");
+						int choice = fc.showOpenDialog(frame);
+					      if (choice == JFileChooser.APPROVE_OPTION) {
+					        File file = fc.getSelectedFile();
+					        System.out.println(file);
+					      }
+					    
+					}
 			}
 }
