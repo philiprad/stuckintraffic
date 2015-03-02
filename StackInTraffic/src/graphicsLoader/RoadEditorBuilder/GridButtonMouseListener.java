@@ -4,14 +4,25 @@
  */
 package graphicsLoader.RoadEditorBuilder;
 
+import graphicsLoader.GraphicsConfig;
+import graphicsLoader.ImagesBuilder;
+import graphicsLoader.ImagesSelector;
+import gui.RoadEditorView;
+
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
+
+import trafficInfrastructure.grid.GridBuilder;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -28,6 +39,20 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -574114849359770825L;
+	
+	private GridBuilder gridBuilder;
+	private Component [][] buttons;
+	private ImagesBuilder ib;
+	private EditorState editorState;
+	private JPanel panel;
+	
+	public GridButtonMouseListener(GridBuilder gridBuilder, Component [][] buttons, ImagesBuilder ib, EditorState editorState, JPanel panel){
+		this.gridBuilder = gridBuilder;
+		this.buttons = buttons;
+		this.ib = ib;
+		this.editorState = editorState;
+		this.panel = panel;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
@@ -61,7 +86,52 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		JButton button= (JButton)e.getSource() ;
+		Component button= (Component)e.getSource() ;
+		short [][] roadGrid = this.gridBuilder.getGrid();
+		for(int i=0;i<buttons.length;i++){
+			for (int j=0;j<buttons.length;j++){
+				if (button == buttons[i][j] && roadGrid[i][j]==0){
+					System.out.println("true");
+					panel.invalidate();
+					if(this.editorState.getState()==RoadEditorConfig.BUILD_STATE){
+						this.gridBuilder.addRoadBlock(this.editorState.getCurrentBlockType(), i*50, j*50);
+						
+						if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100){
+							if(roadGrid[i][j]>10){
+								
+								ImageIcon background = new ImageIcon( ImagesSelector.selectRoadImageSc(roadGrid[i][j], ib)); 
+								((JButton)((JButton)buttons[i][j])).setIcon(background);
+								((JButton)buttons[i][j]).setLayout(null);
+								((JButton)buttons[i][j]).setSize(GraphicsConfig.BLOCK_SIDE_SIZE*2, GraphicsConfig.BLOCK_SIDE_SIZE*2);
+								((JButton)buttons[i][j]).setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE*2, GraphicsConfig.BLOCK_SIDE_SIZE*2));
+							}else{
+								//new GridButton(i,j,GraphicsConfig.BLOCK_SIDE_SIZE);
+								ImageIcon background = new ImageIcon( ImagesSelector.selectRoadImageSc(roadGrid[i][j], ib)); 
+								((JButton)buttons[i][j]).setIcon(background);
+								((JButton)buttons[i][j]).setLayout(null);
+								((JButton)buttons[i][j]).setSize(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE);
+								((JButton)buttons[i][j]).setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE));
+
+							}
+					} 
+					else {
+						((JButton)buttons[i][j]).setIcon(null);//new GridButton(i,j,GraphicsConfig.BLOCK_SIDE_SIZE);
+						((JButton)buttons[i][j]).setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE));
+					}
+					
+					((JButton)buttons[i][j]).setRolloverEnabled(true);
+					//((JButton)buttons[i][j]).setBorder(BorderFactory.createLineBorder(Color.WHITE));
+						
+						RoadEditorView.drawButtons(this.gridBuilder, this.panel, this.buttons);
+						panel.repaint();
+						
+						
+					}
+					this.panel.validate();
+				}
+				System.out.println("false");
+			}
+		}
 	}
 
 	/* (non-Javadoc)

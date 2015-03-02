@@ -16,17 +16,21 @@ public class ToolBarButtonMouseListener extends JPanel implements MouseListener{
 	private short blockType;
 	private Component [][] buttons;
 	private ImagesBuilder ib;
+	private EditorState editorState;
 	
-	public ToolBarButtonMouseListener(short blockType, ImagesBuilder ib, Component [][] buttons){
+	public ToolBarButtonMouseListener(short blockType, ImagesBuilder ib, Component [][] buttons, EditorState editorState ){
 		this.blockType = blockType;
 		this.buttons = buttons;
 		this.ib = ib;
+		this.editorState = editorState;
 	}
 
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
+		this.editorState.setState(RoadEditorConfig.BUILD_STATE);
+		this.editorState.setCurrentBlockType(blockType);
 		for (int i=0; i<this.buttons.length; i++){
 			for (int j=0; j<this.buttons[0].length; j++){
 				buttons[i][j].setCursor(CursorManager.customCursor(ImagesSelector.selectRoadImageCr(this.blockType, this.ib)));
@@ -50,7 +54,8 @@ public class ToolBarButtonMouseListener extends JPanel implements MouseListener{
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 		JButton button = (JButton)e.getSource();
-		button.setBorder(BorderFactory.createEmptyBorder(5, 1, 5, 10));
+		//button.setBorder(BorderFactory.createEmptyBorder(5, 1, 5, 10));
+		button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
 		button.repaint();
 		
 	}

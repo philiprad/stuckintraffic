@@ -65,11 +65,11 @@ public class RoadBuilder {
 	 * @param currentY
 	 *            the current y
 	 */
-	public RoadBuilder (String roadInfName, int currentX, int currentY){
+	public RoadBuilder (String roadInfName, int currentX, int currentY, GridBuilder gridBuilder){
 		this.roadInfName = roadInfName;
 		this.currentX1 = currentX;
 		this.currentY1 = currentY;
-		this.roadGrid = new GridBuilder();
+		this.roadGrid = gridBuilder;
 		this.arrPath = new ArrayList<Path>();
 	}
 	
@@ -78,12 +78,12 @@ public class RoadBuilder {
 	 */
 	public void buildRoad(){
 		
-		this.addRoadBlock(RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK);
+		/*this.addRoadBlock(RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK);
 		for (int i = 0; i < 6; i++){
 			this.addRoadBlock(RoadConfig.VERTICAL_DOUBLE_BLOCK);
 		}
 		this.addRoadBlock(RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK);
-		
+		*/
 		/*this.addRoadBlock(RoadConfig.VERTICAL_ENTER_BLOCK);
 		for (int i = 0; i < 14; i++){
 			this.addRoadBlock(RoadConfig.VERTICAL_BLOCK);
