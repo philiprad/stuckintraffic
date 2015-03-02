@@ -4,7 +4,6 @@
  */
 package main;
 
-import graphicsLoader.GraphicsConfig;
 import graphicsLoader.ImagesBuilder;
 import graphicsLoader.SimulatorBilder.GraphicsDrawer;
 

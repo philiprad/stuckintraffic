@@ -4,7 +4,6 @@ import graphicsLoader.ImagesBuilder;
 import graphicsLoader.ImagesSelector;
 
 import java.awt.Component;
-import java.awt.GridBagConstraints;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 

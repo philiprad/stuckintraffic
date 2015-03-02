@@ -22,6 +22,8 @@ public class GraphicsConfig {
 	/** The Constant DOUBLE_BLOCK_SIZE. */
 	public static final int DOUBLE_BLOCK_SIZE = 100;
 	
+	public static final int TRIPLE_BLOCK_SIZE = 150;
+	
 	/** The Constant GRID_HEIGHT. */
 	public static final int GRID_HEIGHT = MAIN_HEIGHT/BLOCK_SIDE_SIZE;
 	
@@ -139,4 +141,5 @@ public class GraphicsConfig {
 	
 	/** The Constant CAR_INVERSE_POSITION. */
 	public static final int CAR_INVERSE_POSITION_DOUBLE_LANE = BLOCK_SIDE_SIZE*2-(CAR_POSITION+BLOCK_SIDE_SIZE*2*5/100);
+	
 }

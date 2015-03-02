@@ -5,16 +5,12 @@
 package gui;
 
 import java.awt.Component;
-import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import main.Main;
 
 // TODO: Auto-generated Javadoc
 /**

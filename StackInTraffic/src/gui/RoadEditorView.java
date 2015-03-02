@@ -8,17 +8,17 @@ import graphicsLoader.GraphicsConfig;
 import graphicsLoader.ImagesBuilder;
 import graphicsLoader.ImagesSelector;
 import graphicsLoader.RoadEditorBuilder.CursorManager;
-import graphicsLoader.RoadEditorBuilder.GridButtons;
+import graphicsLoader.RoadEditorBuilder.GridButtonsLoader;
 import graphicsLoader.RoadEditorBuilder.ToolBarButtonMouseListener;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -81,19 +81,35 @@ public class RoadEditorView extends JPanel {
 		
 		
 		JPanel gridPanel = new JPanel( new GridBagLayout());
+		gridPanel.setBackground(Color.GRAY);
 		gridPanel.setSize(new Dimension(this.gridWidth*GraphicsConfig.BLOCK_SIDE_SIZE,this.gridHeight*GraphicsConfig.BLOCK_SIDE_SIZE));
 		this.scrollPane = new JScrollPane(gridPanel);
-		Component [][] componentGrid = GridButtons.gridButtons(((GridBuilder) (FileRW.readObject(MainConfig.GRID_PATH + "/"+this.roadInfrastructureName+MainConfig.GRID_SUFFIX))).getGrid(), ib);
-		GridBagConstraints gbc = new GridBagConstraints();
+		GridBuilder gridBuilder = (GridBuilder) (FileRW.readObject(MainConfig.GRID_PATH + "/"+this.roadInfrastructureName+MainConfig.GRID_SUFFIX));
+		Component [][] componentGrid = GridButtonsLoader.getGridButtons(gridBuilder.getGrid(), ib);
+		GridBagConstraints gridBagConstraints = new GridBagConstraints();
 		for (int i=0; i<this.gridWidth; i++){
 			for (int j=0; j<this.gridHeight; j++){
-				gbc.fill = GridBagConstraints.HORIZONTAL;
-				gbc.gridx = j;
-			    gbc.gridy = i;
-				gridPanel.add(componentGrid[j][i],gbc);
+				if (gridBuilder.getGrid()[j][i]>10){
+					gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+					gridBagConstraints.gridx = j;
+					gridBagConstraints.gridy = i;
+					gridBagConstraints.gridheight = 2;
+					gridBagConstraints.gridwidth = 2;
+					gridPanel.add(componentGrid[j][i],gridBagConstraints);
+					
+				} 
+				else {
+					gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+					gridBagConstraints.gridx = j;
+					gridBagConstraints.gridy = i;
+					gridBagConstraints.gridheight = 1;
+					gridBagConstraints.gridwidth = 1;
+					gridPanel.add(componentGrid[j][i],gridBagConstraints);
+				}
 			}
 		}
 		JToolBar toolbar = new JToolBar(null, JToolBar.VERTICAL);
+		toolbar.setFloatable(false);
 		this.add(toolbar, BorderLayout.EAST);
 		this.add(this.scrollPane, BorderLayout.CENTER);
 		
@@ -143,13 +159,6 @@ public class RoadEditorView extends JPanel {
 	        button.addMouseListener(toolBarButtonMouseListener);
 	        button.setCursor(CursorManager.handCursor());
 	        toolbar.add(button);
-       
-			
-//		//Test code for GridButtons
-//		Dimension dimension = new Dimension(16550, 16500);
-//		List<Component> buttons = GridButtons.gridButtons(dimension);
-//		for(int i=0;i < buttons.size();i++)
-//			grid.add(buttons.get(i));
 	
 	}
 	

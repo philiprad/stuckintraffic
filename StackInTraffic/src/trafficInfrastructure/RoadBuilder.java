@@ -78,13 +78,13 @@ public class RoadBuilder {
 	 */
 	public void buildRoad(){
 		
-		/*this.addRoadBlock(RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK);
+		this.addRoadBlock(RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK);
 		for (int i = 0; i < 6; i++){
-			this.addRoadBlock(RoadConfig.HORIZONTAL_DOUBLE_BLOCK);
+			this.addRoadBlock(RoadConfig.VERTICAL_DOUBLE_BLOCK);
 		}
-		this.addRoadBlock(RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK);*/
+		this.addRoadBlock(RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK);
 		
-		this.addRoadBlock(RoadConfig.VERTICAL_ENTER_BLOCK);
+		/*this.addRoadBlock(RoadConfig.VERTICAL_ENTER_BLOCK);
 		for (int i = 0; i < 14; i++){
 			this.addRoadBlock(RoadConfig.VERTICAL_BLOCK);
 		}

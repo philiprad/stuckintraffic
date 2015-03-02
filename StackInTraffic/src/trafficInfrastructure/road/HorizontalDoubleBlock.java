@@ -4,10 +4,11 @@
  */
 package trafficInfrastructure.road;
 
+import graphicsLoader.GraphicsConfig;
+
 import java.util.ArrayList;
 
 import trafficInfrastructure.roadPath.PathPoint;
-import graphicsLoader.GraphicsConfig;
 
 // TODO: Auto-generated Javadoc
 /**

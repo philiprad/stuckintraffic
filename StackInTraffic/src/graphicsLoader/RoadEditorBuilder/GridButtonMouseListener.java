@@ -12,7 +12,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.Border;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -52,7 +51,7 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 		//if (e.getSource() != this) return;
 		   // setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED,Color.GREEN,Color.BLACK));
 		JButton button = (JButton)e.getSource();
-		button.setBorder(BorderFactory.createEmptyBorder());
+		button.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		button.repaint();
 	}
 
