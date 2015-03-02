@@ -23,7 +23,9 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
@@ -67,17 +69,20 @@ public class RoadEditorView extends JPanel {
 		this.frame = frame;
 		ImagesBuilder ib = new ImagesBuilder();
 		this.setLayout(new BorderLayout());
-		JMenuBar menubar = new JMenuBar();
-	    this.add(menubar, BorderLayout.NORTH);
-	    JButton play = new JButton("Play");
-		menubar.add(play);
-		JButton pause = new JButton("Pause");
-		menubar.add(pause);
-		JButton stop = new JButton("Stop");	
-		menubar.add(stop);
-		JButton mainMenu = new JButton("Main Menu");
+		
+		JMenuBar menuBar = new JMenuBar();
+		JMenu fileMenu = new JMenu("File");
+	    menuBar.add(fileMenu);
+	    JMenu editMenu = new JMenu("Edit");
+	    menuBar.add(editMenu);
+	    
+	    JMenuItem newMap = new JMenuItem("New");
+	    JMenuItem openMap = new JMenuItem("Open");
+	    JMenuItem exitMainMenu = new JMenuItem("Main Menu");
+	    JMenuItem exit = new JMenuItem("Exit");
+		/*JButton mainMenu = new JButton("Main Menu");
 		mainMenu.addActionListener(new MainMenuListener());
-		menubar.add(mainMenu);
+		menubar.add(mainMenu);*/
 		
 		
 		JPanel gridPanel = new JPanel( new GridBagLayout());
