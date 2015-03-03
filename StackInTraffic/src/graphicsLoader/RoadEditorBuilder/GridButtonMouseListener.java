@@ -86,7 +86,9 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
+		
 		Component button= (Component)e.getSource() ;
+		
 		short [][] roadGrid = this.gridBuilder.getGrid();
 		for(int i=0;i<buttons.length;i++){
 			for (int j=0;j<buttons.length;j++){
@@ -123,6 +125,8 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 					//((JButton)buttons[i][j]).setBorder(BorderFactory.createLineBorder(Color.WHITE));
 						
 						RoadEditorView.drawButtons(this.gridBuilder, this.panel, this.buttons);
+						((JButton)button).setBorder(BorderFactory.createLineBorder(Color.WHITE));
+						button.repaint();
 						panel.repaint();
 						
 						

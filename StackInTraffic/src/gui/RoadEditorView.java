@@ -7,11 +7,13 @@ package gui;
 import graphicsLoader.GraphicsConfig;
 import graphicsLoader.ImagesBuilder;
 import graphicsLoader.ImagesSelector;
+import graphicsLoader.RoadEditorBuilder.ActionToolBarMouseListener;
+import graphicsLoader.RoadEditorBuilder.ConstructionToolBarMouseListener;
 import graphicsLoader.RoadEditorBuilder.CursorManager;
 import graphicsLoader.RoadEditorBuilder.EditorState;
 import graphicsLoader.RoadEditorBuilder.GridButtonMouseListener;
 import graphicsLoader.RoadEditorBuilder.GridButtonsLoader;
-import graphicsLoader.RoadEditorBuilder.ToolBarButtonMouseListener;
+import graphicsLoader.RoadEditorBuilder.RoadEditorConfig;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -129,6 +131,7 @@ public class RoadEditorView extends JPanel {
 		for(int i=0;i<componentGrid.length;i++){
 			for (int j=0;j<componentGrid[0].length;j++){
 				componentGrid[i][j].addMouseListener(gridButtonMouseListener);
+				componentGrid[i][j].setCursor(CursorManager.customCursor(ib.getStandartCursor()));
 			}
 		}
 		
@@ -142,7 +145,7 @@ public class RoadEditorView extends JPanel {
 		JButton button = null;
 		
 			button= new JButton("Horizontal Road Block", new ImageIcon(ImagesSelector.selectRoadImageSc(RoadConfig.HORIZONTAL_BLOCK, ib)));
-			ToolBarButtonMouseListener toolBarButtonMouseListener = new ToolBarButtonMouseListener(RoadConfig.HORIZONTAL_BLOCK, ib, componentGrid, this.editorState);
+			ConstructionToolBarMouseListener toolBarButtonMouseListener = new ConstructionToolBarMouseListener(RoadConfig.HORIZONTAL_BLOCK, ib, componentGrid, this.editorState);
 			button.setHorizontalAlignment(SwingConstants.LEFT);
 	        button.setIconTextGap(30);
 	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
@@ -151,7 +154,7 @@ public class RoadEditorView extends JPanel {
 	        toolbar.add(button);
 		
 	        button= new JButton("Vertical Road Block", new ImageIcon(ImagesSelector.selectRoadImageSc(RoadConfig.VERTICAL_BLOCK, ib)));
-	        toolBarButtonMouseListener = new ToolBarButtonMouseListener(RoadConfig.VERTICAL_BLOCK, ib, componentGrid, this.editorState);
+	        toolBarButtonMouseListener = new ConstructionToolBarMouseListener(RoadConfig.VERTICAL_BLOCK, ib, componentGrid, this.editorState);
 	        button.setHorizontalAlignment(SwingConstants.LEFT);
 	        button.setIconTextGap(30);
 	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
@@ -160,7 +163,7 @@ public class RoadEditorView extends JPanel {
 	        toolbar.add(button);
         
 	        button= new JButton("Intersection Road Block", new ImageIcon(ImagesSelector.selectRoadImageSc(RoadConfig.INTERSECTION_BLOCK, ib)));
-	        toolBarButtonMouseListener = new ToolBarButtonMouseListener(RoadConfig.INTERSECTION_BLOCK, ib, componentGrid,this.editorState);
+	        toolBarButtonMouseListener = new ConstructionToolBarMouseListener(RoadConfig.INTERSECTION_BLOCK, ib, componentGrid,this.editorState);
 	        button.setHorizontalAlignment(SwingConstants.LEFT);
 	        button.setIconTextGap(30);
 	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
@@ -169,7 +172,7 @@ public class RoadEditorView extends JPanel {
 	        toolbar.add(button);
 	        
 	        button= new JButton("Horizontal 2xlane Block", new ImageIcon(ImagesSelector.selectRoadImageTb(RoadConfig.HORIZONTAL_DOUBLE_BLOCK, ib)));
-	        toolBarButtonMouseListener = new ToolBarButtonMouseListener(RoadConfig.HORIZONTAL_DOUBLE_BLOCK, ib, componentGrid, this.editorState);
+	        toolBarButtonMouseListener = new ConstructionToolBarMouseListener(RoadConfig.HORIZONTAL_DOUBLE_BLOCK, ib, componentGrid, this.editorState);
 	        button.setHorizontalAlignment(SwingConstants.LEFT);
 	        button.setIconTextGap(30);
 	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
@@ -178,15 +181,57 @@ public class RoadEditorView extends JPanel {
 	        toolbar.add(button);
 	        
 	        button= new JButton("Vertical 2xlane Block", new ImageIcon(ImagesSelector.selectRoadImageTb(RoadConfig.VERTICAL_DOUBLE_BLOCK, ib)));
-	        toolBarButtonMouseListener = new ToolBarButtonMouseListener(RoadConfig.VERTICAL_DOUBLE_BLOCK, ib, componentGrid,this.editorState);
+	        toolBarButtonMouseListener = new ConstructionToolBarMouseListener(RoadConfig.VERTICAL_DOUBLE_BLOCK, ib, componentGrid,this.editorState);
 	        button.setHorizontalAlignment(SwingConstants.LEFT);
 	        button.setIconTextGap(30);
 	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
 	        button.addMouseListener(toolBarButtonMouseListener);
 	        button.setCursor(CursorManager.handCursor());
 	        toolbar.add(button);
-	
-	}
+	        
+	        JToolBar actionToolBar = new JToolBar(null, JToolBar.VERTICAL);
+	        actionToolBar.setFloatable(false);
+			this.add(actionToolBar, BorderLayout.WEST);
+			JButton actionButton = null;
+			
+			
+			actionButton = new JButton("");//new GridButton(i,j,GraphicsConfig.BLOCK_SIDE_SIZE);
+			ImageIcon background = new ImageIcon( ib.getStandartCursor()); 
+			actionButton.setIcon(background);
+			actionButton.setLayout(null);
+			actionButton.setBorder(BorderFactory.createEmptyBorder(5, 10, 5,5));
+			actionButton.setCursor(CursorManager.handCursor());
+			actionButton.setSize(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE);
+			actionButton.setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE));
+			ActionToolBarMouseListener actionToolBarML = new ActionToolBarMouseListener(RoadEditorConfig.ACTION_NULL, ib ,componentGrid, this.editorState);
+			actionButton.addMouseListener(actionToolBarML);
+			actionToolBar.add(actionButton);
+			
+			actionButton = new JButton();//new GridButton(i,j,GraphicsConfig.BLOCK_SIDE_SIZE);
+			background = new ImageIcon( ib.getHandCursor()); 
+			actionButton.setIcon(background);
+			actionButton.setLayout(null);
+			actionButton.setBorder(BorderFactory.createEmptyBorder(5, 10, 5,5));
+			actionButton.setCursor(CursorManager.handCursor());
+			actionButton.setSize(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE);
+			actionButton.setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE));
+			actionToolBarML = new ActionToolBarMouseListener(RoadEditorConfig.ACTION_MOVE, ib ,componentGrid, this.editorState);
+			actionButton.addMouseListener(actionToolBarML);
+			actionToolBar.add(actionButton);
+			
+			actionButton = new JButton();//new GridButton(i,j,GraphicsConfig.BLOCK_SIDE_SIZE);
+			background = new ImageIcon( ib.getDeleteCursor()); 
+			actionButton.setIcon(background);
+			actionButton.setLayout(null);
+			actionButton.setBorder(BorderFactory.createEmptyBorder(5, 10, 5,5));
+			actionButton.setCursor(CursorManager.handCursor());
+			actionButton.setSize(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE);
+			actionButton.setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE));
+			actionToolBarML = new ActionToolBarMouseListener(RoadEditorConfig.ACTION_DELETE, ib ,componentGrid, this.editorState);
+			actionButton.addMouseListener(actionToolBarML);
+			actionToolBar.add(actionButton);
+			
+}
 	
 	/**
 	 * The listener interface for receiving mainMenu events. The class that is

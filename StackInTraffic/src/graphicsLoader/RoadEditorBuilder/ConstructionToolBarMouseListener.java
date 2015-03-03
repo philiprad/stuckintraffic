@@ -11,14 +11,14 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class ToolBarButtonMouseListener extends JPanel implements MouseListener{
+public class ConstructionToolBarMouseListener extends JPanel implements MouseListener{
 	
 	private short blockType;
 	private Component [][] buttons;
 	private ImagesBuilder ib;
 	private EditorState editorState;
 	
-	public ToolBarButtonMouseListener(short blockType, ImagesBuilder ib, Component [][] buttons, EditorState editorState ){
+	public ConstructionToolBarMouseListener(short blockType, ImagesBuilder ib, Component [][] buttons, EditorState editorState ){
 		this.blockType = blockType;
 		this.buttons = buttons;
 		this.ib = ib;

@@ -4,6 +4,7 @@ public class EditorState {
 	
 	private short editionState;
 	private short currentBlockType;
+	private short isHandled;
 	
 	public EditorState(){
 		this.editionState = RoadEditorConfig.EMPTY_STATE;

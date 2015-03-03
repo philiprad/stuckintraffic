@@ -96,6 +96,10 @@ public class ImagesBuilder {
 	/** The horizontal yellow light. */
 	private Image horizontalYellowLight;
 	
+	private Image cursorStandart;
+	private Image cursorHand;
+	private Image cursorDelete;
+	
 	/**
 	 * Instantiates a new images builder.
 	 */
@@ -130,6 +134,11 @@ public class ImagesBuilder {
 		
 		this.horizontalDoubleRoadTb = loadImage(GraphicsConfig.HORIZONTAL_DOUBLE_ROAD_IMG_TOOLBAR);
 		this.vericalDoubleRoadTb = loadImage(GraphicsConfig.VERTICAL_DOUBLE_ROAD_IMG_TOOLBAR);
+		
+		this.cursorStandart = loadImage(GraphicsConfig.CURSOR_STANDART);
+		this.cursorHand = loadImage(GraphicsConfig.CURSOR_HAND);
+		this.cursorDelete = loadImage(GraphicsConfig.CURSOR_DELETE);
+		
 		
 	}
 	
@@ -383,6 +392,18 @@ public class ImagesBuilder {
 	 */
 	public Image getIntersectionCr(){
 		return this.intersectionCr;
+	}
+	
+	public Image getStandartCursor(){
+		return this.cursorStandart;
+	}
+	
+	public Image getHandCursor(){
+		return this.cursorHand;
+	}
+	
+	public Image getDeleteCursor(){
+		return this.cursorDelete;
 	}
 }
 
