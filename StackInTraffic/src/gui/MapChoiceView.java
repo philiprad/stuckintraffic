@@ -13,11 +13,13 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class MapChoiceView {
 	private JPanel jPanel = new JPanel();
     JFrame f = new JFrame("Choose Map");
-    
+    String selection = "";
 	public MapChoiceView(){
     
 	jPanel.setSize(400, 300);
@@ -26,14 +28,22 @@ public class MapChoiceView {
     
 	String labels[] = { "A", "B", "C", "D","E", "F", "G", "H","I", "J" };
     
-    f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    JList<String> list = new JList<String>(labels);
 
+    f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    final JList<String> list = new JList<String>(labels);
+    list.addListSelectionListener(new ListSelectionListener() {
+		
+		@Override
+		public void valueChanged(ListSelectionEvent e) {
+			 if (!e.getValueIsAdjusting()) {
+				 selection = list.getSelectedValue();
+               }			
+		}
+	});
     JScrollPane scrollPane = new JScrollPane(list);
     Container contentPane = f.getContentPane();
     contentPane.add(scrollPane, BorderLayout.NORTH);
     // contentPane.setBounds(10, 10, 10, 10);//setBorder(new EmptyBorder(10,10,10,10));
-
     f.add(jPanel);
     f.setSize(350,250);
     f.setVisible(true);
@@ -62,7 +72,9 @@ public class MapChoiceView {
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
 		public void actionPerformed(ActionEvent arg0){
+			
 			f.dispose();
+			
 		}
 	}
 }
