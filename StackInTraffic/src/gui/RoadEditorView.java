@@ -91,6 +91,7 @@ public class RoadEditorView extends JPanel {
 	    
 	    JMenuItem newMap = new JMenuItem("New");
 	    JMenuItem openMap = new JMenuItem("Open");
+	    openMap.addActionListener(new OpenListener());
 	    JMenuItem exitMainMenu = new JMenuItem("Main Menu");
 	    exitMainMenu.addActionListener(new MainMenuListener());
 	    JMenuItem exit = new JMenuItem("Exit");
@@ -267,6 +268,12 @@ public class RoadEditorView extends JPanel {
 		 */
 		public void actionPerformed(ActionEvent arg0){
 			System.exit(0);
+		}
+	}
+	
+	public class OpenListener implements ActionListener{
+		public void actionPerformed(ActionEvent arg0){
+			MapChoiceView openMap = new MapChoiceView();
 		}
 	}
 	

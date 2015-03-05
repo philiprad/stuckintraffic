@@ -1,4 +1,4 @@
-package gui_tests;
+package gui;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
@@ -56,7 +56,7 @@ public class MapChoiceView {
 			f.dispose();
 		}
 	}
-public class OpenListener implements ActionListener{
+    public class OpenListener implements ActionListener{
 		
 		/* (non-Javadoc)
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
