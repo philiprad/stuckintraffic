@@ -138,11 +138,22 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 				} else
 				if (button == buttons[i][j] && this.editorState.getState()==RoadEditorConfig.HANDLE_STATE && !this.editorState.getHandled()){
 					
-					if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100){
+					if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100 && roadGrid[i][j]!=-200 && roadGrid[i][j]!=-300){
 						this.editorState.setHandled(true);
 						this.editorState.setCurrentBlockType(roadGrid[i][j]);
 						((JButton)buttons[i][j]).setIcon(null);//new GridButton(i,j,GraphicsConfig.BLOCK_SIDE_SIZE);
 						((JButton)buttons[i][j]).setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE));
+						if (this.gridBuilder.getGrid()[i][j]>30){
+							this.gridBuilder.getGrid()[i][j] = 0;
+							this.gridBuilder.getGrid()[i+1][j] = 0;
+							this.gridBuilder.getGrid()[i+2][j] = 0;
+							this.gridBuilder.getGrid()[i][j+1] = 0;
+							this.gridBuilder.getGrid()[i+1][j+1] = 0;
+							this.gridBuilder.getGrid()[i+2][j+1] = 0;
+							this.gridBuilder.getGrid()[i][j+2] = 0;
+							this.gridBuilder.getGrid()[i+1][j+2] = 0;
+							this.gridBuilder.getGrid()[i+2][j+2] = 0;
+						} else
 						if (this.gridBuilder.getGrid()[i][j]>10){
 							this.gridBuilder.getGrid()[i][j] = 0;
 							this.gridBuilder.getGrid()[i+1][j] = 0;
@@ -168,9 +179,28 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 						this.editorState.setHandled(false);
 					 	this.gridBuilder.addRoadBlock(this.editorState.getCurrentBlockType(), i*50, j*50);
 						
-						if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100){
+						if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100 && roadGrid[i][j]!=-200 && roadGrid[i][j]!=-300){
 							System.out.println("\n builded \n");
-							if(roadGrid[i][j]>10){
+							if(roadGrid[i][j]>30){
+								
+								ImageIcon background = new ImageIcon( ImagesSelector.selectRoadImageSc(roadGrid[i][j], ib)); 
+								((JButton)((JButton)buttons[i][j])).setIcon(background);
+								((JButton)buttons[i][j]).setLayout(null);
+								((JButton)buttons[i][j]).setSize(GraphicsConfig.BLOCK_SIDE_SIZE*3, GraphicsConfig.BLOCK_SIDE_SIZE*3);
+								((JButton)buttons[i][j]).setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE*3, GraphicsConfig.BLOCK_SIDE_SIZE*3));
+								this.gridBuilder.getGrid()[i][j] = this.editorState.getCurrentBlockType();
+								this.gridBuilder.getGrid()[i+1][j] = -200;
+								this.gridBuilder.getGrid()[i+2][j] = -300;
+								this.gridBuilder.getGrid()[i][j+1] = -200;
+								this.gridBuilder.getGrid()[i+1][j+1] = -300;
+								this.gridBuilder.getGrid()[i+2][j+1] = -200;
+								this.gridBuilder.getGrid()[i][j+2] = -300;
+								this.gridBuilder.getGrid()[i+1][j+2] = -200;
+								this.gridBuilder.getGrid()[i+2][j+2] = -300;
+							}
+								
+								
+							else if(roadGrid[i][j]>10){
 								
 								ImageIcon background = new ImageIcon( ImagesSelector.selectRoadImageSc(roadGrid[i][j], ib)); 
 								((JButton)((JButton)buttons[i][j])).setIcon(background);

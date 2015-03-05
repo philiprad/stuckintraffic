@@ -63,8 +63,27 @@ public class GraphicsConfig {
 	/** The Constant INTERSECTION_IMG. */
 	public static final String INTERSECTION_IMG = "./images/intersection.png";
 	
+	public static final String INTERSECTION_DOUBLE_IMG = "./images/intersectionDouble.png";
+	
+	public static final String INTERSECTION_UP_IMG = "./images/intersectionUp.png";
+	
+	public static final String INTERSECTION_DOWN_IMG = "./images/intersectionDown.png";
+	
+	public static final String INTERSECTION_LEFT_IMG = "./images/intersectionLeft.png";
+	
+	public static final String INTERSECTION_RIGHT_IMG = "./images/intersectionRight.png";
+	
+	public static final String ROUND_ABOUT = "./images/roundAbout.png";
+	
+	
+	
 	
 	/** The Constant VERTICAL_ROAD_IMG_SCALED. */
+	
+	public static final String INTERSECTION_DOUBLE_IMG_SCALED = "./images/scaledPictures/intersectionDouble.png";
+	
+	public static final String ROUND_ABOUT_SCALED = "./images/scaledPictures/roundAbout.png";
+	
 	public static final String VERTICAL_ROAD_IMG_SCALED = "./images/scaledPictures/verticalRoad.png";
 	
 	/** The Constant HORIZONTAL_ROAD_IMG. */
@@ -79,10 +98,22 @@ public class GraphicsConfig {
 	/** The Constant HORIZONTAL_ROAD_IMG. */
 	public static final String HORIZONTAL_DOUBLE_ROAD_IMG_SCALED = "./images/scaledPictures/horizontalDoubleRoad.png";
 	
+	public static final String INTERSECTION_UP_IMG_SCALED = "./images/scaledPictures/intersectionUp.png";
+	
+	public static final String INTERSECTION_DOWN_IMG_SCALED = "./images/scaledPictures/intersectionDown.png";
+	
+	public static final String INTERSECTION_LEFT_IMG_SCALED = "./images/scaledPictures/intersectionLeft.png";
+	
+	public static final String INTERSECTION_RIGHT_IMG_SCALED = "./images/scaledPictures/intersectionRight.png";
+	
 	public static final String VERTICAL_DOUBLE_ROAD_IMG_TOOLBAR = "./images/toolBarPictures/verticalDoubleRoad.png";
 	
 	/** The Constant HORIZONTAL_ROAD_IMG. */
 	public static final String HORIZONTAL_DOUBLE_ROAD_IMG_TOOLBAR = "./images/toolBarPictures/horizontalDoubleRoad.png";
+	
+	public static final String INTERSECTION_DOUBLE_IMG_TOOLBAR = "./images/toolBarPictures/intersectionDouble.png";
+	
+	public static final String ROUND_ABOUT_IMG_TOOLBAR= "./images/toolBarPictures/roundAbout.png";
 	
 	public static final String VERTICAL_ROAD_IMG_CURSOR = "./images/cursorPictures/verticalRoad.png";
 	
@@ -97,6 +128,18 @@ public class GraphicsConfig {
 	
 	/** The Constant HORIZONTAL_ROAD_IMG. */
 	public static final String HORIZONTAL_DOUBLE_ROAD_IMG_CURSOR = "./images/cursorPictures/horizontalDoubleRoad.png";
+	
+	public static final String INTERSECTION_DOUBLE_IMG_CURSOR = "./images/cursorPictures/intersectionDouble.png";
+	
+	public static final String INTERSECTION_UP_IMG_CURSOR = "./images/cursorPictures/intersectionUp.png";
+	
+	public static final String INTERSECTION_DOWN_IMG_CURSOR = "./images/cursorPictures/intersectionDown.png";
+	
+	public static final String INTERSECTION_LEFT_IMG_CURSOR = "./images/cursorPictures/intersectionLeft.png";
+	
+	public static final String INTERSECTION_RIGHT_IMG_CURSOR = "./images/cursorPictures/intersectionRight.png";
+	
+	public static final String ROUND_ABOUT_IMG_CURSOR = "./images/cursorPictures/roundAbout.png";
 	
 	
 	

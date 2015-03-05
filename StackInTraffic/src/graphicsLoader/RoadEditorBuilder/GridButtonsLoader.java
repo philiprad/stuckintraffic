@@ -26,7 +26,15 @@ public class GridButtonsLoader {
 			
 			for (int j=0;j<roadGrid[0].length;j++){
 				if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100){
-						if(roadGrid[i][j]>10){
+						if(roadGrid[i][j]>30){
+							tempButton = new JButton();//new GridButton(i,j,GraphicsConfig.BLOCK_SIDE_SIZE);
+							ImageIcon background = new ImageIcon( ImagesSelector.selectRoadImageSc(roadGrid[i][j], ib)); 
+							tempButton.setIcon(background);
+							tempButton.setLayout(null);
+							tempButton.setSize(GraphicsConfig.BLOCK_SIDE_SIZE*3, GraphicsConfig.BLOCK_SIDE_SIZE*3);
+							tempButton.setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE*3, GraphicsConfig.BLOCK_SIDE_SIZE*3));
+						}
+						else if(roadGrid[i][j]>10){
 							tempButton = new JButton();//new GridButton(i,j,GraphicsConfig.BLOCK_SIDE_SIZE);
 							ImageIcon background = new ImageIcon( ImagesSelector.selectRoadImageSc(roadGrid[i][j], ib)); 
 							tempButton.setIcon(background);

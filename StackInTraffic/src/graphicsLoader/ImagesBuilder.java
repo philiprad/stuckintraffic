@@ -29,8 +29,22 @@ public class ImagesBuilder {
 	/** The horizontal road. */
 	private Image horizontalDoubleRoad;
 	
+	
+	
 	/** The intersection. */
 	private Image intersection;
+	
+	private Image intersectionDouble;
+	
+	private Image roundAbout;
+	
+	private Image intersectionUp;
+	
+	private Image intersectionDown;
+	
+	private Image intersectionRight;
+	
+	private Image intersectionLeft;
 	
 	private Image vericalRoadSc;
 	
@@ -46,11 +60,27 @@ public class ImagesBuilder {
 	/** The intersection. */
 	private Image intersectionSc;
 	
+	private Image intersectionDoubleSc;
+	
+	private Image roundAboutSc;
+	
+	private Image intersectionUpSc;
+	
+	private Image intersectionDownSc;
+	
+	private Image intersectionRightSc;
+	
+	private Image intersectionLeftSc;
+	
 	/** The verical double road. */
 	private Image vericalDoubleRoadTb;
 	
 	/** The horizontal road. */
 	private Image horizontalDoubleRoadTb;
+	
+	private Image intersectionDoubleTb;
+	
+	private Image roundAboutTb;
 	
 	private Image vericalRoadCr;
 	
@@ -65,6 +95,18 @@ public class ImagesBuilder {
 	
 	/** The intersection. */
 	private Image intersectionCr;
+	
+	private Image intersectionDoubleCr;
+	
+	private Image roundAboutCr;
+	
+	private Image intersectionUpCr;
+	
+	private Image intersectionDownCr;
+	
+	private Image intersectionRightCr;
+	
+	private Image intersectionLeftCr;
 	
 	/** The car up. */
 	private Image carUp;
@@ -138,7 +180,29 @@ public class ImagesBuilder {
 		this.cursorStandart = loadImage(GraphicsConfig.CURSOR_STANDART);
 		this.cursorHand = loadImage(GraphicsConfig.CURSOR_HAND);
 		this.cursorDelete = loadImage(GraphicsConfig.CURSOR_DELETE);
+		this.intersectionDoubleCr = loadImage(GraphicsConfig.INTERSECTION_DOUBLE_IMG_CURSOR);
+		this.roundAboutCr = loadImage(GraphicsConfig.ROUND_ABOUT_IMG_CURSOR);
+		this.intersectionUpCr = loadImage(GraphicsConfig.INTERSECTION_UP_IMG_CURSOR);
+		this.intersectionDownCr = loadImage(GraphicsConfig.INTERSECTION_DOWN_IMG_CURSOR);
+		this.intersectionRightCr = loadImage(GraphicsConfig.INTERSECTION_RIGHT_IMG_CURSOR);
+		this.intersectionLeftCr = loadImage(GraphicsConfig.INTERSECTION_LEFT_IMG_CURSOR);
 		
+		this.intersectionDouble = loadImage(GraphicsConfig.INTERSECTION_DOUBLE_IMG);
+		this.roundAbout = loadImage(GraphicsConfig.ROUND_ABOUT);
+		this.intersectionUp = loadImage(GraphicsConfig.INTERSECTION_UP_IMG);
+		this.intersectionDown = loadImage(GraphicsConfig.INTERSECTION_DOWN_IMG);
+		this.intersectionRight = loadImage(GraphicsConfig.INTERSECTION_RIGHT_IMG);
+		this.intersectionLeft = loadImage(GraphicsConfig.INTERSECTION_LEFT_IMG);
+		
+		this.intersectionDoubleSc = loadImage(GraphicsConfig.INTERSECTION_DOUBLE_IMG_SCALED);
+		this.roundAboutSc = loadImage(GraphicsConfig.ROUND_ABOUT_SCALED);
+		this.intersectionUpSc = loadImage(GraphicsConfig.INTERSECTION_UP_IMG_SCALED);
+		this.intersectionDownSc = loadImage(GraphicsConfig.INTERSECTION_DOWN_IMG_SCALED);
+		this.intersectionRightSc = loadImage(GraphicsConfig.INTERSECTION_RIGHT_IMG_SCALED);
+		this.intersectionLeftSc = loadImage(GraphicsConfig.INTERSECTION_LEFT_IMG_SCALED);
+		
+		this.intersectionDoubleTb = loadImage(GraphicsConfig.INTERSECTION_DOUBLE_IMG_TOOLBAR);
+		this.roundAboutTb = loadImage(GraphicsConfig.ROUND_ABOUT_IMG_TOOLBAR);
 		
 	}
 	
@@ -404,6 +468,86 @@ public class ImagesBuilder {
 	
 	public Image getDeleteCursor(){
 		return this.cursorDelete;
+	}
+	
+	public Image getRoundAbout(){
+		return this.roundAbout;
+	}
+	
+	public Image getRoundAboutSc(){
+		return this.roundAboutSc;
+	}
+	
+	public Image getRoundAboutCr(){
+		return this.roundAboutCr;
+	}
+	
+	public Image getRoundAboutTb(){
+		return this.roundAboutTb;
+	}
+	
+	public Image getIntersectionDouble(){
+		return this.intersectionDouble;
+	}
+	
+	public Image getIntersectionDoubleCr(){
+		return this.intersectionDoubleCr;
+	}
+	
+	public Image getIntersectionDoubleSc(){
+		return this.intersectionDoubleSc;
+	}
+	
+	public Image getIntersectionDoubleTb(){
+		return this.intersectionDoubleTb;
+	}
+	
+	public Image getIntersectionUp(){
+		return this.intersectionUp;
+	}
+	
+	public Image getIntersectionUpSc(){
+		return this.intersectionUpSc;
+	}
+	
+	public Image getIntersectionUpCr(){
+		return this.intersectionUpCr;
+	}
+	
+	public Image getIntersectionDown(){
+		return this.intersectionDown;
+	}
+	
+	public Image getIntersectionDownSc(){
+		return this.intersectionDownSc;
+	}
+	
+	public Image getIntersectionDownCr(){
+		return this.intersectionDownCr;
+	}
+	
+	public Image getIntersectionLeft(){
+		return this.intersectionLeft;
+	}
+	
+	public Image getIntersectionLeftSc(){
+		return this.intersectionLeftSc;
+	}
+	
+	public Image getIntersectionLeftCr(){
+		return this.intersectionLeftCr;
+	}
+	
+	public Image getIntersectionRight(){
+		return this.intersectionRight;
+	}
+	
+	public Image getIntersectionRightSc(){
+		return this.intersectionRightSc;
+	}
+	
+	public Image getIntersectionRightCr(){
+		return this.intersectionRightCr;
 	}
 }
 

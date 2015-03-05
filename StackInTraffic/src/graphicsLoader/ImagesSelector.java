@@ -44,6 +44,12 @@ public class ImagesSelector {
 		case RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK: return img = ib.getVerticalDoubleRd();
 		
 		case RoadConfig.INTERSECTION_BLOCK: return img = ib.getIntersection();
+		case RoadConfig.INTERSECTION_DOWN_BLOCK: return img = ib.getIntersectionDown();
+		case RoadConfig.INTERSECTION_UP_BLOCK: return img = ib.getIntersectionUp();
+		case RoadConfig.INTERSECTION_RIGHT_BLOCK: return img = ib.getIntersectionRight();
+		case RoadConfig.INTERSECTION_LEFT_BLOCK: return img = ib.getIntersectionLeft();
+		case RoadConfig.INTERSECTION_DOUBLE_BLOCK: return img = ib.getIntersectionDouble();
+		case RoadConfig.ROUND_ABOUT_BLOCK: return img = ib.getRoundAbout();
 		
 		}
 		
@@ -73,6 +79,12 @@ public static Image selectRoadImageSc(int blockType, ImagesBuilder ib){
 		case RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK: return img = ib.getVerticalDoubleRdSc();
 		
 		case RoadConfig.INTERSECTION_BLOCK: return img = ib.getIntersectionSc();
+		case RoadConfig.INTERSECTION_DOWN_BLOCK: return img = ib.getIntersectionDownSc();
+		case RoadConfig.INTERSECTION_UP_BLOCK: return img = ib.getIntersectionUpSc();
+		case RoadConfig.INTERSECTION_RIGHT_BLOCK: return img = ib.getIntersectionRightSc();
+		case RoadConfig.INTERSECTION_LEFT_BLOCK: return img = ib.getIntersectionLeftSc();
+		case RoadConfig.INTERSECTION_DOUBLE_BLOCK: return img = ib.getIntersectionDoubleSc();
+		case RoadConfig.ROUND_ABOUT_BLOCK: return img = ib.getRoundAboutSc();
 		
 		}
 		
@@ -89,6 +101,8 @@ public static Image selectRoadImageTb(int blockType, ImagesBuilder ib){
 	
 		case RoadConfig.HORIZONTAL_DOUBLE_BLOCK: return img = ib.getHorizontalDoubleRdTb();
 		case RoadConfig.VERTICAL_DOUBLE_BLOCK: return img = ib.getVerticalDoubleRdTb();
+		case RoadConfig.INTERSECTION_DOUBLE_BLOCK: return img = ib.getIntersectionDoubleTb();
+		case RoadConfig.ROUND_ABOUT_BLOCK: return img = ib.getRoundAboutTb();
 	}
 	
 	return img;
@@ -105,6 +119,12 @@ public static Image selectRoadImageCr(int blockType, ImagesBuilder ib){
 		case RoadConfig.HORIZONTAL_DOUBLE_BLOCK: return img = ib.getHorizontalDoubleRdCr();
 		case RoadConfig.VERTICAL_DOUBLE_BLOCK: return img = ib.getVerticalDoubleRdCr();
 		case RoadConfig.INTERSECTION_BLOCK: return img = ib.getIntersectionCr();
+		case RoadConfig.INTERSECTION_DOWN_BLOCK: return img = ib.getIntersectionDownCr();
+		case RoadConfig.INTERSECTION_UP_BLOCK: return img = ib.getIntersectionUpCr();
+		case RoadConfig.INTERSECTION_RIGHT_BLOCK: return img = ib.getIntersectionRightCr();
+		case RoadConfig.INTERSECTION_LEFT_BLOCK: return img = ib.getIntersectionLeftCr();
+		case RoadConfig.INTERSECTION_DOUBLE_BLOCK: return img = ib.getIntersectionDoubleCr();
+		case RoadConfig.ROUND_ABOUT_BLOCK: return img = ib.getRoundAboutCr();
 	}
 	
 	return img;

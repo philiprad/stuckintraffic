@@ -172,6 +172,42 @@ public class RoadEditorView extends JPanel {
 	        button.setCursor(CursorManager.handCursor());
 	        toolbar.add(button);
 	        
+	        button= new JButton("Intersection T Block Up",new ImageIcon(ib.getIntersectionUpSc()));
+	        toolBarButtonMouseListener = new ConstructionToolBarMouseListener(RoadConfig.INTERSECTION_UP_BLOCK, ib, componentGrid,this.editorState);
+	        button.setHorizontalAlignment(SwingConstants.LEFT);
+	        button.setIconTextGap(30);
+	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
+	        button.addMouseListener(toolBarButtonMouseListener);
+	        button.setCursor(CursorManager.handCursor());
+	        toolbar.add(button);
+	        
+	        button= new JButton("Intersection T Block Down",new ImageIcon(ib.getIntersectionDownSc()));
+	        toolBarButtonMouseListener = new ConstructionToolBarMouseListener(RoadConfig.INTERSECTION_DOWN_BLOCK, ib, componentGrid,this.editorState);
+	        button.setHorizontalAlignment(SwingConstants.LEFT);
+	        button.setIconTextGap(30);
+	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
+	        button.addMouseListener(toolBarButtonMouseListener);
+	        button.setCursor(CursorManager.handCursor());
+	        toolbar.add(button);
+	        
+	        button= new JButton("Intersection T Block Left",new ImageIcon(ib.getIntersectionLeftSc()));
+	        toolBarButtonMouseListener = new ConstructionToolBarMouseListener(RoadConfig.INTERSECTION_LEFT_BLOCK, ib, componentGrid,this.editorState);
+	        button.setHorizontalAlignment(SwingConstants.LEFT);
+	        button.setIconTextGap(30);
+	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
+	        button.addMouseListener(toolBarButtonMouseListener);
+	        button.setCursor(CursorManager.handCursor());
+	        toolbar.add(button);
+	        
+	        button= new JButton("Intersection T Block Right",new ImageIcon(ib.getIntersectionRightSc()));
+	        toolBarButtonMouseListener = new ConstructionToolBarMouseListener(RoadConfig.INTERSECTION_RIGHT_BLOCK, ib, componentGrid,this.editorState);
+	        button.setHorizontalAlignment(SwingConstants.LEFT);
+	        button.setIconTextGap(30);
+	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
+	        button.addMouseListener(toolBarButtonMouseListener);
+	        button.setCursor(CursorManager.handCursor());
+	        toolbar.add(button);
+	        
 	        button= new JButton("Horizontal 2xlane Block", new ImageIcon(ImagesSelector.selectRoadImageTb(RoadConfig.HORIZONTAL_DOUBLE_BLOCK, ib)));
 	        toolBarButtonMouseListener = new ConstructionToolBarMouseListener(RoadConfig.HORIZONTAL_DOUBLE_BLOCK, ib, componentGrid, this.editorState);
 	        button.setHorizontalAlignment(SwingConstants.LEFT);
@@ -183,6 +219,24 @@ public class RoadEditorView extends JPanel {
 	        
 	        button= new JButton("Vertical 2xlane Block", new ImageIcon(ImagesSelector.selectRoadImageTb(RoadConfig.VERTICAL_DOUBLE_BLOCK, ib)));
 	        toolBarButtonMouseListener = new ConstructionToolBarMouseListener(RoadConfig.VERTICAL_DOUBLE_BLOCK, ib, componentGrid,this.editorState);
+	        button.setHorizontalAlignment(SwingConstants.LEFT);
+	        button.setIconTextGap(30);
+	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
+	        button.addMouseListener(toolBarButtonMouseListener);
+	        button.setCursor(CursorManager.handCursor());
+	        toolbar.add(button);
+	        
+	        button= new JButton("Intersection Double Block",new ImageIcon(ib.getIntersectionDoubleTb()));
+	        toolBarButtonMouseListener = new ConstructionToolBarMouseListener(RoadConfig.INTERSECTION_DOUBLE_BLOCK, ib, componentGrid,this.editorState);
+	        button.setHorizontalAlignment(SwingConstants.LEFT);
+	        button.setIconTextGap(30);
+	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
+	        button.addMouseListener(toolBarButtonMouseListener);
+	        button.setCursor(CursorManager.handCursor());
+	        toolbar.add(button);
+	        
+	        button= new JButton("RoundAbout",new ImageIcon(ib.getRoundAboutTb()));
+	        toolBarButtonMouseListener = new ConstructionToolBarMouseListener(RoadConfig.ROUND_ABOUT_BLOCK, ib, componentGrid,this.editorState);
 	        button.setHorizontalAlignment(SwingConstants.LEFT);
 	        button.setIconTextGap(30);
 	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
@@ -281,7 +335,16 @@ public class RoadEditorView extends JPanel {
 		GridBagConstraints gridBagConstraints = new GridBagConstraints();
 		for (int i=0; i<gridBuilder.getGrid().length; i++){
 			for (int j=0; j<gridBuilder.getGrid()[0].length; j++){
-				if (gridBuilder.getGrid()[j][i]>10){
+				if (gridBuilder.getGrid()[j][i]>30){
+					gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+					gridBagConstraints.gridx = j;
+					gridBagConstraints.gridy = i;
+					gridBagConstraints.gridheight = 3;
+					gridBagConstraints.gridwidth = 3;
+					gridPanel.add(componentGrid[j][i],gridBagConstraints);
+					
+				} 
+				else if (gridBuilder.getGrid()[j][i]>10){
 					gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
 					gridBagConstraints.gridx = j;
 					gridBagConstraints.gridy = i;
