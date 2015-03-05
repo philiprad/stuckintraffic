@@ -4,11 +4,14 @@ public class EditorState {
 	
 	private short editionState;
 	private short currentBlockType;
-	private short isHandled;
+	private boolean isHandled;
+	private boolean canBuild;
 	
 	public EditorState(){
 		this.editionState = RoadEditorConfig.EMPTY_STATE;
 		this.currentBlockType = RoadEditorConfig.EMPTY_STATE;
+		this.isHandled = false;
+		this.canBuild = false;
 	}
 	
 	public short getState(){
@@ -17,6 +20,7 @@ public class EditorState {
 	
 	public void setState(short state){
 		this.editionState = state;
+		System.out.println("Change state :" + state);
 	}
 	
 	public short getCurrentBlockType(){
@@ -27,5 +31,20 @@ public class EditorState {
 		this.currentBlockType = currentBlockType;
 	}
 	
-
+	public void setHandled(boolean x){
+		this.isHandled = x;
+	}
+	
+	public boolean getHandled(){
+		return this.isHandled;
+	}
+	
+	public void setCanBuild(boolean x){
+		this.canBuild = x;
+		
+	}
+	
+	public boolean getCanBuild(){
+		return this.canBuild;
+	}
 }

@@ -63,8 +63,29 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 		//if (e.getSource() != this) return;
 		JButton button= (JButton)e.getSource() ;
 	   // setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED,Color.GREEN,Color.BLACK));
+		
 		button.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.GREEN,Color.GREEN));//(Color.GREEN, 10));//(BevelBorder.RAISED,Color.GREEN,Color.BLACK));
 		button.repaint();
+		this.editorState.setCanBuild(true);
+		
+		if (this.editorState.getState()==RoadEditorConfig.BUILD_STATE || (this.editorState.getState()==RoadEditorConfig.HANDLE_STATE && this.editorState.getHandled()==true)){
+			
+			
+			short [][] roadGrid = this.gridBuilder.getGrid();
+			for(int i=0;i<buttons.length;i++){
+				for (int j=0;j<buttons[0].length;j++){
+					if (button == buttons[i][j] && roadGrid[i][j]!=0){
+						button.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.RED,Color.RED));//(Color.GREEN, 10));//(BevelBorder.RAISED,Color.GREEN,Color.BLACK));
+						button.repaint();
+						this.editorState.setCanBuild(true);
+						break;
+					}
+					
+						
+					
+				}
+			}
+		}
 	}
 
 	/* (non-Javadoc)
@@ -92,13 +113,28 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 		short [][] roadGrid = this.gridBuilder.getGrid();
 		for(int i=0;i<buttons.length;i++){
 			for (int j=0;j<buttons.length;j++){
+				
+				if (this.editorState.getState()==RoadEditorConfig.HANDLE_STATE && !this.editorState.getHandled()){
+					
+					if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100){
+						this.editorState.setHandled(true);
+						this.editorState.setCurrentBlockType(roadGrid[i][j]);
+						((JButton)buttons[i][j]).setIcon(null);//new GridButton(i,j,GraphicsConfig.BLOCK_SIDE_SIZE);
+						((JButton)buttons[i][j]).setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE));
+						System.out.println("\n handled \n");
+					}
+					
+				}
+				
 				if (button == buttons[i][j] && roadGrid[i][j]==0){
-					System.out.println("true");
-					panel.invalidate();
-					if(this.editorState.getState()==RoadEditorConfig.BUILD_STATE){
-						this.gridBuilder.addRoadBlock(this.editorState.getCurrentBlockType(), i*50, j*50);
+					
+				panel.invalidate();
+				 if ((this.editorState.getState()==RoadEditorConfig.BUILD_STATE && this.editorState.getCanBuild()) || (this.editorState.getState()==RoadEditorConfig.HANDLE_STATE && this.editorState.getCanBuild() && this.editorState.getHandled())){
+						this.editorState.setHandled(false);
+					 	this.gridBuilder.addRoadBlock(this.editorState.getCurrentBlockType(), i*50, j*50);
 						
 						if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100){
+							System.out.println("\n builded \n");
 							if(roadGrid[i][j]>10){
 								
 								ImageIcon background = new ImageIcon( ImagesSelector.selectRoadImageSc(roadGrid[i][j], ib)); 
@@ -124,16 +160,16 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 					((JButton)buttons[i][j]).setRolloverEnabled(true);
 					//((JButton)buttons[i][j]).setBorder(BorderFactory.createLineBorder(Color.WHITE));
 						
-						RoadEditorView.drawButtons(this.gridBuilder, this.panel, this.buttons);
-						((JButton)button).setBorder(BorderFactory.createLineBorder(Color.WHITE));
-						button.repaint();
-						panel.repaint();
+					RoadEditorView.drawButtons(this.gridBuilder, this.panel, this.buttons);
+					((JButton)button).setBorder(BorderFactory.createLineBorder(Color.WHITE));
+					button.repaint();
+					panel.repaint();
 						
 						
 					}
 					this.panel.validate();
 				}
-				System.out.println("false");
+				
 			}
 		}
 	}

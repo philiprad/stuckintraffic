@@ -45,6 +45,7 @@ public class ActionToolBarMouseListener extends JPanel implements MouseListener 
 			}break;
 		case RoadEditorConfig.ACTION_MOVE :
 			this.editorState.setState(RoadEditorConfig.HANDLE_STATE);
+			System.out.println("\n handle state \n");
 			this.editorState.setCurrentBlockType((short) 0);
 			for (int i=0; i<this.buttons.length; i++){
 				for (int j=0; j<this.buttons[0].length; j++){
@@ -54,6 +55,7 @@ public class ActionToolBarMouseListener extends JPanel implements MouseListener 
 		
 		case RoadEditorConfig.ACTION_DELETE :
 			this.editorState.setState(RoadEditorConfig.DELETE_STATE);
+			
 			this.editorState.setCurrentBlockType((short) 0);
 			System.out.println("work");
 				for (int i=0; i<this.buttons.length; i++){
