@@ -4,6 +4,8 @@
  */
 package gui;
 
+import main.AppDirBuilder;
+
 
 // TODO: Auto-generated Javadoc
 /**
@@ -18,6 +20,7 @@ public class guiMain {
 	 *            the arguments
 	 */
 	public static void main(String[] args){
+		 AppDirBuilder.build();
 		 javax.swing.SwingUtilities.invokeLater(new Runnable() {
 	            public void run() {
 	            	ApplicationFrame frame = new ApplicationFrame();
