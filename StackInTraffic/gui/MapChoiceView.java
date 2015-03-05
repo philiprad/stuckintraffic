@@ -1,4 +1,4 @@
-package gui_tests;
+package gui;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
@@ -33,8 +33,7 @@ public class MapChoiceView {
     Container contentPane = f.getContentPane();
     contentPane.add(scrollPane, BorderLayout.NORTH);
     // contentPane.setBounds(10, 10, 10, 10);//setBorder(new EmptyBorder(10,10,10,10));
-    String selected = list.getSelectedValue().toString();
-    System.out.println("selected value is: " + selected);
+
     f.add(jPanel);
     f.setSize(350,250);
     f.setVisible(true);
