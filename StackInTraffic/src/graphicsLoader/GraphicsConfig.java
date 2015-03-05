@@ -112,6 +112,15 @@ public class GraphicsConfig {
 	/** The Constant CAR_LEFT_IMG. */
 	public static final String CAR_LEFT_IMG = "./images/carLeft.png";
 	
+	
+	//Tool bar images
+	
+	public static final String CURSOR_STANDART = "./images/toolBarPictures/cursorStandart.png";
+	
+	public static final String CURSOR_HAND = "./images/toolBarPictures/cursorHand.png";
+	
+	public static final String CURSOR_DELETE = "./images/toolBarPictures/cursorDelete.png";
+	
 	/** The Constant CAR_POSITION. */
 	public static final int CAR_POSITION = BLOCK_SIDE_SIZE*30/100;
 	

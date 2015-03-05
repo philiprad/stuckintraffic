@@ -36,8 +36,8 @@ public class Main {
 	public static void main (String[] args){
 		String rdName = "test";
 		AppDirBuilder.build();
-		RoadBuilder rb = new RoadBuilder("test", 150 , 0);
-		rb.buildRoad();
+		//RoadBuilder rb = new RoadBuilder("test", 150 , 0);
+	//	rb.buildRoad();
 		
 		JFrame frame = new JFrame();
 		//frame.setSize(GraphicsConfig.MAIN_WIDTH, GraphicsConfig.MAIN_HEIGHT+20);

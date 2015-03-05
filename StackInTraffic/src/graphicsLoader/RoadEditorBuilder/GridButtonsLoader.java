@@ -12,10 +12,12 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+import trafficInfrastructure.grid.GridBuilder;
+
 public class GridButtonsLoader {
-	public static  Component [][] getGridButtons(short[][] roadGrid, ImagesBuilder ib){
-		GridButtonMouseListener gridButtonMouseListener = new GridButtonMouseListener();
+	public static  Component [][] getGridButtons(GridBuilder gridBuilder, ImagesBuilder ib){
 		
+		short [][] roadGrid = gridBuilder.getGrid();
 		//Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
 		Component [][] buttons = new Component [roadGrid.length] [roadGrid[0].length];
 		//Border emptyBorder = BorderFactory.createEmptyBorder();
@@ -47,7 +49,6 @@ public class GridButtonsLoader {
 				}
 				
 				tempButton.setRolloverEnabled(true);
-				tempButton.addMouseListener(gridButtonMouseListener);
 				tempButton.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 				buttons[i][j] = tempButton;
 			}
