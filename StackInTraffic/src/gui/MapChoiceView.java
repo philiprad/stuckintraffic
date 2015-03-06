@@ -15,16 +15,17 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import main.MainConfig;
+import trafficInfrastructure.grid.GridBuilder;
 import util.FileRW;
 
 public class MapChoiceView {
 	private JPanel jPanel = new JPanel();
     JFrame f = new JFrame("Choose Map");
     String selection = "";
-	
+	JPanel panel;
     @SuppressWarnings("unchecked")
-	public MapChoiceView(){
-    
+	public MapChoiceView(JPanel panel){
+    this.panel = panel;
 	jPanel.setSize(400, 300);
     JButton button = new JButton("Cancel");
     JButton button1 = new JButton("Open");
@@ -60,8 +61,8 @@ public class MapChoiceView {
     jPanel.add(button);
     button1.setAlignmentY(Component.CENTER_ALIGNMENT);
     jPanel.add(button1,BorderLayout.SOUTH);
-    button.addActionListener(new OpenListener());
-    button1.addActionListener(new CancelListener());
+    button.addActionListener(new CancelListener());
+    button1.addActionListener(new OpenListener());
     
   }
 	public class CancelListener implements ActionListener{
@@ -79,8 +80,19 @@ public class MapChoiceView {
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
 		public void actionPerformed(ActionEvent arg0){
+			if (panel instanceof RoadEditorView){
+				System.out.println("dkncvejw");
+				if(selection!=""){
+					
+					GridBuilder gridBuilder = (GridBuilder) (FileRW.readObject(MainConfig.GRID_PATH + "/"+selection+MainConfig.GRID_SUFFIX));
+					((RoadEditorView) panel).buildGrid(gridBuilder);
+					System.out.println("dkncvejw");
+					f.dispose();
+					
+				}
+				
+			}
 			
-			f.dispose();
 			
 		}
 	}

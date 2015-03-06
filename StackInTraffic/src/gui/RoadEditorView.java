@@ -47,11 +47,16 @@ import util.FileRW;
  */
 public class RoadEditorView extends JPanel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7107451858595215658L;
+
 	/** The frame. */
 	private ApplicationFrame frame;
 	
 	/** The road infrastructure name. */
-	private String roadInfrastructureName = "test";
+	//private String roadInfrastructureName = "test";
 	
 	/** The scroll pane. */
 	private JScrollPane scrollPane ;
@@ -69,6 +74,10 @@ public class RoadEditorView extends JPanel {
 	
 	private GridButtonMouseListener gridButtonMouseListener;
 	
+	private ImagesBuilder ib;
+	
+	private Component [][] componentGrid;
+	
 	/**
 	 * Instantiates a new road editor view.
 	 *
@@ -76,10 +85,10 @@ public class RoadEditorView extends JPanel {
 	 *            the frame
 	 */
 	public RoadEditorView(ApplicationFrame frame){
-		editorState = new EditorState();
+		
 		
 		this.frame = frame;
-		ImagesBuilder ib = new ImagesBuilder();
+		this.ib = new ImagesBuilder();
 		this.setLayout(new BorderLayout());
 		
 		JMenu fileMenu = new JMenu("File");
@@ -87,7 +96,7 @@ public class RoadEditorView extends JPanel {
 	    JMenu editMenu = new JMenu("Edit");
 	    menuBar.add(editMenu);
 	    
-	    frame.setJMenuBar(menuBar);
+	    this. frame.setJMenuBar(menuBar);
 	    
 	    JMenuItem newMap = new JMenuItem("New");
 	    JMenuItem openMap = new JMenuItem("Open");
@@ -112,21 +121,101 @@ public class RoadEditorView extends JPanel {
         editMenu.add(deleteMap);
     
         
-		JPanel gridPanel = new JPanel( new GridBagLayout());
-		gridPanel.setBackground(Color.GRAY);
-		gridPanel.setSize(new Dimension(this.gridWidth*GraphicsConfig.BLOCK_SIDE_SIZE,this.gridHeight*GraphicsConfig.BLOCK_SIDE_SIZE));
-		this.scrollPane = new JScrollPane(gridPanel);
+	}	
 		
 		
 		//****************  TEST use TODO user chose option 1. create new map 2. edit existing map
 		
-		GridBuilder gridBuilder = (GridBuilder) (FileRW.readObject(MainConfig.GRID_PATH + "/"+this.roadInfrastructureName+MainConfig.GRID_SUFFIX));
-		
-		//***************************
 		
 		
 		
-		Component [][] componentGrid = GridButtonsLoader.getGridButtons(gridBuilder, ib);
+		
+		
+		
+	
+	/**
+	 * The listener interface for receiving mainMenu events. The class that is
+	 * interested in processing a mainMenu event implements this interface, and
+	 * the object created with that class is registered with a component using
+	 * the component's <code>addMainMenuListener<code> method. When
+	 * the mainMenu event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see MainMenuEvent
+	 */
+	public class MainMenuListener implements ActionListener{
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
+		public void actionPerformed(ActionEvent arg0){
+			
+			frame.removeView();
+			frame.validate();
+			JComponent component = frame.getJMenuBar();
+			component.removeAll();
+			frame.addView(new MainView(frame));
+		}
+		
+		
+	}
+	
+	public class ExitListener implements ActionListener{
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
+		public void actionPerformed(ActionEvent arg0){
+			System.exit(0);
+		}
+	}
+	
+	public class OpenListener implements ActionListener{
+		public void actionPerformed(ActionEvent arg0){
+			MapChoiceView openMap = new MapChoiceView(RoadEditorView.this);
+		}
+	}
+	
+	public static void drawButtons(GridBuilder gridBuilder, JPanel gridPanel, Component [] [] componentGrid){
+		GridBagConstraints gridBagConstraints = new GridBagConstraints();
+		for (int i=0; i<gridBuilder.getGrid().length; i++){
+			for (int j=0; j<gridBuilder.getGrid()[0].length; j++){
+				if (gridBuilder.getGrid()[j][i]>30){
+					gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+					gridBagConstraints.gridx = j;
+					gridBagConstraints.gridy = i;
+					gridBagConstraints.gridheight = 3;
+					gridBagConstraints.gridwidth = 3;
+					gridPanel.add(componentGrid[j][i],gridBagConstraints);
+					
+				} 
+				else if (gridBuilder.getGrid()[j][i]>10){
+					gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+					gridBagConstraints.gridx = j;
+					gridBagConstraints.gridy = i;
+					gridBagConstraints.gridheight = 2;
+					gridBagConstraints.gridwidth = 2;
+					gridPanel.add(componentGrid[j][i],gridBagConstraints);
+					
+				} 
+				else {
+					gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+					gridBagConstraints.gridx = j;
+					gridBagConstraints.gridy = i;
+					gridBagConstraints.gridheight = 1;
+					gridBagConstraints.gridwidth = 1;
+					gridPanel.add(componentGrid[j][i],gridBagConstraints);
+				}
+			}
+		}
+	}
+	public void buildGrid(GridBuilder gridBuilder){
+		this.editorState = new EditorState();
+		JPanel gridPanel = new JPanel( new GridBagLayout());
+		gridPanel.setBackground(Color.GRAY);
+		gridPanel.setSize(new Dimension(this.gridWidth*GraphicsConfig.BLOCK_SIDE_SIZE,this.gridHeight*GraphicsConfig.BLOCK_SIDE_SIZE));
+		this.scrollPane = new JScrollPane(gridPanel);
+		this.componentGrid = GridButtonsLoader.getGridButtons(gridBuilder, ib);
 		this.gridButtonMouseListener = new GridButtonMouseListener(gridBuilder,componentGrid, ib, this.editorState, gridPanel);
 		
 		for(int i=0;i<componentGrid.length;i++){
@@ -137,11 +226,11 @@ public class RoadEditorView extends JPanel {
 		}
 		
 		RoadEditorView.drawButtons(gridBuilder, gridPanel,componentGrid);
-		
+		this.add(this.scrollPane, BorderLayout.CENTER);
 		JToolBar toolbar = new JToolBar(null, JToolBar.VERTICAL);
 		toolbar.setFloatable(false);
 		this.add(toolbar, BorderLayout.EAST);
-		this.add(this.scrollPane, BorderLayout.CENTER);
+		
 		
 		JButton button = null;
 		
@@ -286,82 +375,7 @@ public class RoadEditorView extends JPanel {
 			actionButton.addMouseListener(actionToolBarML);
 			actionToolBar.add(actionButton);
 			
-}
-	
-	/**
-	 * The listener interface for receiving mainMenu events. The class that is
-	 * interested in processing a mainMenu event implements this interface, and
-	 * the object created with that class is registered with a component using
-	 * the component's <code>addMainMenuListener<code> method. When
-	 * the mainMenu event occurs, that object's appropriate
-	 * method is invoked.
-	 *
-	 * @see MainMenuEvent
-	 */
-	public class MainMenuListener implements ActionListener{
-		
-		/* (non-Javadoc)
-		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-		 */
-		public void actionPerformed(ActionEvent arg0){
-			
-			frame.removeView();
-			frame.validate();
-			JComponent component = frame.getJMenuBar();
-			component.removeAll();
-			frame.addView(new MainView(frame));
-		}
-		
-		
-	}
-	
-	public class ExitListener implements ActionListener{
-		
-		/* (non-Javadoc)
-		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-		 */
-		public void actionPerformed(ActionEvent arg0){
-			System.exit(0);
-		}
-	}
-	
-	public class OpenListener implements ActionListener{
-		public void actionPerformed(ActionEvent arg0){
-			MapChoiceView openMap = new MapChoiceView();
-		}
-	}
-	
-	public static void drawButtons(GridBuilder gridBuilder, JPanel gridPanel, Component [] [] componentGrid){
-		GridBagConstraints gridBagConstraints = new GridBagConstraints();
-		for (int i=0; i<gridBuilder.getGrid().length; i++){
-			for (int j=0; j<gridBuilder.getGrid()[0].length; j++){
-				if (gridBuilder.getGrid()[j][i]>30){
-					gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-					gridBagConstraints.gridx = j;
-					gridBagConstraints.gridy = i;
-					gridBagConstraints.gridheight = 3;
-					gridBagConstraints.gridwidth = 3;
-					gridPanel.add(componentGrid[j][i],gridBagConstraints);
-					
-				} 
-				else if (gridBuilder.getGrid()[j][i]>10){
-					gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-					gridBagConstraints.gridx = j;
-					gridBagConstraints.gridy = i;
-					gridBagConstraints.gridheight = 2;
-					gridBagConstraints.gridwidth = 2;
-					gridPanel.add(componentGrid[j][i],gridBagConstraints);
-					
-				} 
-				else {
-					gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-					gridBagConstraints.gridx = j;
-					gridBagConstraints.gridy = i;
-					gridBagConstraints.gridheight = 1;
-					gridBagConstraints.gridwidth = 1;
-					gridPanel.add(componentGrid[j][i],gridBagConstraints);
-				}
-			}
-		}
+		frame.validate();
+		frame.repaint();
 	}
 }

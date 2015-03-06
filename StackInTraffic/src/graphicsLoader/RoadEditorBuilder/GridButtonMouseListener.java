@@ -19,6 +19,7 @@ import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
@@ -64,9 +65,7 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 		JButton button= (JButton)e.getSource() ;
 	   // setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED,Color.GREEN,Color.BLACK));
 		
-		button.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.GREEN,Color.GREEN));//(Color.GREEN, 10));//(BevelBorder.RAISED,Color.GREEN,Color.BLACK));
-		button.repaint();
-		this.editorState.setCanBuild(true);
+		
 		
 		if (this.editorState.getState()==RoadEditorConfig.BUILD_STATE || (this.editorState.getState()==RoadEditorConfig.HANDLE_STATE && this.editorState.getHandled()==true)){
 			
@@ -74,17 +73,84 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 			short [][] roadGrid = this.gridBuilder.getGrid();
 			for(int i=0;i<buttons.length;i++){
 				for (int j=0;j<buttons[0].length;j++){
-					if (button == buttons[i][j] && roadGrid[i][j]!=0){
-						button.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.RED,Color.RED));//(Color.GREEN, 10));//(BevelBorder.RAISED,Color.GREEN,Color.BLACK));
-						button.repaint();
-						this.editorState.setCanBuild(true);
-						break;
-					}
+					if (button == buttons[i][j]){
+						if (this.editorState.getCurrentBlockType()>30){
+							if (i+2<buttons.length && j+2<buttons[0].length){
+								if (roadGrid[i][j]!=0 || this.gridBuilder.getGrid()[i+1][j] != 0 ||
+									this.gridBuilder.getGrid()[i][j+1] != 0 ||
+									this.gridBuilder.getGrid()[i+1][j+1] != 0 ||
+									this.gridBuilder.getGrid()[i+2][j] != 0 ||
+									this.gridBuilder.getGrid()[i+2][j+1] != 0 ||
+									this.gridBuilder.getGrid()[i][j+2] != 0 ||
+									this.gridBuilder.getGrid()[i+1][j+2] != 0 ||
+									this.gridBuilder.getGrid()[i+2][j+2] != 0 ){
+									button.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.RED,Color.RED));
+									button.repaint();
+									this.editorState.setCanBuild(false);
+								}
+								else{
+									button.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+									((JComponent) this.buttons[i+1][j]).setBorder(BorderFactory.createLineBorder(Color.GREEN));
+									((JComponent) this.buttons[i][j+1]).setBorder(BorderFactory.createLineBorder(Color.GREEN));
+									((JComponent) this.buttons[i+1][j+1]).setBorder(BorderFactory.createLineBorder(Color.GREEN));
+									((JComponent) this.buttons[i+2][j]).setBorder(BorderFactory.createLineBorder(Color.GREEN));
+									((JComponent) this.buttons[i+2][j+1]).setBorder(BorderFactory.createLineBorder(Color.GREEN));
+									((JComponent) this.buttons[i][j+2]).setBorder(BorderFactory.createLineBorder(Color.GREEN));
+									((JComponent) this.buttons[i+1][j+2]).setBorder(BorderFactory.createLineBorder(Color.GREEN));
+									((JComponent) this.buttons[i+2][j+2]).setBorder(BorderFactory.createLineBorder(Color.GREEN));
+									button.repaint();
+									this.editorState.setCanBuild(true);
+								}
+							}
+							else {
+								button.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.RED,Color.RED));
+								button.repaint();
+								this.editorState.setCanBuild(false);
+							}
+						
+						}else if (this.editorState.getCurrentBlockType()>10){
+							if (i+1<buttons.length && j+1<buttons[0].length){	
+								if (roadGrid[i][j]!=0 || this.gridBuilder.getGrid()[i+1][j] != 0 ||
+										this.gridBuilder.getGrid()[i][j+1] != 0 ||
+										this.gridBuilder.getGrid()[i+1][j+1] != 0 ){
+										button.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.RED,Color.RED));
+										button.repaint();
+										this.editorState.setCanBuild(false);
+								} else {
+									button.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+									((JComponent) this.buttons[i+1][j]).setBorder(BorderFactory.createLineBorder(Color.GREEN));
+									((JComponent) this.buttons[i][j+1]).setBorder(BorderFactory.createLineBorder(Color.GREEN));
+									((JComponent) this.buttons[i+1][j+1]).setBorder(BorderFactory.createLineBorder(Color.GREEN));
+									this.editorState.setCanBuild(true);
+								}
+							} else {
+								button.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.RED,Color.RED));
+								button.repaint();
+								this.editorState.setCanBuild(false);
+							}
+						}
+					
+					else if (roadGrid[i][j]!=0){
+							button.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.RED,Color.RED));
+							button.repaint();
+							this.editorState.setCanBuild(false);
+							break;
+						} else {
+							button.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.GREEN,Color.GREEN));
+							button.repaint();
+							this.editorState.setCanBuild(true);
+						}
+					//}
 					
 						
-					
+					}
 				}
 			}
+		} else {
+			button.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.GREEN,Color.GREEN));//(Color.GREEN, 10));//(BevelBorder.RAISED,Color.GREEN,Color.BLACK));
+			button.repaint();
+			this.editorState.setCanBuild(true);
+			
 		}
 	}
 
@@ -99,6 +165,32 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 		JButton button = (JButton)e.getSource();
 		button.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 		button.repaint();
+		for(int i=0;i<buttons.length;i++){
+			for (int j=0;j<buttons[0].length;j++){
+				if (button == buttons[i][j]){
+					if (this.editorState.getCurrentBlockType()>30){
+						if (i+2<buttons.length && j+2<buttons[0].length){
+							((JComponent) this.buttons[i+1][j]).setBorder(BorderFactory.createLineBorder(Color.WHITE));
+							((JComponent) this.buttons[i][j+1]).setBorder(BorderFactory.createLineBorder(Color.WHITE));
+							((JComponent) this.buttons[i+1][j+1]).setBorder(BorderFactory.createLineBorder(Color.WHITE));
+							((JComponent) this.buttons[i+2][j]).setBorder(BorderFactory.createLineBorder(Color.WHITE));
+							((JComponent) this.buttons[i+2][j+1]).setBorder(BorderFactory.createLineBorder(Color.WHITE));
+							((JComponent) this.buttons[i][j+2]).setBorder(BorderFactory.createLineBorder(Color.WHITE));
+							((JComponent) this.buttons[i+1][j+2]).setBorder(BorderFactory.createLineBorder(Color.WHITE));
+							((JComponent) this.buttons[i+2][j+2]).setBorder(BorderFactory.createLineBorder(Color.WHITE));
+						}
+					}
+					
+					if (this.editorState.getCurrentBlockType()>10){
+						if (i+1<buttons.length && j+1<buttons[0].length){
+							((JComponent) this.buttons[i+1][j]).setBorder(BorderFactory.createLineBorder(Color.WHITE));
+							((JComponent) this.buttons[i][j+1]).setBorder(BorderFactory.createLineBorder(Color.WHITE));
+							((JComponent) this.buttons[i+1][j+1]).setBorder(BorderFactory.createLineBorder(Color.WHITE));
+						}
+					}
+				}
+			}
+		}
 	}
 
 	/* (non-Javadoc)
@@ -118,6 +210,17 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 						
 						((JButton)buttons[i][j]).setIcon(null);//new GridButton(i,j,GraphicsConfig.BLOCK_SIDE_SIZE);
 						((JButton)buttons[i][j]).setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE));
+						if (this.gridBuilder.getGrid()[i][j]>30){
+							this.gridBuilder.getGrid()[i][j] = 0;
+							this.gridBuilder.getGrid()[i+1][j] = 0;
+							this.gridBuilder.getGrid()[i+2][j] = 0;
+							this.gridBuilder.getGrid()[i][j+1] = 0;
+							this.gridBuilder.getGrid()[i+1][j+1] = 0;
+							this.gridBuilder.getGrid()[i+2][j+1] = 0;
+							this.gridBuilder.getGrid()[i][j+2] = 0;
+							this.gridBuilder.getGrid()[i+1][j+2] = 0;
+							this.gridBuilder.getGrid()[i+2][j+2] = 0;
+						} else
 						if (this.gridBuilder.getGrid()[i][j]>10){
 							this.gridBuilder.getGrid()[i][j] = 0;
 							this.gridBuilder.getGrid()[i+1][j] = 0;
@@ -243,6 +346,14 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 				
 			}
 		}
+		
+		for (int i=0; i<this.gridBuilder.getGrid().length; i++){
+			for (int j=0; j<this.gridBuilder.getGrid()[0].length; j++){
+				System.out.print(gridBuilder.getGrid()[j][i]+"\t");
+			}
+			System.out.print("\n");
+		}
+		
 	}
 
 	/* (non-Javadoc)
@@ -262,5 +373,19 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	/*
+	 * Triple block verification
+	 * if (i+2<buttons.length && j+2<buttons[0].length){
+							if(
+							this.gridBuilder.getGrid()[i+1][j] == 0 &&
+							this.gridBuilder.getGrid()[i][j+1] == 0 &&
+							this.gridBuilder.getGrid()[i+1][j+1] == 0 &&
+							this.gridBuilder.getGrid()[i+2][j] == 0 &&
+							this.gridBuilder.getGrid()[i+2][j+1] == 0 &&
+							this.gridBuilder.getGrid()[i][j+2] == 0 &&
+							this.gridBuilder.getGrid()[i+1][j+2] == 0 &&
+							this.gridBuilder.getGrid()[i+2][j+2] == 0 ){}
+							}*/
 
 }
