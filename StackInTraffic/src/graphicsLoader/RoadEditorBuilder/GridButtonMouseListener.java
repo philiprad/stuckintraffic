@@ -41,12 +41,35 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -574114849359770825L;
 	
+	/** The grid builder. */
 	private GridBuilder gridBuilder;
+	
+	/** The buttons. */
 	private Component [][] buttons;
+	
+	/** The ib. */
 	private ImagesBuilder ib;
+	
+	/** The editor state. */
 	private EditorState editorState;
+	
+	/** The panel. */
 	private JPanel panel;
 	
+	/**
+	 * Instantiates a new grid button mouse listener.
+	 *
+	 * @param gridBuilder
+	 *            the grid builder
+	 * @param buttons
+	 *            the buttons
+	 * @param ib
+	 *            the ib
+	 * @param editorState
+	 *            the editor state
+	 * @param panel
+	 *            the panel
+	 */
 	public GridButtonMouseListener(GridBuilder gridBuilder, Component [][] buttons, ImagesBuilder ib, EditorState editorState, JPanel panel){
 		this.gridBuilder = gridBuilder;
 		this.buttons = buttons;

@@ -46,6 +46,7 @@ public class RoadConfig {
 	/** The Constant INTERSECTION_MIXED_BLOCK. */
 	public static final short INTERSECTION_MIXED_BLOCK = 18;
 	
+	/** The Constant ROUND_ABOUT_BLOCK. */
 	public static final short ROUND_ABOUT_BLOCK = 31;
 	
 	/** The Constant HORIZONTAL_BLOCK. */
@@ -57,12 +58,16 @@ public class RoadConfig {
 	/** The Constant INTERSECTION_BLOCK. */
 	public static final short INTERSECTION_BLOCK = 4;
 	
+	/** The Constant INTERSECTION_UP_BLOCK. */
 	public static final short INTERSECTION_UP_BLOCK = 5;
 	
+	/** The Constant INTERSECTION_DOWN_BLOCK. */
 	public static final short INTERSECTION_DOWN_BLOCK = 6;
 	
+	/** The Constant INTERSECTION_RIGHT_BLOCK. */
 	public static final short INTERSECTION_RIGHT_BLOCK = 7;
 	
+	/** The Constant INTERSECTION_LEFT_BLOCK. */
 	public static final short INTERSECTION_LEFT_BLOCK = 8;
 	
 	/** The Constant ORIGINAL_TRAFFIC_DIRECTION. */

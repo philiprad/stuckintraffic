@@ -1,3 +1,7 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 1.0
+ */
 package graphicsLoader.RoadEditorBuilder;
 
 import graphicsLoader.ImagesBuilder;
@@ -11,16 +15,44 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The listener interface for receiving actionToolBarMouse events. The class
+ * that is interested in processing a actionToolBarMouse event implements this
+ * interface, and the object created with that class is registered with a
+ * component using the component's
+ * <code>addActionToolBarMouseListener<code> method. When
+ * the actionToolBarMouse event occurs, that object's appropriate
+ * method is invoked.
+ *
+ * @see ActionToolBarMouseEvent
+ */
 public class ActionToolBarMouseListener extends JPanel implements MouseListener {
 	
+	/** The ib. */
 	private ImagesBuilder ib;
 	
+	/** The buttons. */
 	private Component [][] buttons ;
 	
+	/** The editor state. */
 	private EditorState editorState;
 	
+	/** The action type. */
 	private short actionType;
 	
+	/**
+	 * Instantiates a new action tool bar mouse listener.
+	 *
+	 * @param actionType
+	 *            the action type
+	 * @param ib
+	 *            the ib
+	 * @param buttons
+	 *            the buttons
+	 * @param editorState
+	 *            the editor state
+	 */
 	public ActionToolBarMouseListener (short actionType, ImagesBuilder ib, Component [][] buttons, EditorState editorState ){
 		this.ib = ib;
 		this.buttons = buttons;
@@ -28,6 +60,9 @@ public class ActionToolBarMouseListener extends JPanel implements MouseListener 
 		this.actionType = actionType;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		
@@ -69,18 +104,27 @@ public class ActionToolBarMouseListener extends JPanel implements MouseListener 
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -88,6 +132,9 @@ public class ActionToolBarMouseListener extends JPanel implements MouseListener 
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub

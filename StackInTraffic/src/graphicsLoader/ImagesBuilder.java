@@ -34,18 +34,25 @@ public class ImagesBuilder {
 	/** The intersection. */
 	private Image intersection;
 	
+	/** The intersection double. */
 	private Image intersectionDouble;
 	
+	/** The round about. */
 	private Image roundAbout;
 	
+	/** The intersection up. */
 	private Image intersectionUp;
 	
+	/** The intersection down. */
 	private Image intersectionDown;
 	
+	/** The intersection right. */
 	private Image intersectionRight;
 	
+	/** The intersection left. */
 	private Image intersectionLeft;
 	
+	/** The verical road sc. */
 	private Image vericalRoadSc;
 	
 	/** The horizontal road. */
@@ -60,16 +67,22 @@ public class ImagesBuilder {
 	/** The intersection. */
 	private Image intersectionSc;
 	
+	/** The intersection double sc. */
 	private Image intersectionDoubleSc;
 	
+	/** The round about sc. */
 	private Image roundAboutSc;
 	
+	/** The intersection up sc. */
 	private Image intersectionUpSc;
 	
+	/** The intersection down sc. */
 	private Image intersectionDownSc;
 	
+	/** The intersection right sc. */
 	private Image intersectionRightSc;
 	
+	/** The intersection left sc. */
 	private Image intersectionLeftSc;
 	
 	/** The verical double road. */
@@ -78,10 +91,13 @@ public class ImagesBuilder {
 	/** The horizontal road. */
 	private Image horizontalDoubleRoadTb;
 	
+	/** The intersection double tb. */
 	private Image intersectionDoubleTb;
 	
+	/** The round about tb. */
 	private Image roundAboutTb;
 	
+	/** The verical road cr. */
 	private Image vericalRoadCr;
 	
 	/** The horizontal road. */
@@ -96,16 +112,22 @@ public class ImagesBuilder {
 	/** The intersection. */
 	private Image intersectionCr;
 	
+	/** The intersection double cr. */
 	private Image intersectionDoubleCr;
 	
+	/** The round about cr. */
 	private Image roundAboutCr;
 	
+	/** The intersection up cr. */
 	private Image intersectionUpCr;
 	
+	/** The intersection down cr. */
 	private Image intersectionDownCr;
 	
+	/** The intersection right cr. */
 	private Image intersectionRightCr;
 	
+	/** The intersection left cr. */
 	private Image intersectionLeftCr;
 	
 	/** The car up. */
@@ -138,8 +160,13 @@ public class ImagesBuilder {
 	/** The horizontal yellow light. */
 	private Image horizontalYellowLight;
 	
+	/** The cursor standart. */
 	private Image cursorStandart;
+	
+	/** The cursor hand. */
 	private Image cursorHand;
+	
+	/** The cursor delete. */
 	private Image cursorDelete;
 	
 	/**
@@ -364,6 +391,11 @@ public class ImagesBuilder {
 	}
 	
 	
+	/**
+	 * Gets the horizontal rd sc.
+	 *
+	 * @return the horizontal rd sc
+	 */
 	public Image getHorizontalRdSc(){
 		return this.horizontalRoadSc;
 	}
@@ -405,6 +437,11 @@ public class ImagesBuilder {
 	}
 	
 	
+	/**
+	 * Gets the horizontal double rd tb.
+	 *
+	 * @return the horizontal double rd tb
+	 */
 	public Image getHorizontalDoubleRdTb(){
 		return this.horizontalDoubleRoadTb;
 	}
@@ -418,6 +455,11 @@ public class ImagesBuilder {
 		return this.vericalDoubleRoadTb;
 	}
 	
+	/**
+	 * Gets the horizontal rd cr.
+	 *
+	 * @return the horizontal rd cr
+	 */
 	public Image getHorizontalRdCr(){
 		return this.horizontalRoadCr;
 	}
@@ -458,94 +500,209 @@ public class ImagesBuilder {
 		return this.intersectionCr;
 	}
 	
+	/**
+	 * Gets the standart cursor.
+	 *
+	 * @return the standart cursor
+	 */
 	public Image getStandartCursor(){
 		return this.cursorStandart;
 	}
 	
+	/**
+	 * Gets the hand cursor.
+	 *
+	 * @return the hand cursor
+	 */
 	public Image getHandCursor(){
 		return this.cursorHand;
 	}
 	
+	/**
+	 * Gets the delete cursor.
+	 *
+	 * @return the delete cursor
+	 */
 	public Image getDeleteCursor(){
 		return this.cursorDelete;
 	}
 	
+	/**
+	 * Gets the round about.
+	 *
+	 * @return the round about
+	 */
 	public Image getRoundAbout(){
 		return this.roundAbout;
 	}
 	
+	/**
+	 * Gets the round about sc.
+	 *
+	 * @return the round about sc
+	 */
 	public Image getRoundAboutSc(){
 		return this.roundAboutSc;
 	}
 	
+	/**
+	 * Gets the round about cr.
+	 *
+	 * @return the round about cr
+	 */
 	public Image getRoundAboutCr(){
 		return this.roundAboutCr;
 	}
 	
+	/**
+	 * Gets the round about tb.
+	 *
+	 * @return the round about tb
+	 */
 	public Image getRoundAboutTb(){
 		return this.roundAboutTb;
 	}
 	
+	/**
+	 * Gets the intersection double.
+	 *
+	 * @return the intersection double
+	 */
 	public Image getIntersectionDouble(){
 		return this.intersectionDouble;
 	}
 	
+	/**
+	 * Gets the intersection double cr.
+	 *
+	 * @return the intersection double cr
+	 */
 	public Image getIntersectionDoubleCr(){
 		return this.intersectionDoubleCr;
 	}
 	
+	/**
+	 * Gets the intersection double sc.
+	 *
+	 * @return the intersection double sc
+	 */
 	public Image getIntersectionDoubleSc(){
 		return this.intersectionDoubleSc;
 	}
 	
+	/**
+	 * Gets the intersection double tb.
+	 *
+	 * @return the intersection double tb
+	 */
 	public Image getIntersectionDoubleTb(){
 		return this.intersectionDoubleTb;
 	}
 	
+	/**
+	 * Gets the intersection up.
+	 *
+	 * @return the intersection up
+	 */
 	public Image getIntersectionUp(){
 		return this.intersectionUp;
 	}
 	
+	/**
+	 * Gets the intersection up sc.
+	 *
+	 * @return the intersection up sc
+	 */
 	public Image getIntersectionUpSc(){
 		return this.intersectionUpSc;
 	}
 	
+	/**
+	 * Gets the intersection up cr.
+	 *
+	 * @return the intersection up cr
+	 */
 	public Image getIntersectionUpCr(){
 		return this.intersectionUpCr;
 	}
 	
+	/**
+	 * Gets the intersection down.
+	 *
+	 * @return the intersection down
+	 */
 	public Image getIntersectionDown(){
 		return this.intersectionDown;
 	}
 	
+	/**
+	 * Gets the intersection down sc.
+	 *
+	 * @return the intersection down sc
+	 */
 	public Image getIntersectionDownSc(){
 		return this.intersectionDownSc;
 	}
 	
+	/**
+	 * Gets the intersection down cr.
+	 *
+	 * @return the intersection down cr
+	 */
 	public Image getIntersectionDownCr(){
 		return this.intersectionDownCr;
 	}
 	
+	/**
+	 * Gets the intersection left.
+	 *
+	 * @return the intersection left
+	 */
 	public Image getIntersectionLeft(){
 		return this.intersectionLeft;
 	}
 	
+	/**
+	 * Gets the intersection left sc.
+	 *
+	 * @return the intersection left sc
+	 */
 	public Image getIntersectionLeftSc(){
 		return this.intersectionLeftSc;
 	}
 	
+	/**
+	 * Gets the intersection left cr.
+	 *
+	 * @return the intersection left cr
+	 */
 	public Image getIntersectionLeftCr(){
 		return this.intersectionLeftCr;
 	}
 	
+	/**
+	 * Gets the intersection right.
+	 *
+	 * @return the intersection right
+	 */
 	public Image getIntersectionRight(){
 		return this.intersectionRight;
 	}
 	
+	/**
+	 * Gets the intersection right sc.
+	 *
+	 * @return the intersection right sc
+	 */
 	public Image getIntersectionRightSc(){
 		return this.intersectionRightSc;
 	}
 	
+	/**
+	 * Gets the intersection right cr.
+	 *
+	 * @return the intersection right cr
+	 */
 	public Image getIntersectionRightCr(){
 		return this.intersectionRightCr;
 	}

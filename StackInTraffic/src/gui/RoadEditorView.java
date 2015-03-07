@@ -47,9 +47,7 @@ import util.FileRW;
  */
 public class RoadEditorView extends JPanel {
 	
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -7107451858595215658L;
 
 	/** The frame. */
@@ -68,14 +66,19 @@ public class RoadEditorView extends JPanel {
 	/** The grid width. */
 	private int gridWidth = GraphicsConfig.GRID_WIDTH;
 	
+	/** The menu bar. */
 	private JMenuBar menuBar = new JMenuBar();
 	
+	/** The editor state. */
 	private EditorState editorState;
 	
+	/** The grid button mouse listener. */
 	private GridButtonMouseListener gridButtonMouseListener;
 	
+	/** The ib. */
 	private ImagesBuilder ib;
 	
+	/** The component grid. */
 	private Component [][] componentGrid;
 	
 	/**
@@ -160,6 +163,16 @@ public class RoadEditorView extends JPanel {
 		
 	}
 	
+	/**
+	 * The listener interface for receiving exit events. The class that is
+	 * interested in processing a exit event implements this interface, and the
+	 * object created with that class is registered with a component using the
+	 * component's <code>addExitListener<code> method. When
+	 * the exit event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see ExitEvent
+	 */
 	public class ExitListener implements ActionListener{
 		
 		/* (non-Javadoc)
@@ -170,12 +183,36 @@ public class RoadEditorView extends JPanel {
 		}
 	}
 	
+	/**
+	 * The listener interface for receiving open events. The class that is
+	 * interested in processing a open event implements this interface, and the
+	 * object created with that class is registered with a component using the
+	 * component's <code>addOpenListener<code> method. When
+	 * the open event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see OpenEvent
+	 */
 	public class OpenListener implements ActionListener{
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent arg0){
 			MapChoiceView openMap = new MapChoiceView(RoadEditorView.this);
 		}
 	}
 	
+	/**
+	 * Draw buttons.
+	 *
+	 * @param gridBuilder
+	 *            the grid builder
+	 * @param gridPanel
+	 *            the grid panel
+	 * @param componentGrid
+	 *            the component grid
+	 */
 	public static void drawButtons(GridBuilder gridBuilder, JPanel gridPanel, Component [] [] componentGrid){
 		GridBagConstraints gridBagConstraints = new GridBagConstraints();
 		for (int i=0; i<gridBuilder.getGrid().length; i++){
@@ -209,8 +246,14 @@ public class RoadEditorView extends JPanel {
 			}
 		}
 	}
+	
+	/**
+	 * Builds the grid.
+	 *
+	 * @param gridBuilder
+	 *            the grid builder
+	 */
 	public void buildGrid(GridBuilder gridBuilder){
-		this.editorState = new EditorState();
 		JPanel gridPanel = new JPanel( new GridBagLayout());
 		gridPanel.setBackground(Color.GRAY);
 		gridPanel.setSize(new Dimension(this.gridWidth*GraphicsConfig.BLOCK_SIDE_SIZE,this.gridHeight*GraphicsConfig.BLOCK_SIDE_SIZE));
@@ -377,5 +420,12 @@ public class RoadEditorView extends JPanel {
 			
 		frame.validate();
 		frame.repaint();
+	}
+	
+	/**
+	 * Update editor state.
+	 */
+	public void updateEditorState(){
+		this.editorState = new EditorState();
 	}
 }

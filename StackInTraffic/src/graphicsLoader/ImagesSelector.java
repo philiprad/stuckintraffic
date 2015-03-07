@@ -56,6 +56,15 @@ public class ImagesSelector {
 		return img;
 	}
 	
+/**
+ * Select road image sc.
+ *
+ * @param blockType
+ *            the block type
+ * @param ib
+ *            the ib
+ * @return the image
+ */
 public static Image selectRoadImageSc(int blockType, ImagesBuilder ib){
 		
 		Image img = null;
@@ -93,6 +102,15 @@ public static Image selectRoadImageSc(int blockType, ImagesBuilder ib){
 	
 
 
+/**
+ * Select road image tb.
+ *
+ * @param blockType
+ *            the block type
+ * @param ib
+ *            the ib
+ * @return the image
+ */
 public static Image selectRoadImageTb(int blockType, ImagesBuilder ib){
 	
 	Image img = null;
@@ -108,6 +126,15 @@ public static Image selectRoadImageTb(int blockType, ImagesBuilder ib){
 	return img;
 }
 
+/**
+ * Select road image cr.
+ *
+ * @param blockType
+ *            the block type
+ * @param ib
+ *            the ib
+ * @return the image
+ */
 public static Image selectRoadImageCr(int blockType, ImagesBuilder ib){
 	
 	Image img = null;

@@ -1,3 +1,7 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 1.0
+ */
 package gui;
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -18,11 +22,30 @@ import main.MainConfig;
 import trafficInfrastructure.grid.GridBuilder;
 import util.FileRW;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MapChoiceView.
+ */
 public class MapChoiceView {
+	
+	/** The j panel. */
 	private JPanel jPanel = new JPanel();
+    
+    /** The f. */
     JFrame f = new JFrame("Choose Map");
+    
+    /** The selection. */
     String selection = "";
+	
+	/** The panel. */
 	JPanel panel;
+    
+    /**
+	 * Instantiates a new map choice view.
+	 *
+	 * @param panel
+	 *            the panel
+	 */
     @SuppressWarnings("unchecked")
 	public MapChoiceView(JPanel panel){
     this.panel = panel;
@@ -65,6 +88,17 @@ public class MapChoiceView {
     button1.addActionListener(new OpenListener());
     
   }
+	
+	/**
+	 * The listener interface for receiving cancel events. The class that is
+	 * interested in processing a cancel event implements this interface, and
+	 * the object created with that class is registered with a component using
+	 * the component's <code>addCancelListener<code> method. When
+	 * the cancel event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see CancelEvent
+	 */
 	public class CancelListener implements ActionListener{
 		
 		/* (non-Javadoc)
@@ -74,6 +108,17 @@ public class MapChoiceView {
 			f.dispose();
 		}
 	}
+    
+    /**
+	 * The listener interface for receiving open events. The class that is
+	 * interested in processing a open event implements this interface, and the
+	 * object created with that class is registered with a component using the
+	 * component's <code>addOpenListener<code> method. When
+	 * the open event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see OpenEvent
+	 */
     public class OpenListener implements ActionListener{
 		
 		/* (non-Javadoc)
@@ -81,14 +126,13 @@ public class MapChoiceView {
 		 */
 		public void actionPerformed(ActionEvent arg0){
 			if (panel instanceof RoadEditorView){
-				System.out.println("dkncvejw");
+				System.out.println("Open existing Map");
 				if(selection!=""){
-					
+					panel.removeAll();
+					((RoadEditorView) panel).updateEditorState();
 					GridBuilder gridBuilder = (GridBuilder) (FileRW.readObject(MainConfig.GRID_PATH + "/"+selection+MainConfig.GRID_SUFFIX));
 					((RoadEditorView) panel).buildGrid(gridBuilder);
-					System.out.println("dkncvejw");
-					f.dispose();
-					
+					f.dispose();	
 				}
 				
 			}

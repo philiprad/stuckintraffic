@@ -1,3 +1,7 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 1.0
+ */
 package graphicsLoader.RoadEditorBuilder;
 
 import graphicsLoader.GraphicsConfig;
@@ -14,7 +18,21 @@ import javax.swing.JButton;
 
 import trafficInfrastructure.grid.GridBuilder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GridButtonsLoader.
+ */
 public class GridButtonsLoader {
+	
+	/**
+	 * Gets the grid buttons.
+	 *
+	 * @param gridBuilder
+	 *            the grid builder
+	 * @param ib
+	 *            the ib
+	 * @return the grid buttons
+	 */
 	public static  Component [][] getGridButtons(GridBuilder gridBuilder, ImagesBuilder ib){
 		
 		short [][] roadGrid = gridBuilder.getGrid();

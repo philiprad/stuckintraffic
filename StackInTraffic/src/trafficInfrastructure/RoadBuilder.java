@@ -64,6 +64,8 @@ public class RoadBuilder {
 	 *            the current x
 	 * @param currentY
 	 *            the current y
+	 * @param gridBuilder
+	 *            the grid builder
 	 */
 	public RoadBuilder (String roadInfName, int currentX, int currentY, GridBuilder gridBuilder){
 		this.roadInfName = roadInfName;
