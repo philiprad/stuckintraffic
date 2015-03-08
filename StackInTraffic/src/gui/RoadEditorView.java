@@ -93,6 +93,7 @@ public class RoadEditorView extends JPanel {
 	    JMenuItem openMap = new JMenuItem("Open");
 	    openMap.addActionListener(new OpenListener());
 	    JMenuItem exitMainMenu = new JMenuItem("Main Menu");
+	    JMenuItem validateMap = new JMenuItem("Validate Map");
 	    exitMainMenu.addActionListener(new MainMenuListener());
 	    JMenuItem exit = new JMenuItem("Exit");
 	    exit.addActionListener(new ExitListener());
@@ -110,6 +111,7 @@ public class RoadEditorView extends JPanel {
         editMenu.add(saveMap);
         editMenu.add(clearMap);
         editMenu.add(deleteMap);
+        editMenu.add(validateMap);
     
         
 		JPanel gridPanel = new JPanel( new GridBagLayout());
@@ -123,6 +125,7 @@ public class RoadEditorView extends JPanel {
 		GridBuilder gridBuilder = (GridBuilder) (FileRW.readObject(MainConfig.GRID_PATH + "/"+this.roadInfrastructureName+MainConfig.GRID_SUFFIX));
 		
 		//***************************
+		validateMap.addActionListener(new ValidateMapListener());
 		
 		System.out.println("ismapvalid" +isMapValid(gridBuilder.getGrid()));
 		
@@ -242,14 +245,19 @@ public class RoadEditorView extends JPanel {
 		 *  
 		 */
 		boolean isValid =true;
-
+		int blockSize;
 		try{
 		for(int i=0; i<map.length;i++){
 			//System.out.println("first i =" + i + " map length = " +map.length);
 			for(int j=0;j<map[i].length;j++){
+				if(map[i][j]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK || map[i][j]==RoadConfig.VERTICAL_DOUBLE_BLOCK)
+					blockSize = 2;
+				else
+					blockSize = 1;
+				
 				//System.out.println("first j =" + j + " map length i= " + map[i].length + "  this block is: " + map[i][j]);
 				//if(j==0  i-1>0 )
-				if((map[i][j]!=-100 && map[i][j]!=0) && ((i==0 && j-1>0 && map[i][j-1]==0) || (j==0 && i-1>0 && map[i-1][j]==0))&& 
+				if((i+blockSize!=map.length) && (map[i][j]!=-100 && map[i][j]!=0) && ((i==0 && j-1>0 && map[i][j-1]==0) || (j==0 && i-1>0 && map[i-1][j]==0))&& 
 				(map[i][j]!=RoadConfig.INTERSECTION_BLOCK && map[i][j]!=RoadConfig.INTERSECTION_DOUBLE_BLOCK && 
 				map[i][j]!=RoadConfig.INTERSECTION_MIXED_BLOCK && map[i][j]!=RoadConfig.INTERSECTION_BLOCK && 
 				map[i][j]!=RoadConfig.ROUND_ABOUT_BLOCK)){
@@ -278,14 +286,14 @@ public class RoadEditorView extends JPanel {
 				map[i][j]!=RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK && map[i][j]!=RoadConfig.VERTICAL_ENTER_BLOCK &&
 				map[i][j]!=RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK && 
 				//validations to ensure that the previous block(both up or left of the current block is not an entry point
-				map[i][j-2]!=RoadConfig.HORIZONTAL_ENTER_BLOCK && 
-				map[i][j-2]!=RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK && map[i][j-2]!=RoadConfig.VERTICAL_ENTER_BLOCK &&
-				map[i][j-2]!=RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK && map[i-2][j]!=RoadConfig.HORIZONTAL_ENTER_BLOCK && 
-				map[i-2][j]!=RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK && map[i-2][j]!=RoadConfig.VERTICAL_ENTER_BLOCK &&
-				map[i-2][j]!=RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK) &&
+				map[i][j-blockSize]!=RoadConfig.HORIZONTAL_ENTER_BLOCK && 
+				map[i][j-blockSize]!=RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK && map[i][j-blockSize]!=RoadConfig.VERTICAL_ENTER_BLOCK &&
+				map[i][j-blockSize]!=RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK && map[i-blockSize][j]!=RoadConfig.HORIZONTAL_ENTER_BLOCK && 
+				map[i-blockSize][j]!=RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK && map[i-blockSize][j]!=RoadConfig.VERTICAL_ENTER_BLOCK &&
+				map[i-blockSize][j]!=RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK) &&
 				//validations to ensure that this is the last block is not a street.
-				((i+2==map.length && (j+2<=map.length && (map[i][j+2]==0 || map[i][j]!=map[i][j+2]))) || 
-				  (j+2==map.length && (i+2<=map.length && (map[i+2][j]==0 || map[i][j]!=map[i+2][j]))))){
+				((i+blockSize==map.length && (j+blockSize<=map.length && (map[i][j+blockSize]==0 || map[i][j]!=map[i][j+blockSize]))) || 
+				  (j+blockSize==map.length && (i+blockSize<=map.length && (map[i+blockSize][j]==0 || map[i][j]!=map[i+blockSize][j]))))){
 					
 					//
 				//convert current block to an exit point.
@@ -336,6 +344,17 @@ public class RoadEditorView extends JPanel {
 			JComponent component = frame.getJMenuBar();
 			component.removeAll();
 			frame.addView(new MainView(frame));
+		}
+		
+		
+	}
+public class ValidateMapListener implements ActionListener{
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
+		public void actionPerformed(ActionEvent arg0){
+			
 		}
 		
 		
