@@ -10,3 +10,5 @@ StackInTraffic/bin/graphicsLoader/ImagesBuilder.class
 *.class
 
 *.class
+
+StackInTraffic/bin/graphicsLoader/GraphicsConfig.class
