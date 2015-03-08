@@ -81,6 +81,8 @@ public class RoadEditorView extends JPanel {
 	/** The component grid. */
 	private Component [][] componentGrid;
 	
+	private GridBuilder gridBuilder;
+	
 	/**
 	 * Instantiates a new road editor view.
 	 *
@@ -199,7 +201,7 @@ public class RoadEditorView extends JPanel {
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
 		public void actionPerformed(ActionEvent arg0){
-			MapChoiceView openMap = new MapChoiceView(RoadEditorView.this);
+			MapChoiceView openMap = new MapChoiceView(RoadEditorView.this, RoadEditorView.this.gridBuilder);
 		}
 	}
 	

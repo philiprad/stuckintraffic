@@ -34,6 +34,8 @@ public class MapChoiceView {
     /** The f. */
     JFrame f = new JFrame("Choose Map");
     
+    GridBuilder gridBuilder;
+    
     /** The selection. */
     String selection = "";
 	
@@ -47,8 +49,9 @@ public class MapChoiceView {
 	 *            the panel
 	 */
     @SuppressWarnings("unchecked")
-	public MapChoiceView(JPanel panel){
+	public MapChoiceView(JPanel panel, GridBuilder gridBuilder){
     this.panel = panel;
+    this.gridBuilder = gridBuilder;
 	jPanel.setSize(400, 300);
     JButton button = new JButton("Cancel");
     JButton button1 = new JButton("Open");
@@ -130,7 +133,7 @@ public class MapChoiceView {
 				if(selection!=""){
 					panel.removeAll();
 					((RoadEditorView) panel).updateEditorState();
-					GridBuilder gridBuilder = (GridBuilder) (FileRW.readObject(MainConfig.GRID_PATH + "/"+selection+MainConfig.GRID_SUFFIX));
+					gridBuilder = (GridBuilder) (FileRW.readObject(MainConfig.GRID_PATH + "/"+selection+MainConfig.GRID_SUFFIX));
 					((RoadEditorView) panel).buildGrid(gridBuilder);
 					f.dispose();	
 				}
