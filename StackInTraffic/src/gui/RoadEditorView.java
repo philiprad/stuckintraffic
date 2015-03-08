@@ -247,7 +247,6 @@ public class RoadEditorView extends JPanel {
 		for(int i=0; i<map.length;i++){
 			//System.out.println("first i =" + i + " map length = " +map.length);
 			for(int j=0;j<map[i].length;j++){
-				System.out.println("i is = " +i + " and j = " + j + " and roadblock type is: " + map[i][j]);
 				//System.out.println("first j =" + j + " map length i= " + map[i].length + "  this block is: " + map[i][j]);
 				//if(j==0  i-1>0 )
 				if((map[i][j]!=-100 && map[i][j]!=0) && ((i==0 && j-1>0 && map[i][j-1]==0) || (j==0 && i-1>0 && map[i-1][j]==0))&& 
@@ -285,10 +284,10 @@ public class RoadEditorView extends JPanel {
 				map[i-2][j]!=RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK && map[i-2][j]!=RoadConfig.VERTICAL_ENTER_BLOCK &&
 				map[i-2][j]!=RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK) &&
 				//validations to ensure that this is the last block is not a street.
-				(i+2==map.length || 
-				  j+2==map.length )){
-					//&& (j+2<=map.length && (map[i][j+2]==0 || map[i][j]!=map[i][j+2])
-					//&& (i+2<=map.length && (map[i+2][j]==0 || map[i][j]!=map[i+2][j])
+				((i+2==map.length && (j+2<=map.length && (map[i][j+2]==0 || map[i][j]!=map[i][j+2]))) || 
+				  (j+2==map.length && (i+2<=map.length && (map[i+2][j]==0 || map[i][j]!=map[i+2][j]))))){
+					
+					//
 				//convert current block to an exit point.
 					System.out.println("i = " + i + " and j = " + j + " Roadblock type before= " + map[i][j]);
 
