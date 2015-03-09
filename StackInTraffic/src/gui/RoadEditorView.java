@@ -36,10 +36,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
-import main.MainConfig;
 import trafficInfrastructure.grid.GridBuilder;
 import trafficInfrastructure.road.RoadConfig;
-import util.FileRW;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -61,10 +59,10 @@ public class RoadEditorView extends JPanel {
 	
 	//TODO Input parametres of GRID size 1. Existing grid 2. Define parameters for new grid
 	/** The grid height. */
-	private	int gridHeight =GraphicsConfig.GRID_HEIGHT;
+	//private	int gridHeight =GraphicsConfig.GRID_HEIGHT;
 	
 	/** The grid width. */
-	private int gridWidth = GraphicsConfig.GRID_WIDTH;
+	//private int gridWidth = GraphicsConfig.GRID_WIDTH;
 	
 	/** The menu bar. */
 	private JMenuBar menuBar = new JMenuBar();
@@ -83,6 +81,8 @@ public class RoadEditorView extends JPanel {
 	
 	private GridBuilder gridBuilder;
 	
+	private String mapName;
+	
 	/**
 	 * Instantiates a new road editor view.
 	 *
@@ -95,7 +95,6 @@ public class RoadEditorView extends JPanel {
 		this.frame = frame;
 		this.ib = new ImagesBuilder();
 		this.setLayout(new BorderLayout());
-		
 		JMenu fileMenu = new JMenu("File");
 	    menuBar.add(fileMenu);
 	    JMenu editMenu = new JMenu("Edit");
@@ -125,8 +124,20 @@ public class RoadEditorView extends JPanel {
         editMenu.add(clearMap);
         editMenu.add(deleteMap);
     
-        
+        RoadEditorPopUpView launchPopUp = new RoadEditorPopUpView(this.frame, this ,"Road Editor");
 	}	
+	
+	public GridBuilder getGridBuilder(){
+		return this.gridBuilder;
+	}
+	
+	public void setMapName(String mapName){
+		this.mapName = mapName;
+	}
+	
+	public String getMapName(){
+		return this.mapName;
+	}
 		
 		
 		//****************  TEST use TODO user chose option 1. create new map 2. edit existing map
@@ -201,7 +212,7 @@ public class RoadEditorView extends JPanel {
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
 		public void actionPerformed(ActionEvent arg0){
-			MapChoiceView openMap = new MapChoiceView(RoadEditorView.this, RoadEditorView.this.gridBuilder);
+			MapChoiceView openMap = new MapChoiceView(frame,RoadEditorView.this, RoadEditorView.this.gridBuilder);
 		}
 	}
 	
@@ -217,8 +228,9 @@ public class RoadEditorView extends JPanel {
 	 */
 	public static void drawButtons(GridBuilder gridBuilder, JPanel gridPanel, Component [] [] componentGrid){
 		GridBagConstraints gridBagConstraints = new GridBagConstraints();
-		for (int i=0; i<gridBuilder.getGrid().length; i++){
-			for (int j=0; j<gridBuilder.getGrid()[0].length; j++){
+		
+			for (int j=0; j<componentGrid.length; j++){
+				for (int i=0; i<componentGrid[0].length; i++){
 				if (gridBuilder.getGrid()[j][i]>30){
 					gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
 					gridBagConstraints.gridx = j;
@@ -258,7 +270,7 @@ public class RoadEditorView extends JPanel {
 	public void buildGrid(GridBuilder gridBuilder){
 		JPanel gridPanel = new JPanel( new GridBagLayout());
 		gridPanel.setBackground(Color.GRAY);
-		gridPanel.setSize(new Dimension(this.gridWidth*GraphicsConfig.BLOCK_SIDE_SIZE,this.gridHeight*GraphicsConfig.BLOCK_SIDE_SIZE));
+		gridPanel.setSize(new Dimension(gridBuilder.getGrid().length*GraphicsConfig.BLOCK_SIDE_SIZE,gridBuilder.getGrid()[0].length*GraphicsConfig.BLOCK_SIDE_SIZE));
 		this.scrollPane = new JScrollPane(gridPanel);
 		this.componentGrid = GridButtonsLoader.getGridButtons(gridBuilder, ib);
 		this.gridButtonMouseListener = new GridButtonMouseListener(gridBuilder,componentGrid, ib, this.editorState, gridPanel);

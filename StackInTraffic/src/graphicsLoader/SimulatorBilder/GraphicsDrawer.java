@@ -229,8 +229,8 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	 * Car grid position update.
 	 */
 	private void carGridPositionUpdate(){
-		for(int i = 0; i<GraphicsConfig.GRID_WIDTH; i++){
-			for(int j = 0; j<GraphicsConfig.GRID_HEIGHT; j++){
+		for(int i = 0; i<this.roadBlockGrid.length; i++){
+			for(int j = 0; j<this.roadBlockGrid[0].length; j++){
 				if(this.roadBlockGrid[i][j]!=null){
 					((RoadBlock) this.roadBlockGrid[i][j]).clearCarList();
 				}

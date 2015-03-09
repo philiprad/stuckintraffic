@@ -23,7 +23,7 @@ import agents.TrafficLight;
 public class TrafficManager {
 	
 	/** The rd blocks. */
-	private Object [][] rdBlocks = new Object [GraphicsConfig.GRID_WIDTH] [GraphicsConfig.GRID_WIDTH];
+	private Object [][] rdBlocks;
 	
 	/** The traffic infrastructure name. */
 	private String trafficInfrastructureName;
@@ -44,6 +44,7 @@ public class TrafficManager {
 		
 		this.trafficInfrastructureName = infrastructureName;
 		this.grid = (GridBuilder) FileRW.readObject(MainConfig.GRID_PATH + "/" + trafficInfrastructureName + MainConfig.GRID_SUFFIX);
+		rdBlocks = new Object [this.grid.getGrid().length] [this.grid.getGrid()[0].length];
 		this.buildRoaddBlockArray();
 		this.buildTrafficLights();
 	}
@@ -53,8 +54,8 @@ public class TrafficManager {
 	 */
 	public void buildRoaddBlockArray (){
 		
-		for (int i = 0; i < GraphicsConfig.GRID_WIDTH; i++){
-			for (int j = 0; j < GraphicsConfig.GRID_HEIGHT; j++){
+		for (int i = 0; i < this.grid.getGrid().length; i++){
+			for (int j = 0; j < this.grid.getGrid()[0].length; j++){
 				if (grid.getGrid()[i][j]!=0 && grid.getGrid()[i][j]!=-100){
 					this.rdBlocks [i][j] = new RoadBlock(grid.getGrid()[i][j]);
 					System.out.println(((RoadBlock) this.rdBlocks[i][j]).getBlockType());
@@ -72,8 +73,8 @@ public class TrafficManager {
 	 */
 	public void buildTrafficLights (){
 		short trafficLightCounter = 0;
-		for (int i = 0; i < GraphicsConfig.GRID_WIDTH; i++){
-			for (int j = 0; j < GraphicsConfig.GRID_HEIGHT; j++){
+		for (int i = 0; i < this.grid.getGrid().length; i++){
+			for (int j = 0; j < this.grid.getGrid()[0].length; j++){
 			if (this.rdBlocks[i][j]!=null){
 				if (((RoadBlock) this.rdBlocks[i][j]).getBlockType() == RoadConfig.INTERSECTION_BLOCK){
 					

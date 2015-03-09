@@ -47,6 +47,8 @@ public class MainView extends JPanel {
 	     button2.addActionListener(new ExitListener());
 		 button.addActionListener(new SimulationListener());
 		 button1.addActionListener(new MapBuilderListener());
+		 
+		
 	}
 	
 	//Functionality of SimulationButton-New Window (Main.java)
@@ -91,6 +93,7 @@ public class MainView extends JPanel {
 				public void actionPerformed(ActionEvent arg0){
 					frame.removeView();
 					frame.addView(new RoadEditorView(frame));
+					
 				}
 			}
 			

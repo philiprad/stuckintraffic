@@ -227,7 +227,7 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 		
 		short [][] roadGrid = this.gridBuilder.getGrid();
 		for(int i=0;i<buttons.length;i++){
-			for (int j=0;j<buttons.length;j++){
+			for (int j=0;j<buttons[0].length;j++){
 				if (button == buttons[i][j] && this.editorState.getState()==RoadEditorConfig.DELETE_STATE){
 					if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100){
 						
@@ -303,7 +303,7 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 				panel.invalidate();
 				 if ((this.editorState.getState()==RoadEditorConfig.BUILD_STATE && this.editorState.getCanBuild()) || (this.editorState.getState()==RoadEditorConfig.HANDLE_STATE && this.editorState.getCanBuild() && this.editorState.getHandled())){
 						this.editorState.setHandled(false);
-					 	this.gridBuilder.addRoadBlock(this.editorState.getCurrentBlockType(), i*50, j*50);
+					 	this.gridBuilder.addRoadBlock(this.editorState.getCurrentBlockType(), i, j);
 						
 						if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100 && roadGrid[i][j]!=-200 && roadGrid[i][j]!=-300){
 							System.out.println("\n builded \n");
@@ -370,8 +370,8 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 			}
 		}
 		
-		for (int i=0; i<this.gridBuilder.getGrid().length; i++){
-			for (int j=0; j<this.gridBuilder.getGrid()[0].length; j++){
+		for (int j=0; j<this.gridBuilder.getGrid().length; j++){
+			for (int i=0; i<this.gridBuilder.getGrid()[0].length; i++){
 				System.out.print(gridBuilder.getGrid()[j][i]+"\t");
 			}
 			System.out.print("\n");

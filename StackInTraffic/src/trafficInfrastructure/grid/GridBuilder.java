@@ -22,8 +22,8 @@ public class GridBuilder implements Serializable{
 	/**
 	 * Instantiates a new grid builder.
 	 */
-	public GridBuilder(){
-		this.gridTab = new short [GraphicsConfig.MAIN_WIDTH/GraphicsConfig.BLOCK_SIDE_SIZE][GraphicsConfig.MAIN_HEIGHT/GraphicsConfig.BLOCK_SIDE_SIZE];
+	public GridBuilder(int width, int height){
+		this.gridTab = new short [width][height];
 	}
 	
 	/**
@@ -37,7 +37,7 @@ public class GridBuilder implements Serializable{
 	 *            the y
 	 */
 	public void addRoadBlock(short blockType, int x, int y){
-		this.gridTab[x/GraphicsConfig.BLOCK_SIDE_SIZE][y/GraphicsConfig.BLOCK_SIDE_SIZE] = blockType;
+		this.gridTab[x][y] = blockType;
 	}
 	
 	/**

@@ -11,10 +11,10 @@ package graphicsLoader;
 public class GraphicsConfig {
 	
 	/** The Constant MAIN_HEIGHT. */
-	public static final int MAIN_HEIGHT = 800;
+	//public static final int MAIN_HEIGHT = 800;
 	
 	/** The Constant MAIN_WIDTH. */
-	public static final int MAIN_WIDTH = 800;
+	//public static final int MAIN_WIDTH = 800;
 	
 	/** The Constant BLOCK_SIDE_SIZE. */
 	public static final int BLOCK_SIDE_SIZE = 50;
@@ -26,10 +26,10 @@ public class GraphicsConfig {
 	public static final int TRIPLE_BLOCK_SIZE = 150;
 	
 	/** The Constant GRID_HEIGHT. */
-	public static final int GRID_HEIGHT = MAIN_HEIGHT/BLOCK_SIDE_SIZE;
+	//public static final int GRID_HEIGHT = MAIN_HEIGHT/BLOCK_SIDE_SIZE;
 	
 	/** The Constant GRID_WIDTH. */
-	public static final int GRID_WIDTH = MAIN_WIDTH/BLOCK_SIDE_SIZE;
+	//public static final int GRID_WIDTH = MAIN_WIDTH/BLOCK_SIDE_SIZE;
 	
 	/** The Constant VERTICAL_ROAD_IMG. */
 	public static final String VERTICAL_ROAD_IMG = "./images/verticalRoad.png";

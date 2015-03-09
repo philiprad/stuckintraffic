@@ -148,8 +148,8 @@ public class RoadBuilder {
 		this.addRoadBlock(RoadConfig.HORIZONTAL_EXIT_BLOCK);
 		*/
 		
-	for (int i = 0; i<GraphicsConfig.MAIN_WIDTH/GraphicsConfig.BLOCK_SIDE_SIZE; i++){
-		for (int j = 0; j<GraphicsConfig.MAIN_HEIGHT/GraphicsConfig.BLOCK_SIDE_SIZE; j++){
+	for (int i = 0; i<this.roadGrid.getGrid().length; i++){
+		for (int j = 0; j<this.roadGrid.getGrid()[0].length; j++){
 			System.out.print(this.roadGrid.getGrid() [i] [j]);
 		}
 		System.out.print("\n");
@@ -166,7 +166,7 @@ public class RoadBuilder {
 	 * @param blockNb
 	 *            the block nb
 	 */
-	public void addRoadBlock (short blockNb){ 
+	/*public void addRoadBlock (short blockNb){ 
 		
 		if (blockNb == RoadConfig.HORIZONTAL_ENTER_BLOCK || blockNb == RoadConfig.HORIZONTAL_BLOCK || blockNb == RoadConfig.HORIZONTAL_EXIT_BLOCK){
 			if (this.roadGrid.getGrid()[this.currentX1/GraphicsConfig.BLOCK_SIDE_SIZE][this.currentY1/GraphicsConfig.BLOCK_SIDE_SIZE] == RoadConfig.VERTICAL_BLOCK){
@@ -194,7 +194,7 @@ public class RoadBuilder {
 			/*if (this.roadGrid.getGrid()[this.currentX1/GraphicsConfig.BLOCK_SIDE_SIZE][this.currentY1/GraphicsConfig.BLOCK_SIDE_SIZE] == RoadConfig.VERTICAL_BLOCK){
 				this.roadGrid.addRoadBlock(RoadConfig.INTERSECTION_BLOCK, this.currentX1, this.currentY1);
 			} else {*/
-				this.roadGrid.addRoadBlock(blockNb, this.currentX1, this.currentY1);
+	/*			this.roadGrid.addRoadBlock(blockNb, this.currentX1, this.currentY1);
 				this.roadGrid.addRoadBlock((short) -100, this.currentX1+50, this.currentY1);
 				this.roadGrid.addRoadBlock((short) -100, this.currentX1+50, this.currentY1+50);
 				this.roadGrid.addRoadBlock((short) -100, this.currentX1, this.currentY1+50);
@@ -208,24 +208,24 @@ public class RoadBuilder {
 			/*if (this.roadGrid.getGrid()[this.currentX1/GraphicsConfig.BLOCK_SIDE_SIZE][this.currentY1/GraphicsConfig.BLOCK_SIDE_SIZE] == RoadConfig.VERTICAL_BLOCK){
 				this.roadGrid.addRoadBlock(RoadConfig.INTERSECTION_BLOCK, this.currentX1, this.currentY1);
 			} else {*/
-				this.roadGrid.addRoadBlock(blockNb, this.currentX1, this.currentY1);
+			/*	this.roadGrid.addRoadBlock(blockNb, this.currentX1, this.currentY1);
 				this.roadGrid.addRoadBlock((short) -100, (this.currentX1+50), this.currentY1);
 				this.roadGrid.addRoadBlock((short) -100, (this.currentX1+50), (this.currentY1+50));
 				this.roadGrid.addRoadBlock((short) -100, this.currentX1, (this.currentY1+50));
 			//}
-			int tab [] = VerticalDoubleBlock.nextBlockLocation(this.currentX1, this.currentY1, this.currentX2, this.currentY2);
+			/*int tab [] = VerticalDoubleBlock.nextBlockLocation(this.currentX1, this.currentY1, this.currentX2, this.currentY2);
 			this.currentX1 = tab[0];
 			this.currentY1 = tab[1];
 		}
-	}
+	}*/
 	
 	/**
 	 * Road graphic builder.
 	 */
 	public void roadGraphicBuilder(){
 		ArrayList<BlockGraphicPoint> roadGB = new ArrayList<BlockGraphicPoint>();
-		for (int i = 0; i<GraphicsConfig.MAIN_WIDTH/GraphicsConfig.BLOCK_SIDE_SIZE; i++){
-			for (int j = 0; j<GraphicsConfig.MAIN_HEIGHT/GraphicsConfig.BLOCK_SIDE_SIZE; j++){
+		for (int i = 0; i<this.roadGrid.getGrid().length; i++){
+			for (int j = 0; j<this.roadGrid.getGrid()[0].length; j++){
 				if (this.roadGrid.getGrid()[i][j]!=0 && this.roadGrid.getGrid()[i][j]!=-100){
 					if(this.roadGrid.getGrid()[i][j]>10 && this.roadGrid.getGrid()[i][j]<19){
 						roadGB.add(new BlockGraphicPoint(i*GraphicsConfig.BLOCK_SIDE_SIZE, j*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid()[i][j], (GraphicsConfig.BLOCK_SIDE_SIZE*2)));
@@ -247,8 +247,8 @@ public class RoadBuilder {
 	 */
 	public void getPaths (){
 		 ArrayList <BlockGraphicPoint> endPoints = new ArrayList <BlockGraphicPoint>();
-		 for (int i = 0; i<GraphicsConfig.MAIN_WIDTH/GraphicsConfig.BLOCK_SIDE_SIZE; i++){
-				for (int j = 0; j<GraphicsConfig.MAIN_HEIGHT/GraphicsConfig.BLOCK_SIDE_SIZE; j++){
+		 for (int i = 0; i<this.roadGrid.getGrid().length; i++){
+				for (int j = 0; j<this.roadGrid.getGrid()[0].length; j++){
 					if (this.roadGrid.getGrid()[i][j]==RoadConfig.HORIZONTAL_ENTER_BLOCK || this.roadGrid.getGrid()[i][j]==RoadConfig.HORIZONTAL_EXIT_BLOCK || this.roadGrid.getGrid()[i][j]==RoadConfig.VERTICAL_ENTER_BLOCK || this.roadGrid.getGrid()[i][j]==RoadConfig.VERTICAL_EXIT_BLOCK ||
 							this.roadGrid.getGrid()[i][j]==RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK || this.roadGrid.getGrid()[i][j]==RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK || this.roadGrid.getGrid()[i][j]==RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK || this.roadGrid.getGrid()[i][j]==RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK){
 						endPoints.add(new BlockGraphicPoint(i, j, this.roadGrid.getGrid()[i][j],GraphicsConfig.BLOCK_SIDE_SIZE));
