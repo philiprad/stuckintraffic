@@ -23,11 +23,13 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -36,8 +38,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
+import main.MainConfig;
 import trafficInfrastructure.grid.GridBuilder;
 import trafficInfrastructure.road.RoadConfig;
+import util.FileRW;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -85,6 +89,8 @@ public class RoadEditorView extends JPanel {
 	
 	private JPanel gridPanel;
 	
+	private JLabel mapNameLabel = new JLabel("");
+	
 	/**
 	 * Instantiates a new road editor view.
 	 *
@@ -101,6 +107,7 @@ public class RoadEditorView extends JPanel {
 	    menuBar.add(fileMenu);
 	    JMenu editMenu = new JMenu("Edit");
 	    menuBar.add(editMenu);
+	    menuBar.add(this.mapNameLabel);
 	    
 	    this. frame.setJMenuBar(menuBar);
 	    
@@ -114,6 +121,7 @@ public class RoadEditorView extends JPanel {
 	    exit.addActionListener(new ExitListener());
         JMenuItem saveMap = new JMenuItem("Save");
         JMenuItem deleteMap = new JMenuItem("Delete");
+        deleteMap.addActionListener(new DeleteListener());
         JMenuItem clearMap = new JMenuItem("Clear");
         clearMap.addActionListener(new ClearListener());
         
@@ -139,6 +147,8 @@ public class RoadEditorView extends JPanel {
 	
 	public void setMapName(String mapName){
 		this.mapName = mapName;
+		this.mapNameLabel.setText("Map Name: "+mapName);
+		this.mapNameLabel.setForeground(Color.DARK_GRAY);
 	}
 	
 	public String getMapName(){
@@ -250,6 +260,40 @@ public class RoadEditorView extends JPanel {
 		}
 		
 		
+	}
+	
+	public class DeleteListener implements ActionListener{
+
+		@SuppressWarnings("unchecked")
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			ArrayList <String> mapNameList = (ArrayList<String>) FileRW.readObject(MainConfig.SAVES_FILE_PATH);
+			if(!RoadEditorView.this.mapName.isEmpty() && !mapNameList.isEmpty()){
+				int temp = -1;
+				for (int i = 0 ; i < mapNameList.size(); i++){
+					if (mapNameList.get(i).equals(mapName)){
+						temp = i;
+					}
+					
+				}
+				if (temp>-1){
+					mapNameList.remove(temp);
+					System.out.println("Road Editor: Delete operation. "+mapName+" has been deleted successfully");
+				}
+				else{
+					System.out.println("Road Editor: Delete operation. Unsuccessfull, map doesn't exist in saves");
+				}
+				
+			}else {
+				System.out.println("Road Editor: Delete operation. Unsuccessfull, map is not loaded or saves list is empty");
+			}
+			
+			frame.removeView();
+			frame.validate();
+			JComponent component = frame.getJMenuBar();
+			component.removeAll();
+			frame.addView(new RoadEditorView(frame));
+		}	
 	}
 	
 	/**

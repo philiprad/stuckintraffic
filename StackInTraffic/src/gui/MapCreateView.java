@@ -38,6 +38,8 @@ public class MapCreateView extends JFrame implements ActionListener{
 	private JComboBox<Integer> list2;
 	
 	private JTextArea nameArea = new JTextArea("");
+	
+	
     
     /**
 	 * Instantiates a new map choice view.
@@ -159,7 +161,7 @@ public class MapCreateView extends JFrame implements ActionListener{
 		 */
 		public void actionPerformed(ActionEvent arg0){
 			
-			if (nameArea.getText()!=""){
+			if (!nameArea.getText().equals("")){
 				int gridWidth = (int) list1.getSelectedItem();
 				int gridHeight = (int) list2.getSelectedItem();
 				gridBuilder = new GridBuilder(gridWidth, gridHeight);
