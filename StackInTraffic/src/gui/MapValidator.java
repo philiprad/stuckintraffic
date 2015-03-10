@@ -86,8 +86,8 @@ public class MapValidator {
 								System.out.println(" to: " + map[i][j]);
 							}
 							if(map[i][j]!=RoadConfig.VERTICAL_EXIT_BLOCK && (j==0 && (map[i][j+1]==0 || map[i][j+2]==0)) || 
-									(map[i][j]!=RoadConfig.VERTICAL_EXIT_BLOCK && (j>0 && j+2< map.length && map[i][j-1]==0 && (map[i][j+1]==0 || map[i][j+2]==0))) || 
-									(map[i][j]!=RoadConfig.VERTICAL_EXIT_BLOCK && (j>0 && j+1<= map.length && (map[i][j-1]==0 || map[i][j+1]==0)))){
+									(map[i][j]!=RoadConfig.VERTICAL_EXIT_BLOCK && (j>0 && j+2< map.length && map[i][j+1]==0 && (map[i][j-1]==0 || map[i][j+2]==0))) || 
+									(map[i][j]!=RoadConfig.VERTICAL_EXIT_BLOCK && (j>0 && j+2== map.length && (map[i][j-1]==0 || map[i][j+1]==0)))){
 								return false;
 							}
 							break;
