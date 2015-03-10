@@ -69,6 +69,7 @@ public class RoadEditorView extends JPanel {
 	
 	private GridButtonMouseListener gridButtonMouseListener;
 	
+	private GridBuilder gridBuilder;
 	/**
 	 * Instantiates a new road editor view.
 	 *
@@ -122,13 +123,11 @@ public class RoadEditorView extends JPanel {
 		
 		//****************  TEST use TODO user chose option 1. create new map 2. edit existing map
 		
-		GridBuilder gridBuilder = (GridBuilder) (FileRW.readObject(MainConfig.GRID_PATH + "/"+this.roadInfrastructureName+MainConfig.GRID_SUFFIX));
+		gridBuilder = (GridBuilder) (FileRW.readObject(MainConfig.GRID_PATH + "/"+this.roadInfrastructureName+MainConfig.GRID_SUFFIX));
 		
 		//***************************
 		validateMap.addActionListener(new ValidateMapListener());
-		
-		System.out.println("ismapvalid" +isMapValid(gridBuilder.getGrid()));
-		
+				
 		Component [][] componentGrid = GridButtonsLoader.getGridButtons(gridBuilder, ib);
 		this.gridButtonMouseListener = new GridButtonMouseListener(gridBuilder,componentGrid, ib, this.editorState, gridPanel);
 		
@@ -236,92 +235,7 @@ public class RoadEditorView extends JPanel {
 			actionToolBar.add(actionButton);
 			
 }
-	public boolean isMapValid(short[][] map){
-		
-		/**
-		 * implement rules by reading the array gridBuilder.
-		 *  if [i+1][j]!=0 and [i-1][j]!=0 then it is intersection
-		 *  if [i+1][j]!=0 and (i!=0 and [i-1][j]==0) and [i][j]!=17 and [i][j]!=18 and [i][j]!= 4 then it is starting point
-		 *  
-		 */
-		boolean isValid =true;
-		int blockSize;
-		try{
-		for(int i=0; i<map.length;i++){
-			//System.out.println("first i =" + i + " map length = " +map.length);
-			for(int j=0;j<map[i].length;j++){
-				if(map[i][j]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK || map[i][j]==RoadConfig.VERTICAL_DOUBLE_BLOCK)
-					blockSize = 2;
-				else
-					blockSize = 1;
-				
-				//System.out.println("first j =" + j + " map length i= " + map[i].length + "  this block is: " + map[i][j]);
-				//if(j==0  i-1>0 )
-				if((i+blockSize!=map.length) && (map[i][j]!=-100 && map[i][j]!=0) && ((i==0 && j-1>0 && map[i][j-1]==0) || (j==0 && i-1>0 && map[i-1][j]==0))&& 
-				(map[i][j]!=RoadConfig.INTERSECTION_BLOCK && map[i][j]!=RoadConfig.INTERSECTION_DOUBLE_BLOCK && 
-				map[i][j]!=RoadConfig.INTERSECTION_MIXED_BLOCK && map[i][j]!=RoadConfig.INTERSECTION_BLOCK && 
-				map[i][j]!=RoadConfig.ROUND_ABOUT_BLOCK)){
-					System.out.println("i = " +i + " and j = " +j);
-					System.out.println("Roadblock type before= " + map[i][j]);
-				//Convert current block to an entry point.
-					if(map[i][j]==RoadConfig.HORIZONTAL_BLOCK)
-						map[i][j]=RoadConfig.HORIZONTAL_ENTER_BLOCK;
-					else if(map[i][j]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK)
-						map[i][j]=RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK;
-					else if(map[i][j]==RoadConfig.VERTICAL_BLOCK)
-						map[i][j]=RoadConfig.VERTICAL_ENTER_BLOCK;
-					else if(map[i][j]==RoadConfig.VERTICAL_DOUBLE_BLOCK)
-						map[i][j]=RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK;
-					
-					System.out.println("Roadblock type after= " + map[i][j]);
-					
-				}
-				if((map[i][j]!=-100 && map[i][j]!=0) && ((i>1 ) && (j>1)) &&  //if statement to identify exit points. 
-				//validations to ensure that the current block is not a special block that cannot be an entry or an exit point
-				(map[i][j]!=RoadConfig.INTERSECTION_BLOCK && map[i][j]!=RoadConfig.INTERSECTION_DOUBLE_BLOCK && 
-				map[i][j]!=RoadConfig.INTERSECTION_MIXED_BLOCK && map[i][j]!=RoadConfig.INTERSECTION_BLOCK && 
-				map[i][j]!=RoadConfig.ROUND_ABOUT_BLOCK && 
-				//validations to ensure that the current block is not an entry point
-				map[i][j]!=RoadConfig.HORIZONTAL_ENTER_BLOCK && 
-				map[i][j]!=RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK && map[i][j]!=RoadConfig.VERTICAL_ENTER_BLOCK &&
-				map[i][j]!=RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK && 
-				//validations to ensure that the previous block(both up or left of the current block is not an entry point
-				map[i][j-blockSize]!=RoadConfig.HORIZONTAL_ENTER_BLOCK && 
-				map[i][j-blockSize]!=RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK && map[i][j-blockSize]!=RoadConfig.VERTICAL_ENTER_BLOCK &&
-				map[i][j-blockSize]!=RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK && map[i-blockSize][j]!=RoadConfig.HORIZONTAL_ENTER_BLOCK && 
-				map[i-blockSize][j]!=RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK && map[i-blockSize][j]!=RoadConfig.VERTICAL_ENTER_BLOCK &&
-				map[i-blockSize][j]!=RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK) &&
-				//validations to ensure that this is the last block is not a street.
-				((i+blockSize==map.length && (j+blockSize<=map.length && (map[i][j+blockSize]==0 || map[i][j]!=map[i][j+blockSize]))) || 
-				  (j+blockSize==map.length && (i+blockSize<=map.length && (map[i+blockSize][j]==0 || map[i][j]!=map[i+blockSize][j]))))){
-					
-					//
-				//convert current block to an exit point.
-					System.out.println("i = " + i + " and j = " + j + " Roadblock type before= " + map[i][j]);
 
-					if(map[i][j]==RoadConfig.HORIZONTAL_BLOCK)
-						map[i][j]=RoadConfig.HORIZONTAL_EXIT_BLOCK;
-					else if(map[i][j]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK)
-						map[i][j]=RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK;
-					else if(map[i][j]==RoadConfig.VERTICAL_BLOCK)
-						map[i][j]=RoadConfig.VERTICAL_EXIT_BLOCK;
-					else if(map[i][j]==RoadConfig.VERTICAL_DOUBLE_BLOCK)
-						map[i][j]=RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK;
-					
-					System.out.println("Roadblock type after= " + map[i][j]);
-					break;
-
-				}
-			}
-			}
-		}catch(Exception e){
-			System.out.println("crashed\n\n" + e);
-			e.printStackTrace();
-			return false;
-		}
-		
-		return isValid;
-	}
 	/**
 	 * The listener interface for receiving mainMenu events. The class that is
 	 * interested in processing a mainMenu event implements this interface, and
@@ -354,9 +268,8 @@ public class ValidateMapListener implements ActionListener{
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
 		public void actionPerformed(ActionEvent arg0){
-			
+			System.out.println("ismapvalid" +MapValidator.isMapValid(gridBuilder.getGrid()));
 		}
-		
 		
 	}
 	
