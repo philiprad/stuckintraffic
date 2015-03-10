@@ -143,7 +143,8 @@ public class MapChoiceView extends JFrame implements ActionListener{
 					panel.removeAll();
 					((RoadEditorView) panel).updateEditorState();
 					gridBuilder = (GridBuilder) (FileRW.readObject(MainConfig.GRID_PATH + "/"+selection+MainConfig.GRID_SUFFIX));
-					((RoadEditorView) panel).buildGrid(gridBuilder);
+					((RoadEditorView) panel).setGridBuilder(gridBuilder);
+					((RoadEditorView) panel).buildGrid();//(gridBuilder);
 					((RoadEditorView) panel).setMapName(selection);
 					MapChoiceView.this.setVisible(false);
 					MapChoiceView.this.dispose();

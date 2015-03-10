@@ -163,11 +163,12 @@ public class MapCreateView extends JFrame implements ActionListener{
 				int gridWidth = (int) list1.getSelectedItem();
 				int gridHeight = (int) list2.getSelectedItem();
 				gridBuilder = new GridBuilder(gridWidth, gridHeight);
+				((RoadEditorView) panel).setGridBuilder(gridBuilder);
 				System.out.println("grid width" + gridBuilder.getGrid().length);
 				System.out.println("grid heigth"+ gridBuilder.getGrid()[0].length);
 				panel.removeAll();
 				((RoadEditorView) panel).updateEditorState();
-				((RoadEditorView) panel).buildGrid(gridBuilder);
+				((RoadEditorView) panel).buildGrid();//(gridBuilder);
 				((RoadEditorView) panel).setMapName(nameArea.getText());
 				MapCreateView.this.setVisible(false);
 				MapCreateView.this.dispose();

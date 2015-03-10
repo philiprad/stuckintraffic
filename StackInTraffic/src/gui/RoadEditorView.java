@@ -83,6 +83,8 @@ public class RoadEditorView extends JPanel {
 	
 	private String mapName;
 	
+	private JPanel gridPanel;
+	
 	/**
 	 * Instantiates a new road editor view.
 	 *
@@ -103,18 +105,18 @@ public class RoadEditorView extends JPanel {
 	    this. frame.setJMenuBar(menuBar);
 	    
 	    JMenuItem newMap = new JMenuItem("New");
+	    newMap.addActionListener(new CreateListener());
 	    JMenuItem openMap = new JMenuItem("Open");
 	    openMap.addActionListener(new OpenListener());
 	    JMenuItem exitMainMenu = new JMenuItem("Main Menu");
 	    exitMainMenu.addActionListener(new MainMenuListener());
 	    JMenuItem exit = new JMenuItem("Exit");
 	    exit.addActionListener(new ExitListener());
-		/*JButton mainMenu = new JButton("Main Menu");
-		mainMenu.addActionListener(new MainMenuListener());
-		menubar.add(mainMenu);*/
         JMenuItem saveMap = new JMenuItem("Save");
         JMenuItem deleteMap = new JMenuItem("Delete");
         JMenuItem clearMap = new JMenuItem("Clear");
+        clearMap.addActionListener(new ClearListener());
+        
         fileMenu.add(newMap);
         fileMenu.add(openMap);
         fileMenu.addSeparator();
@@ -126,6 +128,10 @@ public class RoadEditorView extends JPanel {
     
         RoadEditorPopUpView launchPopUp = new RoadEditorPopUpView(this.frame, this ,"Road Editor");
 	}	
+	
+	public void setGridBuilder(GridBuilder gridBuilder){
+		this.gridBuilder = gridBuilder;
+	}
 	
 	public GridBuilder getGridBuilder(){
 		return this.gridBuilder;
@@ -216,6 +222,36 @@ public class RoadEditorView extends JPanel {
 		}
 	}
 	
+	public class CreateListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			MapCreateView createMap = new MapCreateView(frame, RoadEditorView.this,RoadEditorView.this.getGridBuilder());
+			
+		}
+		
+	}
+	
+	public class ClearListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			editorState = new EditorState();
+			for (int i=0; i<gridBuilder.getGrid().length;i++){
+				for (int j=0; j<gridBuilder.getGrid()[0].length;j++){
+					gridBuilder.getGrid()[i][j]=0;
+					((JButton)componentGrid[i][j]).setIcon(null);//new GridButton(i,j,GraphicsConfig.BLOCK_SIDE_SIZE);
+					((JButton)componentGrid[i][j]).setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE));
+				}
+			}
+			RoadEditorView.drawButtons(gridBuilder, gridPanel, componentGrid);
+			RoadEditorView.this.repaint();
+			RoadEditorView.this.validate();
+		}
+		
+		
+	}
+	
 	/**
 	 * Draw buttons.
 	 *
@@ -267,8 +303,8 @@ public class RoadEditorView extends JPanel {
 	 * @param gridBuilder
 	 *            the grid builder
 	 */
-	public void buildGrid(GridBuilder gridBuilder){
-		JPanel gridPanel = new JPanel( new GridBagLayout());
+	public void buildGrid(){
+		gridPanel = new JPanel( new GridBagLayout());
 		gridPanel.setBackground(Color.GRAY);
 		gridPanel.setSize(new Dimension(gridBuilder.getGrid().length*GraphicsConfig.BLOCK_SIDE_SIZE,gridBuilder.getGrid()[0].length*GraphicsConfig.BLOCK_SIDE_SIZE));
 		this.scrollPane = new JScrollPane(gridPanel);
