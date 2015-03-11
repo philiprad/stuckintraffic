@@ -1,5 +1,6 @@
 package gui;
 
+import trafficInfrastructure.grid.GridBuilder;
 import trafficInfrastructure.road.RoadConfig;
 
 public class MapValidator {
@@ -172,5 +173,39 @@ public class MapValidator {
 		}
 		
 		return isValid;
+	}
+	
+	public static void deleteEndPoints(GridBuilder gridBuilder){
+		for(int i=0; i < gridBuilder.getGrid().length; i++){
+			for(int j=0; j<gridBuilder.getGrid()[0].length;j++){
+				switch(gridBuilder.getGrid()[i][j]){
+				case RoadConfig.HORIZONTAL_ENTER_BLOCK:
+					gridBuilder.getGrid()[i][j] = RoadConfig.HORIZONTAL_BLOCK;
+					break;
+				case RoadConfig.HORIZONTAL_EXIT_BLOCK:
+					gridBuilder.getGrid()[i][j] = RoadConfig.HORIZONTAL_BLOCK;
+					break;
+				case RoadConfig.VERTICAL_EXIT_BLOCK:
+					gridBuilder.getGrid()[i][j] = RoadConfig.VERTICAL_BLOCK;
+					break;
+				case RoadConfig.VERTICAL_ENTER_BLOCK:
+					gridBuilder.getGrid()[i][j] = RoadConfig.VERTICAL_BLOCK;
+					break;
+				case RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK:
+					gridBuilder.getGrid()[i][j] = RoadConfig.HORIZONTAL_DOUBLE_BLOCK;
+					break;
+				case RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK:
+					gridBuilder.getGrid()[i][j] = RoadConfig.HORIZONTAL_DOUBLE_BLOCK;
+					break;
+				case RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK:
+					gridBuilder.getGrid()[i][j] = RoadConfig.VERTICAL_DOUBLE_BLOCK;
+					break;
+				case RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK:
+					gridBuilder.getGrid()[i][j] = RoadConfig.VERTICAL_DOUBLE_BLOCK;
+					break;
+				}
+			
+			}
+		}
 	}
 }

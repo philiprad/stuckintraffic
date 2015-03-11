@@ -325,6 +325,12 @@ public class RoadEditorView extends JPanel {
 				
 				
 					FileRW.writeObject(gridBuilder, MainConfig.GRID_PATH+"/"+mapName+MainConfig.GRID_SUFFIX);
+					for (int j=0; j<gridBuilder.getGrid().length; j++){
+						for (int i=0; i<gridBuilder.getGrid()[0].length; i++){
+							System.out.print(gridBuilder.getGrid()[j][i]+"\t");
+						}
+						System.out.print("\n");
+					}
 				}
 			} else {
 				System.out.println("Map is Not Valid");
