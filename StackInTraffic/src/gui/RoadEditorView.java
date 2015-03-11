@@ -307,24 +307,29 @@ public class RoadEditorView extends JPanel {
 		@SuppressWarnings("unchecked")
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			ArrayList <String> mapNameList = (ArrayList<String>) FileRW.readObject(MainConfig.SAVES_FILE_PATH);
-			if (!mapName.isEmpty()){
-				int isEdition = -1;
-				for(String mapNameTemp: mapNameList){
-					if(mapNameTemp.equals(mapName)){
-						isEdition = 1;
+			boolean isValid = MapValidator.isMapValid(gridBuilder.getGrid());
+			if (isValid){
+				System.out.println("Map is Valid");
+				ArrayList <String> mapNameList = (ArrayList<String>) FileRW.readObject(MainConfig.SAVES_FILE_PATH);
+				if (!mapName.isEmpty()){
+					int isEdition = -1;
+					for(String mapNameTemp: mapNameList){
+						if(mapNameTemp.equals(mapName)){
+							isEdition = 1;
+						}
 					}
-				}
-				if (isEdition<0){
-					mapNameList.add(mapName);
-					FileRW.writeObject(mapNameList, MainConfig.SAVES_FILE_PATH);
-				}
+					if (isEdition<0){
+						mapNameList.add(mapName);
+						FileRW.writeObject(mapNameList, MainConfig.SAVES_FILE_PATH);
+					}
 				
-				//TODO Validation map before saving and building the paths if it is valide
-				FileRW.writeObject(gridBuilder, MainConfig.GRID_PATH+"/"+mapName+MainConfig.GRID_SUFFIX);
+				
+					FileRW.writeObject(gridBuilder, MainConfig.GRID_PATH+"/"+mapName+MainConfig.GRID_SUFFIX);
+				}
+			} else {
+				System.out.println("Map is Not Valid");
 			}
 		}
-		
 	}
 	
 	/**

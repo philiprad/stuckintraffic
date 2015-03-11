@@ -122,6 +122,34 @@ public class MapValidator {
 							}
 							break;
 						}
+						case RoadConfig.INTERSECTION_UP_BLOCK: {
+							if(map[i-1][j]!=RoadConfig.HORIZONTAL_BLOCK || map[i+1][j]!=RoadConfig.HORIZONTAL_BLOCK || map[i][j-1]!=RoadConfig.VERTICAL_BLOCK ){
+								return false;
+							}
+							break;
+						}
+						
+						case RoadConfig.INTERSECTION_DOWN_BLOCK: {
+							if(map[i-1][j]!=RoadConfig.HORIZONTAL_BLOCK || map[i+1][j]!=RoadConfig.HORIZONTAL_BLOCK || map[i][j+1]!=RoadConfig.VERTICAL_BLOCK ){
+								return false;
+							}
+							break;
+						}
+						
+						case RoadConfig.INTERSECTION_LEFT_BLOCK: {
+							if(map[i-1][j]!=RoadConfig.HORIZONTAL_BLOCK || map[i][j+1]!=RoadConfig.VERTICAL_BLOCK || map[i][j-1]!=RoadConfig.VERTICAL_BLOCK){
+								return false;
+							}
+							break;
+						}
+						
+						case RoadConfig.INTERSECTION_RIGHT_BLOCK: {
+							if(map[i+1][j]!=RoadConfig.HORIZONTAL_BLOCK || map[i][j+1]!=RoadConfig.VERTICAL_BLOCK || map[i][j-1]!=RoadConfig.VERTICAL_BLOCK){
+								return false;
+							}
+							break;
+						}
+						
 						case RoadConfig.INTERSECTION_DOUBLE_BLOCK: {
 							if(map[i-2][j]!=RoadConfig.HORIZONTAL_DOUBLE_BLOCK || map[i+2][j]!=RoadConfig.HORIZONTAL_DOUBLE_BLOCK || map[i][j+2]!=RoadConfig.VERTICAL_DOUBLE_BLOCK || map[i][j-2]!=RoadConfig.VERTICAL_DOUBLE_BLOCK){
 								return false;
