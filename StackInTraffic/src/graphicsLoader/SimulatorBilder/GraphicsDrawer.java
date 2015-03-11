@@ -96,7 +96,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		this.arrBG = arrBG;
 		this.arrPath = (ArrayList<Path>)FileRW.readObject(MainConfig.PATHS_PATH + "/" + fileName + MainConfig.PATH_SUFFIX);
 		TrafficManager tm = new TrafficManager(fileName);
-		this.trafficLightList = tm.getTrafficLightList();
+		//this.trafficLightList = tm.getTrafficLightList();
 		this.roadBlockGrid = tm.getRoadBlockArray();
 		this.carList = new ArrayList<Car>();
 		this.timer = new Timer (this.delay, this);
@@ -132,9 +132,9 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		super.paintComponent(g);     // paint parent's background
         setBackground(Color.GRAY);
         drawRoads(g);
-        for (TrafficLight tl: this.trafficLightList){
+        /*for (TrafficLight tl: this.trafficLightList){
         	tl.drawTrafficLights(g, ib);
-        }
+        }*/
         if (!this.carList.isEmpty()){
         	Graphics2D g2d=(Graphics2D)g;
         	for(Car cr :this.carList){
@@ -151,7 +151,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		this.carAddCounter++;
 		this.trafficLightCounter++;
-		if (isNextYellow==1){
+		/*if (isNextYellow==1){
 			if (this.trafficLightCounter>=50){
 				TrafficManager.intersection1YellowLight(this.trafficLightNumber, this.trafficLightList);
 				this.incTrafficLightNumber();
@@ -165,7 +165,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 				this.trafficLightCounter=0;
 				this.isNextYellow = 1;
 			}
-		}
+		}*/
 		if (this.carList.isEmpty()){
 			
 				this.putCarOnEveryPath();
@@ -185,7 +185,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 					
 				} else {
 					
-					this.carList.get(i).speedManagement(this.roadBlockGrid, this.trafficLightList);
+					//this.carList.get(i).speedManagement(this.roadBlockGrid, this.trafficLightList);
 					this.carList.get(i).move();
 					
 				}

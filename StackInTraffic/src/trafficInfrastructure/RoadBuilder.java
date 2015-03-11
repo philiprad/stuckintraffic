@@ -43,16 +43,16 @@ public class RoadBuilder {
 	private ArrayList<Path> arrPath; //TODO Move in LOCAL to the function
 	
 	/** The current x1. */
-	private int currentX1;
+	//private int currentX1;
 	
 	/** The current y1. */
-	private int currentY1;
+	//private int currentY1;
 	
 	/** The current x2. */
-	private int currentX2 = 0; // for feature use
+	//private int currentX2 = 0; // for feature use
 	
 	/** The current y2. */
-	private int currentY2 = 0; // for feature use
+	//private int currentY2 = 0; // for feature use
 	
 	
 	/**
@@ -67,10 +67,10 @@ public class RoadBuilder {
 	 * @param gridBuilder
 	 *            the grid builder
 	 */
-	public RoadBuilder (String roadInfName, int currentX, int currentY, GridBuilder gridBuilder){
+	public RoadBuilder (String roadInfName, GridBuilder gridBuilder){
 		this.roadInfName = roadInfName;
-		this.currentX1 = currentX;
-		this.currentY1 = currentY;
+		//this.currentX1 = currentX;
+		//this.currentY1 = currentY;
 		this.roadGrid = gridBuilder;
 		this.arrPath = new ArrayList<Path>();
 	}

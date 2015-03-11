@@ -40,6 +40,7 @@ import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
 import main.MainConfig;
+import trafficInfrastructure.RoadBuilder;
 import trafficInfrastructure.grid.GridBuilder;
 import trafficInfrastructure.road.RoadConfig;
 import util.FileRW;
@@ -325,6 +326,8 @@ public class RoadEditorView extends JPanel {
 				
 				
 					FileRW.writeObject(gridBuilder, MainConfig.GRID_PATH+"/"+mapName+MainConfig.GRID_SUFFIX);
+					RoadBuilder roadBuilder = new RoadBuilder(mapName, gridBuilder);
+					roadBuilder.buildRoad();
 					for (int j=0; j<gridBuilder.getGrid().length; j++){
 						for (int i=0; i<gridBuilder.getGrid()[0].length; i++){
 							System.out.print(gridBuilder.getGrid()[j][i]+"\t");

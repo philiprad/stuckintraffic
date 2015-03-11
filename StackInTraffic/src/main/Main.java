@@ -34,7 +34,7 @@ public class Main {
 	 */
 	@SuppressWarnings("unchecked")
 	public static void main (String[] args){
-		String rdName = "test";
+		String rdName = "TIntersectionTest";
 		AppDirBuilder.build();
 		//RoadBuilder rb = new RoadBuilder("test", 150 , 0);
 	//	rb.buildRoad();
@@ -63,7 +63,7 @@ public class Main {
 		
 		ImagesBuilder ib = new ImagesBuilder();
 		ArrayList<BlockGraphicPoint> arrBG =(ArrayList<BlockGraphicPoint>) FileRW.readObject(MainConfig.ROADBLOCK_PATH+"/"+rdName+MainConfig.ROADBLOCK_GRAPHICS_SUFFIX);
-		frame.getContentPane().add(new GraphicsDrawer(50 , "test" , arrBG , ib ));
+		frame.getContentPane().add(new GraphicsDrawer(50 ,rdName, arrBG , ib ));
 	    frame.setVisible(true);
 	}
 }
