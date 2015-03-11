@@ -209,7 +209,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	 */
 	public void drawRoads(Graphics g){
 		for (BlockGraphicPoint blockGP : arrBG){
-				g.drawImage(ImagesSelector.selectRoadImage(blockGP.getBlockType(), ib), blockGP.getX(),blockGP.getY(),blockGP.getBlockSize(), blockGP.getBlockSize(), null);
+				g.drawImage(ImagesSelector.selectRoadImage(blockGP.getBlockType(), ib), blockGP.getX(),blockGP.getY(),blockGP.getBlockHorizontalSize(), blockGP.getBlockVerticalSize(), null);
 		}
 	}
 	//public void

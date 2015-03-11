@@ -26,6 +26,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -89,7 +90,7 @@ public class RoadEditorView extends JPanel {
 	
 	private JPanel gridPanel;
 	
-	private JLabel mapNameLabel = new JLabel("");
+	private JLabel mapNameLabel = new JLabel("", SwingConstants.CENTER);
 	
 	/**
 	 * Instantiates a new road editor view.
@@ -107,6 +108,7 @@ public class RoadEditorView extends JPanel {
 	    menuBar.add(fileMenu);
 	    JMenu editMenu = new JMenu("Edit");
 	    menuBar.add(editMenu);
+	    menuBar.add(Box.createRigidArea(new Dimension(50,0)));
 	    menuBar.add(this.mapNameLabel);
 	    
 	    this. frame.setJMenuBar(menuBar);
@@ -120,6 +122,7 @@ public class RoadEditorView extends JPanel {
 	    JMenuItem exit = new JMenuItem("Exit");
 	    exit.addActionListener(new ExitListener());
         JMenuItem saveMap = new JMenuItem("Save");
+        saveMap.addActionListener(new SaveListener());
         JMenuItem deleteMap = new JMenuItem("Delete");
         deleteMap.addActionListener(new DeleteListener());
         JMenuItem clearMap = new JMenuItem("Clear");
@@ -278,22 +281,50 @@ public class RoadEditorView extends JPanel {
 				}
 				if (temp>-1){
 					mapNameList.remove(temp);
+					FileRW.writeObject(mapNameList, MainConfig.SAVES_FILE_PATH);
 					System.out.println("Road Editor: Delete operation. "+mapName+" has been deleted successfully");
-				}
+					
+					}
 				else{
 					System.out.println("Road Editor: Delete operation. Unsuccessfull, map doesn't exist in saves");
 				}
 				
+				
 			}else {
 				System.out.println("Road Editor: Delete operation. Unsuccessfull, map is not loaded or saves list is empty");
 			}
-			
+			mapName=null;
 			frame.removeView();
-			frame.validate();
 			JComponent component = frame.getJMenuBar();
 			component.removeAll();
+			frame.validate();
 			frame.addView(new RoadEditorView(frame));
 		}	
+	}
+	
+	public class SaveListener implements ActionListener{
+
+		@SuppressWarnings("unchecked")
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			ArrayList <String> mapNameList = (ArrayList<String>) FileRW.readObject(MainConfig.SAVES_FILE_PATH);
+			if (!mapName.isEmpty()){
+				int isEdition = -1;
+				for(String mapNameTemp: mapNameList){
+					if(mapNameTemp.equals(mapName)){
+						isEdition = 1;
+					}
+				}
+				if (isEdition<0){
+					mapNameList.add(mapName);
+					FileRW.writeObject(mapNameList, MainConfig.SAVES_FILE_PATH);
+				}
+				
+				//TODO Validation map before saving and building the paths if it is valide
+				FileRW.writeObject(gridBuilder, MainConfig.GRID_PATH+"/"+mapName+MainConfig.GRID_SUFFIX);
+			}
+		}
+		
 	}
 	
 	/**

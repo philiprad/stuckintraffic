@@ -229,7 +229,7 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 		for(int i=0;i<buttons.length;i++){
 			for (int j=0;j<buttons[0].length;j++){
 				if (button == buttons[i][j] && this.editorState.getState()==RoadEditorConfig.DELETE_STATE){
-					if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100){
+					if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100 && roadGrid[i][j]!=-200 && roadGrid[i][j]!=-300){
 						
 						((JButton)buttons[i][j]).setIcon(null);//new GridButton(i,j,GraphicsConfig.BLOCK_SIDE_SIZE);
 						((JButton)buttons[i][j]).setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE));

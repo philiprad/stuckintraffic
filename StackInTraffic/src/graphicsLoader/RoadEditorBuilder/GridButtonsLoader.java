@@ -43,7 +43,7 @@ public class GridButtonsLoader {
 		for(int i=0;i<roadGrid.length;i++){
 			
 			for (int j=0;j<roadGrid[0].length;j++){
-				if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100){
+				if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100 && roadGrid[i][j]!=-200 && roadGrid[i][j]!=-300){
 						if(roadGrid[i][j]>30){
 							tempButton = new JButton();//new GridButton(i,j,GraphicsConfig.BLOCK_SIDE_SIZE);
 							ImageIcon background = new ImageIcon( ImagesSelector.selectRoadImageSc(roadGrid[i][j], ib)); 
