@@ -107,9 +107,16 @@ public class SimulationView extends JPanel{
 		JMenuBar menubar = new JMenuBar();
 	    this.add(menubar, BorderLayout.NORTH);
 	    
+	    /**
+	     * TODO resize images
+	     */
 	    ImageIcon playImage = new ImageIcon("./images/play.png");
 		ImageIcon stopImage = new ImageIcon("./images/stop.png");
 		ImageIcon pauseImage = new ImageIcon("./images/pause.png");
+		
+		/**
+		 * TODO get refresh image from Max 
+		 */
 		ImageIcon refreshImage = new ImageIcon("./images/refresh.jpg");
 		
 		playButton = new JButton(playImage);
