@@ -42,7 +42,7 @@ public class MapValidator {
 						case RoadConfig.HORIZONTAL_DOUBLE_BLOCK : {
 							System.out.println("horizontal double block");
 	
-							if((i>0 && i+5< map.length && map[i-2][j]==0 && map[i+2][j]!=0 && map[i+4][j]!=0) || (i==0 && map[i+2][j]!=0 && map[i+4][j]!=0)){
+							if((i>0 && i+5< map.length) && (map[i-1][j]==0 && map[i+2][j]!=0 && map[i+4][j]!=0) || (i==0 && map[i+2][j]!=0 && map[i+4][j]!=0)){
 								System.out.print("\n block i: " + i + " j:" + j + " converted from: " + map[i][j]);
 								map[i][j]=RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK;
 								System.out.println(" to: " + map[i][j]);
@@ -95,9 +95,9 @@ public class MapValidator {
 						}
 						case RoadConfig.VERTICAL_DOUBLE_BLOCK: {
 							System.out.println("vertical double block");
-							if((j>0 && j+5< map.length && map[i][j-2]==0 && map[i][j+2]!=0 && map[i][j+4]!=0) || (j==0 && map[i][j+2]!=0 && map[i][j+4]!=0)){
+							if((j>0 && j+5< map.length) && (map[i][j-1]==0 && map[i][j+2]!=0 && map[i][j+4]!=0) || (j==0 && map[i][j+2]!=0 && map[i][j+4]!=0)){
 								System.out.print("\n block i: " + i + " j:" + j + " converted from: " + map[i][j]);
-								map[i][j]=RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK;
+								map[i][j]=RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK;	
 								System.out.println(" to: " + map[i][j]);
 							}
 							if(((j+2<map.length && map[i][j+2]==0) || (j+2==map.length)) && (j>0 && j-4 >= 0) && map[i][j-2]!=0 && map[i][j-4]!=0){
@@ -152,7 +152,8 @@ public class MapValidator {
 						}
 						
 						case RoadConfig.INTERSECTION_DOUBLE_BLOCK: {
-							if(map[i-2][j]!=RoadConfig.HORIZONTAL_DOUBLE_BLOCK || map[i+2][j]!=RoadConfig.HORIZONTAL_DOUBLE_BLOCK || map[i][j+2]!=RoadConfig.VERTICAL_DOUBLE_BLOCK || map[i][j-2]!=RoadConfig.VERTICAL_DOUBLE_BLOCK){
+							if((map[i-2][j]!=RoadConfig.HORIZONTAL_DOUBLE_BLOCK && map[i-2][j]!=RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK) || (map[i+2][j]!=RoadConfig.HORIZONTAL_DOUBLE_BLOCK && map[i+2][j]!=RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK) || (map[i][j+2]!=RoadConfig.VERTICAL_DOUBLE_BLOCK && map[i][j+2]!=RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK) || (map[i][j-2]!=RoadConfig.VERTICAL_DOUBLE_BLOCK && map[i][j-2]!=RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK)){
+								System.out.println("map invalid on intersection double block");
 								return false;
 							}
 							break;
