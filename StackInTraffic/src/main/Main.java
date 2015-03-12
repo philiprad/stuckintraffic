@@ -34,7 +34,7 @@ public class Main {
 	 */
 	@SuppressWarnings("unchecked")
 	public static void main (String[] args){
-		String rdName = "TIntersectionTest";
+		String rdName = "Map1";
 		AppDirBuilder.build();
 		//RoadBuilder rb = new RoadBuilder("test", 150 , 0);
 	//	rb.buildRoad();

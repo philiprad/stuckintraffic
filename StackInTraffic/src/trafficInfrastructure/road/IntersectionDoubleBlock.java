@@ -44,11 +44,12 @@ public class IntersectionDoubleBlock {
 					int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 					int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 					System.out.println(xp + " "+ yp);
-					arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_TO_TOP_DIRECTION,(int) theta ));
+					arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_1_TO_TOP_1_DIRECTION,(int) theta ));
 				}
 			return arrPathPoints;
 		}
 		
+				
 		/**
 		 * Gets the left to top1 to2 lane path.
 		 *
@@ -64,10 +65,10 @@ public class IntersectionDoubleBlock {
 
 			ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 			
-				for (int i = 0; i < GraphicsConfig.BLOCK_SIDE_SIZE/2; i++){
-					arrPathPoints.add(new PathPoint(blockType, x+i, y+GraphicsConfig.CAR_POSITION_DOUBLE_LANE, 1 , -1));
+				for (int i = 0; i < GraphicsConfig.DOUBLE_LANE_BLOCK_2_LANE_POSITION; i++){
+					arrPathPoints.add(new PathPoint(blockType, x+i, y+GraphicsConfig.CAR_POSITION_DOUBLE_LANE, 1 , 90));
 				}
-			 
+				x+=GraphicsConfig.CAR_INVERSE_POSITION_DOUBLE_LANE;
 				float theta = 90;
 				float radius = GraphicsConfig.CAR_POSITION_DOUBLE_LANE;
 				System.out.println("Radius" + radius);
@@ -97,7 +98,7 @@ public class IntersectionDoubleBlock {
 		 *            the block type
 		 * @return the left to bottom path
 		 */
-		public static ArrayList<PathPoint> getLeftToBottomPath(int x, int y, short blockType){
+	/*	public static ArrayList<PathPoint> getLeft2To1BottomPath(int x, int y, short blockType){
 			ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 			y+=GraphicsConfig.BLOCK_SIDE_SIZE;
 			float theta = 270;
@@ -113,10 +114,10 @@ public class IntersectionDoubleBlock {
 				int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 				int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 				System.out.println(xp + " "+ yp);
-				arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_TO_BOTTOM_DIRECTION ,(int) theta ));
+				arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_2_TO_BOTTOM_1_DIRECTION,(int) theta ));
 			}
 		return arrPathPoints;
-		}
+		}*/
 		
 		/**
 		 * Gets the right to top path.
@@ -129,7 +130,7 @@ public class IntersectionDoubleBlock {
 		 *            the block type
 		 * @return the right to top path
 		 */
-		public static ArrayList<PathPoint> getRightToTopPath(int x, int y, short blockType){
+		/*public static ArrayList<PathPoint> getRightToTopPath(int x, int y, short blockType){
 			ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 			x+=GraphicsConfig.BLOCK_SIDE_SIZE;
 			
@@ -150,7 +151,7 @@ public class IntersectionDoubleBlock {
 				arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.RIGHT_TO_TOP_DIRECTION ,(int) theta ));
 			}
 		return arrPathPoints;
-		}
+		}*/
 		
 		/**
 		 * Gets the right to bottom path.
@@ -163,7 +164,7 @@ public class IntersectionDoubleBlock {
 		 *            the block type
 		 * @return the right to bottom path
 		 */
-		public static ArrayList<PathPoint> getRightToBottomPath(int x, int y, short blockType){
+		/*public static ArrayList<PathPoint> getRightToBottomPath(int x, int y, short blockType){
 			ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 			y+=GraphicsConfig.BLOCK_SIDE_SIZE;
 			x+=GraphicsConfig.BLOCK_SIDE_SIZE;
@@ -184,7 +185,7 @@ public class IntersectionDoubleBlock {
 			}
 		return arrPathPoints;
 		}
-		
+		*/
 		/**
 		 * Gets the top to right path.
 		 *
@@ -196,7 +197,7 @@ public class IntersectionDoubleBlock {
 		 *            the block type
 		 * @return the top to right path
 		 */
-		public static ArrayList<PathPoint> getTopToRightPath(int x, int y, short blockType){
+		/*public static ArrayList<PathPoint> getTopToRightPath(int x, int y, short blockType){
 			ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 			x+=GraphicsConfig.BLOCK_SIDE_SIZE;
 			
@@ -218,7 +219,7 @@ public class IntersectionDoubleBlock {
 			}
 		return arrPathPoints;
 		}
-		
+		*/
 		/**
 		 * Gets the top to left path.
 		 *
@@ -230,7 +231,7 @@ public class IntersectionDoubleBlock {
 		 *            the block type
 		 * @return the top to left path
 		 */
-		public static ArrayList<PathPoint> getTopToLeftPath(int x, int y, short blockType){
+	/*	public static ArrayList<PathPoint> getTopToLeftPath(int x, int y, short blockType){
 			ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 			float theta = 0;
 			int radius = GraphicsConfig.CAR_INVERSE_POSITION;
@@ -248,7 +249,7 @@ public class IntersectionDoubleBlock {
 				arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.TOP_TO_LEFT_DIRECTION ,(int) theta ));
 			}
 		return arrPathPoints;
-		}
+		}*/
 		
 		/**
 		 * Gets the bottom to right path.
@@ -261,7 +262,7 @@ public class IntersectionDoubleBlock {
 		 *            the block type
 		 * @return the bottom to right path
 		 */
-		public static ArrayList<PathPoint> getBottomToRightPath(int x, int y, short blockType){
+		/*public static ArrayList<PathPoint> getBottomToRightPath(int x, int y, short blockType){
 			ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 			x+=GraphicsConfig.BLOCK_SIDE_SIZE;
 			y+=GraphicsConfig.BLOCK_SIDE_SIZE;
@@ -282,7 +283,7 @@ public class IntersectionDoubleBlock {
 				arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.BOTTOM_TO_RIGHT_DIRECTION ,(int) theta ));
 			}
 		return arrPathPoints;
-		}
+		}*/
 		
 		/**
 		 * Gets the bottom to left path.
@@ -295,7 +296,7 @@ public class IntersectionDoubleBlock {
 		 *            the block type
 		 * @return the bottom to left path
 		 */
-		public static ArrayList<PathPoint> getBottomToLeftPath(int x, int y, short blockType){
+		/*public static ArrayList<PathPoint> getBottomToLeftPath(int x, int y, short blockType){
 			ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 			y+=GraphicsConfig.BLOCK_SIDE_SIZE;
 			float theta = 0;
@@ -314,7 +315,7 @@ public class IntersectionDoubleBlock {
 				arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.BOTTOM_TO_LEFT_DIRECTION ,(int) theta ));
 			}
 		return arrPathPoints;
-		}
+		}*/
 	
 
 }

@@ -101,12 +101,6 @@ public class RoadConfig {
 	public static final short BOTTOM_TO_RIGHT_DIRECTION = 9;
 	
 	/** The Constant LEFT_TO_BOTTOM_DIRECTION. */
-	public static final short LEFT_1_TO_BOTTOM_1_DIRECTION = 30;
-	
-	/** The Constant LEFT_1_TO_BOTTOM_2_DIRECTION. */
-	public static final short LEFT_1_TO_BOTTOM_2_DIRECTION = 31;
-	
-	/** The Constant LEFT_TO_BOTTOM_DIRECTION. */
 	public static final short LEFT_2_TO_BOTTOM_1_DIRECTION = 32;
 	
 	/** The Constant LEFT_2_TO_BOTTOM_2_DIRECTION. */
@@ -118,11 +112,41 @@ public class RoadConfig {
 	/** The Constant LEFT_1_TO_TOP_2_DIRECTION. */
 	public static final short LEFT_1_TO_TOP_2_DIRECTION = 35;
 	
-	/** The Constant LEFT_2_TO_TOP_1_DIRECTION. */
-	public static final short LEFT_2_TO_TOP_1_DIRECTION = 36;
+	/** The Constant LEFT_TO_BOTTOM_DIRECTION. */
+	public static final short RIGHT_2_TO_TOP_1_DIRECTION = 36;
 	
-	/** The Constant LEFT_2_TO_TOP_2_DIRECTION. */
-	public static final short LEFT_2_TO_TOP_2_DIRECTION = 37;
+	/** The Constant LEFT_2_TO_BOTTOM_2_DIRECTION. */
+	public static final short RIGHT_2_TO_TOP_2_DIRECTION = 37;
+	
+	/** The Constant LEFT_TO_TOP_DIRECTION. */
+	public static final short RIGHT_1_TO_BOTTOM_1_DIRECTION = 38;
+	
+	/** The Constant LEFT_1_TO_TOP_2_DIRECTION. */
+	public static final short RIGHT_1_TO_BOTTOM_2_DIRECTION = 39;
+	
+	/** The Constant LEFT_TO_BOTTOM_DIRECTION. */
+	public static final short TOP_2_TO_LEFT_1_DIRECTION = 40;
+	
+	/** The Constant LEFT_2_TO_BOTTOM_2_DIRECTION. */
+	public static final short TOP_2_TO_LEFT_2_DIRECTION = 41;
+	
+	/** The Constant LEFT_TO_TOP_DIRECTION. */
+	public static final short TOP_1_TO_RIGHT_1_DIRECTION = 42;
+	
+	/** The Constant LEFT_1_TO_TOP_2_DIRECTION. */
+	public static final short TOP_1_TO_RIGHT_2_DIRECTION = 43;
+	
+	/** The Constant LEFT_TO_BOTTOM_DIRECTION. */
+	public static final short BOTTOM_2_TO_RIGHT_1_DIRECTION = 44;
+	
+	/** The Constant LEFT_2_TO_BOTTOM_2_DIRECTION. */
+	public static final short BOTTOM_2_TO_RIGHT_2_DIRECTION = 45;
+	
+	/** The Constant LEFT_TO_TOP_DIRECTION. */
+	public static final short BOTTOM_1_TO_LEFT_1_DIRECTION = 46;
+	
+	/** The Constant LEFT_1_TO_TOP_2_DIRECTION. */
+	public static final short BOTTOM_1_TO_LEFT_2_DIRECTION = 47;
 	
 	
 	

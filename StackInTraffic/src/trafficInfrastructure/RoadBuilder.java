@@ -14,6 +14,7 @@ import trafficInfrastructure.road.BlockGraphicPoint;
 import trafficInfrastructure.road.HorizontalBlock;
 import trafficInfrastructure.road.HorizontalDoubleBlock;
 import trafficInfrastructure.road.IntersectionBlock;
+import trafficInfrastructure.road.IntersectionDoubleBlock;
 import trafficInfrastructure.road.RoadConfig;
 import trafficInfrastructure.road.VerticalBlock;
 import trafficInfrastructure.road.VerticalDoubleBlock;
@@ -720,6 +721,67 @@ public class RoadBuilder {
 							arrPathPoint.addAll(IntersectionBlock.getBottomToLeftPath(x*GraphicsConfig.BLOCK_SIDE_SIZE,y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid()[x] [y]));
 							x--;
 					}
+			 	}
+			 }
+			
+			 	else if (this.roadGrid.getGrid() [x][y] == RoadConfig.INTERSECTION_DOUBLE_BLOCK){
+					if (viop.isVisited(x, y)){
+						break;
+					}
+					else {
+						viop.addIntersection(x, y);
+					}
+					System.out.println("Double intersection detected");
+					if (this.roadGrid.getGrid()[previousX][previousY] == RoadConfig.HORIZONTAL_DOUBLE_BLOCK || this.roadGrid.getGrid()[previousX][previousY] == RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK || this.roadGrid.getGrid()[previousX][previousY] == RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK){
+						previousX = x;
+						previousY = y;
+						
+						if (direction == 1){
+							
+							/*ArrayList<PathPoint> arr = new ArrayList<PathPoint>();
+							arr.addAll(arrPathPoint);
+							arr.addAll(IntersectionBlock.getLeftToBottomPath(x*GraphicsConfig.BLOCK_SIDE_SIZE,y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y]));
+							this.discoverPaths(arr,viop, 1, x, y+1, previousX , previousY);*/
+							arrPathPoint.addAll(IntersectionDoubleBlock.getLeftToTop1To2LanePath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y]));
+							y-=2;
+							direction=-1;
+							
+							
+							
+						}
+						
+						else {
+							
+							break;
+							
+							/*ArrayList<PathPoint> arr = new ArrayList<PathPoint>();
+							arr.addAll(arrPathPoint);
+							arr.addAll(IntersectionBlock.getRightToBottomPath(x*GraphicsConfig.BLOCK_SIDE_SIZE,y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid()[x] [y]));
+							this.discoverPaths(arr,viop, 1, x, y+1, previousX , previousY);
+							arrPathPoint.addAll(HorizontalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, RoadConfig.HORIZONTAL_BLOCK));
+							x--;
+							*/
+							
+						}
+						
+						
+						
+					} else
+					
+					if (this.roadGrid.getGrid()[previousX][previousY] == RoadConfig.VERTICAL_DOUBLE_BLOCK || this.roadGrid.getGrid()[previousX][previousY] == RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK || this.roadGrid.getGrid()[previousX][previousY] == RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK){
+						break;
+						/*
+						previousX = x;
+						previousY = y;
+						
+						if (direction == -1){
+							ArrayList<PathPoint> arr1 = new ArrayList<PathPoint>();
+							arr1.addAll(arrPathPoint);
+							arr1.addAll(IntersectionBlock.getBottomToRightPath(x*GraphicsConfig.BLOCK_SIDE_SIZE,y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid()[x] [y]));
+							this.discoverPaths(arr1, viop, 1, x+1, y, previousX , previousY);
+							arrPathPoint.addAll(IntersectionBlock.getBottomToLeftPath(x*GraphicsConfig.BLOCK_SIDE_SIZE,y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid()[x] [y]));
+							x--;
+					}*/
 			 	}
 			 }
 		}

@@ -39,6 +39,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
+import main.Main;
 import main.MainConfig;
 import trafficInfrastructure.RoadBuilder;
 import trafficInfrastructure.grid.GridBuilder;
@@ -120,6 +121,8 @@ public class RoadEditorView extends JPanel {
 	    openMap.addActionListener(new OpenListener());
 	    JMenuItem exitMainMenu = new JMenuItem("Main Menu");
 	    exitMainMenu.addActionListener(new MainMenuListener());
+	    JMenuItem openSimulation = new JMenuItem("Simulation");
+	    openSimulation.addActionListener(new SimulationListener());
 	    JMenuItem exit = new JMenuItem("Exit");
 	    exit.addActionListener(new ExitListener());
         JMenuItem saveMap = new JMenuItem("Save");
@@ -133,6 +136,7 @@ public class RoadEditorView extends JPanel {
         fileMenu.add(openMap);
         fileMenu.addSeparator();
         fileMenu.add(exitMainMenu);
+        fileMenu.add(openSimulation);
         fileMenu.add(exit);
         editMenu.add(saveMap);
         editMenu.add(clearMap);
@@ -242,6 +246,15 @@ public class RoadEditorView extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			MapCreateView createMap = new MapCreateView(frame, RoadEditorView.this,RoadEditorView.this.getGridBuilder());
 			
+		}
+		
+	}
+	
+	public class SimulationListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Main.main(null);
 		}
 		
 	}

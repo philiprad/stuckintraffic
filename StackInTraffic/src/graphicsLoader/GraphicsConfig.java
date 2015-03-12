@@ -217,6 +217,9 @@ public class GraphicsConfig {
 	/** The Constant CAR_POSITION_DOUBLE_LANE. */
 	public static final int CAR_POSITION_DOUBLE_LANE = BLOCK_SIDE_SIZE*40/100;
 	
+	public static final int DOUBLE_LANE_BLOCK_2_LANE_POSITION = BLOCK_SIDE_SIZE*40/100+BLOCK_SIDE_SIZE*37/100;
+	
+	public static final int DISTANCE_BETWEEN_LANES = BLOCK_SIDE_SIZE*37/100;
 	/** The Constant CAR_INVERSE_POSITION. */
 	public static final int CAR_INVERSE_POSITION_DOUBLE_LANE = BLOCK_SIDE_SIZE*2-(CAR_POSITION+BLOCK_SIDE_SIZE*2*5/100);
 	

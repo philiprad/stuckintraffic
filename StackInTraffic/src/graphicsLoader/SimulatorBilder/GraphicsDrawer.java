@@ -197,7 +197,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 			}
 		
 		}
-		this.carGridPositionUpdate();
+		//this.carGridPositionUpdate();
 		
 		repaint();
 	}
