@@ -118,34 +118,34 @@ public class MapValidator {
 							break;
 						}
 						case RoadConfig.INTERSECTION_BLOCK: {
-							if(map[i-1][j]!=RoadConfig.HORIZONTAL_BLOCK || map[i+1][j]!=RoadConfig.HORIZONTAL_BLOCK || map[i][j+1]!=RoadConfig.VERTICAL_BLOCK || map[i][j-1]!=RoadConfig.VERTICAL_BLOCK){
+							if((map[i-1][j]!=RoadConfig.HORIZONTAL_BLOCK && map[i-1][j]!=RoadConfig.HORIZONTAL_ENTER_BLOCK) || (map[i+1][j]!=RoadConfig.HORIZONTAL_BLOCK && map[i+1][j]!=RoadConfig.HORIZONTAL_EXIT_BLOCK) || (map[i][j+1]!=RoadConfig.VERTICAL_BLOCK && map[i][j+1]!=RoadConfig.VERTICAL_EXIT_BLOCK) || (map[i][j-1]!=RoadConfig.VERTICAL_BLOCK && map[i][j-1]!=RoadConfig.VERTICAL_ENTER_BLOCK)){
 								return false;
 							}
 							break;
 						}
 						case RoadConfig.INTERSECTION_UP_BLOCK: {
-							if(map[i-1][j]!=RoadConfig.HORIZONTAL_BLOCK || map[i+1][j]!=RoadConfig.HORIZONTAL_BLOCK || map[i][j-1]!=RoadConfig.VERTICAL_BLOCK ){
+							if((map[i-1][j]!=RoadConfig.HORIZONTAL_BLOCK && map[i-1][j]!=RoadConfig.HORIZONTAL_ENTER_BLOCK) || (map[i+1][j]!=RoadConfig.HORIZONTAL_BLOCK && map[i+1][j]!=RoadConfig.HORIZONTAL_EXIT_BLOCK) || (map[i][j-1]!=RoadConfig.VERTICAL_BLOCK && map[i][j-1]!=RoadConfig.VERTICAL_ENTER_BLOCK)){
 								return false;
 							}
 							break;
 						}
 						
 						case RoadConfig.INTERSECTION_DOWN_BLOCK: {
-							if(map[i-1][j]!=RoadConfig.HORIZONTAL_BLOCK || map[i+1][j]!=RoadConfig.HORIZONTAL_BLOCK || map[i][j+1]!=RoadConfig.VERTICAL_BLOCK ){
+							if((map[i-1][j]!=RoadConfig.HORIZONTAL_BLOCK && map[i-1][j]!=RoadConfig.HORIZONTAL_ENTER_BLOCK) || (map[i+1][j]!=RoadConfig.HORIZONTAL_BLOCK && map[i+1][j]!=RoadConfig.HORIZONTAL_EXIT_BLOCK)|| (map[i][j+1]!=RoadConfig.VERTICAL_BLOCK && map[i][j+1]!=RoadConfig.VERTICAL_EXIT_BLOCK)){
 								return false;
 							}
 							break;
 						}
 						
 						case RoadConfig.INTERSECTION_LEFT_BLOCK: {
-							if(map[i-1][j]!=RoadConfig.HORIZONTAL_BLOCK || map[i][j+1]!=RoadConfig.VERTICAL_BLOCK || map[i][j-1]!=RoadConfig.VERTICAL_BLOCK){
+							if((map[i-1][j]!=RoadConfig.HORIZONTAL_BLOCK && map[i-1][j]!=RoadConfig.HORIZONTAL_ENTER_BLOCK) || (map[i][j+1]!=RoadConfig.VERTICAL_BLOCK && map[i][j+1]!=RoadConfig.VERTICAL_EXIT_BLOCK) || (map[i][j-1]!=RoadConfig.VERTICAL_BLOCK && map[i][j-1]!=RoadConfig.VERTICAL_ENTER_BLOCK)){
 								return false;
 							}
 							break;
 						}
 						
 						case RoadConfig.INTERSECTION_RIGHT_BLOCK: {
-							if(map[i+1][j]!=RoadConfig.HORIZONTAL_BLOCK || map[i][j+1]!=RoadConfig.VERTICAL_BLOCK || map[i][j-1]!=RoadConfig.VERTICAL_BLOCK){
+							if((map[i+1][j]!=RoadConfig.HORIZONTAL_BLOCK && map[i+1][j]!=RoadConfig.HORIZONTAL_EXIT_BLOCK) || (map[i][j+1]!=RoadConfig.VERTICAL_BLOCK && map[i][j+1]!=RoadConfig.VERTICAL_EXIT_BLOCK) || (map[i][j-1]!=RoadConfig.VERTICAL_BLOCK && map[i][j-1]!=RoadConfig.VERTICAL_BLOCK)){
 								return false;
 							}
 							break;
