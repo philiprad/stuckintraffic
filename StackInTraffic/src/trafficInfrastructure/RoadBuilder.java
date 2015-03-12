@@ -737,22 +737,25 @@ public class RoadBuilder {
 						previousY = y;
 						
 						if (direction == 1){
-							
+							break;
 							/*ArrayList<PathPoint> arr = new ArrayList<PathPoint>();
 							arr.addAll(arrPathPoint);
 							arr.addAll(IntersectionBlock.getLeftToBottomPath(x*GraphicsConfig.BLOCK_SIDE_SIZE,y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y]));
-							this.discoverPaths(arr,viop, 1, x, y+1, previousX , previousY);*/
-							arrPathPoint.addAll(IntersectionDoubleBlock.getLeftToTop1To2LanePath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y]));
+							this.discoverPaths(arr,viop, 1, x, y+1, previousX , previousY);
+							arrPathPoint.addAll(IntersectionDoubleBlock.getLeftToTop1To1LanePath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y]));
 							y-=2;
 							direction=-1;
+							*/
 							
-							
+							/*arrPathPoint.addAll(IntersectionDoubleBlock.getLeft2To1BottomPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y]));
+							y+=2;
+							direction=1;*/
 							
 						}
 						
 						else {
 							
-							break;
+					
 							
 							/*ArrayList<PathPoint> arr = new ArrayList<PathPoint>();
 							arr.addAll(arrPathPoint);
@@ -761,7 +764,10 @@ public class RoadBuilder {
 							arrPathPoint.addAll(HorizontalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, RoadConfig.HORIZONTAL_BLOCK));
 							x--;
 							*/
-							
+						    break;
+							/*arrPathPoint.addAll(IntersectionDoubleBlock.getRight1To2BottomPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y]));
+							y+=2;
+							direction=1;*/
 						}
 						
 						
@@ -769,7 +775,12 @@ public class RoadBuilder {
 					} else
 					
 					if (this.roadGrid.getGrid()[previousX][previousY] == RoadConfig.VERTICAL_DOUBLE_BLOCK || this.roadGrid.getGrid()[previousX][previousY] == RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK || this.roadGrid.getGrid()[previousX][previousY] == RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK){
-						break;
+						if (direction==1){
+							arrPathPoint.addAll(IntersectionDoubleBlock.getTop1To2RightPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y]));
+							x+=2;
+							direction=1;
+						}
+						//break;
 						/*
 						previousX = x;
 						previousY = y;

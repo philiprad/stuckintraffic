@@ -70,7 +70,7 @@ public class VerticalDoubleBlock {
 		
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		for (int i = 0; i < GraphicsConfig.BLOCK_SIDE_SIZE*2; i++){
-			arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.DOUBLE_LANE_BLOCK_2_LANE_POSITION , y+GraphicsConfig.BLOCK_SIDE_SIZE*2-i, -1 ,-1));
+			arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_POSITION_DOUBLE_LANE, y+GraphicsConfig.BLOCK_SIDE_SIZE*2-i, -1 ,-1));
 		}
 		return arrPathPoints;
 	}
