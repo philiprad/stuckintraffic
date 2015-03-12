@@ -328,6 +328,8 @@ public class RoadEditorView extends JPanel {
 					FileRW.writeObject(gridBuilder, MainConfig.GRID_PATH+"/"+mapName+MainConfig.GRID_SUFFIX);
 					RoadBuilder roadBuilder = new RoadBuilder(mapName, gridBuilder);
 					roadBuilder.buildRoad();
+					new AlertMessageView("Map passed validation and was saved");
+					MapValidator.deleteEndPoints(gridBuilder);
 					for (int j=0; j<gridBuilder.getGrid().length; j++){
 						for (int i=0; i<gridBuilder.getGrid()[0].length; i++){
 							System.out.print(gridBuilder.getGrid()[j][i]+"\t");
@@ -337,6 +339,8 @@ public class RoadEditorView extends JPanel {
 				}
 			} else {
 				System.out.println("Map is Not Valid");
+				new AlertMessageView("Map didn't pass validation and wasn't saved");
+				MapValidator.deleteEndPoints(gridBuilder);
 			}
 		}
 	}

@@ -20,7 +20,7 @@ public class OSDirectoryFinder {
 	 */
 	public static String getHomeDir(){
 		String os = System.getProperty("os.name").toLowerCase();
-		
+		//TODO OS FOLDERS
 		if (os.indexOf("win")>=0){
 			return "./";
 		}
