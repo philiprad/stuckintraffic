@@ -162,6 +162,14 @@ public class MapValidator {
 						 * TODO intersection mixed block map validation
 						 */
 						case RoadConfig.INTERSECTION_MIXED_BLOCK: {
+							
+							break;
+						}
+						/**
+						 * TODO round about block map validation
+						 */
+						case RoadConfig.ROUND_ABOUT_BLOCK:{
+							
 							break;
 						}
 					}
