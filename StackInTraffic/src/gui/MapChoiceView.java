@@ -150,6 +150,8 @@ public class MapChoiceView extends JFrame implements ActionListener{
 					MapChoiceView.this.setVisible(false);
 					MapChoiceView.this.dispose();
 					
+				}else{
+					
 				}
 				
 			}

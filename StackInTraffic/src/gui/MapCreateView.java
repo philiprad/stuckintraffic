@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -16,7 +17,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
+import main.MainConfig;
 import trafficInfrastructure.grid.GridBuilder;
+import util.FileRW;
 
 public class MapCreateView extends JFrame implements ActionListener{
 	
@@ -159,21 +162,40 @@ public class MapCreateView extends JFrame implements ActionListener{
 		/* (non-Javadoc)
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
+		@SuppressWarnings("unchecked")
 		public void actionPerformed(ActionEvent arg0){
 			
 			if (!nameArea.getText().equals("")){
-				int gridWidth = (int) list1.getSelectedItem();
-				int gridHeight = (int) list2.getSelectedItem();
-				gridBuilder = new GridBuilder(gridWidth, gridHeight);
-				((RoadEditorView) panel).setGridBuilder(gridBuilder);
-				System.out.println("grid width" + gridBuilder.getGrid().length);
-				System.out.println("grid heigth"+ gridBuilder.getGrid()[0].length);
-				panel.removeAll();
-				((RoadEditorView) panel).updateEditorState();
-				((RoadEditorView) panel).buildGrid();//(gridBuilder);
-				((RoadEditorView) panel).setMapName(nameArea.getText());
-				MapCreateView.this.setVisible(false);
-				MapCreateView.this.dispose();
+				boolean isExist = false;
+				ArrayList <String> nameList = (ArrayList<String>) FileRW.readObject(MainConfig.SAVES_FILE_PATH);
+				if(!nameList.isEmpty()){
+					for(int i=0; i<nameList.size();i++){
+						if(nameArea.getText().equals(nameList.get(i))){
+							isExist=true;
+						}
+					}
+				}
+				if(!isExist){
+					int gridWidth = (int) list1.getSelectedItem();
+					int gridHeight = (int) list2.getSelectedItem();
+					gridBuilder = new GridBuilder(gridWidth, gridHeight);
+					((RoadEditorView) panel).setGridBuilder(gridBuilder);
+					System.out.println("grid width" + gridBuilder.getGrid().length);
+					System.out.println("grid heigth"+ gridBuilder.getGrid()[0].length);
+					panel.removeAll();
+					((RoadEditorView) panel).updateEditorState();
+					((RoadEditorView) panel).buildGrid();//(gridBuilder);
+					((RoadEditorView) panel).setMapName(nameArea.getText());
+					MapCreateView.this.setVisible(false);
+					MapCreateView.this.dispose();
+				}
+				else {
+					@SuppressWarnings("unused")
+					AlertMessageView alert = new AlertMessageView("The map with this name exists already");
+				}
+			} else {
+				@SuppressWarnings("unused")
+				AlertMessageView alert = new AlertMessageView("Please enter the name of your new map");
 			}
 			
 		}
