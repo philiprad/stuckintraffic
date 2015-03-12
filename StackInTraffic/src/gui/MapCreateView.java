@@ -73,7 +73,7 @@ public class MapCreateView extends JFrame implements ActionListener{
         	labelPanel.add(nameArea);
         	
         	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        	Integer [] intList = {8,10,12,14,16,18,20,22,24};
+        	Integer [] intList = {10,12,14,16,18,20,22,24};
         	JLabel gridWidth = new JLabel("Grid Width",SwingConstants.CENTER);
         	JLabel gridHeight = new JLabel("Grid Height",SwingConstants.CENTER);
         	list1 = new JComboBox<Integer>(intList);
