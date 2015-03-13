@@ -49,6 +49,8 @@ public class RoadConfig {
 	/** The Constant ROUND_ABOUT_BLOCK. */
 	public static final short ROUND_ABOUT_BLOCK = 31;
 	
+	public static final short ROUND_ABOUT_ENTER = -200;
+	
 	/** The Constant HORIZONTAL_BLOCK. */
 	public static final short HORIZONTAL_BLOCK = 2;
 	
