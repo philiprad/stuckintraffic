@@ -34,7 +34,7 @@ public class Car {
 	private int counter;
 	
 	/** The speed. */
-	private int speed = 10;
+	private int speed = 5;
 	
 	/** The path end. */
 	private short pathEnd = -1;
