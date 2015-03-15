@@ -203,7 +203,8 @@ public class MapValidator {
 						 * TODO round about block map validation
 						 */
 						case RoadConfig.ROUND_ABOUT_BLOCK:{
-							if((i<1 && j<1 && i+1<=map.length ) ||(map[i-1][j+1]!=RoadConfig.HORIZONTAL_BLOCK && map[i-1][j+1]!=RoadConfig.HORIZONTAL_ENTER_BLOCK) || (map[i+3][j+1]!=RoadConfig.HORIZONTAL_BLOCK && map[i+3][j+1]!=RoadConfig.HORIZONTAL_EXIT_BLOCK) || (map[i+1][j-1]!=RoadConfig.VERTICAL_BLOCK && map[i+1][j-1]!=RoadConfig.VERTICAL_ENTER_BLOCK) || (map[i+1][j+3]!=RoadConfig.VERTICAL_BLOCK && map[i+1][j+3]!=RoadConfig.VERTICAL_EXIT_BLOCK)){
+							if((i<1 && j<1 && i+1<=map.length ) ||(map[i-1][j+1]!=RoadConfig.HORIZONTAL_BLOCK && map[i-1][j+1]!=RoadConfig.HORIZONTAL_ENTER_BLOCK) || (map[i+3][j+1]!=RoadConfig.HORIZONTAL_BLOCK && map[i+3][j+1]!=RoadConfig.HORIZONTAL_EXIT_BLOCK) || (map[i+1][j-1]!=RoadConfig.VERTICAL_BLOCK && map[i+1][j-1]!=RoadConfig.VERTICAL_ENTER_BLOCK) || (map[i+1][j+3]!=RoadConfig.VERTICAL_BLOCK && map[i+1][j+3]!=RoadConfig.VERTICAL_EXIT_BLOCK) || 
+									(map[i-1][j]!=0 && map[i-1][j-1]!=0 && map[i][j-1]!=0 && map[i+3][j]!=0 && map[i+3][j-1]!=0 && map[i+2][j-1]!=0 && map[i+3][j+2]!=0 && map[i+3][j+3]!=0 && map[i+2][j+3]!=0 && map[i][j+3]!=0 && map[i-1][j+3]!=0 && map[i-1][j+2]!=0)){
 								System.out.println("Round About Block failed Map Validations");
 								return false;
 							}
