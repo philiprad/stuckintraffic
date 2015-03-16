@@ -1,0 +1,63 @@
+28c988d,MaximVasilishin,4 minutes ago,PathDiscovery for RoundAbout is completed and tested
+c633ae9,philiprad,13 minutes ago,vertical block bug fix
+d7a7810,philiprad,40 minutes ago,bug fixes
+1c82b39,MaximVasilishin,50 minutes ago,RounAboutFixed
+3a538c5,MaximVasilishin,81 minutes ago,RoundAbout are completed
+714898e,philiprad,25 hours ago,added extra validations for round about
+f1e24b7,philiprad,26 hours ago,fix for intersection right block
+284673e,philiprad,26 hours ago,fixes for test case 2 as well as for 3 input intersections
+62d35fa,MaximVasilishin,27 hours ago,RoundAbout update
+47cf48b,MaximVasilishin,3 days ago,Implementation of RoundAbout roadBlock functions
+9278220,MaximVasilishin,4 days ago,Verification for Map creation added
+26a1906,MaximVasilishin,4 days ago,Implementation of path discovery in DoubleIntersectionBlock
+7769684,MaximVasilishin,4 days ago,Path discovery for double intersection block
+a9c796f,philiprad,4 days ago,removed unnecessary latex files
+2456f19,philiprad,4 days ago,removed pdf documents
+faec415,Filippo,4 days ago,Added Resize picture
+86f2318,philiprad,4 days ago,added todo
+d64eb34,philiprad,4 days ago,added filippo and andria's changes
+97af2b7,philiprad,4 days ago,ignore class files
+659a46d,philiprad,4 days ago,ignore class files
+de25c1b,Filippo,4 days ago,resized picture
+01fa200,MaximVasilishin,4 days ago,Implementation of Double Intersection Block
+691b781,philiprad,4 days ago,added todo
+24ec76c,MaximVasilishin,4 days ago,Implementation of AlertView. RoadEditor save function BUG fixed
+77b8f44,philiprad,4 days ago,mixed style intersection fix
+e1f162f,philiprad,5 days ago,fixes for map validator
+36db1c9,MaximVasilishin,5 days ago,Map size starts at 10x10
+a350d62,MaximVasilishin,5 days ago,First simulator launch after editing of the map
+226a619,MaximVasilishin,5 days ago,Delete endpoint function added to MapValidator
+1466006,MaximVasilishin,5 days ago,Triple intersection added to MapValidator
+d1d8a8e,MaximVasilishin,5 days ago,RoadBuilder Implementation of 3 input intersections
+49bb592,MaximVasilishin,6 days ago,RoadEditor Delete map function implemented
+70db902,MaximVasilishin,6 days ago,Merge remote-tracking branch 'origin/master'
+ecc32db,philiprad,6 days ago,minor fixes for map validator
+26c2914,MaximVasilishin,6 days ago,Clear function implemented in the Roadeditor
+5865915,philiprad,6 days ago,added map validator
+5778d5d,MaximVasilishin,7 days ago,RoadEditor. Implementation of map creation
+26dfd83,MaximVasilishin,8 days ago,RoadEditor gridBuilder is edited to private
+2bbafc2,MaximVasilishin,9 days ago,Bug correction in MapEditor loader
+57f8700,MaximVasilishin,10 days ago,Road Building rules were added, road Infrastructure now loads from open menu
+ad414aa,MaximVasilishin,11 days ago,Implementation of different types of road block in road editor
+d56e94d,philiprad,11 days ago,ignore .class files
+39abe1c,MaximVasilishin,11 days ago,Map chooser is connected with file system
+8826835,philiprad,11 days ago,list selection
+3899a40,MaximVasilishin,11 days ago,Implementation of map chooser frame
+31a6315,philiprad,11 days ago,added gui tests package
+dc9536c,MaximVasilishin,11 days ago,Map editor implementation of movement action of road blocks
+adc6365,MaximVasilishin,13 days ago,MapEditor implementation of action toolbar
+01fcbd1,MaximVasilishin,2 weeks ago,Road Editor 2 second step is done. Next step map Validation
+1c2945b,MaximVasilishin,2 weeks ago,MenuBarChanges
+2aef1e4,MaximVasilishin,2 weeks ago,Implementation of Double road Block in RoadEditor
+30effea,MaximVasilishin,2 weeks ago,Implementation of Cursor Manger for roadEditor
+c95ce3b,MaximVasilishin,2 weeks ago,Implementation of road editor grid and toolbar
+79d501a,philiprad,2 weeks ago,test car cursor
+897b3c6,philiprad,3 weeks ago,added test code for grid buttons
+40e1e52,philiprad,3 weeks ago,Added grid package
+ef9821d,philiprad,3 weeks ago,clean up
+148dee9,MaximVasilishin,3 weeks ago,Cleaning of repository
+8e40d4d,MaximVasilishin,3 weeks ago,GUI Template
+d159999,MaximVasilishin,3 weeks ago,implementation of Double lane road block. GUI Tests (package guy)
+075a02c,MaximVasilishin,3 weeks ago,BUG with turn resolved
+9d6a4d0,MaximVasilishin,3 weeks ago,Car Traffic were added
+27e2518,MaximVasilishin,3 weeks ago,TrafficLights
