@@ -21,13 +21,98 @@ public class RoundAboutBlockSingle {
 		if (previousBlockType == RoadConfig.VERTICAL_BLOCK || previousBlockType == RoadConfig.VERTICAL_ENTER_BLOCK || previousBlockType == RoadConfig.VERTICAL_EXIT_BLOCK){
 			if (direction==1){
 				initialAngel = 270;
-				x = x + GraphicsConfig.BLOCK_SIDE_SIZE/2;
-				y = y + GraphicsConfig.BLOCK_SIDE_SIZE+ GraphicsConfig.BLOCK_SIDE_SIZE/2;
+				
+				switch (exitNumber){
+				case 1: 
+					y1 = y;
+					x1 = x+GraphicsConfig.BLOCK_SIDE_SIZE;
+					x2 = x+2*GraphicsConfig.BLOCK_SIDE_SIZE;
+					y2 = y+GraphicsConfig.BLOCK_SIDE_SIZE;
+					initialAngel1 = 180;
+					initialAngel2 = 168;
+					x = x + GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					y = y + GraphicsConfig.BLOCK_SIDE_SIZE+ GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					arrList.addAll(getPathToFirstExit(x,y,x1,y1,x2,y2,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1, initialAngel2));break;
+				case 2: 
+					y1 = y;
+					x1 = x+GraphicsConfig.BLOCK_SIDE_SIZE;
+					x2 = x+GraphicsConfig.BLOCK_SIDE_SIZE;
+					y2 = y+3*GraphicsConfig.BLOCK_SIDE_SIZE;
+					initialAngel1 = 180;
+					initialAngel2 = 258;
+					x = x + GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					y = y + GraphicsConfig.BLOCK_SIDE_SIZE+ GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					arrList.addAll(getPathToSecondExit(x,y,x1,y1,x2,y2,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1, initialAngel2));break;
+				case 3: 
+					initialAngel1 = 180;
+					initialAngel2 = 300;
+					y1 = y;
+					x1 = x+3*GraphicsConfig.BLOCK_SIDE_SIZE;
+					x2 = x-GraphicsConfig.BLOCK_SIDE_SIZE;
+					y2 = y+4*GraphicsConfig.BLOCK_SIDE_SIZE;
+					x = x + GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					y = y + GraphicsConfig.BLOCK_SIDE_SIZE+ GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					arrList.addAll(getPathToThirdExit(x,y,x1,y1,x2,y2,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1,initialAngel2));break;
+				case 4: 
+					initialAngel1 = 180;
+					initialAngel2 = 30;
+					y1 = y;
+					x1 = x+3*GraphicsConfig.BLOCK_SIDE_SIZE;
+					x2 = x-2*GraphicsConfig.BLOCK_SIDE_SIZE;
+					y2 = y;
+					x = x + GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					y = y + GraphicsConfig.BLOCK_SIDE_SIZE+ GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					arrList.addAll(getPathToSameExit(x,y,x1,y1,x2,y2,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1,initialAngel2));break;
+				}
+				
 				
 			} else {
 				initialAngel = 90;
-				x = x + GraphicsConfig.BLOCK_SIDE_SIZE/2;
-				y = y - GraphicsConfig.BLOCK_SIDE_SIZE + GraphicsConfig.BLOCK_SIDE_SIZE/2;
+				
+				
+				switch (exitNumber){
+				case 1: 
+					y1 = y+GraphicsConfig.BLOCK_SIDE_SIZE;
+					x1 = x;
+					x2 = x-GraphicsConfig.BLOCK_SIDE_SIZE;
+					y2 = y;
+					initialAngel1 = 0;
+					initialAngel2 = 348;
+					x = x + GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					y = y - GraphicsConfig.BLOCK_SIDE_SIZE + GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					arrList.addAll(getPathToFirstExit(x,y,x1,y1,x2,y2,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1, initialAngel2));break;
+				case 2: 
+					y1 = y+GraphicsConfig.BLOCK_SIDE_SIZE;
+					x1 = x;
+					x2 = x;
+					y2 = y-2*GraphicsConfig.BLOCK_SIDE_SIZE;
+					initialAngel1 = 0;
+					initialAngel2 = 78;
+					x = x + GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					y = y - GraphicsConfig.BLOCK_SIDE_SIZE + GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					arrList.addAll(getPathToSecondExit(x,y,x1,y1,x2,y2,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1, initialAngel2));break;
+				case 3: 
+					initialAngel1 = 0;
+					initialAngel2 = 120;
+					y1 = y+GraphicsConfig.BLOCK_SIDE_SIZE;
+					x1 = x-3*GraphicsConfig.BLOCK_SIDE_SIZE;
+					x2 = x+2*GraphicsConfig.BLOCK_SIDE_SIZE;
+					y2 = y-3*GraphicsConfig.BLOCK_SIDE_SIZE;
+					x = x + GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					y = y - GraphicsConfig.BLOCK_SIDE_SIZE + GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					arrList.addAll(getPathToThirdExit(x,y,x1,y1,x2,y2,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1,initialAngel2));break;
+				case 4: 
+					initialAngel1 = 90;
+					initialAngel2 = 30;
+					y1 = y;
+					x1 = x+3*GraphicsConfig.BLOCK_SIDE_SIZE;
+					x2 = x-2*GraphicsConfig.BLOCK_SIDE_SIZE;
+					y2 = y;
+					x = x + GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					y = y - GraphicsConfig.BLOCK_SIDE_SIZE + GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					arrList.addAll(getPathToSameExit(x,y,x1,y1,x2,y2,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1,initialAngel2));break;
+				}
+				
 			} 
 		}else if (previousBlockType == RoadConfig.HORIZONTAL_BLOCK || previousBlockType == RoadConfig.HORIZONTAL_ENTER_BLOCK || previousBlockType == RoadConfig.HORIZONTAL_EXIT_BLOCK){
 			if (direction==1){
@@ -56,8 +141,26 @@ public class RoundAboutBlockSingle {
 					x = x +GraphicsConfig.BLOCK_SIDE_SIZE+ GraphicsConfig.BLOCK_SIDE_SIZE/2;
 					y = y + GraphicsConfig.BLOCK_SIDE_SIZE/2;
 					arrList.addAll(getPathToSecondExit(x,y,x1,y1,x2,y2,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1, initialAngel2));break;
-				//case 3: arrList.addAll(getPathToThirdExit(x,y,x1,y1,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1));break;
-				//case 4: arrList.addAll(getPathToSameExit(x,y,x1,y1,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1));break;
+				case 3: 
+					initialAngel1 = 90;
+					initialAngel2 = 210;
+					y1 = y-2*GraphicsConfig.BLOCK_SIDE_SIZE;
+					x1 = x;
+					x2 = x+4*GraphicsConfig.BLOCK_SIDE_SIZE;
+					y2 = y+2*GraphicsConfig.BLOCK_SIDE_SIZE;
+					x = x +GraphicsConfig.BLOCK_SIDE_SIZE+ GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					y = y + GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					arrList.addAll(getPathToThirdExit(x,y,x1,y1,x2,y2,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1,initialAngel2));break;
+				case 4: 
+					initialAngel1 = 90;
+					initialAngel2 = 300;
+					y1 = y-2*GraphicsConfig.BLOCK_SIDE_SIZE;
+					x1 = x;
+					x2 = x;
+					y2 = y+3*GraphicsConfig.BLOCK_SIDE_SIZE;
+					x = x +GraphicsConfig.BLOCK_SIDE_SIZE+ GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					y = y + GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					arrList.addAll(getPathToSameExit(x,y,x1,y1,x2,y2,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1,initialAngel2));break;
 				}
 				
 			}
@@ -86,8 +189,26 @@ public class RoundAboutBlockSingle {
 					x = x - GraphicsConfig.BLOCK_SIDE_SIZE+ GraphicsConfig.BLOCK_SIDE_SIZE/2;
 					y = y + GraphicsConfig.BLOCK_SIDE_SIZE/2;
 					arrList.addAll(getPathToSecondExit(x,y,x1,y1,x2,y2,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1,initialAngel2));break;
-				//case 3: arrList.addAll(getPathToThirdExit(x,y,x1,y1,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1));break;
-				//case 4: arrList.addAll(getPathToSameExit(x,y,x1,y1,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1));break;
+				case 3: 
+					initialAngel1 = 270;
+					initialAngel2 = 30;
+					y1 = y+3*GraphicsConfig.BLOCK_SIDE_SIZE;
+					x1 = x+GraphicsConfig.BLOCK_SIDE_SIZE;
+					x2 = x-3*GraphicsConfig.BLOCK_SIDE_SIZE;
+					y2 = y-GraphicsConfig.BLOCK_SIDE_SIZE;
+					x = x - GraphicsConfig.BLOCK_SIDE_SIZE+ GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					y = y + GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					arrList.addAll(getPathToThirdExit(x,y,x1,y1,x2,y2,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1,initialAngel2));break;
+				case 4: 
+					initialAngel1 = 270;
+					initialAngel2 = 120;
+					y1 = y+3*GraphicsConfig.BLOCK_SIDE_SIZE;
+					x1 = x+GraphicsConfig.BLOCK_SIDE_SIZE;
+					x2 = x+GraphicsConfig.BLOCK_SIDE_SIZE;
+					y2 = y-2*GraphicsConfig.BLOCK_SIDE_SIZE;
+					x = x - GraphicsConfig.BLOCK_SIDE_SIZE+ GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					y = y + GraphicsConfig.BLOCK_SIDE_SIZE/2;
+					arrList.addAll(getPathToSameExit(x,y,x1,y1,x2,y2,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1,initialAngel2));break;
 				}
 			}
 		}
@@ -170,13 +291,13 @@ public class RoundAboutBlockSingle {
 		}
 		
 		theta = (float)initialAngel;
-		theta+=12;
+		theta+=18;
 		radius = GraphicsConfig.CAR_ROUND_ABOUT_POSITION_1;
 		System.out.println("Radius" + radius);
-		stepsNb = (float) (radius*Math.PI*86/100) ;
+		stepsNb = (float) (radius*Math.PI*80/100) ;
 		
 		System.out.println("StepNB" + stepsNb);
-		step = 156/(stepsNb);
+		step = 144/(stepsNb);
 		System.out.println("Step" + step);
 		for (int i = 0; i < stepsNb-1; i++){
 			theta+=step;
@@ -204,15 +325,33 @@ public class RoundAboutBlockSingle {
 		
 		return arrList;
 	}
-	public static ArrayList<PathPoint> getPathToThirdExit(int x, int y, short blockType, int initialAngel){
+	public static ArrayList<PathPoint> getPathToThirdExit(int x, int y,int x1, int y1, int x2, int y2, short blockType, int initialAngel, int initialAngel1, int initialAngel2){
 		ArrayList<PathPoint> arrList = new ArrayList<PathPoint>();
-		float theta = (float)initialAngel;
-		float radius = GraphicsConfig.CAR_ROUND_ABOUT_POSITION_2;
+		
+		float theta = initialAngel1;
+		float radius = 115;
 		System.out.println("Radius" + radius);
-		float stepsNb = (float) (radius*Math.PI+radius*Math.PI/2) ;
+		float stepsNb = (float) (radius*Math.PI*17/100) ;
 		
 		System.out.println("StepNB" + stepsNb);
-		float step = 270/(stepsNb);
+		float step = 30/(stepsNb);
+		System.out.println("Step" + step);
+		for (int i = 0; i < stepsNb-1; i++){
+			theta-=step;
+			int xp = (int) (x1+radius*Math.cos(theta*Math.PI / 180));
+			int yp = (int) (y1+radius*Math.sin(theta*Math.PI / 180));
+			System.out.println(xp + " "+ yp);
+			arrList.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_TO_TOP_DIRECTION,(int) theta ));
+		}
+		
+		theta = (float)initialAngel;
+		theta+=47;
+		radius = GraphicsConfig.CAR_ROUND_ABOUT_POSITION_2;
+		System.out.println("Radius" + radius);
+		stepsNb = (float) (radius*(Math.PI*96/100)) ;
+		
+		System.out.println("StepNB" + stepsNb);
+		step = 172/(stepsNb);
 		System.out.println("Step" + step);
 		for (int i = 0; i < stepsNb-1; i++){
 			theta+=step;
@@ -221,23 +360,76 @@ public class RoundAboutBlockSingle {
 			System.out.println(xp + " "+ yp);
 			arrList.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_TO_TOP_DIRECTION,(int) theta ));
 		}
+		
+		theta = initialAngel2;
+		radius = 115;
+		System.out.println("Radius" + radius);
+		stepsNb = (float) (radius*Math.PI*17/100) ;
+		
+		System.out.println("StepNB" + stepsNb);
+		step = 30/(stepsNb);
+		System.out.println("Step" + step);
+		for (int i = 0; i < stepsNb-1; i++){
+			theta-=step;
+			int xp = (int) (x2+radius*Math.cos(theta*Math.PI / 180));
+			int yp = (int) (y2+radius*Math.sin(theta*Math.PI / 180));
+			System.out.println(xp + " "+ yp);
+			arrList.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_TO_TOP_DIRECTION,(int) theta ));
+		}
 		return arrList;
 	}
 	
-	public static ArrayList<PathPoint> getPathToSameExit(int x, int y, short blockType, int initialAngel){
-		ArrayList<PathPoint> arrList = new ArrayList<PathPoint>();
-		float theta = (float)initialAngel;
-		float radius = GraphicsConfig.CAR_ROUND_ABOUT_POSITION_2;
+	public static ArrayList<PathPoint> getPathToSameExit(int x, int y, int x1, int y1, int x2, int y2, short blockType, int initialAngel, int initialAngel1, int initialAngel2){
+ArrayList<PathPoint> arrList = new ArrayList<PathPoint>();
+		
+		float theta = initialAngel1;
+		float radius = 115;
 		System.out.println("Radius" + radius);
-		float stepsNb = (float) (radius*Math.PI*2) ;
+		float stepsNb = (float) (radius*Math.PI*17/100) ;
 		
 		System.out.println("StepNB" + stepsNb);
-		float step = 360/(stepsNb);
+		float step = 30/(stepsNb);
 		System.out.println("Step" + step);
 		for (int i = 0; i < stepsNb-1; i++){
+			theta-=step;
+			int xp = (int) (x1+radius*Math.cos(theta*Math.PI / 180));
+			int yp = (int) (y1+radius*Math.sin(theta*Math.PI / 180));
+			System.out.println(xp + " "+ yp);
+			arrList.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_TO_TOP_DIRECTION,(int) theta ));
+		}
+		
+		theta = (float)initialAngel;
+		theta+=47;
+		radius = GraphicsConfig.CAR_ROUND_ABOUT_POSITION_2;
+		System.out.println("Radius" + radius);
+		stepsNb = (float) (radius*(Math.PI*96/100+Math.PI/2)) ;
+		
+		System.out.println("StepNB" + stepsNb);
+		step = 262/(stepsNb);
+		System.out.println("Step" + step);
+		int xp = 0;
+		int yp = 0;
+		for (int i = 0; i < stepsNb-1; i++){
 			theta+=step;
-			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
-			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
+			xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
+			yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
+			System.out.println(xp + " "+ yp);
+			arrList.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_TO_TOP_DIRECTION,(int) theta ));
+		}
+		
+		
+		theta = initialAngel2;
+		radius = 115;
+		System.out.println("Radius" + radius);
+		stepsNb = (float) (radius*Math.PI*17/100) ;
+		
+		System.out.println("StepNB" + stepsNb);
+		step = 30/(stepsNb);
+		System.out.println("Step" + step);
+		for (int i = 0; i < stepsNb-1; i++){
+			theta-=step;
+			xp = (int) (x2+radius*Math.cos(theta*Math.PI / 180));
+			yp = (int) (y2+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
 			arrList.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_TO_TOP_DIRECTION,(int) theta ));
 		}

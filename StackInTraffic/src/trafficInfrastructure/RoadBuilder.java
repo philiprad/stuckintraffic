@@ -798,24 +798,29 @@ public class RoadBuilder {
 						previousY = y;
 						
 						if (direction == 1){
-							arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.HORIZONTAL_BLOCK, 1));
+							
+							/*arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.HORIZONTAL_BLOCK, 1));
 							x+=1;
 							y-=2;
-							direction=-1;
-							/*arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.HORIZONTAL_BLOCK, 1));
+							direction=-1;*/
+							arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.HORIZONTAL_BLOCK, 1));
 							x+=3;
-							direction=1;*/
+							direction=1;
 							/*arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 3, RoadConfig.HORIZONTAL_BLOCK, 1));
 							x+=1;
 							y+=2;
 							direction=1;*/
+							/*arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 4, RoadConfig.HORIZONTAL_BLOCK, 1));
+							x-=1;
+							direction=-1;*/
 						}
 						
 						else {
-							arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.HORIZONTAL_BLOCK, -1));
+							break;
+							/*arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.HORIZONTAL_BLOCK, -1));
 							x-=1;
 							y+=2;
-							direction=1;
+							direction=1;*/
 							/*arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.HORIZONTAL_BLOCK, -1));
 							x-=3;
 							direction=-1;*/
@@ -823,6 +828,9 @@ public class RoadBuilder {
 							x-=1;
 							y-=2;
 							direction=-1;*/
+							/*arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 4, RoadConfig.HORIZONTAL_BLOCK, -1));
+							x+=1;
+							direction=1;*/
 						}
 						
 						
@@ -840,12 +848,16 @@ public class RoadBuilder {
 							direction=1;*/
 							/*arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.VERTICAL_BLOCK, 1));
 							y+=3;
-							direction=1;
-							*/
+							direction=1;*/
+							
 							
 							/*arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 3, RoadConfig.VERTICAL_BLOCK, 1));
 							x-=2;
 							y+=1;
+							direction=-1;*/
+							
+							/*arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 4, RoadConfig.VERTICAL_BLOCK, 1));
+							y-=1;
 							direction=-1;*/
 						}
 						else {
@@ -856,8 +868,8 @@ public class RoadBuilder {
 							direction=-1;*/
 							/*arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.VERTICAL_BLOCK, -1));
 							y-=3;
-							direction=-1;*/
-							
+							direction=-1;
+							*/
 							/*arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 3, RoadConfig.VERTICAL_BLOCK, -1));
 							x+=2;
 							y-=1;

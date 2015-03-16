@@ -342,6 +342,12 @@ public class RoadEditorView extends JPanel {
 					RoadBuilder roadBuilder = new RoadBuilder(mapName, gridBuilder);
 					roadBuilder.buildRoad();
 					new AlertMessageView("Map passed validation and was saved");
+					for (int j=0; j<gridBuilder.getGrid().length; j++){
+						for (int i=0; i<gridBuilder.getGrid()[0].length; i++){
+							System.out.print(gridBuilder.getGrid()[j][i]+"\t");
+						}
+						System.out.print("\n");
+					}
 					MapValidator.deleteEndPoints(gridBuilder);
 					for (int j=0; j<gridBuilder.getGrid().length; j++){
 						for (int i=0; i<gridBuilder.getGrid()[0].length; i++){
