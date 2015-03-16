@@ -95,19 +95,19 @@ public class RoundAboutBlockSingle {
 					initialAngel1 = 0;
 					initialAngel2 = 120;
 					y1 = y+GraphicsConfig.BLOCK_SIDE_SIZE;
-					x1 = x-3*GraphicsConfig.BLOCK_SIDE_SIZE;
+					x1 = x-2*GraphicsConfig.BLOCK_SIDE_SIZE;
 					x2 = x+2*GraphicsConfig.BLOCK_SIDE_SIZE;
 					y2 = y-3*GraphicsConfig.BLOCK_SIDE_SIZE;
 					x = x + GraphicsConfig.BLOCK_SIDE_SIZE/2;
 					y = y - GraphicsConfig.BLOCK_SIDE_SIZE + GraphicsConfig.BLOCK_SIDE_SIZE/2;
 					arrList.addAll(getPathToThirdExit(x,y,x1,y1,x2,y2,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1,initialAngel2));break;
 				case 4: 
-					initialAngel1 = 90;
-					initialAngel2 = 30;
-					y1 = y;
-					x1 = x+3*GraphicsConfig.BLOCK_SIDE_SIZE;
-					x2 = x-2*GraphicsConfig.BLOCK_SIDE_SIZE;
-					y2 = y;
+					initialAngel1 = 0;
+					initialAngel2 = 210;
+					y1 = y+GraphicsConfig.BLOCK_SIDE_SIZE;
+					x1 = x-2*GraphicsConfig.BLOCK_SIDE_SIZE;
+					x2 = x+3*GraphicsConfig.BLOCK_SIDE_SIZE;
+					y2 = y+GraphicsConfig.BLOCK_SIDE_SIZE;
 					x = x + GraphicsConfig.BLOCK_SIDE_SIZE/2;
 					y = y - GraphicsConfig.BLOCK_SIDE_SIZE + GraphicsConfig.BLOCK_SIDE_SIZE/2;
 					arrList.addAll(getPathToSameExit(x,y,x1,y1,x2,y2,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1,initialAngel2));break;
