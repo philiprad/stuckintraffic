@@ -109,7 +109,7 @@ public class MapValidator {
 									(j>0 && j+2== map.length && ((map[i][j-1]==0 ||
 											(map[i][j-1]==RoadConfig.HORIZONTAL_BLOCK || map[i][j-1]==RoadConfig.HORIZONTAL_ENTER_BLOCK || map[i][j-1]==RoadConfig.HORIZONTAL_EXIT_BLOCK ||
 											map[i][j-1]==RoadConfig.INTERSECTION_UP_BLOCK || map[i][j-1]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK || map[i][j-1]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK ||
-											map[i][j-1]==-100)) || (map[i][j+1]==0 || 
+											map[i][j-1]==-100)) && (map[i][j+1]==0 || 
 											(map[i][j+1]==RoadConfig.HORIZONTAL_BLOCK || map[i][j+1]==RoadConfig.HORIZONTAL_ENTER_BLOCK || map[i][j+1]==RoadConfig.HORIZONTAL_EXIT_BLOCK ||
 											map[i][j+1]==RoadConfig.INTERSECTION_DOWN_BLOCK || map[i][j+1]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK || map[i][j+1]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK ||
 											map[i][j+1]==-100)))))){
