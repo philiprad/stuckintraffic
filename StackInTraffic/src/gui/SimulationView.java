@@ -142,16 +142,12 @@ public class SimulationView extends JPanel{
          		if(centiseconds==99){
          			seconds++;
          			centiseconds=0; 
-         		}else if(seconds<60){
-         				seconds++;
-         			} else {
-         				if(seconds==60){
+         		} if(seconds==60){
          				minutes++;
-         				seconds=0;
-         			}
-         		}
+         				seconds=0; 
          	}
-             displayTimer.setText(timeFormatter.format(minutes) + ":"
+         }
+         	displayTimer.setText(timeFormatter.format(minutes) + ":"
                      + timeFormatter.format(seconds) + "."
                      + timeFormatter.format(centiseconds));
          }
@@ -161,7 +157,6 @@ public class SimulationView extends JPanel{
              + timeFormatter.format(seconds) + "."
              + timeFormatter.format(centiseconds));
 
-	
 		
 		//space between buttons
 		menubar.add(timerLabel);
