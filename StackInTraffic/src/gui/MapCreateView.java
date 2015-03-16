@@ -1,3 +1,7 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 1.0
+ */
 package gui;
 
 import java.awt.BorderLayout;
@@ -21,6 +25,10 @@ import main.MainConfig;
 import trafficInfrastructure.grid.GridBuilder;
 import util.FileRW;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MapCreateView.
+ */
 public class MapCreateView extends JFrame implements ActionListener{
 	
 	/** The j panel. */
@@ -36,10 +44,13 @@ public class MapCreateView extends JFrame implements ActionListener{
 	/** The panel. */
     private JPanel panel;
 	
+	/** The list1. */
 	private JComboBox<Integer> list1 ;
 	
+	/** The list2. */
 	private JComboBox<Integer> list2;
 	
+	/** The name area. */
 	private JTextArea nameArea = new JTextArea("");
 	
 	
@@ -47,8 +58,12 @@ public class MapCreateView extends JFrame implements ActionListener{
     /**
 	 * Instantiates a new map choice view.
 	 *
+	 * @param parentFrame
+	 *            the parent frame
 	 * @param panel
 	 *            the panel
+	 * @param gridBuilder
+	 *            the grid builder
 	 */
     @SuppressWarnings("unchecked")
 	public MapCreateView(JFrame parentFrame, JPanel panel, GridBuilder gridBuilder){
@@ -201,6 +216,9 @@ public class MapCreateView extends JFrame implements ActionListener{
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub

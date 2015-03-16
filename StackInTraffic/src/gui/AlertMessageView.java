@@ -1,3 +1,7 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 1.0
+ */
 package gui;
 
 import java.awt.Dimension;
@@ -12,11 +16,22 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AlertMessageView.
+ */
 public class AlertMessageView implements ActionListener{
 	
+	/** The frame. */
 	private JFrame frame =  new JFrame();
 	
 	
+	/**
+	 * Instantiates a new alert message view.
+	 *
+	 * @param message
+	 *            the message
+	 */
 	public AlertMessageView(String message){
 		
 		JPanel panel = new JPanel();
@@ -37,6 +52,9 @@ public class AlertMessageView implements ActionListener{
     	frame.setVisible(true);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		frame.dispose();

@@ -120,6 +120,17 @@ public class IntersectionDoubleBlock {
 		return arrPathPoints;
 		}
 	
+	/**
+	 * Gets the left2 to1 bottom path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the left2 to1 bottom path
+	 */
 	public static ArrayList<PathPoint> getLeft2To1BottomPath(int x, int y, short blockType){
 		
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
@@ -146,6 +157,17 @@ public class IntersectionDoubleBlock {
 	return arrPathPoints;
 	}
 	
+	/**
+	 * Gets the right2 to2 top path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the right2 to2 top path
+	 */
 	public static ArrayList<PathPoint> getRight2To2TopPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		x+=GraphicsConfig.BLOCK_SIDE_SIZE*2;//-GraphicsConfig.DISTANCE_BETWEEN_LANES;
@@ -169,6 +191,17 @@ public class IntersectionDoubleBlock {
 	return arrPathPoints;
 	}
 	
+	/**
+	 * Gets the right2 to1 top path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the right2 to1 top path
+	 */
 	public static ArrayList<PathPoint> getRight2To1TopPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		for (int i = 0; i < GraphicsConfig.DISTANCE_BETWEEN_LANES; i++){
@@ -195,6 +228,17 @@ public class IntersectionDoubleBlock {
 	return arrPathPoints;
 	}	
 	
+	/**
+	 * Gets the right1 to1 bottom path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the right1 to1 bottom path
+	 */
 	public static ArrayList<PathPoint> getRight1To1BottomPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		y+=GraphicsConfig.BLOCK_SIDE_SIZE*2;
@@ -217,6 +261,17 @@ public class IntersectionDoubleBlock {
 	return arrPathPoints;
 	}
 	
+	/**
+	 * Gets the right1 to2 bottom path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the right1 to2 bottom path
+	 */
 	public static ArrayList<PathPoint> getRight1To2BottomPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		for (int i = 0; i < GraphicsConfig.DISTANCE_BETWEEN_LANES; i++){
@@ -242,6 +297,17 @@ public class IntersectionDoubleBlock {
 	return arrPathPoints;
 	}
 	
+	/**
+	 * Gets the top1 to1 right path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the top1 to1 right path
+	 */
 	public static ArrayList<PathPoint> getTop1To1RightPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		x+=GraphicsConfig.BLOCK_SIDE_SIZE*2;
@@ -265,6 +331,17 @@ public class IntersectionDoubleBlock {
 	return arrPathPoints;
 	}
 	
+	/**
+	 * Gets the top1 to2 right path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the top1 to2 right path
+	 */
 	public static ArrayList<PathPoint> getTop1To2RightPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		for (int i = 0; i < GraphicsConfig.DISTANCE_BETWEEN_LANES; i++){
@@ -291,6 +368,17 @@ public class IntersectionDoubleBlock {
 	return arrPathPoints;
 	}
 	
+	/**
+	 * Gets the top2 to2 left path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the top2 to2 left path
+	 */
 	public static ArrayList<PathPoint> getTop2To2LeftPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		float theta = 0;
@@ -311,6 +399,17 @@ public class IntersectionDoubleBlock {
 	return arrPathPoints;
 	}
 	
+	/**
+	 * Gets the top2 to1 left path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the top2 to1 left path
+	 */
 	public static ArrayList<PathPoint> getTop2To1LeftPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		for (int i = 0; i < GraphicsConfig.DISTANCE_BETWEEN_LANES; i++){
@@ -335,6 +434,17 @@ public class IntersectionDoubleBlock {
 	return arrPathPoints;
 	}
 	
+	/**
+	 * Gets the bottom2 to2 right path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the bottom2 to2 right path
+	 */
 	public static ArrayList<PathPoint> getBottom2To2RightPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		x+=GraphicsConfig.BLOCK_SIDE_SIZE*2;
@@ -358,6 +468,17 @@ public class IntersectionDoubleBlock {
 	return arrPathPoints;
 	}
 	
+	/**
+	 * Gets the bottom2 to1 right path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the bottom2 to1 right path
+	 */
 	public static ArrayList<PathPoint> getBottom2To1RightPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		for (int i = 0; i < GraphicsConfig.DISTANCE_BETWEEN_LANES; i++){
@@ -384,6 +505,17 @@ public class IntersectionDoubleBlock {
 	return arrPathPoints;
 	}
 	
+	/**
+	 * Gets the bottom1 to1 left path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the bottom1 to1 left path
+	 */
 	public static ArrayList<PathPoint> getBottom1To1LeftPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		y+=GraphicsConfig.BLOCK_SIDE_SIZE*2;
@@ -405,6 +537,17 @@ public class IntersectionDoubleBlock {
 	return arrPathPoints;
 	}
 	
+	/**
+	 * Gets the bottom1 to2 left path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param blockType
+	 *            the block type
+	 * @return the bottom1 to2 left path
+	 */
 	public static ArrayList<PathPoint> getBottom1To2LeftPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		for (int i = 0; i < GraphicsConfig.DISTANCE_BETWEEN_LANES; i++){

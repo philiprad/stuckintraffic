@@ -1,3 +1,7 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 1.0
+ */
 package trafficInfrastructure.road;
 
 import graphicsLoader.GraphicsConfig;
@@ -6,8 +10,27 @@ import java.util.ArrayList;
 
 import trafficInfrastructure.roadPath.PathPoint;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class RoundAboutBlockSingle.
+ */
 public class RoundAboutBlockSingle {
 	
+	/**
+	 * Gets the path.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param exitNumber
+	 *            the exit number
+	 * @param previousBlockType
+	 *            the previous block type
+	 * @param direction
+	 *            the direction
+	 * @return the path
+	 */
 	public static ArrayList<PathPoint> getPath(int x, int y,short exitNumber,int previousBlockType, int direction){
 		int x1 = 0;
 		int y1 = 0;
@@ -216,6 +239,31 @@ public class RoundAboutBlockSingle {
 		return arrList;
 	}
 	
+	/**
+	 * Gets the path to first exit.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param x1
+	 *            the x1
+	 * @param y1
+	 *            the y1
+	 * @param x2
+	 *            the x2
+	 * @param y2
+	 *            the y2
+	 * @param blockType
+	 *            the block type
+	 * @param initialAngel
+	 *            the initial angel
+	 * @param initialAngel1
+	 *            the initial angel1
+	 * @param initialAngel2
+	 *            the initial angel2
+	 * @return the path to first exit
+	 */
 	public static ArrayList<PathPoint> getPathToFirstExit(int x, int y, int x1,int y1,int x2, int y2, short blockType, int initialAngel, int initialAngel1, int initialAngel2){
 		ArrayList<PathPoint> arrList = new ArrayList<PathPoint>();
 		
@@ -269,6 +317,32 @@ public class RoundAboutBlockSingle {
 		
 		return arrList;
 	}
+	
+	/**
+	 * Gets the path to second exit.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param x1
+	 *            the x1
+	 * @param y1
+	 *            the y1
+	 * @param x2
+	 *            the x2
+	 * @param y2
+	 *            the y2
+	 * @param blockType
+	 *            the block type
+	 * @param initialAngel
+	 *            the initial angel
+	 * @param initialAngel1
+	 *            the initial angel1
+	 * @param initialAngel2
+	 *            the initial angel2
+	 * @return the path to second exit
+	 */
 	public static ArrayList<PathPoint> getPathToSecondExit(int x, int y, int x1, int  y1, int x2, int y2, short blockType, int initialAngel, int initialAngel1, int initialAngel2){
 		
 		
@@ -325,6 +399,32 @@ public class RoundAboutBlockSingle {
 		
 		return arrList;
 	}
+	
+	/**
+	 * Gets the path to third exit.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param x1
+	 *            the x1
+	 * @param y1
+	 *            the y1
+	 * @param x2
+	 *            the x2
+	 * @param y2
+	 *            the y2
+	 * @param blockType
+	 *            the block type
+	 * @param initialAngel
+	 *            the initial angel
+	 * @param initialAngel1
+	 *            the initial angel1
+	 * @param initialAngel2
+	 *            the initial angel2
+	 * @return the path to third exit
+	 */
 	public static ArrayList<PathPoint> getPathToThirdExit(int x, int y,int x1, int y1, int x2, int y2, short blockType, int initialAngel, int initialAngel1, int initialAngel2){
 		ArrayList<PathPoint> arrList = new ArrayList<PathPoint>();
 		
@@ -379,6 +479,31 @@ public class RoundAboutBlockSingle {
 		return arrList;
 	}
 	
+	/**
+	 * Gets the path to same exit.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param x1
+	 *            the x1
+	 * @param y1
+	 *            the y1
+	 * @param x2
+	 *            the x2
+	 * @param y2
+	 *            the y2
+	 * @param blockType
+	 *            the block type
+	 * @param initialAngel
+	 *            the initial angel
+	 * @param initialAngel1
+	 *            the initial angel1
+	 * @param initialAngel2
+	 *            the initial angel2
+	 * @return the path to same exit
+	 */
 	public static ArrayList<PathPoint> getPathToSameExit(int x, int y, int x1, int y1, int x2, int y2, short blockType, int initialAngel, int initialAngel1, int initialAngel2){
 ArrayList<PathPoint> arrList = new ArrayList<PathPoint>();
 		

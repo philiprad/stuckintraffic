@@ -21,6 +21,11 @@ public class GridBuilder implements Serializable{
 	
 	/**
 	 * Instantiates a new grid builder.
+	 *
+	 * @param width
+	 *            the width
+	 * @param height
+	 *            the height
 	 */
 	public GridBuilder(int width, int height){
 		this.gridTab = new short [width][height];

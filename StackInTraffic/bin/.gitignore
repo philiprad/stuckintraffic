@@ -2,3 +2,6 @@
 /agents/
 /gui/
 /graphicsLoader/
+/main/
+/simulationBuilder/
+/util/

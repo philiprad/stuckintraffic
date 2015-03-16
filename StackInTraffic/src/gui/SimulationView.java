@@ -51,16 +51,34 @@ import javax.swing.border.EmptyBorder;
 public class SimulationView extends JPanel{
 
 	
+    /** The play button. */
     private JButton playButton;
+	
+	/** The pause button. */
 	private JButton pauseButton;
+	
+	/** The stop button. */
 	private JButton stopButton;	
+	
+	/** The refresh button. */
 	private JButton refreshButton;
+	
+	/** The display timer. */
 	private JLabel displayTimer;
 
+    /** The centiseconds. */
     private byte centiseconds = 0;
+    
+    /** The seconds. */
     private byte seconds = 0;
+    
+    /** The minutes. */
     private short minutes = 0;
+    
+    /** The time formatter. */
     private DecimalFormat timeFormatter;//timer display format
+    
+    /** The simulation timer. */
     private Timer simulationTimer;
     
 	
@@ -253,6 +271,16 @@ public class SimulationView extends JPanel{
 	}
 	
 	//listener for exit
+	/**
+	 * The listener interface for receiving exit events. The class that is
+	 * interested in processing a exit event implements this interface, and the
+	 * object created with that class is registered with a component using the
+	 * component's <code>addExitListener<code> method. When
+	 * the exit event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see ExitEvent
+	 */
 	public class ExitListener implements ActionListener{	
 		/* (non-Javadoc)
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
@@ -262,26 +290,82 @@ public class SimulationView extends JPanel{
 		}
 	}
 	
+	/**
+	 * The listener interface for receiving play events. The class that is
+	 * interested in processing a play event implements this interface, and the
+	 * object created with that class is registered with a component using the
+	 * component's <code>addPlayListener<code> method. When
+	 * the play event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see PlayEvent
+	 */
 	public class PlayListener implements ActionListener{
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent arg0) {
 			simulationTimer.start();
 		}
 	}
 	
+	/**
+	 * The listener interface for receiving pause events. The class that is
+	 * interested in processing a pause event implements this interface, and the
+	 * object created with that class is registered with a component using the
+	 * component's <code>addPauseListener<code> method. When
+	 * the pause event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see PauseEvent
+	 */
 	public class PauseListener implements ActionListener{
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent arg0){
 			simulationTimer.stop();
 			
 		}
 	}
 	
+	/**
+	 * The listener interface for receiving stop events. The class that is
+	 * interested in processing a stop event implements this interface, and the
+	 * object created with that class is registered with a component using the
+	 * component's <code>addStopListener<code> method. When
+	 * the stop event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see StopEvent
+	 */
 	public class StopListener implements ActionListener{
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent arg0){
 			simulationTimer.stop();
 		}
 	}
 	
+	/**
+	 * The listener interface for receiving refresh events. The class that is
+	 * interested in processing a refresh event implements this interface, and
+	 * the object created with that class is registered with a component using
+	 * the component's <code>addRefreshListener<code> method. When
+	 * the refresh event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see RefreshEvent
+	 */
 	public class RefreshListener implements ActionListener{
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent arg0){
 			 simulationTimer.stop();
 
@@ -319,13 +403,28 @@ public class SimulationView extends JPanel{
         }
     }*/
 	
+	/**
+	 * The Class IncreaseNumberOfCars.
+	 */
 	public class IncreaseNumberOfCars implements ActionListener{
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent arg0){
 			//TODO Implement listener for increase number of cars
 		
 	}
 }
+	
+	/**
+	 * The Class IncreaseCarSpeed.
+	 */
 	public class IncreaseCarSpeed implements ActionListener{
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent arg0){
 			//TODO Implement listener for increase car speed 
 		}

@@ -1,9 +1,25 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 1.0
+ */
 package gui;
 
 import trafficInfrastructure.grid.GridBuilder;
 import trafficInfrastructure.road.RoadConfig;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MapValidator.
+ */
 public class MapValidator {
+	
+	/**
+	 * Checks if is map valid.
+	 *
+	 * @param map
+	 *            the map
+	 * @return true, if is map valid
+	 */
 	public static boolean isMapValid(short[][] map){
 		
 		/**
@@ -227,6 +243,12 @@ public class MapValidator {
 		return isValid;
 	}
 	
+	/**
+	 * Delete end points.
+	 *
+	 * @param gridBuilder
+	 *            the grid builder
+	 */
 	public static void deleteEndPoints(GridBuilder gridBuilder){
 		for(int i=0; i < gridBuilder.getGrid().length; i++){
 			for(int j=0; j<gridBuilder.getGrid()[0].length;j++){

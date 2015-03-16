@@ -44,7 +44,14 @@ public class RoadBuilder {
 	/** The arr path. */
 	private ArrayList<Path> arrPath; //TODO Move in LOCAL to the function
 	
-	/** The current x1. */
+	/**
+	 * The current x1.
+	 *
+	 * @param roadInfName
+	 *            the road inf name
+	 * @param gridBuilder
+	 *            the grid builder
+	 */
 	//private int currentX1;
 	
 	/** The current y1. */
@@ -164,9 +171,6 @@ public class RoadBuilder {
 	
 	/**
 	 * Adds the road block.
-	 *
-	 * @param blockNb
-	 *            the block nb
 	 */
 	/*public void addRoadBlock (short blockNb){ 
 		

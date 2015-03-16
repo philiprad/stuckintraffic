@@ -1,3 +1,7 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 1.0
+ */
 package gui;
 
 import java.awt.GridLayout;
@@ -11,11 +15,31 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class RoadEditorPopUpView.
+ */
 public class RoadEditorPopUpView extends JDialog implements ActionListener {
 	
+	/** The frame. */
 	JFrame frame;
+	
+	/** The parent panel. */
 	JPanel parentPanel;
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -1618785619463832603L;
+	
+	/**
+	 * Instantiates a new road editor pop up view.
+	 *
+	 * @param frame
+	 *            the frame
+	 * @param parentPanel
+	 *            the parent panel
+	 * @param title
+	 *            the title
+	 */
 	public RoadEditorPopUpView(JFrame frame,JPanel parentPanel, String title) {
 		
 		super(frame, title, true);
@@ -56,13 +80,30 @@ public class RoadEditorPopUpView extends JDialog implements ActionListener {
         
         
 	  }
-	  public void actionPerformed(ActionEvent e) {
+	  
+  	/* (non-Javadoc)
+  	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+  	 */
+  	public void actionPerformed(ActionEvent e) {
 	    this.setVisible(false); 
 	    this.dispose(); 
 	  }
 	  
-	  public class BackToMenuListener implements ActionListener{
+	  /**
+	 * The listener interface for receiving backToMenu events. The class that is
+	 * interested in processing a backToMenu event implements this interface,
+	 * and the object created with that class is registered with a component
+	 * using the component's <code>addBackToMenuListener<code> method. When
+	 * the backToMenu event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BackToMenuEvent
+	 */
+  	public class BackToMenuListener implements ActionListener{
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			RoadEditorPopUpView.this.setVisible(false); 
@@ -76,9 +117,22 @@ public class RoadEditorPopUpView extends JDialog implements ActionListener {
 	  
 	  }
 	  
-	  public class LoadMapListener implements ActionListener{
+	  /**
+	 * The listener interface for receiving loadMap events. The class that is
+	 * interested in processing a loadMap event implements this interface, and
+	 * the object created with that class is registered with a component using
+	 * the component's <code>addLoadMapListener<code> method. When
+	 * the loadMap event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see LoadMapEvent
+	 */
+  	public class LoadMapListener implements ActionListener{
 
 		
+			/* (non-Javadoc)
+			 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+			 */
 			@Override
 			public void actionPerformed(ActionEvent e) { 
 				RoadEditorPopUpView.this.setVisible(false); 
@@ -87,9 +141,22 @@ public class RoadEditorPopUpView extends JDialog implements ActionListener {
 		  }
 	}
 	  
-	  public class CreateMapListener implements ActionListener{
+	  /**
+	 * The listener interface for receiving createMap events. The class that is
+	 * interested in processing a createMap event implements this interface, and
+	 * the object created with that class is registered with a component using
+	 * the component's <code>addCreateMapListener<code> method. When
+	 * the createMap event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see CreateMapEvent
+	 */
+  	public class CreateMapListener implements ActionListener{
 
 			
+			/* (non-Javadoc)
+			 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+			 */
 			@Override
 			public void actionPerformed(ActionEvent e) { 
 				RoadEditorPopUpView.this.setVisible(false); 

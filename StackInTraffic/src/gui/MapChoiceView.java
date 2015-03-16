@@ -47,8 +47,12 @@ public class MapChoiceView extends JFrame implements ActionListener{
     /**
 	 * Instantiates a new map choice view.
 	 *
+	 * @param parentFrame
+	 *            the parent frame
 	 * @param panel
 	 *            the panel
+	 * @param gridBuilder
+	 *            the grid builder
 	 */
     @SuppressWarnings("unchecked")
 	public MapChoiceView(JFrame parentFrame, JPanel panel, GridBuilder gridBuilder){
@@ -160,6 +164,9 @@ public class MapChoiceView extends JFrame implements ActionListener{
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub

@@ -86,12 +86,16 @@ public class RoadEditorView extends JPanel {
 	/** The component grid. */
 	private Component [][] componentGrid;
 	
+	/** The grid builder. */
 	private GridBuilder gridBuilder;
 	
+	/** The map name. */
 	private String mapName;
 	
+	/** The grid panel. */
 	private JPanel gridPanel;
 	
+	/** The map name label. */
 	private JLabel mapNameLabel = new JLabel("", SwingConstants.CENTER);
 	
 	/**
@@ -145,20 +149,42 @@ public class RoadEditorView extends JPanel {
         RoadEditorPopUpView launchPopUp = new RoadEditorPopUpView(this.frame, this ,"Road Editor");
 	}	
 	
+	/**
+	 * Sets the grid builder.
+	 *
+	 * @param gridBuilder
+	 *            the new grid builder
+	 */
 	public void setGridBuilder(GridBuilder gridBuilder){
 		this.gridBuilder = gridBuilder;
 	}
 	
+	/**
+	 * Gets the grid builder.
+	 *
+	 * @return the grid builder
+	 */
 	public GridBuilder getGridBuilder(){
 		return this.gridBuilder;
 	}
 	
+	/**
+	 * Sets the map name.
+	 *
+	 * @param mapName
+	 *            the new map name
+	 */
 	public void setMapName(String mapName){
 		this.mapName = mapName;
 		this.mapNameLabel.setText("Map Name: "+mapName);
 		this.mapNameLabel.setForeground(Color.DARK_GRAY);
 	}
 	
+	/**
+	 * Gets the map name.
+	 *
+	 * @return the map name
+	 */
 	public String getMapName(){
 		return this.mapName;
 	}
@@ -240,8 +266,21 @@ public class RoadEditorView extends JPanel {
 		}
 	}
 	
+	/**
+	 * The listener interface for receiving create events. The class that is
+	 * interested in processing a create event implements this interface, and
+	 * the object created with that class is registered with a component using
+	 * the component's <code>addCreateListener<code> method. When
+	 * the create event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see CreateEvent
+	 */
 	public class CreateListener implements ActionListener{
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			MapCreateView createMap = new MapCreateView(frame, RoadEditorView.this,RoadEditorView.this.getGridBuilder());
@@ -250,8 +289,21 @@ public class RoadEditorView extends JPanel {
 		
 	}
 	
+	/**
+	 * The listener interface for receiving simulation events. The class that is
+	 * interested in processing a simulation event implements this interface,
+	 * and the object created with that class is registered with a component
+	 * using the component's <code>addSimulationListener<code> method. When
+	 * the simulation event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see SimulationEvent
+	 */
 	public class SimulationListener implements ActionListener{
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Main.main(null);
@@ -259,8 +311,21 @@ public class RoadEditorView extends JPanel {
 		
 	}
 	
+	/**
+	 * The listener interface for receiving clear events. The class that is
+	 * interested in processing a clear event implements this interface, and the
+	 * object created with that class is registered with a component using the
+	 * component's <code>addClearListener<code> method. When
+	 * the clear event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see ClearEvent
+	 */
 	public class ClearListener implements ActionListener{
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			editorState = new EditorState();
@@ -279,8 +344,21 @@ public class RoadEditorView extends JPanel {
 		
 	}
 	
+	/**
+	 * The listener interface for receiving delete events. The class that is
+	 * interested in processing a delete event implements this interface, and
+	 * the object created with that class is registered with a component using
+	 * the component's <code>addDeleteListener<code> method. When
+	 * the delete event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see DeleteEvent
+	 */
 	public class DeleteListener implements ActionListener{
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		@SuppressWarnings("unchecked")
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -316,8 +394,21 @@ public class RoadEditorView extends JPanel {
 		}	
 	}
 	
+	/**
+	 * The listener interface for receiving save events. The class that is
+	 * interested in processing a save event implements this interface, and the
+	 * object created with that class is registered with a component using the
+	 * component's <code>addSaveListener<code> method. When
+	 * the save event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see SaveEvent
+	 */
 	public class SaveListener implements ActionListener{
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		@SuppressWarnings("unchecked")
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -411,9 +502,6 @@ public class RoadEditorView extends JPanel {
 	
 	/**
 	 * Builds the grid.
-	 *
-	 * @param gridBuilder
-	 *            the grid builder
 	 */
 	public void buildGrid(){
 		gridPanel = new JPanel( new GridBagLayout());
