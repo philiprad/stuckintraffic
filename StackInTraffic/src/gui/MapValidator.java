@@ -18,16 +18,16 @@ public class MapValidator {
 		try{
 			for(int i=0; i<map.length;i++){
 				//System.out.println("first i =" + i + " map length = " +map.length);
-				for(int j=0;j<map[i].length;j++){
+				for(int j=0;j<map[0].length;j++){
 					switch(map[i][j]){
 						case RoadConfig.HORIZONTAL_BLOCK: {
 							System.out.println("horizontal block");
-							if((i>0 && i+2< map[j].length && map[i-1][j]==0 && map[i+1][j]!=0 && map[i+2][j]!=0) || (i==0 && map[i+1][j]!=0 && map[i+2][j]!=0)){
+							if((map[i+1][j]==-200 && map[i-1][j]==0) || (i>0 && i+2< map[0].length && map[i-1][j]==0 && map[i+1][j]!=0 && map[i+2][j]!=0) || (i==0 && map[i+1][j]!=0 && map[i+2][j]!=0)){
 								System.out.print("\n block i: " + i + " j:" + j + " converted from: " + map[i][j]);
 								map[i][j]=RoadConfig.HORIZONTAL_ENTER_BLOCK;
 								System.out.println(" to: " + map[i][j]);
 							}
-							if(((i+1<map[j].length && map[i+1][j]==0) || (i+1==map[j].length)) && (i>0 && i-2 >= 0) && map[i-1][j]!=0 && map[i-2][j]!=0){
+							if((map[i-1][j]==-200 && map[i+1][j]==0) || ((i+1<map[0].length && map[i+1][j]==0) || (i+1==map[0].length)) && (i>0 && i-2 >= 0) && map[i-1][j]!=0 && map[i-2][j]!=0){
 								System.out.print("\n block i: " + i + " j:" + j + " converted from: " + map[i][j]);
 								map[i][j]=RoadConfig.HORIZONTAL_EXIT_BLOCK;
 								System.out.println(" to: " + map[i][j]);
@@ -35,19 +35,19 @@ public class MapValidator {
 							if((i==0 && (map[i+1][j]==0 || (map[i+1][j]==RoadConfig.VERTICAL_BLOCK || map[i+1][j]==RoadConfig.VERTICAL_ENTER_BLOCK || map[i+1][j]==RoadConfig.VERTICAL_EXIT_BLOCK ||
 									map[i+1][j]==RoadConfig.INTERSECTION_RIGHT_BLOCK || map[i+1][j]==RoadConfig.VERTICAL_DOUBLE_BLOCK || map[i+1][j]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK ||
 									map[i+1][j]==-100) || map[i+2][j]==0)) || 
-									(map[i][j]!=RoadConfig.HORIZONTAL_EXIT_BLOCK && (i>0 && i+2< map[j].length && (map[i+1][j]==0 || (map[i+1][j]==RoadConfig.VERTICAL_BLOCK || map[i+1][j]==RoadConfig.VERTICAL_ENTER_BLOCK || map[i+1][j]==RoadConfig.VERTICAL_EXIT_BLOCK ||
+									(map[i][j]!=RoadConfig.HORIZONTAL_EXIT_BLOCK && (i>0 && i+2< map[0].length && (map[i+1][j]==0 || (map[i+1][j]==RoadConfig.VERTICAL_BLOCK || map[i+1][j]==RoadConfig.VERTICAL_ENTER_BLOCK || map[i+1][j]==RoadConfig.VERTICAL_EXIT_BLOCK ||
 											map[i+1][j]==RoadConfig.INTERSECTION_RIGHT_BLOCK || map[i+1][j]==RoadConfig.VERTICAL_DOUBLE_BLOCK || map[i+1][j]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK ||
 											map[i+1][j]==-100)) && ((map[i-1][j]==0 || (map[i-1][j]==RoadConfig.VERTICAL_BLOCK || map[i-1][j]==RoadConfig.VERTICAL_ENTER_BLOCK || map[i-1][j]==RoadConfig.VERTICAL_EXIT_BLOCK ||
 													map[i-1][j]==RoadConfig.INTERSECTION_LEFT_BLOCK || map[i-1][j]==RoadConfig.VERTICAL_DOUBLE_BLOCK || map[i-1][j]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK ||
 													map[i-1][j]==-100)) || map[i+2][j]==0))) || 
-									(map[i][j]!=RoadConfig.HORIZONTAL_EXIT_BLOCK && i>0 && i+2==map[j].length && 
+									(map[i][j]!=RoadConfig.HORIZONTAL_EXIT_BLOCK && i>0 && i+2==map[0].length && 
 									(((map[i-1][j]==0) || (map[i-1][j]==RoadConfig.VERTICAL_BLOCK || map[i-1][j]==RoadConfig.VERTICAL_ENTER_BLOCK || map[i-1][j]==RoadConfig.VERTICAL_EXIT_BLOCK ||
 									map[i-1][j]==RoadConfig.INTERSECTION_LEFT_BLOCK || map[i-1][j]==RoadConfig.VERTICAL_DOUBLE_BLOCK || map[i-1][j]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK ||
-									map[i-1][j]==-100)) || 
+									map[i-1][j]==-100)) && 
 									(map[i+1][j]==0 || (map[i+1][j]==RoadConfig.VERTICAL_BLOCK || map[i+1][j]==RoadConfig.VERTICAL_ENTER_BLOCK || map[i+1][j]==RoadConfig.VERTICAL_EXIT_BLOCK ||
 									map[i+1][j]==RoadConfig.INTERSECTION_RIGHT_BLOCK || map[i+1][j]==RoadConfig.VERTICAL_DOUBLE_BLOCK || map[i+1][j]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK ||
 									map[i+1][j]==-100))))){
-								System.out.println("Horizontal Block failed map Validations");
+								System.out.println("Horizontal Block failed map Validations"+ map.length + " and " + map[0].length);
 								return false;
 							}
 							break;
@@ -55,21 +55,21 @@ public class MapValidator {
 						case RoadConfig.HORIZONTAL_DOUBLE_BLOCK : {
 							System.out.println("horizontal double block");
 	
-							if((i>0 && i+5< map[j].length) && (map[i-1][j]==0 && map[i+2][j]!=0 && map[i+4][j]!=0) || (i==0 && map[i+2][j]!=0 && map[i+4][j]!=0)){
+							if((i>0 && i+5< map[0].length) && (map[i-1][j]==0 && map[i+2][j]!=0 && map[i+4][j]!=0) || (i==0 && map[i+2][j]!=0 && map[i+4][j]!=0)){
 								System.out.print("\n block i: " + i + " j:" + j + " converted from: " + map[i][j]);
 								map[i][j]=RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK;
 								System.out.println(" to: " + map[i][j]);
 							}
-							if(((i+2<map[j].length && map[i+2][j]==0) || (i+2==map[j].length)) && (i>0 && i-4 >= 0) && map[i-2][j]!=0 && map[i-4][j]!=0){
+							if(((i+2<map[0].length && map[i+2][j]==0) || (i+2==map[0].length)) && (i>0 && i-4 >= 0) && map[i-2][j]!=0 && map[i-4][j]!=0){
 								System.out.print("\n block i: " + i + " j:" + j + " converted from: " + map[i][j]);
 								map[i][j]=RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK;
 								System.out.println(" to: " + map[i][j]);
 							}
 							if((i==0 && (map[i+2][j]==0 || map[i+4][j]==0)) || 
-									(map[i][j]!=RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK && (i>0 && i+4< map[j].length && map[i+2][j]==0 && (map[i-2][j]==0 || map[i+4][j]==0))) || 
+									(map[i][j]!=RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK && (i>0 && i+4< map[0].length && map[i+2][j]==0 && (map[i-2][j]==0 || map[i+4][j]==0))) || 
 									//((i>0 && i+4< map.length && map[i+2][j]==0 && (map[i-2][j]==0 || map[i+4][j]==0))) || 
-									(map[i][j]!=RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK && i>0 && i+4==map[j].length && (map[i-2][j]==0 || map[i+2][j]==0)) ||
-									(map[i][j]!=RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK && i>0 && i+5==map[j].length && (map[i-2][j]==0 || map[i+2][j]==0)) 
+									(map[i][j]!=RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK && i>0 && i+4==map[0].length && (map[i-2][j]==0 || map[i+2][j]==0)) ||
+									(map[i][j]!=RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK && i>0 && i+5==map[0].length && (map[i-2][j]==0 || map[i+2][j]==0)) 
 									){
 								System.out.println("Horizontal Double Block failed Map Validations");
 								return false;
@@ -82,12 +82,12 @@ public class MapValidator {
 						case RoadConfig.VERTICAL_BLOCK: {
 							System.out.println("vertical block");
 	
-							if((j>0 && j+2< map[i].length && map[i][j-1]==0 && map[i][j+1]!=0 && map[i][j+2]!=0) || (j==0 && map[i][j+1]!=0 && map[i][j+2]!=0)){
+							if((j>0 && j+2< map.length && map[i][j-1]==0 && map[i][j+1]!=0 && map[i][j+2]!=0) || (j==0 && map[i][j+1]!=0 && map[i][j+2]!=0)){
 								System.out.print("\n block i: " + i + " j:" + j + " converted from: " + map[i][j]);
 								map[i][j]=RoadConfig.VERTICAL_ENTER_BLOCK;
 								System.out.println(" to: " + map[i][j]);
 							}
-							if(((j+1<map[i].length && map[i][j+1]==0) || (j+1==map[i].length)) && (j>0 && j-2 >= 0) && map[i][j-1]!=0 && map[i][j-2]!=0){
+							if(((j+1<map.length && map[i][j+1]==0) || (j+1==map.length)) && (j>0 && j-2 >= 0) && map[i][j-1]!=0 && map[i][j-2]!=0){
 								System.out.print("\n block i: " + i + " j:" + j + " converted from: " + map[i][j]);
 								map[i][j]=RoadConfig.VERTICAL_EXIT_BLOCK;
 								System.out.println(" to: " + map[i][j]);
@@ -98,7 +98,7 @@ public class MapValidator {
 									map[i][j+1]==RoadConfig.INTERSECTION_DOWN_BLOCK || map[i][j+1]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK || map[i][j+1]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK ||
 									map[i][j+1]==-100)) || map[i][j+2]==0)) || 
 									(map[i][j]!=RoadConfig.VERTICAL_EXIT_BLOCK && 
-									(j>0 && j+2< map[i].length && (map[i][j+1]==0 || 
+									(j>0 && j+2< map.length && (map[i][j+1]==0 || 
 											(map[i][j+1]==RoadConfig.HORIZONTAL_BLOCK || map[i][j+1]==RoadConfig.HORIZONTAL_ENTER_BLOCK || map[i][j+1]==RoadConfig.HORIZONTAL_EXIT_BLOCK ||
 											map[i][j+1]==RoadConfig.INTERSECTION_DOWN_BLOCK || map[i][j+1]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK || map[i][j+1]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK ||
 											map[i][j+1]==-100)) && ((map[i][j-1]==0 ||
@@ -106,34 +106,34 @@ public class MapValidator {
 													map[i][j-1]==RoadConfig.INTERSECTION_UP_BLOCK || map[i][j-1]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK || map[i][j-1]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK ||
 													map[i][j-1]==-100)) || map[i][j+2]==0))) || 
 									(//map[i][j]!=RoadConfig.VERTICAL_EXIT_BLOCK && 
-									(j>0 && j+2== map[i].length && ((map[i][j-1]==0 ||
+									(j>0 && j+2== map.length && ((map[i][j-1]==0 ||
 											(map[i][j-1]==RoadConfig.HORIZONTAL_BLOCK || map[i][j-1]==RoadConfig.HORIZONTAL_ENTER_BLOCK || map[i][j-1]==RoadConfig.HORIZONTAL_EXIT_BLOCK ||
 											map[i][j-1]==RoadConfig.INTERSECTION_UP_BLOCK || map[i][j-1]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK || map[i][j-1]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK ||
 											map[i][j-1]==-100)) || (map[i][j+1]==0 || 
 											(map[i][j+1]==RoadConfig.HORIZONTAL_BLOCK || map[i][j+1]==RoadConfig.HORIZONTAL_ENTER_BLOCK || map[i][j+1]==RoadConfig.HORIZONTAL_EXIT_BLOCK ||
 											map[i][j+1]==RoadConfig.INTERSECTION_DOWN_BLOCK || map[i][j+1]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK || map[i][j+1]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK ||
 											map[i][j+1]==-100)))))){
-								System.out.println("Vertical Block failed map validations");
+								System.out.println("Vertical Block failed map validations" + map.length + " and " + map[0].length);
 								return false;
 							}
 							break;
 						}
 						case RoadConfig.VERTICAL_DOUBLE_BLOCK: {
 							System.out.println("vertical double block");
-							if((j>0 && j+5< map[i].length) && (map[i][j-1]==0 && map[i][j+2]!=0 && map[i][j+4]!=0) || (j==0 && map[i][j+2]!=0 && map[i][j+4]!=0)){
+							if((j>0 && j+5< map.length) && (map[i][j-1]==0 && map[i][j+2]!=0 && map[i][j+4]!=0) || (j==0 && map[i][j+2]!=0 && map[i][j+4]!=0)){
 								System.out.print("\n block i: " + i + " j:" + j + " converted from: " + map[i][j]);
 								map[i][j]=RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK;	
 								System.out.println(" to: " + map[i][j]);
 							}
-							if(((j+2<map[i].length && map[i][j+2]==0) || (j+2==map[i].length)) && (j>0 && j-4 >= 0) && map[i][j-2]!=0 && map[i][j-4]!=0){
+							if(((j+2<map.length && map[i][j+2]==0) || (j+2==map.length)) && (j>0 && j-4 >= 0) && map[i][j-2]!=0 && map[i][j-4]!=0){
 								System.out.print("\n block i: " + i + " j:" + j + " converted from: " + map[i][j]);
 								map[i][j]=RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK;
 								System.out.println(" to: " + map[i][j]);
 							}
 							if((j==0 && (map[i][j+2]==0 || map[i][j+4]==0)) ||
-									(map[i][j]!=RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK && (i>0 && j+4< map[i].length && map[i][j+2]==0 && (map[i][j-2]==0 || map[i][j+4]==0))) ||
-									(map[i][j]!=RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK && (j>0 && j+4== map[i].length && map[i][j-2]==0 && map[i][j+2]==0)) || 
-									(map[i][j]!=RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK && (j>0 && j+5== map[i].length && (map[i][j-2]==0 || map[i][j+2]==0)))){
+									(map[i][j]!=RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK && (i>0 && j+4< map.length && map[i][j+2]==0 && (map[i][j-2]==0 || map[i][j+4]==0))) ||
+									(map[i][j]!=RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK && (j>0 && j+4== map.length && map[i][j-2]==0 && map[i][j+2]==0)) || 
+									(map[i][j]!=RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK && (j>0 && j+5== map.length && (map[i][j-2]==0 || map[i][j+2]==0)))){
 								System.out.println("Vertical Double Block failed Map Validations");
 								return false;
 							}
