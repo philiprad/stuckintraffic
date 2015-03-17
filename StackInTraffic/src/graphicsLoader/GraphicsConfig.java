@@ -32,16 +32,16 @@ public class GraphicsConfig {
 	//public static final int GRID_WIDTH = MAIN_WIDTH/BLOCK_SIDE_SIZE;
 	
 	/** The Constant VERTICAL_ROAD_IMG. */
-	public static final String VERTICAL_ROAD_IMG = "./images/verticalRoad.png";
+	public static final String VERTICAL_ROAD_IMG = "./images2/verticalRoad.png";
 	
 	/** The Constant HORIZONTAL_ROAD_IMG. */
-	public static final String HORIZONTAL_ROAD_IMG = "./images/horizontalRoad.png";
+	public static final String HORIZONTAL_ROAD_IMG = "./images2/horizontalRoad.png";
 	
 	/** The Constant VERTICAL_DOUBLE_ROAD_IMG. */
-	public static final String VERTICAL_DOUBLE_ROAD_IMG = "./images/verticalDoubleRoad.png";
+	public static final String VERTICAL_DOUBLE_ROAD_IMG = "./images2/verticalDoubleRoad.png";
 	
 	/** The Constant HORIZONTAL_ROAD_IMG. */
-	public static final String HORIZONTAL_DOUBLE_ROAD_IMG = "./images/horizontalDoubleRoad.png";
+	public static final String HORIZONTAL_DOUBLE_ROAD_IMG = "./images2/horizontalDoubleRoad.png";
 	
 	/** The Constant VERTICAL_GREEN_LIGHT_IMG. */
 	public static final String VERTICAL_GREEN_LIGHT_IMG = "./images/verticalGreenLight.png";
@@ -62,10 +62,10 @@ public class GraphicsConfig {
 	public static final String HORIZONTAL_YELLOW_LIGHT_IMG = "./images/horizontalYellowLight.png";
 	
 	/** The Constant INTERSECTION_IMG. */
-	public static final String INTERSECTION_IMG = "./images/intersection.png";
+	public static final String INTERSECTION_IMG = "./images2/intersection.png";
 	
 	/** The Constant INTERSECTION_DOUBLE_IMG. */
-	public static final String INTERSECTION_DOUBLE_IMG = "./images/intersectionDouble.png";
+	public static final String INTERSECTION_DOUBLE_IMG = "./images2/intersectionDouble.png";
 	
 	/** The Constant INTERSECTION_UP_IMG. */
 	public static final String INTERSECTION_UP_IMG = "./images/intersectionUp.png";
@@ -80,7 +80,7 @@ public class GraphicsConfig {
 	public static final String INTERSECTION_RIGHT_IMG = "./images/intersectionRight.png";
 	
 	/** The Constant ROUND_ABOUT. */
-	public static final String ROUND_ABOUT = "./images/roundAbout.png";
+	public static final String ROUND_ABOUT = "./images2/roundAbout.png";
 	
 	
 	
