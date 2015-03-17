@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import trafficInfrastructure.grid.GridBuilder;
+import trafficInfrastructure.road.RoadConfig;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -43,7 +44,24 @@ public class GridButtonsLoader {
 		for(int i=0;i<roadGrid.length;i++){
 			
 			for (int j=0;j<roadGrid[0].length;j++){
-				if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100 && roadGrid[i][j]!=-200 && roadGrid[i][j]!=-300){
+				if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100 && roadGrid[i][j]!=-200 && roadGrid[i][j]!=-300 && roadGrid[i][j]!=-400 && roadGrid[i][j]!=-500){
+						
+						if(roadGrid[i][j]==RoadConfig.INTERSECTION_MIXED_HORIZONTAL_BLOCK){
+							tempButton = new JButton();//new GridButton(i,j,GraphicsConfig.BLOCK_SIDE_SIZE);
+							ImageIcon background = new ImageIcon( ImagesSelector.selectRoadImageSc(roadGrid[i][j], ib)); 
+							tempButton.setIcon(background);
+							tempButton.setLayout(null);
+							tempButton.setSize(GraphicsConfig.BLOCK_SIDE_SIZE*2, GraphicsConfig.BLOCK_SIDE_SIZE);
+							tempButton.setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE*2, GraphicsConfig.BLOCK_SIDE_SIZE));
+						} else
+						if(roadGrid[i][j]==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK){
+							tempButton = new JButton();//new GridButton(i,j,GraphicsConfig.BLOCK_SIDE_SIZE);
+							ImageIcon background = new ImageIcon( ImagesSelector.selectRoadImageSc(roadGrid[i][j], ib)); 
+							tempButton.setIcon(background);
+							tempButton.setLayout(null);
+							tempButton.setSize(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE*2);
+							tempButton.setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE*2));
+						} else
 						if(roadGrid[i][j]>30){
 							tempButton = new JButton();//new GridButton(i,j,GraphicsConfig.BLOCK_SIDE_SIZE);
 							ImageIcon background = new ImageIcon( ImagesSelector.selectRoadImageSc(roadGrid[i][j], ib)); 

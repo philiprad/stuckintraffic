@@ -44,7 +44,9 @@ public class RoadConfig {
 	public static final short INTERSECTION_DOUBLE_BLOCK = 17;
 	
 	/** The Constant INTERSECTION_MIXED_BLOCK. */
-	public static final short INTERSECTION_MIXED_BLOCK = 18;
+	public static final short INTERSECTION_MIXED_HORIZONTAL_BLOCK = 51;
+	
+	public static final short INTERSECTION_MIXED_VERTICAL_BLOCK = 52;
 	
 	/** The Constant ROUND_ABOUT_BLOCK. */
 	public static final short ROUND_ABOUT_BLOCK = 31;

@@ -24,6 +24,7 @@ import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
 import trafficInfrastructure.grid.GridBuilder;
+import trafficInfrastructure.road.RoadConfig;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -97,6 +98,47 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 			for(int i=0;i<buttons.length;i++){
 				for (int j=0;j<buttons[0].length;j++){
 					if (button == buttons[i][j]){
+						if (this.editorState.getCurrentBlockType()==RoadConfig.INTERSECTION_MIXED_HORIZONTAL_BLOCK){
+							if(i+1<buttons.length){
+								if (roadGrid[i][j]!=0 || this.gridBuilder.getGrid()[i+1][j] != 0){
+									button.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.RED,Color.RED));
+									button.repaint();
+									this.editorState.setCanBuild(false);
+								}
+								else {
+									button.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+									((JComponent) this.buttons[i+1][j]).setBorder(BorderFactory.createLineBorder(Color.GREEN));
+									button.repaint();
+									this.editorState.setCanBuild(true);
+								}
+							}
+							else {
+								button.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.RED,Color.RED));
+								button.repaint();
+								this.editorState.setCanBuild(false);
+							}
+						} else
+						
+						if (this.editorState.getCurrentBlockType()==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK){
+							if(j+1<buttons[0].length){
+								if (roadGrid[i][j]!=0 || this.gridBuilder.getGrid()[i][j+1] != 0){
+									button.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.RED,Color.RED));
+									button.repaint();
+									this.editorState.setCanBuild(false);
+								}
+								else {
+									button.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+									((JComponent) this.buttons[i][j+1]).setBorder(BorderFactory.createLineBorder(Color.GREEN));
+									button.repaint();
+									this.editorState.setCanBuild(true);
+								}
+							}
+							else {
+								button.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.RED,Color.RED));
+								button.repaint();
+								this.editorState.setCanBuild(false);
+							}
+						} else
 						if (this.editorState.getCurrentBlockType()>30){
 							if (i+2<buttons.length && j+2<buttons[0].length){
 								if (roadGrid[i][j]!=0 || this.gridBuilder.getGrid()[i+1][j] != 0 ||
@@ -191,6 +233,18 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 		for(int i=0;i<buttons.length;i++){
 			for (int j=0;j<buttons[0].length;j++){
 				if (button == buttons[i][j]){
+					
+					if (this.editorState.getCurrentBlockType()==RoadConfig.INTERSECTION_MIXED_HORIZONTAL_BLOCK){
+						if(i+1<buttons.length){
+							((JComponent) this.buttons[i+1][j]).setBorder(BorderFactory.createLineBorder(Color.WHITE));
+						}
+					} else
+					
+					if (this.editorState.getCurrentBlockType()==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK){
+						if(j+1<buttons[0].length){
+							((JComponent) this.buttons[i][j+1]).setBorder(BorderFactory.createLineBorder(Color.WHITE));
+						}
+					} else
 					if (this.editorState.getCurrentBlockType()>30){
 						if (i+2<buttons.length && j+2<buttons[0].length){
 							((JComponent) this.buttons[i+1][j]).setBorder(BorderFactory.createLineBorder(Color.WHITE));
@@ -229,10 +283,18 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 		for(int i=0;i<buttons.length;i++){
 			for (int j=0;j<buttons[0].length;j++){
 				if (button == buttons[i][j] && this.editorState.getState()==RoadEditorConfig.DELETE_STATE){
-					if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100 && roadGrid[i][j]!=-200 && roadGrid[i][j]!=-300){
+					if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100 && roadGrid[i][j]!=-200 && roadGrid[i][j]!=-300 && roadGrid[i][j]!=-400 && roadGrid[i][j]!=-500){
 						
 						((JButton)buttons[i][j]).setIcon(null);//new GridButton(i,j,GraphicsConfig.BLOCK_SIDE_SIZE);
 						((JButton)buttons[i][j]).setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE));
+						if (this.gridBuilder.getGrid()[i][j]==RoadConfig.INTERSECTION_MIXED_HORIZONTAL_BLOCK){
+							this.gridBuilder.getGrid()[i][j] = 0;
+							this.gridBuilder.getGrid()[i+1][j] = 0;
+						} else
+						if (this.gridBuilder.getGrid()[i][j]==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK){
+							this.gridBuilder.getGrid()[i][j] = 0;
+							this.gridBuilder.getGrid()[i][j+1] = 0;
+						} else
 						if (this.gridBuilder.getGrid()[i][j]>30){
 							this.gridBuilder.getGrid()[i][j] = 0;
 							this.gridBuilder.getGrid()[i+1][j] = 0;
@@ -264,11 +326,19 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 				} else
 				if (button == buttons[i][j] && this.editorState.getState()==RoadEditorConfig.HANDLE_STATE && !this.editorState.getHandled()){
 					
-					if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100 && roadGrid[i][j]!=-200 && roadGrid[i][j]!=-300){
+					if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100 && roadGrid[i][j]!=-200 && roadGrid[i][j]!=-300 && roadGrid[i][j]!=-400 &&  roadGrid[i][j]!=-500){
 						this.editorState.setHandled(true);
 						this.editorState.setCurrentBlockType(roadGrid[i][j]);
 						((JButton)buttons[i][j]).setIcon(null);//new GridButton(i,j,GraphicsConfig.BLOCK_SIDE_SIZE);
 						((JButton)buttons[i][j]).setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE));
+						if (this.gridBuilder.getGrid()[i][j]==RoadConfig.INTERSECTION_MIXED_HORIZONTAL_BLOCK){
+							this.gridBuilder.getGrid()[i][j] = 0;
+							this.gridBuilder.getGrid()[i+1][j] = 0;
+						} else
+						if (this.gridBuilder.getGrid()[i][j]==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK){
+							this.gridBuilder.getGrid()[i][j] = 0;
+							this.gridBuilder.getGrid()[i][j+1] = 0;
+						} else
 						if (this.gridBuilder.getGrid()[i][j]>30){
 							this.gridBuilder.getGrid()[i][j] = 0;
 							this.gridBuilder.getGrid()[i+1][j] = 0;
@@ -305,8 +375,26 @@ public class GridButtonMouseListener extends JPanel implements MouseListener{
 						this.editorState.setHandled(false);
 					 	this.gridBuilder.addRoadBlock(this.editorState.getCurrentBlockType(), i, j);
 						
-						if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100 && roadGrid[i][j]!=-200 && roadGrid[i][j]!=-300){
+						if (roadGrid[i][j]!=0 && roadGrid[i][j]!=-100 && roadGrid[i][j]!=-200 && roadGrid[i][j]!=-300 && roadGrid[i][j]!=-400 && roadGrid[i][j]!=-500){
 							System.out.println("\n builded \n");
+							if (this.gridBuilder.getGrid()[i][j]==RoadConfig.INTERSECTION_MIXED_HORIZONTAL_BLOCK){
+								ImageIcon background = new ImageIcon( ImagesSelector.selectRoadImageSc(roadGrid[i][j], ib)); 
+								((JButton)((JButton)buttons[i][j])).setIcon(background);
+								((JButton)buttons[i][j]).setLayout(null);
+								((JButton)buttons[i][j]).setSize(GraphicsConfig.BLOCK_SIDE_SIZE*2, GraphicsConfig.BLOCK_SIDE_SIZE);
+								((JButton)buttons[i][j]).setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE*2, GraphicsConfig.BLOCK_SIDE_SIZE));
+								this.gridBuilder.getGrid()[i][j] = this.editorState.getCurrentBlockType();
+								this.gridBuilder.getGrid()[i+1][j] = -400;
+							} else
+							if (this.gridBuilder.getGrid()[i][j]==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK){
+								ImageIcon background = new ImageIcon( ImagesSelector.selectRoadImageSc(roadGrid[i][j], ib)); 
+								((JButton)((JButton)buttons[i][j])).setIcon(background);
+								((JButton)buttons[i][j]).setLayout(null);
+								((JButton)buttons[i][j]).setSize(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE*2);
+								((JButton)buttons[i][j]).setPreferredSize(new Dimension(GraphicsConfig.BLOCK_SIDE_SIZE, GraphicsConfig.BLOCK_SIDE_SIZE*2));
+								this.gridBuilder.getGrid()[i][j] = this.editorState.getCurrentBlockType();
+								this.gridBuilder.getGrid()[i][j+1] = -500;
+							} else
 							if(roadGrid[i][j]>30){
 								
 								ImageIcon background = new ImageIcon( ImagesSelector.selectRoadImageSc(roadGrid[i][j], ib)); 

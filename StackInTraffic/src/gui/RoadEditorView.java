@@ -470,6 +470,27 @@ public class RoadEditorView extends JPanel {
 		
 			for (int j=0; j<componentGrid.length; j++){
 				for (int i=0; i<componentGrid[0].length; i++){
+				
+				if (gridBuilder.getGrid()[j][i]==RoadConfig.INTERSECTION_MIXED_HORIZONTAL_BLOCK){
+					gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+					gridBagConstraints.gridx = j;
+					gridBagConstraints.gridy = i;
+					gridBagConstraints.gridheight = 1;
+					gridBagConstraints.gridwidth = 2;
+					gridPanel.add(componentGrid[j][i],gridBagConstraints);
+						
+				} else
+				
+				if (gridBuilder.getGrid()[j][i]==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK){
+					gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+					gridBagConstraints.gridx = j;
+					gridBagConstraints.gridy = i;
+					gridBagConstraints.gridheight = 2;
+					gridBagConstraints.gridwidth = 1;
+					gridPanel.add(componentGrid[j][i],gridBagConstraints);
+							
+				} else
+					
 				if (gridBuilder.getGrid()[j][i]>30){
 					gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
 					gridBagConstraints.gridx = j;
@@ -619,6 +640,24 @@ public class RoadEditorView extends JPanel {
 	        
 	        button= new JButton("RoundAbout",new ImageIcon(ib.getRoundAboutTb()));
 	        toolBarButtonMouseListener = new ConstructionToolBarMouseListener(RoadConfig.ROUND_ABOUT_BLOCK, ib, componentGrid,this.editorState);
+	        button.setHorizontalAlignment(SwingConstants.LEFT);
+	        button.setIconTextGap(30);
+	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
+	        button.addMouseListener(toolBarButtonMouseListener);
+	        button.setCursor(CursorManager.handCursor());
+	        toolbar.add(button);
+	        
+	        button= new JButton("Mixed Horizontal Intersection",new ImageIcon(ib.getMixedIntersectionHTb()));
+	        toolBarButtonMouseListener = new ConstructionToolBarMouseListener(RoadConfig.INTERSECTION_MIXED_HORIZONTAL_BLOCK, ib, componentGrid,this.editorState);
+	        button.setHorizontalAlignment(SwingConstants.LEFT);
+	        button.setIconTextGap(30);
+	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));
+	        button.addMouseListener(toolBarButtonMouseListener);
+	        button.setCursor(CursorManager.handCursor());
+	        toolbar.add(button);
+	        
+	        button= new JButton("Mixed Vertical Intersection",new ImageIcon(ib.getMixedIntersectionVTb()));
+	        toolBarButtonMouseListener = new ConstructionToolBarMouseListener(RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK, ib, componentGrid,this.editorState);
 	        button.setHorizontalAlignment(SwingConstants.LEFT);
 	        button.setIconTextGap(30);
 	        button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 10));

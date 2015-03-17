@@ -52,6 +52,10 @@ public class ImagesBuilder {
 	/** The intersection left. */
 	private Image intersectionLeft;
 	
+	private Image mixedIntersectionHorizontal;
+	
+	private Image mixedIntersectionVertical;
+	
 	/** The verical road sc. */
 	private Image vericalRoadSc;
 	
@@ -85,6 +89,10 @@ public class ImagesBuilder {
 	/** The intersection left sc. */
 	private Image intersectionLeftSc;
 	
+	private Image mixedIntersectionHorizontalSc;
+	
+	private Image mixedIntersectionVerticalSc;
+	
 	/** The verical double road. */
 	private Image vericalDoubleRoadTb;
 	
@@ -96,6 +104,10 @@ public class ImagesBuilder {
 	
 	/** The round about tb. */
 	private Image roundAboutTb;
+	
+	private Image mixedIntersectionHorizontalTb;
+	
+	private Image mixedIntersectionVerticalTb;
 	
 	/** The verical road cr. */
 	private Image vericalRoadCr;
@@ -129,6 +141,12 @@ public class ImagesBuilder {
 	
 	/** The intersection left cr. */
 	private Image intersectionLeftCr;
+	
+	private Image mixedIntersectionHorizontalCr;
+	
+	private Image mixedIntersectionVerticalCr;
+	
+	
 	
 	/** The car up. */
 	private Image carUp;
@@ -168,6 +186,8 @@ public class ImagesBuilder {
 	
 	/** The cursor delete. */
 	private Image cursorDelete;
+	
+	
 	
 	/**
 	 * Instantiates a new images builder.
@@ -213,6 +233,8 @@ public class ImagesBuilder {
 		this.intersectionDownCr = loadImage(GraphicsConfig.INTERSECTION_DOWN_IMG_CURSOR);
 		this.intersectionRightCr = loadImage(GraphicsConfig.INTERSECTION_RIGHT_IMG_CURSOR);
 		this.intersectionLeftCr = loadImage(GraphicsConfig.INTERSECTION_LEFT_IMG_CURSOR);
+		this.mixedIntersectionHorizontalCr = loadImage(GraphicsConfig.MIXED_INTERSECTION_HORIZONTAL_IMG_CURSOR);
+		this.mixedIntersectionVerticalCr = loadImage(GraphicsConfig.MIXED_INTERSECTION_VERTICAL_IMG_CURSOR);
 		
 		this.intersectionDouble = loadImage(GraphicsConfig.INTERSECTION_DOUBLE_IMG);
 		this.roundAbout = loadImage(GraphicsConfig.ROUND_ABOUT);
@@ -220,6 +242,8 @@ public class ImagesBuilder {
 		this.intersectionDown = loadImage(GraphicsConfig.INTERSECTION_DOWN_IMG);
 		this.intersectionRight = loadImage(GraphicsConfig.INTERSECTION_RIGHT_IMG);
 		this.intersectionLeft = loadImage(GraphicsConfig.INTERSECTION_LEFT_IMG);
+		this.mixedIntersectionHorizontal = loadImage(GraphicsConfig.MIXED_INTERSECTION_HORIZONTAL_IMG);
+		this.mixedIntersectionVertical = loadImage(GraphicsConfig.MIXED_INTERSECTION_VERTICAL_IMG);
 		
 		this.intersectionDoubleSc = loadImage(GraphicsConfig.INTERSECTION_DOUBLE_IMG_SCALED);
 		this.roundAboutSc = loadImage(GraphicsConfig.ROUND_ABOUT_SCALED);
@@ -227,9 +251,14 @@ public class ImagesBuilder {
 		this.intersectionDownSc = loadImage(GraphicsConfig.INTERSECTION_DOWN_IMG_SCALED);
 		this.intersectionRightSc = loadImage(GraphicsConfig.INTERSECTION_RIGHT_IMG_SCALED);
 		this.intersectionLeftSc = loadImage(GraphicsConfig.INTERSECTION_LEFT_IMG_SCALED);
+		this.mixedIntersectionHorizontalSc = loadImage(GraphicsConfig.MIXED_INTERSECTION_HORIZONTAL_IMG_SCALED);
+		this.mixedIntersectionVerticalSc = loadImage(GraphicsConfig.MIXED_INTERSECTION_VERTICAL_IMG_SCALED);
 		
 		this.intersectionDoubleTb = loadImage(GraphicsConfig.INTERSECTION_DOUBLE_IMG_TOOLBAR);
 		this.roundAboutTb = loadImage(GraphicsConfig.ROUND_ABOUT_IMG_TOOLBAR);
+		this.mixedIntersectionHorizontalTb = loadImage(GraphicsConfig.MIXED_INTERSECTION_HORIZONTAL_IMG_TOOLBAR);
+		this.mixedIntersectionVerticalTb = loadImage(GraphicsConfig.MIXED_INTERSECTION_VERTICAL_IMG_TOOLBAR);
+		
 		
 	}
 	
@@ -705,6 +734,38 @@ public class ImagesBuilder {
 	 */
 	public Image getIntersectionRightCr(){
 		return this.intersectionRightCr;
+	}
+	
+	public Image getMixedIntersectionH(){
+		return this.mixedIntersectionHorizontal;
+	}
+	
+	public Image getMixedIntersectionHSc(){
+		return this.mixedIntersectionHorizontalSc;
+	}
+	
+	public Image getMixedIntersectionHCr(){
+		return this.mixedIntersectionHorizontalCr;
+	}
+	
+	public Image getMixedIntersectionHTb(){
+		return this.mixedIntersectionHorizontalTb;
+	}
+	
+	public Image getMixedIntersectionV(){
+		return this.mixedIntersectionVertical;
+	}
+	
+	public Image getMixedIntersectionVSc(){
+		return this.mixedIntersectionVerticalSc;
+	}
+	
+	public Image getMixedIntersectionVCr(){
+		return this.mixedIntersectionVerticalCr;
+	}
+	
+	public Image getMixedIntersectionVTb(){
+		return this.mixedIntersectionVerticalTb;
 	}
 }
 

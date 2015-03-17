@@ -10,12 +10,6 @@ package graphicsLoader;
  */
 public class GraphicsConfig {
 	
-	/** The Constant MAIN_HEIGHT. */
-	//public static final int MAIN_HEIGHT = 800;
-	
-	/** The Constant MAIN_WIDTH. */
-	//public static final int MAIN_WIDTH = 800;
-	
 	/** The Constant BLOCK_SIDE_SIZE. */
 	public static final int BLOCK_SIDE_SIZE = 50;
 	
@@ -68,21 +62,23 @@ public class GraphicsConfig {
 	public static final String INTERSECTION_DOUBLE_IMG = "./images2/intersectionDouble.png";
 	
 	/** The Constant INTERSECTION_UP_IMG. */
-	public static final String INTERSECTION_UP_IMG = "./images/intersectionUp.png";
+	public static final String INTERSECTION_UP_IMG = "./images2/intersectionUp.png";
 	
 	/** The Constant INTERSECTION_DOWN_IMG. */
-	public static final String INTERSECTION_DOWN_IMG = "./images/intersectionDown.png";
+	public static final String INTERSECTION_DOWN_IMG = "./images2/intersectionDown.png";
 	
 	/** The Constant INTERSECTION_LEFT_IMG. */
-	public static final String INTERSECTION_LEFT_IMG = "./images/intersectionLeft.png";
+	public static final String INTERSECTION_LEFT_IMG = "./images2/intersectionLeft.png";
 	
 	/** The Constant INTERSECTION_RIGHT_IMG. */
-	public static final String INTERSECTION_RIGHT_IMG = "./images/intersectionRight.png";
+	public static final String INTERSECTION_RIGHT_IMG = "./images2/intersectionRight.png";
 	
 	/** The Constant ROUND_ABOUT. */
 	public static final String ROUND_ABOUT = "./images2/roundAbout.png";
 	
+public static final String MIXED_INTERSECTION_HORIZONTAL_IMG = "./images2/mixedIntersectionHorizontal.png";
 	
+	public static final String MIXED_INTERSECTION_VERTICAL_IMG = "./images2/mixedIntersectionVertical.png";
 	
 	
 	/** The Constant VERTICAL_ROAD_IMG_SCALED. */
@@ -119,6 +115,10 @@ public class GraphicsConfig {
 	/** The Constant INTERSECTION_RIGHT_IMG_SCALED. */
 	public static final String INTERSECTION_RIGHT_IMG_SCALED = "./images/scaledPictures/intersectionRight.png";
 	
+	public static final String MIXED_INTERSECTION_HORIZONTAL_IMG_SCALED = "./images/scaledPictures/mixedIntersectionHorizontal.png";
+	
+	public static final String MIXED_INTERSECTION_VERTICAL_IMG_SCALED = "./images/scaledPictures/mixedIntersectionVertical.png";
+	
 	/** The Constant VERTICAL_DOUBLE_ROAD_IMG_TOOLBAR. */
 	public static final String VERTICAL_DOUBLE_ROAD_IMG_TOOLBAR = "./images/toolBarPictures/verticalDoubleRoad.png";
 	
@@ -130,6 +130,10 @@ public class GraphicsConfig {
 	
 	/** The Constant ROUND_ABOUT_IMG_TOOLBAR. */
 	public static final String ROUND_ABOUT_IMG_TOOLBAR= "./images/toolBarPictures/roundAbout.png";
+	
+	public static final String MIXED_INTERSECTION_HORIZONTAL_IMG_TOOLBAR = "./images/toolBarPictures/mixedIntersectionHorizontal.png";
+	
+	public static final String MIXED_INTERSECTION_VERTICAL_IMG_TOOLBAR = "./images/toolBarPictures/mixedIntersectionVertical.png";
 	
 	/** The Constant VERTICAL_ROAD_IMG_CURSOR. */
 	public static final String VERTICAL_ROAD_IMG_CURSOR = "./images/cursorPictures/verticalRoad.png";
@@ -163,6 +167,10 @@ public class GraphicsConfig {
 	
 	/** The Constant ROUND_ABOUT_IMG_CURSOR. */
 	public static final String ROUND_ABOUT_IMG_CURSOR = "./images/cursorPictures/roundAbout.png";
+	
+	public static final String MIXED_INTERSECTION_HORIZONTAL_IMG_CURSOR = "./images/cursorPictures/mixedIntersectionHorizontal.png";
+	
+	public static final String MIXED_INTERSECTION_VERTICAL_IMG_CURSOR = "./images/cursorPictures/mixedIntersectionVertical.png";
 	
 	
 	
