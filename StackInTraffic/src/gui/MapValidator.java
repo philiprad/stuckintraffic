@@ -168,7 +168,7 @@ public class MapValidator {
 						}
 						case RoadConfig.INTERSECTION_UP_BLOCK: {
 							if((map[i-1][j]!=RoadConfig.HORIZONTAL_BLOCK && map[i-1][j]!=RoadConfig.HORIZONTAL_ENTER_BLOCK) || (map[i+1][j]!=RoadConfig.HORIZONTAL_BLOCK && map[i+1][j]!=RoadConfig.HORIZONTAL_EXIT_BLOCK) || (map[i][j-1]!=RoadConfig.VERTICAL_BLOCK && map[i][j-1]!=RoadConfig.VERTICAL_ENTER_BLOCK) || 
-									(map[i][j+1]!=RoadConfig.INTERSECTION_DOWN_BLOCK && map[i][j+1]!=0)){//&& map[i][j-1]!=RoadConfig.HORIZONTAL_BLOCK && map[i][j-1]!=RoadConfig.HORIZONTAL_ENTER_BLOCK && map[i][j-1]!=RoadConfig.HORIZONTAL_EXIT_BLOCK && map[i][j-1]!=RoadConfig.HORIZONTAL_DOUBLE_BLOCK)){
+									(j+1<map[0].length && map[i][j+1]!=RoadConfig.INTERSECTION_DOWN_BLOCK && map[i][j+1]!=0)){//&& map[i][j-1]!=RoadConfig.HORIZONTAL_BLOCK && map[i][j-1]!=RoadConfig.HORIZONTAL_ENTER_BLOCK && map[i][j-1]!=RoadConfig.HORIZONTAL_EXIT_BLOCK && map[i][j-1]!=RoadConfig.HORIZONTAL_DOUBLE_BLOCK)){
 								System.out.println("Intersection Up Block failed Map Validations");
 								return false;
 							}
@@ -177,7 +177,7 @@ public class MapValidator {
 						
 						case RoadConfig.INTERSECTION_DOWN_BLOCK: {
 							if((map[i-1][j]!=RoadConfig.HORIZONTAL_BLOCK && map[i-1][j]!=RoadConfig.HORIZONTAL_ENTER_BLOCK) || (map[i+1][j]!=RoadConfig.HORIZONTAL_BLOCK && map[i+1][j]!=RoadConfig.HORIZONTAL_EXIT_BLOCK)|| (map[i][j+1]!=RoadConfig.VERTICAL_BLOCK && map[i][j+1]!=RoadConfig.VERTICAL_EXIT_BLOCK) ||
-									(map[i][j-1]!=RoadConfig.INTERSECTION_UP_BLOCK && map[i][j-1]!=0)){
+									(j>0 && map[i][j-1]!=RoadConfig.INTERSECTION_UP_BLOCK && map[i][j-1]!=0)){
 								System.out.println("Intersection Down Block failed Map Validations");
 								return false;
 							}
@@ -186,7 +186,7 @@ public class MapValidator {
 						
 						case RoadConfig.INTERSECTION_LEFT_BLOCK: {
 							if((map[i-1][j]!=RoadConfig.HORIZONTAL_BLOCK && map[i-1][j]!=RoadConfig.HORIZONTAL_ENTER_BLOCK) || (map[i][j+1]!=RoadConfig.VERTICAL_BLOCK && map[i][j+1]!=RoadConfig.VERTICAL_EXIT_BLOCK) || (map[i][j-1]!=RoadConfig.VERTICAL_BLOCK && map[i][j-1]!=RoadConfig.VERTICAL_ENTER_BLOCK) ||
-									(map[i+1][j]!=RoadConfig.INTERSECTION_RIGHT_BLOCK && map[i+1][j]!=0)){
+									(i+1<map.length && map[i+1][j]!=RoadConfig.INTERSECTION_RIGHT_BLOCK && map[i+1][j]!=0)){
 								System.out.println("Intersection Left Block failed Map Validations");
 								return false;
 							}
@@ -195,7 +195,7 @@ public class MapValidator {
 						
 						case RoadConfig.INTERSECTION_RIGHT_BLOCK: {
 							if((map[i+1][j]!=RoadConfig.HORIZONTAL_BLOCK && map[i+1][j]!=RoadConfig.HORIZONTAL_EXIT_BLOCK) || (map[i][j+1]!=RoadConfig.VERTICAL_BLOCK && map[i][j+1]!=RoadConfig.VERTICAL_EXIT_BLOCK) || (map[i][j-1]!=RoadConfig.VERTICAL_BLOCK && map[i][j-1]!=RoadConfig.VERTICAL_ENTER_BLOCK) ||
-									(map[i-1][j]!=RoadConfig.INTERSECTION_LEFT_BLOCK && map[i-1][j]!=0)){
+									(i>0 && map[i-1][j]!=RoadConfig.INTERSECTION_LEFT_BLOCK && map[i-1][j]!=0)){
 								System.out.println("Intersection Right Block failed Map Validations");
 								return false;
 							}
