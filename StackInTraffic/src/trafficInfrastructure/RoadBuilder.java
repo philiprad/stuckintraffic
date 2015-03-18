@@ -839,7 +839,7 @@ public class RoadBuilder {
 						
 						if (direction == 1){
 							
-							
+							break;
 							/*
 							ArrayList<PathPoint> arr = new ArrayList<PathPoint>();
 							arr.addAll(arrPathPoint);
@@ -850,9 +850,9 @@ public class RoadBuilder {
 							direction=-1;
 							*/
 							
-							arrPathPoint.addAll(IntersectionMixedHorizontalBlock.getLeft1To2TopPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y]));
+							/*arrPathPoint.addAll(IntersectionMixedHorizontalBlock.getLeft1To2TopPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y]));
 							y-=2;
-							direction=-1;
+							direction=-1;*/
 							
 						}
 						
@@ -867,10 +867,15 @@ public class RoadBuilder {
 							arrPathPoint.addAll(HorizontalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, RoadConfig.HORIZONTAL_BLOCK));
 							x--;
 							*/
-						    break;
+						   
 							/*arrPathPoint.addAll(IntersectionDoubleBlock.getRight1To1BottomPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y]));
 							y+=2;
 							direction=1;*/
+							
+							
+							arrPathPoint.addAll(IntersectionMixedHorizontalBlock.getRight1To1BottomPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y]));
+							y+=1;
+							direction=1;
 						}
 						
 						
