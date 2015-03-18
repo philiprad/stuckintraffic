@@ -293,4 +293,63 @@ public static ArrayList<PathPoint> getBottom1To2LeftPath(int x, int y, short blo
 	}
 return arrPathPoints;
 }
+
+public static ArrayList<PathPoint> getBottom1To1RightPath(int x, int y, short blockType){
+	
+	ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
+	
+	for (int i = 0; i < GraphicsConfig.BLOCK_SIDE_SIZE; i++){
+		arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_POSITION , y+GraphicsConfig.BLOCK_SIDE_SIZE*2-i, -1 ,-1));
+	}
+	
+	x+=GraphicsConfig.BLOCK_SIDE_SIZE;
+	y+=GraphicsConfig.BLOCK_SIDE_SIZE;
+	float theta = 180;
+	
+	int radius = GraphicsConfig.CAR_INVERSE_POSITION;
+	System.out.println("Radius" + radius);
+	float stepsNb = (float) (radius*Math.PI/2) ;
+	
+	System.out.println("StepNB" + stepsNb);
+	float step = 90/(stepsNb);
+	System.out.println("Step" + step);
+	for (int i = 0; i < stepsNb-1; i++){
+		theta+=step;
+		int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
+		int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
+		System.out.println(xp + " "+ yp);
+		arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.BOTTOM_TO_RIGHT_DIRECTION ,(int) theta ));
+	}
+return arrPathPoints;
+}
+
+public static ArrayList<PathPoint> getBottom1To2RightPath(int x, int y, short blockType){
+	
+	ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
+	
+	for (int i = 0; i < GraphicsConfig.BLOCK_SIDE_SIZE - GraphicsConfig.DISTANCE_BETWEEN_LANES; i++){
+		arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_POSITION , y+GraphicsConfig.BLOCK_SIDE_SIZE*2-i, -1 ,-1));
+	}
+	
+	x+=GraphicsConfig.BLOCK_SIDE_SIZE;
+	y+=GraphicsConfig.BLOCK_SIDE_SIZE+GraphicsConfig.DISTANCE_BETWEEN_LANES;
+	float theta = 180;
+	
+	int radius = GraphicsConfig.CAR_INVERSE_POSITION;
+	System.out.println("Radius" + radius);
+	float stepsNb = (float) (radius*Math.PI/2) ;
+	
+	System.out.println("StepNB" + stepsNb);
+	float step = 90/(stepsNb);
+	System.out.println("Step" + step);
+	for (int i = 0; i < stepsNb-1; i++){
+		theta+=step;
+		int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
+		int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
+		System.out.println(xp + " "+ yp);
+		arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.BOTTOM_TO_RIGHT_DIRECTION ,(int) theta ));
+	}
+return arrPathPoints;
+}
+
 }

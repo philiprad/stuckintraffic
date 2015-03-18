@@ -980,9 +980,15 @@ public class RoadBuilder {
 							
 						} else {
 							//break;
-							arrPathPoint.addAll(IntersectionMixedVerticalBlock.getBottom1To1LeftPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y]));
-							x-=1;
-							direction=-1;
+							/*arrPathPoint.addAll(IntersectionMixedVerticalBlock.getBottom1To2LeftPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y]));
+							x-=2;
+							
+							direction=-1;*/
+							
+							arrPathPoint.addAll(IntersectionMixedVerticalBlock.getBottom1To2RightPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y]));
+							x+=1;
+							direction=1;
+							
 							/*arrPathPoint.addAll(IntersectionMixedHorizontalBlock.getBottom2To1RightPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y]));
 							x+=2;
 							direction=1;*/
