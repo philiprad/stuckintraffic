@@ -73,14 +73,14 @@ public class MapValidator {
 							System.out.println("horizontal double block");
 	
 							if((i>0 && i+5< map.length) && (map[i-1][j]==0 && ((map[i+2][j]!=0 && map[i+4][j]!=0) || map[i+2][j]==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK)) || 
-									(i==0 && ((map[i+2][j]!=0 && map[i+4][j]!=0) || map[i+2][j]==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK))){
+									(i==0 && ((map[i+2][j]!=0 && map[i+4][j]!=0) || (map[i+2][j]==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK)))){
 								System.out.print("\n block i: " + i + " j:" + j + " converted from: " + map[i][j]);
 								map[i][j]=RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK;
 								System.out.println(" to: " + map[i][j]);
 							}
 							if(((i+2<map.length && map[i+2][j]==0)) || 
-									((i+2==map.length) || 
-									(i>0 && i-4 >= 0) && ((map[i-2][j]!=0 && map[i-4][j]!=0) || map[i-1][j]==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK))){
+									((i+2==map.length &&((map[i-2][j]!=0 && map[i-4][j]!=0 && map[i+2][j]==0) || map[i-1][j]==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK && map[i+2][j]==0)) || 
+									(i>0 && i-4 >= 0) && ((map[i-2][j]!=0 && map[i-4][j]!=0) || (map[i-1][j]==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK && map[i+2][j]==0)))){
 								System.out.print("\n block i: " + i + " j:" + j + " converted from: " + map[i][j]);
 								map[i][j]=RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK;
 								System.out.println(" to: " + map[i][j]);
@@ -149,8 +149,8 @@ public class MapValidator {
 								System.out.println(" to: " + map[i][j]);
 							}
 							if((j+2<map[0].length && map[i][j+2]==0 && (map[i][j-2]!=0 || map[i][j-1]==RoadConfig.INTERSECTION_MIXED_HORIZONTAL_BLOCK)) || 
-									(j+2==map[0].length && (map[i][j-2]!=0 || map[i][j-1]==RoadConfig.INTERSECTION_MIXED_HORIZONTAL_BLOCK)) || 
-									((j>0 && j-4 >= 0) && (map[i][j-2]!=0 && map[i][j-4]!=0) || map[i][j-1]==RoadConfig.INTERSECTION_MIXED_HORIZONTAL_BLOCK)){
+									(j+2==map[0].length && ((map[i][j-2]!=0 && map[i][j-4]!=0)|| map[i][j-1]==RoadConfig.INTERSECTION_MIXED_HORIZONTAL_BLOCK)) || 
+									((j>0 && j-4 >= 0) && ((map[i][j-2]!=0 && map[i][j-4]!=0 && map[i][j+2]==0) || (map[i][j-1]==RoadConfig.INTERSECTION_MIXED_HORIZONTAL_BLOCK && map[i][j+2]==0)))){
 								System.out.print("\n block i: " + i + " j:" + j + " converted from: " + map[i][j]);
 								map[i][j]=RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK;
 								System.out.println(" to: " + map[i][j]);
