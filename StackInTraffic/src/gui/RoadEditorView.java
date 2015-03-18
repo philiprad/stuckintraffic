@@ -413,6 +413,7 @@ public class RoadEditorView extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			boolean isValid = MapValidator.isMapValid(gridBuilder.getGrid());
+			
 			if (isValid){
 				System.out.println("Map is Valid");
 				ArrayList <String> mapNameList = (ArrayList<String>) FileRW.readObject(MainConfig.SAVES_FILE_PATH);
@@ -449,6 +450,12 @@ public class RoadEditorView extends JPanel {
 				}
 			} else {
 				System.out.println("Map is Not Valid");
+				for (int j=0; j<gridBuilder.getGrid().length; j++){
+					for (int i=0; i<gridBuilder.getGrid()[0].length; i++){
+						System.out.print(gridBuilder.getGrid()[j][i]+"\t");
+					}
+					System.out.print("\n");
+				}
 				new AlertMessageView("Map didn't pass validation and wasn't saved");
 				MapValidator.deleteEndPoints(gridBuilder);
 			}

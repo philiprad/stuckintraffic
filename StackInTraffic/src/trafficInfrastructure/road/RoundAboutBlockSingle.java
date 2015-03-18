@@ -278,6 +278,8 @@ public class RoundAboutBlockSingle {
 	 *            the initial angel1
 	 * @param initialAngel2
 	 *            the initial angel2
+	 * @param direction
+	 *            the direction
 	 * @return the path to first exit
 	 */
 	public static ArrayList<PathPoint> getPathToFirstExit(int x, int y, int x1,int y1,int x2, int y2, short blockType, int initialAngel, int initialAngel1, int initialAngel2, short direction){
@@ -357,6 +359,8 @@ public class RoundAboutBlockSingle {
 	 *            the initial angel1
 	 * @param initialAngel2
 	 *            the initial angel2
+	 * @param direction
+	 *            the direction
 	 * @return the path to second exit
 	 */
 	public static ArrayList<PathPoint> getPathToSecondExit(int x, int y, int x1, int  y1, int x2, int y2, short blockType, int initialAngel, int initialAngel1, int initialAngel2, short direction){
@@ -439,6 +443,8 @@ public class RoundAboutBlockSingle {
 	 *            the initial angel1
 	 * @param initialAngel2
 	 *            the initial angel2
+	 * @param direction
+	 *            the direction
 	 * @return the path to third exit
 	 */
 	public static ArrayList<PathPoint> getPathToThirdExit(int x, int y,int x1, int y1, int x2, int y2, short blockType, int initialAngel, int initialAngel1, int initialAngel2, short direction){
@@ -518,6 +524,8 @@ public class RoundAboutBlockSingle {
 	 *            the initial angel1
 	 * @param initialAngel2
 	 *            the initial angel2
+	 * @param direction
+	 *            the direction
 	 * @return the path to same exit
 	 */
 	public static ArrayList<PathPoint> getPathToSameExit(int x, int y, int x1, int y1, int x2, int y2, short blockType, int initialAngel, int initialAngel1, int initialAngel2, short direction){

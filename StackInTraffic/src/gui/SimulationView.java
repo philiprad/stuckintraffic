@@ -4,44 +4,28 @@
  */
 package gui;
 
-import gui.RoadEditorView.ExitListener;
-import gui.RoadEditorView.MainMenuListener;
-//import gui.RoadEditorView.OpenListener;
-
-
-
-
-
-
 import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.nio.Buffer;
 import java.text.DecimalFormat;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
-import javax.swing.Timer;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
-import javax.swing.JSeparator;
 import javax.swing.JToolBar;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.border.EmptyBorder;
+import javax.swing.Timer;
+
+import trafficInfrastructure.grid.GridBuilder;
+//import gui.RoadEditorView.OpenListener;
 
 
 // TODO: Auto-generated Javadoc
@@ -50,7 +34,7 @@ import javax.swing.border.EmptyBorder;
  */
 public class SimulationView extends JPanel{
 
-	
+	private GridBuilder gridBuilder;
     /** The play button. */
     private JButton playButton;
 	
@@ -93,6 +77,11 @@ public class SimulationView extends JPanel{
 	 */
 	public SimulationView(ApplicationFrame frame){
 		this.frame = frame;
+		this.loadMainContent();
+		MapChoiceView mapChoiceView = new MapChoiceView(frame, this, this.gridBuilder);
+	}
+	
+	public void loadMainContent(){
 		this.setLayout(new BorderLayout());
 		JMenuBar menuBarTop = new JMenuBar();
 		JMenu fileMenu = new JMenu("File");
@@ -152,8 +141,9 @@ public class SimulationView extends JPanel{
 	stopButton.addActionListener(new StopListener());
 	refreshButton.addActionListener(new RefreshListener());
 	simulationTimer = new Timer(10, new ActionListener() {
-         @Override
-         public void actionPerformed(ActionEvent e) {
+        
+		@Override
+      public void actionPerformed(ActionEvent e) {
          	if(centiseconds<99){	
          		centiseconds++;
          	} else {

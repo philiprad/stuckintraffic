@@ -46,6 +46,7 @@ public class RoadConfig {
 	/** The Constant INTERSECTION_MIXED_BLOCK. */
 	public static final short INTERSECTION_MIXED_HORIZONTAL_BLOCK = 51;
 	
+	/** The Constant INTERSECTION_MIXED_VERTICAL_BLOCK. */
 	public static final short INTERSECTION_MIXED_VERTICAL_BLOCK = 52;
 	
 	/** The Constant ROUND_ABOUT_BLOCK. */
@@ -105,20 +106,28 @@ public class RoadConfig {
 	/** The Constant BOTTOM_TO_RIGHT_DIRECTION. */
 	public static final short BOTTOM_TO_RIGHT_DIRECTION = 9;
 	
+	/** The Constant LEFT_TO_RIGHT_DIRECTION. */
 	public static final short LEFT_TO_RIGHT_DIRECTION = 10;
 	
+	/** The Constant RIGHT_TO_LEFT_DIRECTION. */
 	public static final short RIGHT_TO_LEFT_DIRECTION = -10;
 	
+	/** The Constant TOP_TO_BOTTOM_DIRECTION. */
 	public static final short TOP_TO_BOTTOM_DIRECTION = 11;
 	
+	/** The Constant BOTTOM_TO_TOP_DIRECTION. */
 	public static final short BOTTOM_TO_TOP_DIRECTION = -11;
 	
+	/** The Constant LEFT_TO_LEFT_DIRECTION. */
 	public static final short LEFT_TO_LEFT_DIRECTION = 12;
 	
+	/** The Constant RIGHT_TO_RIGHT_DIRECTION. */
 	public static final short RIGHT_TO_RIGHT_DIRECTION = -12;
 	
+	/** The Constant TOP_TO_TOP_DIRECTION. */
 	public static final short TOP_TO_TOP_DIRECTION = 13;
 	
+	/** The Constant BOTTOM_TO_BOTTOM_DIRECTION. */
 	public static final short BOTTOM_TO_BOTTOM_DIRECTION = -13;
 	
 	/** The Constant LEFT_TO_BOTTOM_DIRECTION. */
@@ -169,20 +178,28 @@ public class RoadConfig {
 	/** The Constant LEFT_1_TO_TOP_2_DIRECTION. */
 	public static final short BOTTOM_1_TO_LEFT_2_DIRECTION = 47;
 	
+	/** The Constant LEFT_1_TO_1_RIGHT. */
 	public static final short LEFT_1_TO_1_RIGHT = 48;
 	
+	/** The Constant RIGHT_1_TO_1_LEFT. */
 	public static final short RIGHT_1_TO_1_LEFT = 49;
 	
+	/** The Constant TOP_1_TO_1_BOTTOM. */
 	public static final short TOP_1_TO_1_BOTTOM = 50;
 	
+	/** The Constant BOTTOM_1_TO_1_TOP. */
 	public static final short BOTTOM_1_TO_1_TOP = 51;
 	
+	/** The Constant LEFT_2_TO_2_RIGHT. */
 	public static final short LEFT_2_TO_2_RIGHT = 48;
 	
+	/** The Constant RIGHT_2_TO_2_LEFT. */
 	public static final short RIGHT_2_TO_2_LEFT = 49;
 	
+	/** The Constant TOP_2_TO_2_BOTTOM. */
 	public static final short TOP_2_TO_2_BOTTOM = 50;
 	
+	/** The Constant BOTTOM_2_TO_2_TOP. */
 	public static final short BOTTOM_2_TO_2_TOP = 51;
 	
 }

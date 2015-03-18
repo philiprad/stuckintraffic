@@ -76,8 +76,10 @@ public class GraphicsConfig {
 	/** The Constant ROUND_ABOUT. */
 	public static final String ROUND_ABOUT = "./images2/roundAbout.png";
 	
+/** The Constant MIXED_INTERSECTION_HORIZONTAL_IMG. */
 public static final String MIXED_INTERSECTION_HORIZONTAL_IMG = "./images2/mixedIntersectionHorizontal.png";
 	
+	/** The Constant MIXED_INTERSECTION_VERTICAL_IMG. */
 	public static final String MIXED_INTERSECTION_VERTICAL_IMG = "./images2/mixedIntersectionVertical.png";
 	
 	
@@ -115,8 +117,10 @@ public static final String MIXED_INTERSECTION_HORIZONTAL_IMG = "./images2/mixedI
 	/** The Constant INTERSECTION_RIGHT_IMG_SCALED. */
 	public static final String INTERSECTION_RIGHT_IMG_SCALED = "./images/scaledPictures/intersectionRight.png";
 	
+	/** The Constant MIXED_INTERSECTION_HORIZONTAL_IMG_SCALED. */
 	public static final String MIXED_INTERSECTION_HORIZONTAL_IMG_SCALED = "./images/scaledPictures/mixedIntersectionHorizontal.png";
 	
+	/** The Constant MIXED_INTERSECTION_VERTICAL_IMG_SCALED. */
 	public static final String MIXED_INTERSECTION_VERTICAL_IMG_SCALED = "./images/scaledPictures/mixedIntersectionVertical.png";
 	
 	/** The Constant VERTICAL_DOUBLE_ROAD_IMG_TOOLBAR. */
@@ -131,8 +135,10 @@ public static final String MIXED_INTERSECTION_HORIZONTAL_IMG = "./images2/mixedI
 	/** The Constant ROUND_ABOUT_IMG_TOOLBAR. */
 	public static final String ROUND_ABOUT_IMG_TOOLBAR= "./images/toolBarPictures/roundAbout.png";
 	
+	/** The Constant MIXED_INTERSECTION_HORIZONTAL_IMG_TOOLBAR. */
 	public static final String MIXED_INTERSECTION_HORIZONTAL_IMG_TOOLBAR = "./images/toolBarPictures/mixedIntersectionHorizontal.png";
 	
+	/** The Constant MIXED_INTERSECTION_VERTICAL_IMG_TOOLBAR. */
 	public static final String MIXED_INTERSECTION_VERTICAL_IMG_TOOLBAR = "./images/toolBarPictures/mixedIntersectionVertical.png";
 	
 	/** The Constant VERTICAL_ROAD_IMG_CURSOR. */
@@ -168,8 +174,10 @@ public static final String MIXED_INTERSECTION_HORIZONTAL_IMG = "./images2/mixedI
 	/** The Constant ROUND_ABOUT_IMG_CURSOR. */
 	public static final String ROUND_ABOUT_IMG_CURSOR = "./images/cursorPictures/roundAbout.png";
 	
+	/** The Constant MIXED_INTERSECTION_HORIZONTAL_IMG_CURSOR. */
 	public static final String MIXED_INTERSECTION_HORIZONTAL_IMG_CURSOR = "./images/cursorPictures/mixedIntersectionHorizontal.png";
 	
+	/** The Constant MIXED_INTERSECTION_VERTICAL_IMG_CURSOR. */
 	public static final String MIXED_INTERSECTION_VERTICAL_IMG_CURSOR = "./images/cursorPictures/mixedIntersectionVertical.png";
 	
 	
@@ -223,15 +231,15 @@ public static final String MIXED_INTERSECTION_HORIZONTAL_IMG = "./images2/mixedI
 	public static final int TRAFFIC_LIGHT_POSITION_WIDTH_DISTANCE = BLOCK_SIDE_SIZE-TRAFFIC_LIGHT_LINE_WIDTH;
 	
 	/** The Constant CAR_POSITION_DOUBLE_LANE. */
-	public static final int CAR_POSITION_DOUBLE_LANE = BLOCK_SIDE_SIZE*40/100;
+	public static final int CAR_POSITION_DOUBLE_LANE = BLOCK_SIDE_SIZE*30/100;
 	
 	/** The Constant DOUBLE_LANE_BLOCK_2_LANE_POSITION. */
-	public static final int DOUBLE_LANE_BLOCK_2_LANE_POSITION = BLOCK_SIDE_SIZE*40/100+BLOCK_SIDE_SIZE*37/100;
+	public static final int DOUBLE_LANE_BLOCK_2_LANE_POSITION = BLOCK_SIDE_SIZE - BLOCK_SIDE_SIZE*30/100;
 	
 	/** The Constant DISTANCE_BETWEEN_LANES. */
-	public static final int DISTANCE_BETWEEN_LANES = BLOCK_SIDE_SIZE*37/100;
+	public static final int DISTANCE_BETWEEN_LANES = BLOCK_SIDE_SIZE*40/100;
 	/** The Constant CAR_INVERSE_POSITION. */
-	public static final int CAR_INVERSE_POSITION_DOUBLE_LANE = BLOCK_SIDE_SIZE*2-(CAR_POSITION+BLOCK_SIDE_SIZE*2*5/100);
+	public static final int CAR_INVERSE_POSITION_DOUBLE_LANE = BLOCK_SIDE_SIZE*2-BLOCK_SIDE_SIZE*30/100;
 	
 	/** The Constant CAR_ROUND_ABOUT_POSITION_1. */
 	public static final int CAR_ROUND_ABOUT_POSITION_1 = BLOCK_SIDE_SIZE+BLOCK_SIDE_SIZE*20/100;

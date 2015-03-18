@@ -1,8 +1,4 @@
-/gui/
-/main/
-/simulationBuilder/
-/trafficInfrastructure/
-/util/
 /agents/
-/agentsLogic/
 /graphicsLoader/
+/trafficInfrastructure/
+/gui/

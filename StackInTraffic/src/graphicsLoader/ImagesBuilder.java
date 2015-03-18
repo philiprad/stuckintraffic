@@ -52,8 +52,10 @@ public class ImagesBuilder {
 	/** The intersection left. */
 	private Image intersectionLeft;
 	
+	/** The mixed intersection horizontal. */
 	private Image mixedIntersectionHorizontal;
 	
+	/** The mixed intersection vertical. */
 	private Image mixedIntersectionVertical;
 	
 	/** The verical road sc. */
@@ -89,8 +91,10 @@ public class ImagesBuilder {
 	/** The intersection left sc. */
 	private Image intersectionLeftSc;
 	
+	/** The mixed intersection horizontal sc. */
 	private Image mixedIntersectionHorizontalSc;
 	
+	/** The mixed intersection vertical sc. */
 	private Image mixedIntersectionVerticalSc;
 	
 	/** The verical double road. */
@@ -105,8 +109,10 @@ public class ImagesBuilder {
 	/** The round about tb. */
 	private Image roundAboutTb;
 	
+	/** The mixed intersection horizontal tb. */
 	private Image mixedIntersectionHorizontalTb;
 	
+	/** The mixed intersection vertical tb. */
 	private Image mixedIntersectionVerticalTb;
 	
 	/** The verical road cr. */
@@ -142,8 +148,10 @@ public class ImagesBuilder {
 	/** The intersection left cr. */
 	private Image intersectionLeftCr;
 	
+	/** The mixed intersection horizontal cr. */
 	private Image mixedIntersectionHorizontalCr;
 	
+	/** The mixed intersection vertical cr. */
 	private Image mixedIntersectionVerticalCr;
 	
 	
@@ -736,34 +744,74 @@ public class ImagesBuilder {
 		return this.intersectionRightCr;
 	}
 	
+	/**
+	 * Gets the mixed intersection h.
+	 *
+	 * @return the mixed intersection h
+	 */
 	public Image getMixedIntersectionH(){
 		return this.mixedIntersectionHorizontal;
 	}
 	
+	/**
+	 * Gets the mixed intersection h sc.
+	 *
+	 * @return the mixed intersection h sc
+	 */
 	public Image getMixedIntersectionHSc(){
 		return this.mixedIntersectionHorizontalSc;
 	}
 	
+	/**
+	 * Gets the mixed intersection h cr.
+	 *
+	 * @return the mixed intersection h cr
+	 */
 	public Image getMixedIntersectionHCr(){
 		return this.mixedIntersectionHorizontalCr;
 	}
 	
+	/**
+	 * Gets the mixed intersection h tb.
+	 *
+	 * @return the mixed intersection h tb
+	 */
 	public Image getMixedIntersectionHTb(){
 		return this.mixedIntersectionHorizontalTb;
 	}
 	
+	/**
+	 * Gets the mixed intersection v.
+	 *
+	 * @return the mixed intersection v
+	 */
 	public Image getMixedIntersectionV(){
 		return this.mixedIntersectionVertical;
 	}
 	
+	/**
+	 * Gets the mixed intersection v sc.
+	 *
+	 * @return the mixed intersection v sc
+	 */
 	public Image getMixedIntersectionVSc(){
 		return this.mixedIntersectionVerticalSc;
 	}
 	
+	/**
+	 * Gets the mixed intersection v cr.
+	 *
+	 * @return the mixed intersection v cr
+	 */
 	public Image getMixedIntersectionVCr(){
 		return this.mixedIntersectionVerticalCr;
 	}
 	
+	/**
+	 * Gets the mixed intersection v tb.
+	 *
+	 * @return the mixed intersection v tb
+	 */
 	public Image getMixedIntersectionVTb(){
 		return this.mixedIntersectionVerticalTb;
 	}
