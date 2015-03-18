@@ -79,13 +79,17 @@ public class MapValidator {
 								System.out.println(" to: " + map[i][j]);
 							}
 							if(((i+2<map.length && map[i+2][j]==0)) || 
-									((i+2==map.length &&((map[i-2][j]!=0 && map[i-4][j]!=0 && map[i+2][j]==0) || (map[i-1][j]==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK && map[i+2][j]==0))) || 
+									((i+2==map.length && ((map[i-2][j]!=0 && map[i-4][j]!=0) || (map[i-1][j]==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK))) || 
 									(i>0 && i-4 >= 0) && ((map[i-2][j]!=0 && map[i-4][j]!=0 && map[i+2][j]==0) || (map[i-1][j]==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK && map[i+2][j]==0)))){
 								System.out.print("\n block i: " + i + " j:" + j + " converted from: " + map[i][j]);
 								map[i][j]=RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK;
 								System.out.println(" to: " + map[i][j]);
 							}
 							if((i==0 && (map[i+2][j]==0 || map[i+4][j]==0)) || 
+									(i>0 && ((map[i-1][j]==RoadConfig.HORIZONTAL_BLOCK || map[i-1][j]==RoadConfig.HORIZONTAL_ENTER_BLOCK || map[i-1][j]==RoadConfig.HORIZONTAL_EXIT_BLOCK || 
+											map[i-1][j]==RoadConfig.VERTICAL_BLOCK || map[i-1][j]==RoadConfig.VERTICAL_ENTER_BLOCK || map[i-1][j]==RoadConfig.VERTICAL_EXIT_BLOCK))) ||
+									(i+2==map.length && ((map[i+1][j]==RoadConfig.HORIZONTAL_BLOCK || map[i+1][j]==RoadConfig.HORIZONTAL_ENTER_BLOCK || map[i+1][j]==RoadConfig.HORIZONTAL_EXIT_BLOCK || 
+											map[i+1][j]==RoadConfig.VERTICAL_BLOCK || map[i+1][j]==RoadConfig.VERTICAL_ENTER_BLOCK || map[i+1][j]==RoadConfig.VERTICAL_EXIT_BLOCK))) ||
 									(map[i][j]!=RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK && (i>0 && i+4< map.length && map[i+2][j]==0 && (map[i-2][j]==0 || map[i+4][j]==0))) || 
 									//((i>0 && i+4< map.length && map[i+2][j]==0 && (map[i-2][j]==0 || map[i+4][j]==0))) || 
 									(map[i][j]!=RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK && i>0 && i+4==map.length && (map[i-2][j]==0 || map[i+2][j]==0)) ||
@@ -156,6 +160,11 @@ public class MapValidator {
 								System.out.println(" to: " + map[i][j]);
 							}
 							if((j==0 && (map[i][j+2]==0 || map[i][j+4]==0)) ||
+									(j>0 && ((map[i][j-1]==RoadConfig.HORIZONTAL_BLOCK || map[i][j-1]==RoadConfig.HORIZONTAL_ENTER_BLOCK || map[i][j-1]==RoadConfig.HORIZONTAL_EXIT_BLOCK || 
+									map[i][j-1]==RoadConfig.VERTICAL_BLOCK || map[i][j-1]==RoadConfig.VERTICAL_ENTER_BLOCK || map[i][j-1]==RoadConfig.VERTICAL_EXIT_BLOCK))) ||
+							(i+2==map.length && ((map[i][j+1]==RoadConfig.HORIZONTAL_BLOCK || map[i][j+1]==RoadConfig.HORIZONTAL_ENTER_BLOCK || map[i][j+1]==RoadConfig.HORIZONTAL_EXIT_BLOCK || 
+									map[i][j+1]==RoadConfig.VERTICAL_BLOCK || map[i][j+1]==RoadConfig.VERTICAL_ENTER_BLOCK || map[i][j+1]==RoadConfig.VERTICAL_EXIT_BLOCK))) ||
+	
 									(map[i][j]!=RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK && (i>0 && j+4< map[0].length && map[i][j+2]==0 && (map[i][j-2]==0 || map[i][j+4]==0))) ||
 									(map[i][j]!=RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK && (j>0 && j+4== map[0].length && map[i][j-2]==0 && map[i][j+2]==0)) || 
 									(map[i][j]!=RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK && (j>0 && j+5== map[0].length && (map[i][j-2]==0 || map[i][j+2]==0)))){
