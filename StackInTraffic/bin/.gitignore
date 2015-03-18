@@ -1,8 +1,2 @@
-/.DS_Store
-/agents/
-/graphicsLoader/
+/tests/
 /gui/
-/main/
-/simulationBuilder/
-/trafficInfrastructure/
-/util/

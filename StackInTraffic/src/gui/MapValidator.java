@@ -79,8 +79,8 @@ public class MapValidator {
 								System.out.println(" to: " + map[i][j]);
 							}
 							if(((i+2<map.length && map[i+2][j]==0)) || 
-									((i+2==map.length &&((map[i-2][j]!=0 && map[i-4][j]!=0 && map[i+2][j]==0) || map[i-1][j]==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK && map[i+2][j]==0)) || 
-									(i>0 && i-4 >= 0) && ((map[i-2][j]!=0 && map[i-4][j]!=0) || (map[i-1][j]==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK && map[i+2][j]==0)))){
+									((i+2==map.length &&((map[i-2][j]!=0 && map[i-4][j]!=0 && map[i+2][j]==0) || (map[i-1][j]==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK && map[i+2][j]==0))) || 
+									(i>0 && i-4 >= 0) && ((map[i-2][j]!=0 && map[i-4][j]!=0 && map[i+2][j]==0) || (map[i-1][j]==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK && map[i+2][j]==0)))){
 								System.out.print("\n block i: " + i + " j:" + j + " converted from: " + map[i][j]);
 								map[i][j]=RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK;
 								System.out.println(" to: " + map[i][j]);
