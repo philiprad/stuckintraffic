@@ -550,8 +550,9 @@ public class RoadEditorView extends JPanel {
 		this.add(this.scrollPane, BorderLayout.CENTER);
 		JToolBar toolbar = new JToolBar(null, JToolBar.VERTICAL);
 		toolbar.setFloatable(false);
-		this.add(toolbar, BorderLayout.EAST);
 		
+		JScrollPane toolBarScroll = new JScrollPane(toolbar);
+		this.add(toolBarScroll, BorderLayout.EAST);
 		
 		JButton button = null;
 		
