@@ -23,6 +23,7 @@ import main.MainConfig;
 import simulationBuilder.TrafficManager;
 import trafficInfrastructure.grid.GridBuilder;
 import trafficInfrastructure.road.BlockGraphicPoint;
+import trafficInfrastructure.roadPath.DoublePath;
 import trafficInfrastructure.roadPath.Path;
 import util.FileRW;
 import agents.Car;
@@ -55,6 +56,8 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	
 	/** The arr path. */
 	private ArrayList<Path> arrPath;
+	
+	private ArrayList<DoublePath> arrDoublePath;
 	
 	/** The car list. */
 	private ArrayList<Car> carList ;
@@ -95,6 +98,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		this.ib = ib;
 		this.arrBG = arrBG;
 		this.arrPath = (ArrayList<Path>)FileRW.readObject(MainConfig.PATHS_PATH + "/" + fileName + MainConfig.PATH_SUFFIX);
+		this.arrDoublePath = (ArrayList<DoublePath>)FileRW.readObject(MainConfig.DOUBLE_PATHS_PATH + "/" + fileName + MainConfig.DOUBLE_PATH_SUFFIX);
 		TrafficManager tm = new TrafficManager(fileName);
 		//this.trafficLightList = tm.getTrafficLightList();
 		this.roadBlockGrid = tm.getRoadBlockArray();
@@ -252,6 +256,6 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		Random rand = new Random();
 		int x = rand.nextInt(this.arrPath.size());
 	
-		this.carList.add(new Car(this.arrPath.get(x)));
+		this.carList.add(new Car(this.arrPath.get(x), this.arrDoublePath));
 	}
 }

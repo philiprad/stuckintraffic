@@ -12,6 +12,7 @@ import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 
 import trafficInfrastructure.road.RoadConfig;
+import trafficInfrastructure.roadPath.DoublePath;
 import trafficInfrastructure.roadPath.Path;
 import trafficInfrastructure.roadPath.PathPoint;
 
@@ -39,13 +40,16 @@ public class Car {
 	/** The path end. */
 	private short pathEnd = -1;
 	
+	private short laneChoise = -1;
+	
+	private ArrayList <DoublePath> arrDoublePath;
 	
 	/**
 	 * Instantiates a new car.
 	 *
 	 * @param path the path
 	 */
-	public Car (Path path){
+	public Car (Path path, ArrayList<DoublePath> arrDoublePath){
 		this.path = path;
 		this.counter = 0;
 	}
@@ -89,10 +93,15 @@ public class Car {
 	 * Move.
 	 */
 	public void move(){
-		if (this.path.getPathPoints().size()-speed > this.counter){		
-			this.counter+= speed;
+		
+		if (this.laneChoise<0){
+			if (this.path.getPathPoints().size()-speed > this.counter){		
+				this.counter+= speed;
+			} else {
+				this.pathEnd = 1;
+			}
 		} else {
-			this.pathEnd = 1;
+			
 		}
 	}
 	

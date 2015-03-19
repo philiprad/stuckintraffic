@@ -26,6 +26,7 @@ public class AppDirBuilder {
 		DirBuilder.createDir(MainConfig.GRID_PATH);
 		DirBuilder.createDir(MainConfig.PATHS_PATH);
 		DirBuilder.createDir(MainConfig.ROADBLOCK_PATH);
+		DirBuilder.createDir(MainConfig.DOUBLE_PATHS_PATH);
 		
 		File file = new File(MainConfig.SAVES_FILE_PATH);
 		if (!file.exists()){

@@ -44,7 +44,7 @@ public class PathPoint implements Serializable{
 	 * @param rot
 	 *            the rot
 	 */
-	public PathPoint (short blockType, int x, int y, int direction, int rot){
+	public PathPoint (short blockType, int x, int y, int direction, int rot, int idDouble){
 		this.rot = rot;
 		this.x = x;
 		this.y = y;

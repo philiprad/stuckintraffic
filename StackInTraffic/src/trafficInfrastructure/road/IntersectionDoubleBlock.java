@@ -27,7 +27,7 @@ public class IntersectionDoubleBlock {
 		 *            the block type
 		 * @return the left to top path
 		 */
-		public static ArrayList<PathPoint> getLeftToTop1To1LanePath(int x, int y, short blockType){
+		public static ArrayList<PathPoint> getLeft1To1TopPath(int x, int y, short blockType, int idDouble){
 
 			ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 			
@@ -44,7 +44,7 @@ public class IntersectionDoubleBlock {
 					int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 					int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 					System.out.println(xp + " "+ yp);
-					arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_1_TO_TOP_1_DIRECTION,(int) theta ));
+					arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_1_TO_TOP_1_DIRECTION,(int) theta, idDouble ));
 				}
 			return arrPathPoints;
 		}
@@ -61,12 +61,12 @@ public class IntersectionDoubleBlock {
 		 *            the block type
 		 * @return the left to top1 to2 lane path
 		 */
-		public static ArrayList<PathPoint> getLeftToTop1To2LanePath(int x, int y, short blockType){
+		public static ArrayList<PathPoint> getLeft1To2TopPath(int x, int y, short blockType, int idDouble){
 
 			ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 			
 				for (int i = 0; i < GraphicsConfig.DISTANCE_BETWEEN_LANES; i++){
-					arrPathPoints.add(new PathPoint(blockType, x+i, y+GraphicsConfig.CAR_POSITION_DOUBLE_LANE, 1 , 90));
+					arrPathPoints.add(new PathPoint(blockType, x+i, y+GraphicsConfig.CAR_POSITION_DOUBLE_LANE, RoadConfig.LEFT_1_TO_TOP_2_DIRECTION , 90, idDouble));
 				}
 				x+=GraphicsConfig.DISTANCE_BETWEEN_LANES;
 				float theta = 90;
@@ -82,7 +82,7 @@ public class IntersectionDoubleBlock {
 					int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 					int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 					System.out.println(xp + " "+ yp);
-					arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_1_TO_TOP_2_DIRECTION,(int) theta ));
+					arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_1_TO_TOP_2_DIRECTION,(int) theta, idDouble ));
 				}
 			return arrPathPoints;
 		}
@@ -98,7 +98,7 @@ public class IntersectionDoubleBlock {
 		 *            the block type
 		 * @return the left to bottom path
 		 */
-	public static ArrayList<PathPoint> getLeft2To2BottomPath(int x, int y, short blockType){
+	public static ArrayList<PathPoint> getLeft2To2BottomPath(int x, int y, short blockType, int idDouble){
 			ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 			
 			y+=GraphicsConfig.BLOCK_SIDE_SIZE*2;
@@ -115,7 +115,7 @@ public class IntersectionDoubleBlock {
 				int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 				int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 				System.out.println(xp + " "+ yp);
-				arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_2_TO_BOTTOM_2_DIRECTION,(int) theta ));
+				arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_2_TO_BOTTOM_2_DIRECTION,(int) theta, idDouble ));
 			}
 		return arrPathPoints;
 		}
@@ -131,11 +131,11 @@ public class IntersectionDoubleBlock {
 	 *            the block type
 	 * @return the left2 to1 bottom path
 	 */
-	public static ArrayList<PathPoint> getLeft2To1BottomPath(int x, int y, short blockType){
+	public static ArrayList<PathPoint> getLeft2To1BottomPath(int x, int y, short blockType, int idDouble){
 		
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		for (int i = 0; i < GraphicsConfig.DISTANCE_BETWEEN_LANES; i++){
-			arrPathPoints.add(new PathPoint(blockType, x+i, y+GraphicsConfig.CAR_POSITION_DOUBLE_LANE+GraphicsConfig.DISTANCE_BETWEEN_LANES, 1 , 90));
+			arrPathPoints.add(new PathPoint(blockType, x+i, y+GraphicsConfig.CAR_POSITION_DOUBLE_LANE+GraphicsConfig.DISTANCE_BETWEEN_LANES, RoadConfig.LEFT_2_TO_BOTTOM_1_DIRECTION, 90, idDouble));
 		}
 		x+=GraphicsConfig.DISTANCE_BETWEEN_LANES;
 		y+=GraphicsConfig.BLOCK_SIDE_SIZE*2;
@@ -152,7 +152,7 @@ public class IntersectionDoubleBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_2_TO_BOTTOM_1_DIRECTION,(int) theta ));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_2_TO_BOTTOM_1_DIRECTION,(int) theta,  idDouble ));
 		}
 	return arrPathPoints;
 	}
@@ -168,7 +168,7 @@ public class IntersectionDoubleBlock {
 	 *            the block type
 	 * @return the right2 to2 top path
 	 */
-	public static ArrayList<PathPoint> getRight2To2TopPath(int x, int y, short blockType){
+	public static ArrayList<PathPoint> getRight2To2TopPath(int x, int y, short blockType, int idDouble){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		x+=GraphicsConfig.BLOCK_SIDE_SIZE*2;//-GraphicsConfig.DISTANCE_BETWEEN_LANES;
 		
@@ -186,7 +186,7 @@ public class IntersectionDoubleBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.RIGHT_2_TO_TOP_2_DIRECTION ,(int) theta ));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.RIGHT_2_TO_TOP_2_DIRECTION ,(int) theta, idDouble ));
 		}
 	return arrPathPoints;
 	}
@@ -202,10 +202,10 @@ public class IntersectionDoubleBlock {
 	 *            the block type
 	 * @return the right2 to1 top path
 	 */
-	public static ArrayList<PathPoint> getRight2To1TopPath(int x, int y, short blockType){
+	public static ArrayList<PathPoint> getRight2To1TopPath(int x, int y, short blockType, int idDouble){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		for (int i = 0; i < GraphicsConfig.DISTANCE_BETWEEN_LANES; i++){
-			arrPathPoints.add(new PathPoint(blockType, x+GraphicsConfig.BLOCK_SIDE_SIZE*2-i, y+GraphicsConfig.CAR_INVERSE_POSITION_DOUBLE_LANE - GraphicsConfig.DISTANCE_BETWEEN_LANES,-1, 270));
+			arrPathPoints.add(new PathPoint(blockType, x+GraphicsConfig.BLOCK_SIDE_SIZE*2-i, y+GraphicsConfig.CAR_INVERSE_POSITION_DOUBLE_LANE - GraphicsConfig.DISTANCE_BETWEEN_LANES,RoadConfig.RIGHT_2_TO_TOP_1_DIRECTION, 270, idDouble));
 		}
 		x+=GraphicsConfig.BLOCK_SIDE_SIZE*2-GraphicsConfig.DISTANCE_BETWEEN_LANES;
 		
@@ -223,7 +223,7 @@ public class IntersectionDoubleBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.RIGHT_2_TO_TOP_1_DIRECTION ,(int) theta ));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.RIGHT_2_TO_TOP_1_DIRECTION ,(int) theta, idDouble ));
 		}
 	return arrPathPoints;
 	}	
@@ -239,7 +239,7 @@ public class IntersectionDoubleBlock {
 	 *            the block type
 	 * @return the right1 to1 bottom path
 	 */
-	public static ArrayList<PathPoint> getRight1To1BottomPath(int x, int y, short blockType){
+	public static ArrayList<PathPoint> getRight1To1BottomPath(int x, int y, short blockType, int idDouble){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		y+=GraphicsConfig.BLOCK_SIDE_SIZE*2;
 		x+=GraphicsConfig.BLOCK_SIDE_SIZE*2;
@@ -256,7 +256,7 @@ public class IntersectionDoubleBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.RIGHT_1_TO_BOTTOM_1_DIRECTION ,(int) theta ));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.RIGHT_1_TO_BOTTOM_1_DIRECTION ,(int) theta, idDouble ));
 		}
 	return arrPathPoints;
 	}
@@ -272,10 +272,10 @@ public class IntersectionDoubleBlock {
 	 *            the block type
 	 * @return the right1 to2 bottom path
 	 */
-	public static ArrayList<PathPoint> getRight1To2BottomPath(int x, int y, short blockType){
+	public static ArrayList<PathPoint> getRight1To2BottomPath(int x, int y, short blockType, int idDouble){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		for (int i = 0; i < GraphicsConfig.DISTANCE_BETWEEN_LANES; i++){
-			arrPathPoints.add(new PathPoint(blockType, x+GraphicsConfig.BLOCK_SIDE_SIZE*2-i, y+GraphicsConfig.CAR_INVERSE_POSITION_DOUBLE_LANE,-1, 270));
+			arrPathPoints.add(new PathPoint(blockType, x+GraphicsConfig.BLOCK_SIDE_SIZE*2-i, y+GraphicsConfig.CAR_INVERSE_POSITION_DOUBLE_LANE,RoadConfig.RIGHT_1_TO_BOTTOM_2_DIRECTION, 270, idDouble));
 		}
 		y+=GraphicsConfig.BLOCK_SIDE_SIZE*2;
 		x+=GraphicsConfig.BLOCK_SIDE_SIZE*2-GraphicsConfig.DISTANCE_BETWEEN_LANES;
@@ -292,7 +292,7 @@ public class IntersectionDoubleBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.RIGHT_1_TO_BOTTOM_2_DIRECTION ,(int) theta ));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.RIGHT_1_TO_BOTTOM_2_DIRECTION ,(int) theta, idDouble ));
 		}
 	return arrPathPoints;
 	}
@@ -308,7 +308,7 @@ public class IntersectionDoubleBlock {
 	 *            the block type
 	 * @return the top1 to1 right path
 	 */
-	public static ArrayList<PathPoint> getTop1To1RightPath(int x, int y, short blockType){
+	public static ArrayList<PathPoint> getTop1To1RightPath(int x, int y, short blockType, int idDouble){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		x+=GraphicsConfig.BLOCK_SIDE_SIZE*2;
 		
@@ -326,7 +326,7 @@ public class IntersectionDoubleBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.TOP_1_TO_RIGHT_1_DIRECTION ,(int) theta ));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.TOP_1_TO_RIGHT_1_DIRECTION ,(int) theta, idDouble ));
 		}
 	return arrPathPoints;
 	}
@@ -342,10 +342,10 @@ public class IntersectionDoubleBlock {
 	 *            the block type
 	 * @return the top1 to2 right path
 	 */
-	public static ArrayList<PathPoint> getTop1To2RightPath(int x, int y, short blockType){
+	public static ArrayList<PathPoint> getTop1To2RightPath(int x, int y, short blockType, int idDouble){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		for (int i = 0; i < GraphicsConfig.DISTANCE_BETWEEN_LANES; i++){
-			arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_INVERSE_POSITION_DOUBLE_LANE , y+i,1, -1));
+			arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_INVERSE_POSITION_DOUBLE_LANE , y+i,RoadConfig.TOP_1_TO_RIGHT_2_DIRECTION, -1, idDouble));
 		}
 		x+=GraphicsConfig.BLOCK_SIDE_SIZE*2;
 		y+=GraphicsConfig.DISTANCE_BETWEEN_LANES;
@@ -363,7 +363,7 @@ public class IntersectionDoubleBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.TOP_1_TO_RIGHT_2_DIRECTION ,(int) theta ));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.TOP_1_TO_RIGHT_2_DIRECTION ,(int) theta, idDouble ));
 		}
 	return arrPathPoints;
 	}
@@ -379,7 +379,7 @@ public class IntersectionDoubleBlock {
 	 *            the block type
 	 * @return the top2 to2 left path
 	 */
-	public static ArrayList<PathPoint> getTop2To2LeftPath(int x, int y, short blockType){
+	public static ArrayList<PathPoint> getTop2To2LeftPath(int x, int y, short blockType, int idDouble){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		float theta = 0;
 		int radius = GraphicsConfig.CAR_INVERSE_POSITION_DOUBLE_LANE - GraphicsConfig.DISTANCE_BETWEEN_LANES;
@@ -394,7 +394,7 @@ public class IntersectionDoubleBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.TOP_2_TO_LEFT_2_DIRECTION ,(int) theta ));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.TOP_2_TO_LEFT_2_DIRECTION ,(int) theta, idDouble ));
 		}
 	return arrPathPoints;
 	}
@@ -410,10 +410,10 @@ public class IntersectionDoubleBlock {
 	 *            the block type
 	 * @return the top2 to1 left path
 	 */
-	public static ArrayList<PathPoint> getTop2To1LeftPath(int x, int y, short blockType){
+	public static ArrayList<PathPoint> getTop2To1LeftPath(int x, int y, short blockType, int idDouble){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		for (int i = 0; i < GraphicsConfig.DISTANCE_BETWEEN_LANES; i++){
-			arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_INVERSE_POSITION_DOUBLE_LANE-GraphicsConfig.DISTANCE_BETWEEN_LANES, y+i,1, -1));
+			arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_INVERSE_POSITION_DOUBLE_LANE-GraphicsConfig.DISTANCE_BETWEEN_LANES, y+i,RoadConfig.TOP_2_TO_LEFT_1_DIRECTION, -1, idDouble));
 		}
 		y+=GraphicsConfig.DISTANCE_BETWEEN_LANES;
 		float theta = 0;
@@ -429,7 +429,7 @@ public class IntersectionDoubleBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.TOP_2_TO_LEFT_1_DIRECTION ,(int) theta ));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.TOP_2_TO_LEFT_1_DIRECTION ,(int) theta, idDouble ));
 		}
 	return arrPathPoints;
 	}
@@ -445,7 +445,7 @@ public class IntersectionDoubleBlock {
 	 *            the block type
 	 * @return the bottom2 to2 right path
 	 */
-	public static ArrayList<PathPoint> getBottom2To2RightPath(int x, int y, short blockType){
+	public static ArrayList<PathPoint> getBottom2To2RightPath(int x, int y, short blockType, int idDouble){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		x+=GraphicsConfig.BLOCK_SIDE_SIZE*2;
 		y+=GraphicsConfig.BLOCK_SIDE_SIZE*2;
@@ -463,7 +463,7 @@ public class IntersectionDoubleBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.BOTTOM_2_TO_RIGHT_2_DIRECTION ,(int) theta ));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.BOTTOM_2_TO_RIGHT_2_DIRECTION ,(int) theta , idDouble));
 		}
 	return arrPathPoints;
 	}
@@ -479,10 +479,10 @@ public class IntersectionDoubleBlock {
 	 *            the block type
 	 * @return the bottom2 to1 right path
 	 */
-	public static ArrayList<PathPoint> getBottom2To1RightPath(int x, int y, short blockType){
+	public static ArrayList<PathPoint> getBottom2To1RightPath(int x, int y, short blockType, int idDouble){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		for (int i = 0; i < GraphicsConfig.DISTANCE_BETWEEN_LANES; i++){
-			arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_POSITION_DOUBLE_LANE+GraphicsConfig.DISTANCE_BETWEEN_LANES , y+GraphicsConfig.BLOCK_SIDE_SIZE*2-i, -1 ,-1));
+			arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_POSITION_DOUBLE_LANE+GraphicsConfig.DISTANCE_BETWEEN_LANES , y+GraphicsConfig.BLOCK_SIDE_SIZE*2-i, RoadConfig.BOTTOM_2_TO_RIGHT_1_DIRECTION ,-1, idDouble));
 		}
 		x+=GraphicsConfig.BLOCK_SIDE_SIZE*2;
 		y+=GraphicsConfig.BLOCK_SIDE_SIZE*2-GraphicsConfig.DISTANCE_BETWEEN_LANES;
@@ -500,7 +500,7 @@ public class IntersectionDoubleBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.BOTTOM_2_TO_RIGHT_1_DIRECTION ,(int) theta ));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.BOTTOM_2_TO_RIGHT_1_DIRECTION ,(int) theta, idDouble ));
 		}
 	return arrPathPoints;
 	}
@@ -516,7 +516,7 @@ public class IntersectionDoubleBlock {
 	 *            the block type
 	 * @return the bottom1 to1 left path
 	 */
-	public static ArrayList<PathPoint> getBottom1To1LeftPath(int x, int y, short blockType){
+	public static ArrayList<PathPoint> getBottom1To1LeftPath(int x, int y, short blockType, int idDouble){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		y+=GraphicsConfig.BLOCK_SIDE_SIZE*2;
 		float theta = 0;
@@ -532,7 +532,7 @@ public class IntersectionDoubleBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.BOTTOM_1_TO_LEFT_1_DIRECTION ,(int) theta ));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.BOTTOM_1_TO_LEFT_1_DIRECTION ,(int) theta, idDouble));
 		}
 	return arrPathPoints;
 	}
@@ -548,10 +548,10 @@ public class IntersectionDoubleBlock {
 	 *            the block type
 	 * @return the bottom1 to2 left path
 	 */
-	public static ArrayList<PathPoint> getBottom1To2LeftPath(int x, int y, short blockType){
+	public static ArrayList<PathPoint> getBottom1To2LeftPath(int x, int y, short blockType, int idDouble){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		for (int i = 0; i < GraphicsConfig.DISTANCE_BETWEEN_LANES; i++){
-			arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_POSITION_DOUBLE_LANE , y+GraphicsConfig.BLOCK_SIDE_SIZE*2-i, -1 ,-1));
+			arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_POSITION_DOUBLE_LANE , y+GraphicsConfig.BLOCK_SIDE_SIZE*2-i, RoadConfig.BOTTOM_1_TO_LEFT_2_DIRECTION ,-1, idDouble));
 		}
 		y+=GraphicsConfig.BLOCK_SIDE_SIZE*2-GraphicsConfig.DISTANCE_BETWEEN_LANES;
 		float theta = 0;
@@ -567,7 +567,7 @@ public class IntersectionDoubleBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.BOTTOM_1_TO_LEFT_2_DIRECTION ,(int) theta ));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.BOTTOM_1_TO_LEFT_2_DIRECTION ,(int) theta, idDouble ));
 		}
 	return arrPathPoints;
 	}

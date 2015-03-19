@@ -24,6 +24,8 @@ public class MainConfig {
 	/** The Constant PATHS_DIR. */
 	public static final String PATHS_DIR = "Paths";
 	
+	public static final String DOUBLE_PATHS_DIR = "DoublePaths" ;
+	
 	/** The Constant GRID_DIR. */
 	public static final String GRID_DIR = "Grids";
 	
@@ -41,6 +43,8 @@ public class MainConfig {
 	
 	/** The Constant PATHS_PATH. */
 	public static final String PATHS_PATH = SAVES_PATH + "/" + PATHS_DIR ;
+	
+	public static final String DOUBLE_PATHS_PATH = SAVES_PATH + "/" + DOUBLE_PATHS_DIR;
 	
 	/** The Constant GRID_PATH. */
 	public static final String GRID_PATH = SAVES_PATH + "/" + GRID_DIR ;
@@ -62,5 +66,7 @@ public class MainConfig {
 	
 	/** The Constant PATH_SUFFIX. */
 	public static final String PATH_SUFFIX = "Path";
+	
+	public static final String DOUBLE_PATH_SUFFIX = "DoublePath";
 	
 }

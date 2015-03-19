@@ -298,7 +298,7 @@ public class RoundAboutBlockSingle {
 			int xp = (int) (x1+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y1+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta ));
+			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta, -1 ));
 		}
 		
 	    theta = (float)initialAngel;
@@ -314,7 +314,7 @@ public class RoundAboutBlockSingle {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta ));
+			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta, -1 ));
 		}
 		
 		theta = initialAngel2;
@@ -330,7 +330,7 @@ public class RoundAboutBlockSingle {
 			int xr = (int) (x2+radius*Math.cos(theta*Math.PI / 180));
 			int yr = (int) (y2+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xr + " "+ yr);
-			arrList.add(new PathPoint(blockType, xr, yr, direction,(int) theta ));
+			arrList.add(new PathPoint(blockType, xr, yr, direction,(int) theta, -1 ));
 		}
 		
 		return arrList;
@@ -381,7 +381,7 @@ public class RoundAboutBlockSingle {
 			int xp = (int) (x1+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y1+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta ));
+			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta, -1 ));
 		}
 		
 		theta = (float)initialAngel;
@@ -398,7 +398,7 @@ public class RoundAboutBlockSingle {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta ));
+			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta, -1 ));
 		}
 		
 		theta = initialAngel2;
@@ -414,7 +414,7 @@ public class RoundAboutBlockSingle {
 			int xr = (int) (x2+radius*Math.cos(theta*Math.PI / 180));
 			int yr = (int) (y2+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xr + " "+ yr);
-			arrList.add(new PathPoint(blockType, xr, yr, direction,(int) theta ));
+			arrList.add(new PathPoint(blockType, xr, yr, direction,(int) theta, -1 ));
 		}
 		
 		return arrList;
@@ -463,7 +463,7 @@ public class RoundAboutBlockSingle {
 			int xp = (int) (x1+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y1+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta ));
+			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta, -1 ));
 		}
 		
 		theta = (float)initialAngel;
@@ -480,7 +480,7 @@ public class RoundAboutBlockSingle {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta ));
+			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta, -1 ));
 		}
 		
 		theta = initialAngel2;
@@ -496,7 +496,7 @@ public class RoundAboutBlockSingle {
 			int xp = (int) (x2+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y2+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta ));
+			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta, -1 ));
 		}
 		return arrList;
 	}
@@ -544,7 +544,7 @@ ArrayList<PathPoint> arrList = new ArrayList<PathPoint>();
 			int xp = (int) (x1+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y1+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta ));
+			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta, -1 ));
 		}
 		
 		theta = (float)initialAngel;
@@ -563,7 +563,7 @@ ArrayList<PathPoint> arrList = new ArrayList<PathPoint>();
 			xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta ));
+			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta, -1 ));
 		}
 		
 		
@@ -580,7 +580,7 @@ ArrayList<PathPoint> arrList = new ArrayList<PathPoint>();
 			xp = (int) (x2+radius*Math.cos(theta*Math.PI / 180));
 			yp = (int) (y2+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta ));
+			arrList.add(new PathPoint(blockType, xp, yp, direction,(int) theta, -1 ));
 		}
 		return arrList;
 	}

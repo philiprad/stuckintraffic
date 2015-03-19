@@ -36,6 +36,10 @@ public class VisitedIntersectionsOnPath {
 		this.arrGridPoint.add(new GridPoint(x,y));
 	}
 	
+	public ArrayList<GridPoint> getIntersections(){
+		return this.arrGridPoint;
+	}
+	
 	/**
 	 * Checks if is visited.
 	 *
@@ -52,5 +56,9 @@ public class VisitedIntersectionsOnPath {
 			}
 		}
 		return false;
+	}
+	
+	public void addAllIntersections(ArrayList<GridPoint> arrGridPoint){
+		this.arrGridPoint.addAll(arrGridPoint);
 	}
 }

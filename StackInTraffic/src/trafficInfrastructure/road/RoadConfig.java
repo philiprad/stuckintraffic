@@ -202,4 +202,28 @@ public class RoadConfig {
 	/** The Constant BOTTOM_2_TO_2_TOP. */
 	public static final short BOTTOM_2_TO_2_TOP = 51;
 	
+	public static final short LEFT_1_TO_1_BOTTOM = 52;
+	
+	public static final short LEFT_1_TO_2_BOTTOM = 53;
+	
+	public static final short RIGHT_1_TO_1_TOP = 54;
+	
+	public static final short RIGHT_1_TO_2_TOP = 55;
+	
+	public static final short TOP_1_TO_1_LEFT = 55;
+	
+	public static final short BOTTOM_1_TO_1_RIGHT = 56;
+	
+	public static final short BOTTOM_1_TO_2_RIGHT = 57;
+	
+	public static final short HORIZONTAL_DOUBLE_BLOCK_TEMP = -101;
+	
+	public static final short VERTICAL_DOUBLE_BLOCK_TEMP = -102;
+	
+	public static final short INTERSECTION_DOUBLE_TEMP = -104;
+	
+	public static final short MIXED_HORIZONTAL_INTERSECTION_TEMP = -105;
+	
+	public static final short MIXED_VERTICAL_INTERSECTION_TEMP = -106;
+	
 }
