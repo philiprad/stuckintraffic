@@ -44,7 +44,7 @@ public class IntersectionBlock {
 				int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 				int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 				System.out.println(xp + " "+ yp);
-				arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_TO_TOP_DIRECTION,(int) theta, -1 ));
+				arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_TO_TOP_DIRECTION,(int) theta));
 			}
 		return arrPathPoints;
 	}
@@ -76,7 +76,7 @@ public class IntersectionBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_TO_BOTTOM_DIRECTION ,(int) theta, -1 ));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.LEFT_TO_BOTTOM_DIRECTION ,(int) theta));
 		}
 	return arrPathPoints;
 	}
@@ -110,7 +110,7 @@ public class IntersectionBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.RIGHT_TO_TOP_DIRECTION ,(int) theta, -1 ));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.RIGHT_TO_TOP_DIRECTION ,(int) theta));
 		}
 	return arrPathPoints;
 	}
@@ -143,7 +143,7 @@ public class IntersectionBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.RIGHT_TO_BOTTOM_DIRECTION ,(int) theta, -1 ));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.RIGHT_TO_BOTTOM_DIRECTION ,(int) theta));
 		}
 	return arrPathPoints;
 	}
@@ -177,7 +177,7 @@ public class IntersectionBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.TOP_TO_RIGHT_DIRECTION ,(int) theta, -1 ));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.TOP_TO_RIGHT_DIRECTION ,(int) theta));
 		}
 	return arrPathPoints;
 	}
@@ -208,7 +208,7 @@ public class IntersectionBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.TOP_TO_LEFT_DIRECTION ,(int) theta, -1 ));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.TOP_TO_LEFT_DIRECTION ,(int) theta));
 		}
 	return arrPathPoints;
 	}
@@ -242,7 +242,7 @@ public class IntersectionBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.BOTTOM_TO_RIGHT_DIRECTION ,(int) theta, -1 ));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.BOTTOM_TO_RIGHT_DIRECTION ,(int) theta));
 		}
 	return arrPathPoints;
 	}
@@ -274,7 +274,7 @@ public class IntersectionBlock {
 			int xp = (int) (x+radius*Math.cos(theta*Math.PI / 180));
 			int yp = (int) (y+radius*Math.sin(theta*Math.PI / 180));
 			System.out.println(xp + " "+ yp);
-			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.BOTTOM_TO_LEFT_DIRECTION ,(int) theta , -1));
+			arrPathPoints.add(new PathPoint(blockType, xp, yp, RoadConfig.BOTTOM_TO_LEFT_DIRECTION ,(int) theta));
 		}
 	return arrPathPoints;
 	}

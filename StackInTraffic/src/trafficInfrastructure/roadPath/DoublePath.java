@@ -7,62 +7,34 @@ public class DoublePath implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 8886635786819099366L;
-
-	/** The first choise. */
-	private ArrayList <PathPoint> firstChoise;
+	private static final long serialVersionUID = 2425214183718352807L;
+	/** The arr path point. */
 	
-	/** The second choise. */
-	private ArrayList <PathPoint> secondChoise;
+	private ArrayList<PathSwitchingDifference> arrPathSwitch;
 	
-	/**
-	 * Instantiates a new double intersection possible path.
-	 *
-	 * @param firstChoise
-	 *            the first choise
-	 * @param secondChoise
-	 *            the second choise
-	 */
-	public DoublePath(ArrayList <PathPoint> firstChoise, ArrayList <PathPoint> secondChoise){
-		this.firstChoise = firstChoise;
-		this.secondChoise = secondChoise;
-	}
+	private ArrayList<PathPoint> arrPathPoint;
 	
 	/**
-	 * Gets the first choise.
-	 *
-	 * @return the first choise
-	 */
-	public ArrayList <PathPoint> getFirstChoise(){
-		return this.firstChoise;
-	}
-	
-	/**
-	 * Gets the second choise.
-	 *
-	 * @return the second choise
-	 */
-	public ArrayList <PathPoint> getSecondChoise(){
-		return this.secondChoise;
-	}
-	
-	/**
-	 * Adds the array path to first chose.
+	 * Instantiates a new path.
 	 *
 	 * @param arrPathPoint
 	 *            the arr path point
 	 */
-	public void addArrayPathToFirstChose(ArrayList <PathPoint> arrPathPoint){
-		this.firstChoise.addAll(arrPathPoint);
+	public DoublePath (ArrayList<PathPoint> arrPathPoint){
+		this.arrPathPoint = arrPathPoint;
 	}
 	
 	/**
-	 * Adds the array path to second chose.
+	 * Gets the path points.
 	 *
-	 * @param arrPathPoint
-	 *            the arr path point
+	 * @return the path points
 	 */
-	public void addArrayPathToSecondChose(ArrayList <PathPoint> arrPathPoint){
-		this.secondChoise.addAll(arrPathPoint);
+	public ArrayList<PathPoint> getPathPoints(){
+		return this.arrPathPoint;
 	}
+	
+	public ArrayList<PathSwitchingDifference> getPathSwitch(){
+		return this.arrPathSwitch;
+	}
+	
 }

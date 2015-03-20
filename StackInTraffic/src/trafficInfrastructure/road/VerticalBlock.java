@@ -48,7 +48,7 @@ public class VerticalBlock {
 		public static ArrayList<PathPoint> getPathPoints(int x, int y, short blockType){
 			ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 			for (int i = 0; i < GraphicsConfig.BLOCK_SIDE_SIZE; i++){
-				arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_INVERSE_POSITION , y+i,1, -1, -1));
+				arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_INVERSE_POSITION , y+i,1, -1));
 			}
 			return arrPathPoints;
 		}
@@ -68,7 +68,7 @@ public class VerticalBlock {
 			
 			ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 			for (int i = 0; i < GraphicsConfig.BLOCK_SIDE_SIZE; i++){
-				arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_POSITION , y+GraphicsConfig.BLOCK_SIDE_SIZE-i, -1 ,-1, -1));
+				arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_POSITION , y+GraphicsConfig.BLOCK_SIDE_SIZE-i, -1 ,-1));
 			}
 			return arrPathPoints;
 		}

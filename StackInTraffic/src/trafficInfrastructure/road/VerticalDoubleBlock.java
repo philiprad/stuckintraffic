@@ -46,18 +46,18 @@ public class VerticalDoubleBlock {
 	 *            the block type
 	 * @return the path points
 	 */
-	public static ArrayList<PathPoint> getPath1Points(int x, int y, short blockType,int idDouble){
+	public static ArrayList<PathPoint> getPath1Points(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		for (int i = 0; i < GraphicsConfig.BLOCK_SIDE_SIZE*2; i++){
-			arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_INVERSE_POSITION_DOUBLE_LANE, y+i,1, -1, idDouble));
+			arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_INVERSE_POSITION_DOUBLE_LANE, y+i,1, -1));
 		}
 		return arrPathPoints;
 	}
 	
-	public static ArrayList<PathPoint> getPath2Points(int x, int y, short blockType,int idDouble){
+	public static ArrayList<PathPoint> getPath2Points(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		for (int i = 0; i < GraphicsConfig.BLOCK_SIDE_SIZE*2; i++){
-			arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_INVERSE_POSITION_DOUBLE_LANE - GraphicsConfig.DISTANCE_BETWEEN_LANES, y+i,1, -1, idDouble));
+			arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_INVERSE_POSITION_DOUBLE_LANE - GraphicsConfig.DISTANCE_BETWEEN_LANES, y+i,1, -1));
 		}
 		return arrPathPoints;
 	}
@@ -74,20 +74,20 @@ public class VerticalDoubleBlock {
 	 *            the block type
 	 * @return the inverse path points
 	 */
-	public static ArrayList<PathPoint> getInversePath1Points(int x, int y, short blockType,int idDouble){
+	public static ArrayList<PathPoint> getInversePath1Points(int x, int y, short blockType){
 		
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		for (int i = 0; i < GraphicsConfig.BLOCK_SIDE_SIZE*2; i++){
-			arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_POSITION_DOUBLE_LANE, y+GraphicsConfig.BLOCK_SIDE_SIZE*2-i, -1 ,-1, idDouble));
+			arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_POSITION_DOUBLE_LANE, y+GraphicsConfig.BLOCK_SIDE_SIZE*2-i, -1 ,-1));
 		}
 		return arrPathPoints;
 	}
 	
-	public static ArrayList<PathPoint> getInversePath2Points(int x, int y, short blockType,int idDouble){
+	public static ArrayList<PathPoint> getInversePath2Points(int x, int y, short blockType){
 		
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		for (int i = 0; i < GraphicsConfig.BLOCK_SIDE_SIZE*2; i++){
-			arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_POSITION_DOUBLE_LANE + GraphicsConfig.DISTANCE_BETWEEN_LANES, y+GraphicsConfig.BLOCK_SIDE_SIZE*2-i, -1 ,-1, idDouble));
+			arrPathPoints.add(new PathPoint(blockType,x+GraphicsConfig.CAR_POSITION_DOUBLE_LANE + GraphicsConfig.DISTANCE_BETWEEN_LANES, y+GraphicsConfig.BLOCK_SIDE_SIZE*2-i, -1 ,-1));
 		}
 		return arrPathPoints;
 	}

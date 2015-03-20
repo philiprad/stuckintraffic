@@ -255,7 +255,8 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	public void putCarOnEveryPath(){
 		Random rand = new Random();
 		int x = rand.nextInt(this.arrPath.size());
-	
-		this.carList.add(new Car(this.arrPath.get(x), this.arrDoublePath));
+		Car car = new Car(this.arrPath.get(x));
+		car.setLane(3);
+		this.carList.add(car);
 	}
 }
