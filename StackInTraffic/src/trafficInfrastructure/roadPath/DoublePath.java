@@ -20,8 +20,9 @@ public class DoublePath implements Serializable{
 	 * @param arrPathPoint
 	 *            the arr path point
 	 */
-	public DoublePath (ArrayList<PathPoint> arrPathPoint){
+	public DoublePath (ArrayList<PathPoint> arrPathPoint,ArrayList<PathSwitchingDifference> arrPathSwitch ){
 		this.arrPathPoint = arrPathPoint;
+		this.arrPathSwitch = arrPathSwitch;
 	}
 	
 	/**

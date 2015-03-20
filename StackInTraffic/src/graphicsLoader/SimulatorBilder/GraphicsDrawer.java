@@ -98,7 +98,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		this.ib = ib;
 		this.arrBG = arrBG;
 		this.arrPath = (ArrayList<Path>)FileRW.readObject(MainConfig.PATHS_PATH + "/" + fileName + MainConfig.PATH_SUFFIX);
-		this.arrDoublePath = (ArrayList<DoublePath>)FileRW.readObject(MainConfig.DOUBLE_PATHS_PATH + "/" + fileName + MainConfig.DOUBLE_PATH_SUFFIX);
+		
 		TrafficManager tm = new TrafficManager(fileName);
 		//this.trafficLightList = tm.getTrafficLightList();
 		this.roadBlockGrid = tm.getRoadBlockArray();

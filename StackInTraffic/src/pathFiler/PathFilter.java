@@ -15,7 +15,7 @@ public class PathFilter {
 	
 	public static void main (String[] args){
 	
-	String fileName = "pathFilter3";
+	String fileName = "Map1";
 	int Comparator;
 	//Collections.sort(arrPath, new (Comparator)PathComparator();
 	//Comparator<Path> c = Comparator<>arrPath.get(0).getPathPoints().size();

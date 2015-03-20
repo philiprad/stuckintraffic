@@ -48,9 +48,9 @@ public class RoundAboutBlockSingle {
 				switch (exitNumber){
 				case 1: 
 					y1 = y;
-					x1 = x+GraphicsConfig.BLOCK_SIDE_SIZE;
+					x1 = x+GraphicsConfig.BLOCK_SIDE_SIZE+8;
 					x2 = x+2*GraphicsConfig.BLOCK_SIDE_SIZE;
-					y2 = y+GraphicsConfig.BLOCK_SIDE_SIZE;
+					y2 = y+GraphicsConfig.BLOCK_SIDE_SIZE-8;
 					initialAngel1 = 180;
 					initialAngel2 = 168;
 					x = x + GraphicsConfig.BLOCK_SIDE_SIZE/2;
@@ -59,8 +59,8 @@ public class RoundAboutBlockSingle {
 					arrList.addAll(getPathToFirstExit(x,y,x1,y1,x2,y2,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1, initialAngel2, roundAboutDirection));break;
 				case 2: 
 					y1 = y;
-					x1 = x+GraphicsConfig.BLOCK_SIDE_SIZE;
-					x2 = x+GraphicsConfig.BLOCK_SIDE_SIZE;
+					x1 = x+GraphicsConfig.BLOCK_SIDE_SIZE+8;
+					x2 = x+GraphicsConfig.BLOCK_SIDE_SIZE+8;
 					y2 = y+3*GraphicsConfig.BLOCK_SIDE_SIZE;
 					initialAngel1 = 180;
 					initialAngel2 = 258;
@@ -100,9 +100,9 @@ public class RoundAboutBlockSingle {
 				switch (exitNumber){
 				case 1: 
 					y1 = y+GraphicsConfig.BLOCK_SIDE_SIZE;
-					x1 = x;
+					x1 = x-8;
 					x2 = x-GraphicsConfig.BLOCK_SIDE_SIZE;
-					y2 = y;
+					y2 = y+8;
 					initialAngel1 = 0;
 					initialAngel2 = 348;
 					x = x + GraphicsConfig.BLOCK_SIDE_SIZE/2;
@@ -111,8 +111,8 @@ public class RoundAboutBlockSingle {
 					arrList.addAll(getPathToFirstExit(x,y,x1,y1,x2,y2,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1, initialAngel2,roundAboutDirection));break;
 				case 2: 
 					y1 = y+GraphicsConfig.BLOCK_SIDE_SIZE;
-					x1 = x;
-					x2 = x;
+					x1 = x-5;
+					x2 = x-5;
 					y2 = y-2*GraphicsConfig.BLOCK_SIDE_SIZE;
 					initialAngel1 = 0;
 					initialAngel2 = 78;
@@ -153,9 +153,9 @@ public class RoundAboutBlockSingle {
 				
 				switch (exitNumber){
 				case 1: 
-					y1 = y;
+					y1 = y-8;
 					x1 = x;
-					x2 = x+GraphicsConfig.BLOCK_SIDE_SIZE;
+					x2 = x+GraphicsConfig.BLOCK_SIDE_SIZE-8;
 					y2 = y-GraphicsConfig.BLOCK_SIDE_SIZE;
 					initialAngel1 = 90;
 					initialAngel2 = 78;
@@ -164,10 +164,10 @@ public class RoundAboutBlockSingle {
 					roundAboutDirection = RoadConfig.LEFT_TO_TOP_DIRECTION;
 					arrList.addAll(getPathToFirstExit(x,y,x1,y1,x2,y2,RoadConfig.ROUND_ABOUT_BLOCK, initialAngel,initialAngel1, initialAngel2,roundAboutDirection));break;
 				case 2: 
-					y1 = y;
+					y1 = y-8;
 					x1 = x;
 					x2 = x+3*GraphicsConfig.BLOCK_SIDE_SIZE;
-					y2 = y;
+					y2 = y - 8;
 					initialAngel1 = 90;
 					initialAngel2 = 168;
 					x = x +GraphicsConfig.BLOCK_SIDE_SIZE+ GraphicsConfig.BLOCK_SIDE_SIZE/2;
@@ -207,9 +207,9 @@ public class RoundAboutBlockSingle {
 				case 1: 
 					initialAngel1 = 270;
 					initialAngel2 = 258;
-					y1 = y+GraphicsConfig.BLOCK_SIDE_SIZE;
+					y1 = y+GraphicsConfig.BLOCK_SIDE_SIZE+8;
 					x1 = x+GraphicsConfig.BLOCK_SIDE_SIZE;
-					x2 = x;
+					x2 = x+8;
 					y2 = y+2*GraphicsConfig.BLOCK_SIDE_SIZE;
 					x = x - GraphicsConfig.BLOCK_SIDE_SIZE+ GraphicsConfig.BLOCK_SIDE_SIZE/2;
 					y = y + GraphicsConfig.BLOCK_SIDE_SIZE/2;
@@ -218,10 +218,10 @@ public class RoundAboutBlockSingle {
 				case 2: 
 					initialAngel1 = 270;
 					initialAngel2 = 348;
-					y1 = y+GraphicsConfig.BLOCK_SIDE_SIZE;
+					y1 = y+GraphicsConfig.BLOCK_SIDE_SIZE+8;
 					x1 = x+GraphicsConfig.BLOCK_SIDE_SIZE;
 					x2 = x-2*GraphicsConfig.BLOCK_SIDE_SIZE;
-					y2 = y+GraphicsConfig.BLOCK_SIDE_SIZE;
+					y2 = y+GraphicsConfig.BLOCK_SIDE_SIZE+8;
 					x = x - GraphicsConfig.BLOCK_SIDE_SIZE+ GraphicsConfig.BLOCK_SIDE_SIZE/2;
 					y = y + GraphicsConfig.BLOCK_SIDE_SIZE/2;
 					roundAboutDirection = RoadConfig.RIGHT_TO_LEFT_DIRECTION;
@@ -286,12 +286,12 @@ public class RoundAboutBlockSingle {
 		ArrayList<PathPoint> arrList = new ArrayList<PathPoint>();
 		
 		float theta = initialAngel1;
-		float radius = 16;
+		float radius = 24;
 		System.out.println("Radius" + radius);
-		float stepsNb = (float) (radius*Math.PI*44/100) ;
+		float stepsNb = (float) (radius*Math.PI*39/100) ;
 		
 		System.out.println("StepNB" + stepsNb);
-		float step = 78/(stepsNb);
+		float step = 70/(stepsNb);
 		System.out.println("Step" + step);
 		for (int i = 0; i < stepsNb-1; i++){
 			theta-=step;
@@ -302,12 +302,12 @@ public class RoundAboutBlockSingle {
 		}
 		
 	    theta = (float)initialAngel;
-	    theta+=18;
+	    theta+=24;
 		radius = GraphicsConfig.CAR_ROUND_ABOUT_POSITION_1;
 		System.out.println("Radius" + radius);
-		stepsNb = (float) (radius*Math.PI*30/100) ;
+		stepsNb = (float) (radius*Math.PI*20/100) ;
 		System.out.println("StepNB" + stepsNb);
-		step = 54/(stepsNb);
+		step = 37/(stepsNb);
 		System.out.println("Step" + step);
 		for (int i = 0; i < stepsNb-1; i++){
 			theta+=step;
@@ -318,12 +318,12 @@ public class RoundAboutBlockSingle {
 		}
 		
 		theta = initialAngel2;
-		radius = 16;
+		radius = 24;
 		System.out.println("Radius" + radius);
-		stepsNb = (float) (radius*Math.PI*44/100) ;
+		stepsNb = (float) (radius*Math.PI*39/100) ;
 		
 		System.out.println("StepNB" + stepsNb);
-		step = 78/(stepsNb);
+		step = 70/(stepsNb);
 		System.out.println("Step" + step);
 		for (int i = 0; i < stepsNb-1; i++){
 			theta-=step;
@@ -369,12 +369,12 @@ public class RoundAboutBlockSingle {
 		ArrayList<PathPoint> arrList = new ArrayList<PathPoint>();
 		
 		float theta = initialAngel1;
-		float radius = 16;
+		float radius = 24;
 		System.out.println("Radius" + radius);
-		float stepsNb = (float) (radius*Math.PI*44/100) ;
+		float stepsNb = (float) (radius*Math.PI*39/100) ;
 		
 		System.out.println("StepNB" + stepsNb);
-		float step = 78/(stepsNb);
+		float step = 70/(stepsNb);
 		System.out.println("Step" + step);
 		for (int i = 0; i < stepsNb-1; i++){
 			theta-=step;
@@ -385,13 +385,13 @@ public class RoundAboutBlockSingle {
 		}
 		
 		theta = (float)initialAngel;
-		theta+=18;
+		theta+=24;
 		radius = GraphicsConfig.CAR_ROUND_ABOUT_POSITION_1;
 		System.out.println("Radius" + radius);
-		stepsNb = (float) (radius*Math.PI*80/100) ;
+		stepsNb = (float) (radius*Math.PI*70/100) ;
 		
 		System.out.println("StepNB" + stepsNb);
-		step = 144/(stepsNb);
+		step = 127/(stepsNb);
 		System.out.println("Step" + step);
 		for (int i = 0; i < stepsNb-1; i++){
 			theta+=step;
@@ -402,12 +402,12 @@ public class RoundAboutBlockSingle {
 		}
 		
 		theta = initialAngel2;
-		radius = 16;
+		radius = 24;
 		System.out.println("Radius" + radius);
-		stepsNb = (float) (radius*Math.PI*44/100) ;
+		stepsNb = (float) (radius*Math.PI*39/100) ;
 		
 		System.out.println("StepNB" + stepsNb);
-		step = 78/(stepsNb);
+		step = 70/(stepsNb);
 		System.out.println("Step" + step);
 		for (int i = 0; i < stepsNb-1; i++){
 			theta-=step;

@@ -19,14 +19,17 @@ public class Path implements Serializable{
 	/** The arr path point. */
 	private ArrayList<PathPoint> arrPathPoint;
 	
+	private DoublePath doublePath;
+	
 	/**
 	 * Instantiates a new path.
 	 *
 	 * @param arrPathPoint
 	 *            the arr path point
 	 */
-	public Path (ArrayList<PathPoint> arrPathPoint){
+	public Path (ArrayList<PathPoint> arrPathPoint, DoublePath doublePath){
 		this.arrPathPoint = arrPathPoint;
+		this.doublePath = doublePath;
 	}
 	
 	/**

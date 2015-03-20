@@ -1,7 +1,13 @@
 package trafficInfrastructure.roadPath;
 
-public class PathSwitchingDifference {
+import java.io.Serializable;
 
+public class PathSwitchingDifference implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4692456359308290062L;
 	private int index;
 	private int lengthDifference;
 	
