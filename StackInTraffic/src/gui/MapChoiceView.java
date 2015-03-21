@@ -6,14 +6,12 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -153,12 +151,17 @@ public class MapChoiceView extends JFrame implements ActionListener{
 					((RoadEditorView) panel).setMapName(selection);
 					MapChoiceView.this.setVisible(false);
 					MapChoiceView.this.dispose();
-					
-				}else{
-					
 				}
-				
+			}else{
+					if(selection!=""){
+						panel.removeAll();
+						((SimulationView) panel).loadMap(selection);
+						MapChoiceView.this.setVisible(false);
+						MapChoiceView.this.dispose();
+					}
 			}
+				
+			
 			
 			
 		}

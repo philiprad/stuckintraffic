@@ -4,6 +4,9 @@
  */
 package gui;
 
+import graphicsLoader.ImagesBuilder;
+import graphicsLoader.SimulatorBilder.GraphicsDrawer;
+
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -11,6 +14,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -21,11 +25,15 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 import javax.swing.Timer;
 
+import main.MainConfig;
 import trafficInfrastructure.grid.GridBuilder;
 //import gui.RoadEditorView.OpenListener;
+import trafficInfrastructure.road.BlockGraphicPoint;
+import util.FileRW;
 
 
 // TODO: Auto-generated Javadoc
@@ -65,7 +73,9 @@ public class SimulationView extends JPanel{
     /** The simulation timer. */
     private Timer simulationTimer;
     
+    private ImagesBuilder ib = new ImagesBuilder(); 
 	
+    private JScrollPane scrollPane;
 	/** The frame. */
 	public ApplicationFrame frame;
 	
@@ -79,6 +89,13 @@ public class SimulationView extends JPanel{
 		this.frame = frame;
 		this.loadMainContent();
 		MapChoiceView mapChoiceView = new MapChoiceView(frame, this, this.gridBuilder);
+	}
+	
+	public SimulationView(ApplicationFrame frame, String mapName){
+		this.frame = frame;
+		this.loadMainContent();
+		this.loadMap(mapName);
+		//MapChoiceView mapChoiceView = new MapChoiceView(frame, this, this.gridBuilder);
 	}
 	
 	public void loadMainContent(){
@@ -109,6 +126,9 @@ public class SimulationView extends JPanel{
         editMenu.add(saveMap);
         editMenu.add(clearMap);
         editMenu.add(deleteMap);
+        
+        
+		this.frame.add(this, BorderLayout.WEST);
      
         //-----------------------------timer implementation
 		JMenuBar menubar = new JMenuBar();
@@ -136,10 +156,7 @@ public class SimulationView extends JPanel{
 	    timeFormatter = new DecimalFormat("00");
 	    
         
-	playButton.addActionListener(new PlayListener());
-	pauseButton.addActionListener(new PauseListener());
-	stopButton.addActionListener(new StopListener());
-	refreshButton.addActionListener(new RefreshListener());
+	    
 	simulationTimer = new Timer(10, new ActionListener() {
         
 		@Override
@@ -235,6 +252,22 @@ public class SimulationView extends JPanel{
 
 	}
 	
+	@SuppressWarnings("unchecked")
+	public void loadMap(String mapName){
+		
+		ArrayList<BlockGraphicPoint> arrBG =(ArrayList<BlockGraphicPoint>) FileRW.readObject(MainConfig.ROADBLOCK_PATH+"/"+mapName+MainConfig.ROADBLOCK_GRAPHICS_SUFFIX);
+		GraphicsDrawer gDrawer = new GraphicsDrawer(50 ,mapName, arrBG , ib );
+		playButton.addActionListener(new PlayListener(gDrawer));
+		pauseButton.addActionListener(new PauseListener(gDrawer));
+		stopButton.addActionListener(new StopListener(gDrawer));
+		refreshButton.addActionListener(new RefreshListener());
+		this.scrollPane = new JScrollPane(gDrawer);
+		this.add(this.scrollPane, BorderLayout.CENTER);
+		this.revalidate();
+		this.validate();
+	
+	}
+	
 	
 	
 	/**
@@ -292,11 +325,18 @@ public class SimulationView extends JPanel{
 	 */
 	public class PlayListener implements ActionListener{
 		
+		private GraphicsDrawer gDrawer;
+		
+		public PlayListener (GraphicsDrawer gDrawer){
+			this.gDrawer = gDrawer;
+		}
+		
 		/* (non-Javadoc)
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
 		public void actionPerformed(ActionEvent arg0) {
 			simulationTimer.start();
+			gDrawer.start();
 		}
 	}
 	
@@ -312,11 +352,18 @@ public class SimulationView extends JPanel{
 	 */
 	public class PauseListener implements ActionListener{
 		
+		private GraphicsDrawer gDrawer;
+		
+		public PauseListener(GraphicsDrawer gDrawer){
+			this.gDrawer = gDrawer;
+		}
+		
 		/* (non-Javadoc)
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
 		public void actionPerformed(ActionEvent arg0){
 			simulationTimer.stop();
+			gDrawer.pause();
 			
 		}
 	}
@@ -333,11 +380,18 @@ public class SimulationView extends JPanel{
 	 */
 	public class StopListener implements ActionListener{
 		
+		private GraphicsDrawer gDrawer;
+		
+		public StopListener(GraphicsDrawer gDrawer){
+			this.gDrawer = gDrawer;
+		}
+		
 		/* (non-Javadoc)
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
 		public void actionPerformed(ActionEvent arg0){
 			simulationTimer.stop();
+			this.gDrawer.stop();
 		}
 	}
 	

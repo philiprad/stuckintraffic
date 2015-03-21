@@ -306,7 +306,8 @@ public class RoadEditorView extends JPanel {
 		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			Main.main(null);
+			frame.removeView();
+			frame.addView(new SimulationView(frame, mapName));
 		}
 		
 	}

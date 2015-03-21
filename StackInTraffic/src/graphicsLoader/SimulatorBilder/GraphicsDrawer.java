@@ -117,6 +117,11 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	 * Stop.
 	 */
 	public void stop(){
+		this.timer.restart();
+		this.timer.stop();
+	}
+	
+	public void pause(){
 		this.timer.stop();
 	}
 	
