@@ -67,4 +67,8 @@ public class RoadBlocksBuffer {
 		}
 	}
 	
+	public Object [][] getRoadBlockBufferArray(){
+		return this.rdBlocks;
+	}
+	
 }

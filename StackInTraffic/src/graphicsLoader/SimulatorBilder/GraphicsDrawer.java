@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import main.MainConfig;
-import simulationBuilder.TrafficManager;
+import simulationBuilder.RoadBlocksBuffer;
 import trafficInfrastructure.grid.GridBuilder;
 import trafficInfrastructure.road.BlockGraphicPoint;
 import trafficInfrastructure.roadPath.DoublePath;
@@ -104,9 +104,11 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		this.arrBG = arrBG;
 		this.arrPath = (ArrayList<Path>)FileRW.readObject(MainConfig.PATHS_PATH + "/" + fileName + MainConfig.PATH_SUFFIX);
 		
-		TrafficManager tm = new TrafficManager(fileName);
+		//TrafficManager tm = new TrafficManager(fileName);
 		//this.trafficLightList = tm.getTrafficLightList();
-		this.roadBlockGrid = tm.getRoadBlockArray();
+		///this.roadBlockGrid = tm.getRoadBlockArray();
+		RoadBlocksBuffer roadBlockBuffer = new RoadBlocksBuffer(fileName);
+		this.roadBlockGrid = roadBlockBuffer.getRoadBlockBufferArray();
 		this.carList = new ArrayList<Car>();
 		this.timer = new Timer (this.delay, this);
 	}
