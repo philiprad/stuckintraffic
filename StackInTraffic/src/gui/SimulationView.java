@@ -95,6 +95,7 @@ public class SimulationView extends JPanel{
 		this.frame = frame;
 		this.loadMainContent();
 		this.loadMap(mapName);
+		
 		//MapChoiceView mapChoiceView = new MapChoiceView(frame, this, this.gridBuilder);
 	}
 	
@@ -262,7 +263,7 @@ public class SimulationView extends JPanel{
 		stopButton.addActionListener(new StopListener(gDrawer));
 		refreshButton.addActionListener(new RefreshListener());
 		this.scrollPane = new JScrollPane(gDrawer);
-		this.add(this.scrollPane, BorderLayout.CENTER);
+		this.add(this.scrollPane);
 		this.revalidate();
 		this.validate();
 	

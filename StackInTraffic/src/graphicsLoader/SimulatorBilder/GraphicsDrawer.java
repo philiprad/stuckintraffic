@@ -9,6 +9,7 @@ import graphicsLoader.ImagesBuilder;
 import graphicsLoader.ImagesSelector;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -91,8 +92,12 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	 * @param arrBG the arr bg
 	 * @param ib the ib
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "unused" })
 	public GraphicsDrawer(int delay , String fileName , ArrayList<BlockGraphicPoint> arrBG , ImagesBuilder ib){
+		GridBuilder gridBuilder = (GridBuilder)FileRW.readObject(MainConfig.GRID_PATH + "/" + fileName + MainConfig.GRID_SUFFIX);
+		
+		//this.setSize(gridBuilder.getGrid()[0].length*GraphicsConfig.BLOCK_SIDE_SIZE, gridBuilder.getGrid().length*GraphicsConfig.BLOCK_SIDE_SIZE);
+		this.setPreferredSize(new Dimension(gridBuilder.getGrid()[0].length*GraphicsConfig.BLOCK_SIDE_SIZE, gridBuilder.getGrid().length*GraphicsConfig.BLOCK_SIDE_SIZE));
 		this.delay =  delay;
 		
 		this.ib = ib;

@@ -154,7 +154,7 @@ public class MapChoiceView extends JFrame implements ActionListener{
 				}
 			}else{
 					if(selection!=""){
-						panel.removeAll();
+						//panel.removeAll();
 						((SimulationView) panel).loadMap(selection);
 						MapChoiceView.this.setVisible(false);
 						MapChoiceView.this.dispose();
