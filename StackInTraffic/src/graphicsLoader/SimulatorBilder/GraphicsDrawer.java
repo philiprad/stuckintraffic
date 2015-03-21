@@ -201,7 +201,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 					
 				} else {
 					
-					//this.carList.get(i).speedManagement(this.roadBlockGrid, this.trafficLightList);
+					this.carList.get(i).speedManagement(this.roadBlockGrid/*, this.trafficLightList*/);
 					this.carList.get(i).move();
 					
 				}

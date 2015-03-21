@@ -254,9 +254,9 @@ public class Car {
 	 * @param trafficLightList
 	 *            the traffic light list
 	 */
-	public void speedManagement(Object [] [] rdBlocks , ArrayList<TrafficLight> trafficLightList){
+	public void speedManagement(Object [] [] rdBlocks /*, ArrayList<TrafficLight> trafficLightList*/){
 		//Traffic Light Rule 1
-		this.speed = 10;
+	/*	this.speed = 10;
 		boolean trafficLightOnPath = false;
 		short trafficLightIndex = -1;
 		if(((RoadBlock)rdBlocks[this.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE][this.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE]).isTrafficLightInside()){
@@ -300,9 +300,10 @@ public class Car {
 			}
 		}
 		
-		
+		*/
 		
 		//Other Cars Rule 2
+		this.speed = 5;
 		int distance = 0;
 		if (((RoadBlock)rdBlocks[this.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE][this.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE]).isCarInside()){
 			ArrayList<Car> carList = ((RoadBlock)rdBlocks[this.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE][this.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE]).getCarList();
@@ -315,7 +316,7 @@ public class Car {
 								this.speed = 0;
 							}
 							else if (distance>0 && distance<40){
-								this.speed=5;
+								this.speed=3;
 							}
 						}
 					}
@@ -326,11 +327,12 @@ public class Car {
 			
 			
 			if (this.getDirection()==RoadConfig.ORIGINAL_TRAFFIC_DIRECTION){
-				if (this.getRoadBlockType() == RoadConfig.HORIZONTAL_EXIT_BLOCK || this.getRoadBlockType() == RoadConfig.VERTICAL_EXIT_BLOCK ){
+				if (this.getRoadBlockType() == RoadConfig.HORIZONTAL_EXIT_BLOCK || this.getRoadBlockType() == RoadConfig.VERTICAL_EXIT_BLOCK || this.getRoadBlockType() == RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK || this.getRoadBlockType() == RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK ){
 					end = 1;
+					
 				}
 			} else {
-				if (this.getRoadBlockType() == RoadConfig.HORIZONTAL_ENTER_BLOCK || this.getRoadBlockType() == RoadConfig.VERTICAL_ENTER_BLOCK ){
+				if (this.getRoadBlockType() == RoadConfig.HORIZONTAL_ENTER_BLOCK || this.getRoadBlockType() == RoadConfig.VERTICAL_ENTER_BLOCK || this.getRoadBlockType() == RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK || this.getRoadBlockType() == RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK ){
 					end = 1;
 				}
 			}
