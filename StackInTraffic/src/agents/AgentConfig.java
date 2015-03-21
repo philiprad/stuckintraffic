@@ -22,4 +22,8 @@ public class AgentConfig {
 	/** The Constant TRAFFIC_LIGHT_RED. */
 	public static final short TRAFFIC_LIGHT_RED = 2;
 	
+	public static final short CAR_TYPE = 10;
+	
+	public static final short BUS_TYPE = 11;
+	
 }

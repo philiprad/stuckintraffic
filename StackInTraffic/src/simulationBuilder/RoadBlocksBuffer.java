@@ -61,6 +61,7 @@ public class RoadBlocksBuffer {
 				} 
 				
 				else {
+					if(grid.getGrid()[i][j]!=-100 && grid.getGrid()[i][j]!=-200 && grid.getGrid()[i][j]!=-300 && grid.getGrid()[i][j]!=-400 && grid.getGrid()[i][j]!=-500)
 					this.rdBlocks [i][j] = null; 
 				}
 			}
