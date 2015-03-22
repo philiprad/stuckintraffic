@@ -266,7 +266,6 @@ public class Car {
 		int direction = this.getDirection();
 		RoadBlock nextRoadBlock;
 		RoadBlock currentRoadBlock = rdBlocks!=null?(RoadBlock)rdBlocks[currentI][currentJ]:null;
-		System.out.println("roadBlockType: " + roadBlockType );
 		 
 			switch(roadBlockType){
 			
@@ -275,13 +274,11 @@ public class Car {
 					switch(direction){
 						case RoadConfig.ORIGINAL_TRAFFIC_DIRECTION: {
 							nextRoadBlock = (RoadBlock)rdBlocks[currentI+1][currentJ];
-							System.out.println("ORIGINAL_TRAFFIC_DIRECTION : roadBlockType Variable: " + roadBlockType + ", current  block: " + ((RoadBlock)rdBlocks[currentI][currentJ]).getBlockType() + ", next block: " + ((RoadBlock)rdBlocks[currentI+1][currentJ]).getBlockType());
 							break;
 						}
 						case RoadConfig.INVERSE_TRAFFIC_DIRECTION: {
 							nextRoadBlock = (RoadBlock)rdBlocks[currentI-1][currentJ];
 							if(((RoadBlock)rdBlocks[currentI][currentJ]).getBlockType() != roadBlockType)
-							System.out.println("INVERSE_TRAFFIC_DIRECTION : roadBlockType Variable: " + roadBlockType + ", current  block: " + ((RoadBlock)rdBlocks[currentI][currentJ]).getBlockType() + ", next block: " + ((RoadBlock)rdBlocks[currentI-1][currentJ]).getBlockType());
 							break;
 						}
 					}
@@ -292,13 +289,11 @@ public class Car {
 					switch(direction){
 						case RoadConfig.ORIGINAL_TRAFFIC_DIRECTION: {
 							nextRoadBlock = (RoadBlock)rdBlocks[currentI+2][currentJ];
-							System.out.println("ORIGINAL_TRAFFIC_DIRECTION : roadBlockType Variable: " + roadBlockType + ", current  block: " + ((RoadBlock)rdBlocks[currentI][currentJ]).getBlockType() + ", next block: " + ((RoadBlock)rdBlocks[currentI+1][currentJ]).getBlockType());
 							break;
 						}
 						case RoadConfig.INVERSE_TRAFFIC_DIRECTION: {
 							nextRoadBlock = (RoadBlock)rdBlocks[currentI-2][currentJ];
 							if(((RoadBlock)rdBlocks[currentI][currentJ]).getBlockType() != roadBlockType)
-							System.out.println("INVERSE_TRAFFIC_DIRECTION : roadBlockType Variable: " + roadBlockType + ", current  block: " + ((RoadBlock)rdBlocks[currentI][currentJ]).getBlockType() + ", next block: " + ((RoadBlock)rdBlocks[currentI-1][currentJ]).getBlockType());
 							break;
 						}
 					}
@@ -479,7 +474,7 @@ public class Car {
 							if(distance>0 && distance < 35){
 								this.deceleration(distance,0);
 							}
-							else if (distance>0 && distance<160){
+							else if (distance>0 && distance<80){
 								this.deceleration(distance,3);
 							}
 						}
@@ -510,7 +505,7 @@ public class Car {
 								if(distance>0 && distance < 35){
 									this.deceleration(distance,0);
 								}
-								else if (distance>0 && distance<160){
+								else if (distance>0 && distance<80){
 									this.deceleration(distance,3);
 								}
 							}
@@ -536,7 +531,7 @@ public class Car {
 	 */
 	public void acceleration(RoadBlock currentRoadBlock){
 		if(currentRoadBlock.getSpeedLimit() < this.speed){
-			deceleration(getDistanceToNextBlock( getCarX(), getCarY(),currentRoadBlock),currentRoadBlock.getSpeedLimit());
+			this.deceleration(getDistanceToNextBlock(this.getCarX(), this.getCarY(),currentRoadBlock),currentRoadBlock.getSpeedLimit());
 		}else{
 			while(this.speed<currentRoadBlock.getSpeedLimit()){
 				this.speed++;
@@ -560,7 +555,8 @@ public class Car {
 //		}
 		System.out.println("distance: " + dist);
 		if (dist>0){
-			this.speed =  ((finalSpeed * finalSpeed) - (this.speed * this.speed)) / (3*dist);
+			this.speed =  ((finalSpeed * finalSpeed) - (this.speed * this.speed)) / (2*dist);
+			System.out.println("speed: " + this.speed);
 		}
 	}
 	/**
@@ -574,24 +570,25 @@ public class Car {
 	 */
 	public int getDistanceToNextBlock(int x, int y, RoadBlock currentRoadBlock){
 		System.out.println("current block in getDistanceFunction: " + currentRoadBlock.getBlockType());
+		int distance =0;
 		if (currentRoadBlock.getBlockType() == RoadConfig.HORIZONTAL_BLOCK || currentRoadBlock.getBlockType() == RoadConfig.HORIZONTAL_ENTER_BLOCK || currentRoadBlock.getBlockType() == RoadConfig.HORIZONTAL_EXIT_BLOCK || currentRoadBlock.getBlockType() == RoadConfig.HORIZONTAL_DOUBLE_BLOCK || currentRoadBlock.getBlockType() == RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK || currentRoadBlock.getBlockType() == RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK ){
 			if (getDirection()==RoadConfig.ORIGINAL_TRAFFIC_DIRECTION){
-				return Math.abs(getCurrentGridX()+49 - x)-GraphicsConfig.CAR_LENGTH/2;
+				distance = Math.abs(this.getCurrentGridX()+49 - x)-GraphicsConfig.CAR_LENGTH/2;
 			}
 			else {
-				return Math.abs(getCurrentGridX() - x)-GraphicsConfig.CAR_LENGTH/2;
+				distance = Math.abs(this.getCurrentGridX() - x)-GraphicsConfig.CAR_LENGTH/2;
 			}
 		}
 		else if (currentRoadBlock.getBlockType() == RoadConfig.VERTICAL_BLOCK || currentRoadBlock.getBlockType() == RoadConfig.VERTICAL_ENTER_BLOCK || currentRoadBlock.getBlockType() == RoadConfig.VERTICAL_EXIT_BLOCK || currentRoadBlock.getBlockType() == RoadConfig.VERTICAL_DOUBLE_BLOCK || currentRoadBlock.getBlockType() == RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK || currentRoadBlock.getBlockType() == RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK){
 			if (getDirection()==RoadConfig.ORIGINAL_TRAFFIC_DIRECTION){
-				return Math.abs(getCurrentGridY()+49 - y)-GraphicsConfig.CAR_LENGTH/2;
+				distance = Math.abs(this.getCurrentGridY()+49 - y)-GraphicsConfig.CAR_LENGTH/2;
 			}
 			else {
-				return Math.abs(getCurrentGridY() - y)-GraphicsConfig.CAR_LENGTH/2;
+				distance = Math.abs(this.getCurrentGridY() - y)-GraphicsConfig.CAR_LENGTH/2;
 			}
 		}
-		
-		return 0;
+		System.out.println("getDistanceToNextBlock: " + distance);
+		return distance;
 	}
 	/**
 	 * gets the current X coordinate in the grid in pixels
