@@ -313,10 +313,10 @@ public class Car {
 						if ((carFromList.getCarX()-this.getCarX())*this.getDirection()>=0 && this.getDirection()*(carFromList.getCarY()-this.getCarY())>=0){
 							distance = (int) (Math.sqrt(Math.pow(carFromList.getCarX()-this.getCarX(), 2.0)+Math.pow(carFromList.getCarY()-this.getCarY(), 2.0)));
 							if(distance>0 && distance < 35){
-								this.speed = 0;
+								this.deceleration(distance,0);
 							}
 							else if (distance>0 && distance<40){
-								this.speed=3;
+								this.deceleration(distance,3);
 							}
 						}
 					}
@@ -344,10 +344,10 @@ public class Car {
 							if ((carFromList.getCarX()-this.getCarX())*this.getDirection()>=0 && this.getDirection()*(carFromList.getCarY()-this.getCarY())>=0){
 								distance = (int) (Math.sqrt(Math.pow(carFromList.getCarX()-this.getCarX(), 2.0)+Math.pow(carFromList.getCarY()-this.getCarY(), 2.0)));
 								if(distance>0 && distance < 35){
-									speed = 0;
+									this.deceleration(distance,0);
 								}
 								else if (distance>0 && distance<40){
-									this.deceleration(35);
+									this.deceleration(distance,3);
 								}
 							}
 						}
@@ -379,14 +379,16 @@ public class Car {
 	 *
 	 * @param dist the dist
 	 */
-	public void deceleration(int dist){
-		if (this.speed>2){
-			float sp = (float)speed/(float)dist;
-			this.speed += speed/dist;
-			if(sp-(float)(speed/dist)>0.5){
-				this.speed--;
-			}
-		}
+	public void deceleration(int dist, int finalSpeed){
+		
+//		if (this.speed>2){
+//			float sp = (float)speed/(float)dist;
+//			this.speed += speed/dist;
+//			if(sp-(float)(speed/dist)>0.5){
+//				this.speed--;
+//			}
+//		}
+		this.speed =  ((finalSpeed * finalSpeed) - (this.speed * this.speed)) / (2 * dist);
 	}
 	
 	/**
