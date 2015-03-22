@@ -1,6 +1,9 @@
-/pathFiler/
-/trafficInfrastructure/
+/.DS_Store
+/agents/
 /graphicsLoader/
 /gui/
+/main/
+/pathFiler/
 /simulationBuilder/
-/agents/
+/trafficInfrastructure/
+/util/

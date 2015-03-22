@@ -58,6 +58,7 @@ public class Car {
 	public Car (Path path){
 		this.path = path;
 		this.counter = 0;
+		this.speed = 0;
 	}
 	
 	/**
@@ -303,7 +304,7 @@ public class Car {
 		*/
 		
 		//Other Cars Rule 2
-		this.speed = 5;
+		acceleration(7);
 		int distance = 0;
 		if (((RoadBlock)rdBlocks[this.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE][this.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE]).isCarInside()){
 			ArrayList<Car> carList = ((RoadBlock)rdBlocks[this.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE][this.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE]).getCarList();
@@ -315,7 +316,7 @@ public class Car {
 							if(distance>0 && distance < 35){
 								this.deceleration(distance,0);
 							}
-							else if (distance>0 && distance<40){
+							else if (distance>0 && distance<160){
 								this.deceleration(distance,3);
 							}
 						}
@@ -346,7 +347,7 @@ public class Car {
 								if(distance>0 && distance < 35){
 									this.deceleration(distance,0);
 								}
-								else if (distance>0 && distance<40){
+								else if (distance>0 && distance<160){
 									this.deceleration(distance,3);
 								}
 							}
@@ -370,8 +371,9 @@ public class Car {
 	/**
 	 * Acceleration.
 	 */
-	public void acceleration(){
-		this.speed++;
+	public void acceleration(int max){
+		while(this.speed<max)
+			this.speed++;
 	}
 	
 	/**
@@ -388,7 +390,7 @@ public class Car {
 //				this.speed--;
 //			}
 //		}
-		this.speed =  ((finalSpeed * finalSpeed) - (this.speed * this.speed)) / (2 * dist);
+		this.speed =  ((finalSpeed * finalSpeed) - (this.speed * this.speed)) / (3*dist);
 	}
 	
 	/**
