@@ -22,6 +22,7 @@ import javax.swing.Timer;
 
 import main.MainConfig;
 import simulationBuilder.RoadBlocksBuffer;
+import simulationBuilder.TrafficLightSetDoubleIntersection;
 import simulationBuilder.TrafficLightSetSingleIntersection;
 import simulationBuilder.TrafficLightsBuilder;
 import trafficInfrastructure.grid.GridBuilder;
@@ -70,6 +71,8 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	
 	private ArrayList<TrafficLightSetSingleIntersection> arrTrafficLightSetSingle;
 	
+	private ArrayList<TrafficLightSetDoubleIntersection> arrTrafficLightSetDouble;
+	
 	/** The road block grid. */
 	private Object [][] roadBlockGrid;
 	
@@ -115,6 +118,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		trafficLightBuilder.buildTrafficLights();
 		this.trafficLightList =trafficLightBuilder.getTrafficLightList();
 		this.arrTrafficLightSetSingle = trafficLightBuilder.getTrafficLightSetSingleList();
+		this.arrTrafficLightSetDouble = trafficLightBuilder.getTrafficLightSetDoubleList();
 		this.carList = new ArrayList<Car>();
 		
 		this.timer = new Timer (this.delay, this);
@@ -159,6 +163,9 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
         	tl.drawTrafficLights(g, ib);
         }
         for (TrafficLightSetSingleIntersection tlSet : this.arrTrafficLightSetSingle){
+        	tlSet.updateState();
+        }
+        for (TrafficLightSetDoubleIntersection tlSet : this.arrTrafficLightSetDouble){
         	tlSet.updateState();
         }
         if (!this.carList.isEmpty()){

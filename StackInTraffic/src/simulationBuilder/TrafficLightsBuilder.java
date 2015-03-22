@@ -179,7 +179,7 @@ public class TrafficLightsBuilder {
 					((RoadBlock) this.rdBlocks[i+1][j-1]).addTrafficLightIndex(trafficLightCounter);
 					trafficLightCounter++;
 					
-					trafficLight = new TrafficLight(RoadConfig.ORIGINAL_TRAFFIC_DIRECTION, grid.getGrid()[i][j-2], i+1, j-1,AgentConfig.TRAFFIC_LIGHT_2_LANE, (short) 2);
+					trafficLight = new TrafficLight(RoadConfig.ORIGINAL_TRAFFIC_DIRECTION, grid.getGrid()[i-2][j], i-1, j,AgentConfig.TRAFFIC_LIGHT_1_LANE, (short) 2);
 					this.arrTrafficLights.add(trafficLight);
 					tempTrafficLightList.add(trafficLight);
 					((RoadBlock) this.rdBlocks[i-1][j]).addTrafficLightIndex(trafficLightCounter);
@@ -217,7 +217,8 @@ public class TrafficLightsBuilder {
 					((RoadBlock) this.rdBlocks[i+2][j+1]).addTrafficLightIndex(trafficLightCounter);
 					trafficLightCounter++;
 				
-				
+					this.arrTrafficLightSetDoubleIntersection.add(new TrafficLightSetDoubleIntersection(tempTrafficLightList));
+					
 				
 				} 
 			 else 
@@ -304,6 +305,10 @@ public class TrafficLightsBuilder {
 	
 	public ArrayList<TrafficLightSetSingleIntersection> getTrafficLightSetSingleList(){
 		return this.arrTrafficLightSetSingleIntersection;
+	}
+	
+	public ArrayList<TrafficLightSetDoubleIntersection> getTrafficLightSetDoubleList(){
+		return this.arrTrafficLightSetDoubleIntersection;
 	}
 
 }

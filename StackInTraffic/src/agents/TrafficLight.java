@@ -60,9 +60,6 @@ public class TrafficLight {
 		this.gridX = x;
 		this.gridY = y;
 		this.roadBlock = roadBlock;
-		if (type == 2){
-			trafficLightState = AgentConfig.TRAFFIC_LIGHT_GREEN;
-		}
 		
 	}
 	
