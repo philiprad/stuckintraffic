@@ -64,7 +64,7 @@ public class MapValidator {
 									(map[i][j]!=RoadConfig.HORIZONTAL_EXIT_BLOCK && i>0 && i+2==map.length && 
 									(((map[i-1][j]==0) || (map[i-1][j]==RoadConfig.VERTICAL_BLOCK || map[i-1][j]==RoadConfig.VERTICAL_ENTER_BLOCK || map[i-1][j]==RoadConfig.VERTICAL_EXIT_BLOCK ||
 									map[i-1][j]==RoadConfig.INTERSECTION_LEFT_BLOCK || map[i-1][j]==RoadConfig.VERTICAL_DOUBLE_BLOCK || map[i-1][j]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK ||
-									map[i-1][j]==-100)) || map[i+1][j]!=RoadConfig.HORIZONTAL_BLOCK))){
+									map[i-1][j]==-100)) || (map[i+1][j]!=RoadConfig.HORIZONTAL_BLOCK && map[i+1][j]!=RoadConfig.INTERSECTION_LEFT_BLOCK)))){
 								System.out.println("Horizontal Block failed map Validations"+ map.length + " and " + map[0].length);
 								return false;
 							}

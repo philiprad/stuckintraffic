@@ -247,6 +247,8 @@ public class Car {
 		return this.path.getPathPoints().get(this.counter).getDirection();
 	}
 	
+	
+	
 	/**
 	 * Speed management.
 	 *
@@ -256,6 +258,51 @@ public class Car {
 	 *            the traffic light list
 	 */
 	public void speedManagement(Object [] [] rdBlocks /*, ArrayList<TrafficLight> trafficLightList*/){
+
+		int currentI = this.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE;
+		int currentJ = this.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE;
+		 
+		short roadBlockType = this.getRoadBlockType();
+		int direction = this.getDirection();
+		RoadBlock nextRoadBlock;
+		System.out.println("roadBlockType: " + roadBlockType );
+		 
+			switch(roadBlockType){
+			
+				case RoadConfig.HORIZONTAL_BLOCK: {
+					
+					switch(direction){
+						case RoadConfig.ORIGINAL_TRAFFIC_DIRECTION: {
+							nextRoadBlock = (RoadBlock)rdBlocks[currentI+1][currentJ];
+							System.out.println("ORIGINAL_TRAFFIC_DIRECTION : roadBlockType Variable: " + roadBlockType + ", current  block: " + ((RoadBlock)rdBlocks[currentI][currentJ]).getBlockType() + ", next block: " + ((RoadBlock)rdBlocks[currentI+1][currentJ]).getBlockType());
+							break;
+						}
+						case RoadConfig.INVERSE_TRAFFIC_DIRECTION: {
+							nextRoadBlock = (RoadBlock)rdBlocks[currentI-1][currentJ];
+							if(((RoadBlock)rdBlocks[currentI][currentJ]).getBlockType() != roadBlockType)
+							System.out.println("INVERSE_TRAFFIC_DIRECTION : roadBlockType Variable: " + roadBlockType + ", current  block: " + ((RoadBlock)rdBlocks[currentI][currentJ]).getBlockType() + ", next block: " + ((RoadBlock)rdBlocks[currentI-1][currentJ]).getBlockType());
+							break;
+						}
+					}
+				}
+			
+				case RoadConfig.VERTICAL_BLOCK: {
+					
+					switch(direction){
+						case RoadConfig.ORIGINAL_TRAFFIC_DIRECTION: {
+							nextRoadBlock = (RoadBlock)rdBlocks[currentI][currentJ+1];
+							break;
+						}
+						case RoadConfig.INVERSE_TRAFFIC_DIRECTION: {
+							nextRoadBlock = (RoadBlock)rdBlocks[currentI][currentJ-1];
+							break;
+						}						
+					}
+					break;
+				}
+				
+			}
+		 
 		//Traffic Light Rule 1
 	/*	this.speed = 10;
 		boolean trafficLightOnPath = false;
@@ -356,7 +403,7 @@ public class Car {
 				}
 			}
 		}
-		
+//		
 	}
 	
 	/**

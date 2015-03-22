@@ -6,7 +6,8 @@ package agents;
 
 import java.util.ArrayList;
 
-// TODO: Auto-generated Javadoc
+import trafficInfrastructure.road.RoadConfig;
+
 /**
  * The Class RoadBlock.
  */
@@ -31,6 +32,55 @@ public class RoadBlock {
 	 */
 	public RoadBlock(short blockType){
 		this.blockType = blockType;
+		switch(blockType){
+		case RoadConfig.INTERSECTION_BLOCK:{
+			this.speedLimit=4;
+			break;
+		}
+		case RoadConfig.ROUND_ABOUT_BLOCK:{
+			this.speedLimit=3;
+			break;
+		}
+		case RoadConfig.INTERSECTION_DOUBLE_BLOCK:{
+			this.speedLimit=5;
+			break;
+		}
+		case RoadConfig.INTERSECTION_MIXED_HORIZONTAL_BLOCK:{
+			this.speedLimit=4;
+			break;
+		}
+		case RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK:{
+			this.speedLimit=4;
+			break;
+		}
+		case RoadConfig.INTERSECTION_RIGHT_BLOCK:{
+			this.speedLimit=4;
+			break;
+		}
+		case RoadConfig.INTERSECTION_UP_BLOCK:{
+			this.speedLimit=4;
+			break;
+		}
+		case RoadConfig.INTERSECTION_DOWN_BLOCK:{
+			this.speedLimit=4;
+			break;
+		}
+		case RoadConfig.INTERSECTION_LEFT_BLOCK:{
+			this.speedLimit=4;
+			break;
+		}
+		case RoadConfig.HORIZONTAL_DOUBLE_BLOCK:{
+			this.speedLimit=7;
+			break;
+		}
+		case RoadConfig.VERTICAL_DOUBLE_BLOCK:{
+			this.speedLimit=7;
+			break;
+		}
+		default:{
+			this.speedLimit=5;
+		}
+		}
 	}
 	
 	/**
