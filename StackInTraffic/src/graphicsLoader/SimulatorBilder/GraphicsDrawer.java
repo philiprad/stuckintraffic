@@ -108,9 +108,6 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		this.arrBG = arrBG;
 		this.arrPath = (ArrayList<Path>)FileRW.readObject(MainConfig.PATHS_PATH + "/" + fileName + MainConfig.PATH_SUFFIX);
 		
-		//TrafficManager tm = new TrafficManager(fileName);
-		//this.trafficLightList = tm.getTrafficLightList();
-		///this.roadBlockGrid = tm.getRoadBlockArray();
 		RoadBlocksBuffer roadBlockBuffer = new RoadBlocksBuffer(fileName);
 		this.roadBlockGrid = roadBlockBuffer.getRoadBlockBufferArray();
 		
@@ -178,22 +175,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.carAddCounter++;
-		this.trafficLightCounter++;
-		/*if (isNextYellow==1){
-			if (this.trafficLightCounter>=50){
-				TrafficManager.intersection1YellowLight(this.trafficLightNumber, this.trafficLightList);
-				this.incTrafficLightNumber();
-				this.trafficLightCounter=0;
-				this.isNextYellow = 0;
-			}
-		}
-		else {
-			if (this.trafficLightCounter>=30){
-				TrafficManager.intersection1GreenLight(this.trafficLightNumber, this.trafficLightList);
-				this.trafficLightCounter=0;
-				this.isNextYellow = 1;
-			}
-		}*/
+		
 		if (this.carList.isEmpty()){
 			
 				this.putCarOnEveryPath();
@@ -244,14 +226,6 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	/**
 	 * Inc traffic light number.
 	 */
-	private void incTrafficLightNumber(){
-		if (this.trafficLightNumber==4){
-			this.trafficLightNumber=1;
-		}
-		else {
-			this.trafficLightNumber++;
-		}
-	}
 	
 	/**
 	 * Car grid position update.

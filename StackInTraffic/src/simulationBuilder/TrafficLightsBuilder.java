@@ -60,67 +60,106 @@ public class TrafficLightsBuilder {
 				
 				}  else if (this.grid.getGrid()[i][j] == RoadConfig.INTERSECTION_LEFT_BLOCK) {
 					
-					this.arrTrafficLights.add(new TrafficLight(RoadConfig.ORIGINAL_TRAFFIC_DIRECTION, grid.getGrid()[i][j-1], i, j-1,AgentConfig.TRAFFIC_LIGHT_1_LANE, (short) 1));
+					ArrayList<TrafficLight> tempTrafficLightList = new ArrayList<TrafficLight>();
+					
+					trafficLight = new TrafficLight(RoadConfig.ORIGINAL_TRAFFIC_DIRECTION, grid.getGrid()[i][j-1], i, j-1,AgentConfig.TRAFFIC_LIGHT_1_LANE, (short) 1);
+					tempTrafficLightList.add(trafficLight);
+					this.arrTrafficLights.add(trafficLight);
 					((RoadBlock) this.rdBlocks[i][j-1]).addTrafficLightIndex(trafficLightCounter);
 					trafficLightCounter++;
 					
-					this.arrTrafficLights.add(new TrafficLight(RoadConfig.INVERSE_TRAFFIC_DIRECTION, grid.getGrid()[i][j+1], i, j+1,AgentConfig.TRAFFIC_LIGHT_1_LANE, (short) 2));
+					trafficLight = new TrafficLight(RoadConfig.INVERSE_TRAFFIC_DIRECTION, grid.getGrid()[i][j+1], i, j+1,AgentConfig.TRAFFIC_LIGHT_1_LANE, (short) 2);
+					tempTrafficLightList.add(trafficLight);
+					this.arrTrafficLights.add(trafficLight);
 					((RoadBlock) this.rdBlocks[i][j+1]).addTrafficLightIndex(trafficLightCounter);
 					trafficLightCounter++;
 					
-					this.arrTrafficLights.add(new TrafficLight(RoadConfig.ORIGINAL_TRAFFIC_DIRECTION, grid.getGrid()[i-1][j], i-1, j,AgentConfig.TRAFFIC_LIGHT_1_LANE, (short) 3));
+					trafficLight = new TrafficLight(RoadConfig.ORIGINAL_TRAFFIC_DIRECTION, grid.getGrid()[i-1][j], i-1, j,AgentConfig.TRAFFIC_LIGHT_1_LANE, (short) 3);
+					tempTrafficLightList.add(trafficLight);
+					this.arrTrafficLights.add(trafficLight);
 					((RoadBlock) this.rdBlocks[i-1][j]).addTrafficLightIndex(trafficLightCounter);
 					trafficLightCounter++;
 					
+					this.arrTrafficLightSetSingleIntersection.add(new TrafficLightSetSingleIntersection(tempTrafficLightList));
 					
 					
 				} else if (this.grid.getGrid()[i][j] == RoadConfig.INTERSECTION_RIGHT_BLOCK){
 					
+					ArrayList<TrafficLight> tempTrafficLightList = new ArrayList<TrafficLight>();
 					
-					this.arrTrafficLights.add(new TrafficLight(RoadConfig.ORIGINAL_TRAFFIC_DIRECTION, grid.getGrid()[i][j-1], i, j-1,AgentConfig.TRAFFIC_LIGHT_1_LANE, (short) 1));
+					trafficLight = new TrafficLight(RoadConfig.ORIGINAL_TRAFFIC_DIRECTION, grid.getGrid()[i][j-1], i, j-1,AgentConfig.TRAFFIC_LIGHT_1_LANE, (short) 1);
+					tempTrafficLightList.add(trafficLight);
+					this.arrTrafficLights.add(trafficLight);
 					((RoadBlock) this.rdBlocks[i][j-1]).addTrafficLightIndex(trafficLightCounter);
 					trafficLightCounter++;
 					
-					this.arrTrafficLights.add(new TrafficLight(RoadConfig.INVERSE_TRAFFIC_DIRECTION, grid.getGrid()[i][j+1], i, j+1,AgentConfig.TRAFFIC_LIGHT_1_LANE, (short) 2));
+					trafficLight = new TrafficLight(RoadConfig.INVERSE_TRAFFIC_DIRECTION, grid.getGrid()[i][j+1], i, j+1,AgentConfig.TRAFFIC_LIGHT_1_LANE, (short) 2);
+					tempTrafficLightList.add(trafficLight);
+					this.arrTrafficLights.add(trafficLight);
 					((RoadBlock) this.rdBlocks[i][j+1]).addTrafficLightIndex(trafficLightCounter);
 					trafficLightCounter++;
 					
-					
-					this.arrTrafficLights.add(new TrafficLight(RoadConfig.INVERSE_TRAFFIC_DIRECTION, grid.getGrid()[i+1][j], i+1, j,AgentConfig.TRAFFIC_LIGHT_1_LANE,(short) 4));
+					trafficLight = new TrafficLight(RoadConfig.INVERSE_TRAFFIC_DIRECTION, grid.getGrid()[i+1][j], i+1, j,AgentConfig.TRAFFIC_LIGHT_1_LANE,(short) 4);
+					this.arrTrafficLights.add(trafficLight);
+					tempTrafficLightList.add(trafficLight);
 					((RoadBlock) this.rdBlocks[i+1][j]).addTrafficLightIndex(trafficLightCounter);
 					trafficLightCounter++;
+					
+					this.arrTrafficLightSetSingleIntersection.add(new TrafficLightSetSingleIntersection(tempTrafficLightList));
+					
 				} else
 				
 				if (this.grid.getGrid()[i][j] == RoadConfig.INTERSECTION_UP_BLOCK){
 					
-					this.arrTrafficLights.add(new TrafficLight(RoadConfig.ORIGINAL_TRAFFIC_DIRECTION, grid.getGrid()[i][j-1], i, j-1,AgentConfig.TRAFFIC_LIGHT_1_LANE, (short) 1));
+					ArrayList<TrafficLight> tempTrafficLightList = new ArrayList<TrafficLight>();
+					
+					trafficLight = new TrafficLight(RoadConfig.ORIGINAL_TRAFFIC_DIRECTION, grid.getGrid()[i][j-1], i, j-1,AgentConfig.TRAFFIC_LIGHT_1_LANE, (short) 1);
+					this.arrTrafficLights.add(trafficLight);
+					tempTrafficLightList.add(trafficLight);
 					((RoadBlock) this.rdBlocks[i][j-1]).addTrafficLightIndex(trafficLightCounter);
 					trafficLightCounter++;
 					
-					
-					this.arrTrafficLights.add(new TrafficLight(RoadConfig.ORIGINAL_TRAFFIC_DIRECTION, grid.getGrid()[i-1][j], i-1, j,AgentConfig.TRAFFIC_LIGHT_1_LANE, (short) 3));
+					trafficLight = new TrafficLight(RoadConfig.ORIGINAL_TRAFFIC_DIRECTION, grid.getGrid()[i-1][j], i-1, j,AgentConfig.TRAFFIC_LIGHT_1_LANE, (short) 3);
+					this.arrTrafficLights.add(trafficLight);
+					tempTrafficLightList.add(trafficLight);
 					((RoadBlock) this.rdBlocks[i-1][j]).addTrafficLightIndex(trafficLightCounter);
 					trafficLightCounter++;
 					
-					this.arrTrafficLights.add(new TrafficLight(RoadConfig.INVERSE_TRAFFIC_DIRECTION, grid.getGrid()[i+1][j], i+1, j,AgentConfig.TRAFFIC_LIGHT_1_LANE,(short) 4));
+					trafficLight = new TrafficLight(RoadConfig.INVERSE_TRAFFIC_DIRECTION, grid.getGrid()[i+1][j], i+1, j,AgentConfig.TRAFFIC_LIGHT_1_LANE,(short) 4);
+					this.arrTrafficLights.add(trafficLight);
+					tempTrafficLightList.add(trafficLight);
 					((RoadBlock) this.rdBlocks[i+1][j]).addTrafficLightIndex(trafficLightCounter);
 					trafficLightCounter++;
+					
+					this.arrTrafficLightSetSingleIntersection.add(new TrafficLightSetSingleIntersection(tempTrafficLightList));
+					
 					
 				} else
 				
 				if (this.grid.getGrid()[i][j] == RoadConfig.INTERSECTION_DOWN_BLOCK){
 					
-					this.arrTrafficLights.add(new TrafficLight(RoadConfig.INVERSE_TRAFFIC_DIRECTION, grid.getGrid()[i][j+1], i, j+1,AgentConfig.TRAFFIC_LIGHT_1_LANE, (short) 2));
+					ArrayList<TrafficLight> tempTrafficLightList = new ArrayList<TrafficLight>();
+					
+					trafficLight = new TrafficLight(RoadConfig.INVERSE_TRAFFIC_DIRECTION, grid.getGrid()[i][j+1], i, j+1,AgentConfig.TRAFFIC_LIGHT_1_LANE, (short) 2); 
+					this.arrTrafficLights.add(trafficLight);
+					tempTrafficLightList.add(trafficLight);
 					((RoadBlock) this.rdBlocks[i][j+1]).addTrafficLightIndex(trafficLightCounter);
 					trafficLightCounter++;
 					
-					this.arrTrafficLights.add(new TrafficLight(RoadConfig.ORIGINAL_TRAFFIC_DIRECTION, grid.getGrid()[i-1][j], i-1, j, AgentConfig.TRAFFIC_LIGHT_1_LANE,(short) 3));
+					trafficLight = new TrafficLight(RoadConfig.ORIGINAL_TRAFFIC_DIRECTION, grid.getGrid()[i-1][j], i-1, j, AgentConfig.TRAFFIC_LIGHT_1_LANE,(short) 3);
+					this.arrTrafficLights.add(trafficLight);
+					tempTrafficLightList.add(trafficLight);
 					((RoadBlock) this.rdBlocks[i-1][j]).addTrafficLightIndex(trafficLightCounter);
 					trafficLightCounter++;
 					
-					this.arrTrafficLights.add(new TrafficLight(RoadConfig.INVERSE_TRAFFIC_DIRECTION, grid.getGrid()[i+1][j], i+1, j,AgentConfig.TRAFFIC_LIGHT_1_LANE,(short) 4));
+					trafficLight = new TrafficLight(RoadConfig.INVERSE_TRAFFIC_DIRECTION, grid.getGrid()[i+1][j], i+1, j,AgentConfig.TRAFFIC_LIGHT_1_LANE,(short) 4);
+					this.arrTrafficLights.add(trafficLight);
+					tempTrafficLightList.add(trafficLight);
 					((RoadBlock) this.rdBlocks[i+1][j]).addTrafficLightIndex(trafficLightCounter);
 					trafficLightCounter++;
+					
+					this.arrTrafficLightSetSingleIntersection.add(new TrafficLightSetSingleIntersection(tempTrafficLightList));
+					
 				} else 
 				
 				if (this.grid.getGrid()[i][j] == RoadConfig.INTERSECTION_DOUBLE_BLOCK){
