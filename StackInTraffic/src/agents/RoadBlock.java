@@ -193,6 +193,6 @@ public class RoadBlock {
 	 * @return the speed limit
 	 */
 	public int getSpeedLimit(){
-		return this.getSpeedLimit();
+		return this.speedLimit;
 	}
 }
