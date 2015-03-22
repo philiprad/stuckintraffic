@@ -1518,10 +1518,10 @@ public class RoadBuilder {
 							
 							ArrayList<PathPoint> arr1 = new ArrayList<PathPoint>();
 							arr1.addAll(arrPathPoint);
-							arr1.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.HORIZONTAL_BLOCK, 1));
+							arr1.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.LEFT_TO_TOP_DIRECTION));
 							ArrayList<PathPoint> arrDouble1 = new ArrayList<PathPoint>();
 							arrDouble1.addAll(arrDoublePathPoint);
-							arrDouble1.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.HORIZONTAL_BLOCK, 1));
+							arrDouble1.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.LEFT_TO_TOP_DIRECTION));
 							
 							ArrayList <PathSwitchingDifference> arrPathSwitch1 = new ArrayList <PathSwitchingDifference>();
 							arrPathSwitch1.addAll(arrPathSwitch);
@@ -1533,10 +1533,10 @@ public class RoadBuilder {
 							
 							ArrayList<PathPoint> arr2 = new ArrayList<PathPoint>();
 							arr2.addAll(arrPathPoint);
-							arr2.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.HORIZONTAL_BLOCK, 1));
+							arr2.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.LEFT_TO_RIGHT_DIRECTION));
 							ArrayList<PathPoint> arrDouble2 = new ArrayList<PathPoint>();
 							arrDouble2.addAll(arrDoublePathPoint);
-							arrDouble2.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.HORIZONTAL_BLOCK, 1));
+							arrDouble2.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.LEFT_TO_RIGHT_DIRECTION));
 							
 							arrPathSwitch1 = new ArrayList <PathSwitchingDifference>();
 							arrPathSwitch1.addAll(arrPathSwitch);
@@ -1548,11 +1548,11 @@ public class RoadBuilder {
 							
 							ArrayList<PathPoint> arr3 = new ArrayList<PathPoint>();
 							arr3.addAll(arrPathPoint);
-							arr3.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 3, RoadConfig.HORIZONTAL_BLOCK, 1));
+							arr3.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 3, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.LEFT_TO_BOTTOM_DIRECTION));
 							
 							ArrayList<PathPoint> arrDouble3 = new ArrayList<PathPoint>();
 							arrDouble3.addAll(arrDoublePathPoint);
-							arrDouble3.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 3, RoadConfig.HORIZONTAL_BLOCK, 1));
+							arrDouble3.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 3, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.LEFT_TO_BOTTOM_DIRECTION));
 							
 							
 							arrPathSwitch1 = new ArrayList <PathSwitchingDifference>();
@@ -1563,8 +1563,8 @@ public class RoadBuilder {
 							
 							this.discoverPaths(arr3,arrDouble3,arrPathSwitch,viop1, 1, x+1, y+2, previousX , previousY);
 							
-							arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 4, RoadConfig.HORIZONTAL_BLOCK, 1));
-							arrDoublePathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 4, RoadConfig.HORIZONTAL_BLOCK, 1));
+							arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 4, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.LEFT_TO_LEFT_DIRECTION));
+							arrDoublePathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 4, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.LEFT_TO_LEFT_DIRECTION));
 							x-=1;
 							direction=-1;
 							
@@ -1583,10 +1583,10 @@ public class RoadBuilder {
 							
 							ArrayList<PathPoint> arr1 = new ArrayList<PathPoint>();
 							arr1.addAll(arrPathPoint);
-							arr1.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.HORIZONTAL_BLOCK, -1));
+							arr1.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.RIGHT_TO_BOTTOM_DIRECTION));
 							ArrayList<PathPoint> arrDouble1 = new ArrayList<PathPoint>();
 							arrDouble1.addAll(arrDoublePathPoint);
-							arrDouble1.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.HORIZONTAL_BLOCK, -1));
+							arrDouble1.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.RIGHT_TO_BOTTOM_DIRECTION));
 	
 							ArrayList <PathSwitchingDifference> arrPathSwitch1 = new ArrayList <PathSwitchingDifference>();
 							arrPathSwitch1.addAll(arrPathSwitch);
@@ -1597,10 +1597,10 @@ public class RoadBuilder {
 							
 							ArrayList<PathPoint> arr2 = new ArrayList<PathPoint>();
 							arr2.addAll(arrPathPoint);
-							arr2.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.HORIZONTAL_BLOCK, -1));
+							arr2.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.RIGHT_TO_LEFT_DIRECTION));
 							ArrayList<PathPoint> arrDouble2 = new ArrayList<PathPoint>();
 							arrDouble2.addAll(arrDoublePathPoint);
-							arrDouble2.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.HORIZONTAL_BLOCK, -1));
+							arrDouble2.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.RIGHT_TO_LEFT_DIRECTION));
 							
 							arrPathSwitch1 = new ArrayList <PathSwitchingDifference>();
 							arrPathSwitch1.addAll(arrPathSwitch);
@@ -1611,10 +1611,10 @@ public class RoadBuilder {
 							
 							ArrayList<PathPoint> arr3 = new ArrayList<PathPoint>();
 							arr3.addAll(arrPathPoint);
-							arr3.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 3, RoadConfig.HORIZONTAL_BLOCK, -1));
+							arr3.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 3, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.RIGHT_TO_TOP_DIRECTION));
 							ArrayList<PathPoint> arrDouble3 = new ArrayList<PathPoint>();
 							arrDouble3.addAll(arrDoublePathPoint);
-							arrDouble3.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 3, RoadConfig.HORIZONTAL_BLOCK, -1));
+							arrDouble3.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 3, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.RIGHT_TO_TOP_DIRECTION));
 							arrPathSwitch1 = new ArrayList <PathSwitchingDifference>();
 							arrPathSwitch1.addAll(arrPathSwitch);
 							
@@ -1622,8 +1622,8 @@ public class RoadBuilder {
 							viop1.addAllIntersections(viop.getIntersections());
 							this.discoverPaths(arr3,arrDouble3,arrPathSwitch,viop1, -1, x-1, y-2, previousX , previousY);
 							
-							arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 4, RoadConfig.HORIZONTAL_BLOCK, -1));
-							arrDoublePathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 4, RoadConfig.HORIZONTAL_BLOCK, -1));
+							arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 4, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.RIGHT_TO_RIGHT_DIRECTION));
+							arrDoublePathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 4, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.RIGHT_TO_RIGHT_DIRECTION));
 							
 							x+=1;
 							direction=1;
@@ -1649,10 +1649,10 @@ public class RoadBuilder {
 							
 							ArrayList<PathPoint> arr1 = new ArrayList<PathPoint>();
 							arr1.addAll(arrPathPoint);
-							arr1.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.VERTICAL_BLOCK, 1));
+							arr1.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.VERTICAL_BLOCK, RoadConfig.TOP_TO_RIGHT_DIRECTION));
 							ArrayList<PathPoint> arrDouble1 = new ArrayList<PathPoint>();
 							arrDouble1.addAll(arrDoublePathPoint);
-							arrDouble1.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.VERTICAL_BLOCK, 1));						
+							arrDouble1.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.VERTICAL_BLOCK, RoadConfig.TOP_TO_RIGHT_DIRECTION));						
 							
 							ArrayList <PathSwitchingDifference> arrPathSwitch1 = new ArrayList <PathSwitchingDifference>();
 							arrPathSwitch1.addAll(arrPathSwitch);
@@ -1663,10 +1663,10 @@ public class RoadBuilder {
 							
 							ArrayList<PathPoint> arr2 = new ArrayList<PathPoint>();
 							arr2.addAll(arrPathPoint);
-							arr2.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.VERTICAL_BLOCK, 1));
+							arr2.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.VERTICAL_BLOCK, RoadConfig.TOP_TO_BOTTOM_DIRECTION));
 							ArrayList<PathPoint> arrDouble2 = new ArrayList<PathPoint>();
 							arrDouble2.addAll(arrDoublePathPoint);
-							arrDouble2.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.VERTICAL_BLOCK, 1));
+							arrDouble2.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.VERTICAL_BLOCK, RoadConfig.TOP_TO_BOTTOM_DIRECTION));
 							
 							arrPathSwitch1 = new ArrayList <PathSwitchingDifference>();
 							arrPathSwitch1.addAll(arrPathSwitch);
@@ -1677,11 +1677,11 @@ public class RoadBuilder {
 							
 							ArrayList<PathPoint> arr3 = new ArrayList<PathPoint>();
 							arr3.addAll(arrPathPoint);
-							arr3.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 3, RoadConfig.VERTICAL_BLOCK, 1));
+							arr3.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 3, RoadConfig.VERTICAL_BLOCK, RoadConfig.TOP_TO_LEFT_DIRECTION));
 							
 							ArrayList<PathPoint> arrDouble3 = new ArrayList<PathPoint>();
 							arrDouble3.addAll(arrDoublePathPoint);
-							arrDouble3.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 3, RoadConfig.VERTICAL_BLOCK, 1));
+							arrDouble3.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 3, RoadConfig.VERTICAL_BLOCK, RoadConfig.TOP_TO_LEFT_DIRECTION));
 							arrPathSwitch1 = new ArrayList <PathSwitchingDifference>();
 							arrPathSwitch1.addAll(arrPathSwitch);
 							
@@ -1689,8 +1689,8 @@ public class RoadBuilder {
 							viop1.addAllIntersections(viop.getIntersections());
 							this.discoverPaths(arr3,arrDouble3,arrPathSwitch,viop1, -1, x-2, y+1, previousX , previousY);
 							
-							arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 4, RoadConfig.VERTICAL_BLOCK, 1));
-							arrDoublePathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 4, RoadConfig.VERTICAL_BLOCK, 1));
+							arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 4, RoadConfig.VERTICAL_BLOCK, RoadConfig.TOP_TO_TOP_DIRECTION));
+							arrDoublePathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 4, RoadConfig.VERTICAL_BLOCK, RoadConfig.TOP_TO_TOP_DIRECTION));
 							y-=1;
 							direction=-1;
 						}
@@ -1706,11 +1706,11 @@ public class RoadBuilder {
 							
 							ArrayList<PathPoint> arr1 = new ArrayList<PathPoint>();
 							arr1.addAll(arrPathPoint);
-							arr1.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.VERTICAL_BLOCK, -1));
+							arr1.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.VERTICAL_BLOCK, RoadConfig.BOTTOM_TO_LEFT_DIRECTION));
 							
 							ArrayList<PathPoint> arrDouble1 = new ArrayList<PathPoint>();
 							arrDouble1.addAll(arrDoublePathPoint);
-							arrDouble1.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.VERTICAL_BLOCK, -1));
+							arrDouble1.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 1, RoadConfig.VERTICAL_BLOCK, RoadConfig.BOTTOM_TO_LEFT_DIRECTION));
 							
 							
 							ArrayList <PathSwitchingDifference> arrPathSwitch1 = new ArrayList <PathSwitchingDifference>();
@@ -1723,10 +1723,10 @@ public class RoadBuilder {
 							
 							ArrayList<PathPoint> arr2 = new ArrayList<PathPoint>();
 							arr2.addAll(arrPathPoint);
-							arr2.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.VERTICAL_BLOCK, -1));
+							arr2.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.VERTICAL_BLOCK, RoadConfig.BOTTOM_TO_TOP_DIRECTION));
 							ArrayList<PathPoint> arrDouble2 = new ArrayList<PathPoint>();
 							arrDouble2.addAll(arrDoublePathPoint);
-							arrDouble2.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.VERTICAL_BLOCK, -1));
+							arrDouble2.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 2, RoadConfig.VERTICAL_BLOCK, RoadConfig.BOTTOM_TO_TOP_DIRECTION));
 							arrPathSwitch1 = new ArrayList <PathSwitchingDifference>();
 							arrPathSwitch1.addAll(arrPathSwitch);
 							
@@ -1737,10 +1737,10 @@ public class RoadBuilder {
 							
 							ArrayList<PathPoint> arr3 = new ArrayList<PathPoint>();
 							arr3.addAll(arrPathPoint);
-							arr3.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 3, RoadConfig.VERTICAL_BLOCK, -1));
+							arr3.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 3, RoadConfig.VERTICAL_BLOCK, RoadConfig.BOTTOM_TO_RIGHT_DIRECTION));
 							ArrayList<PathPoint> arrDouble3 = new ArrayList<PathPoint>();
 							arrDouble3.addAll(arrDoublePathPoint);
-							arrDouble3.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 3, RoadConfig.VERTICAL_BLOCK, -1));
+							arrDouble3.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 3, RoadConfig.VERTICAL_BLOCK, RoadConfig.BOTTOM_TO_RIGHT_DIRECTION));
 							arrPathSwitch1 = new ArrayList <PathSwitchingDifference>();
 							arrPathSwitch1.addAll(arrPathSwitch);
 							
@@ -1748,8 +1748,8 @@ public class RoadBuilder {
 							viop1.addAllIntersections(viop.getIntersections());
 							this.discoverPaths(arr3,arrDouble3, arrPathSwitch,viop1, 1, x+2, y-1, previousX , previousY);
 					
-							arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 4, RoadConfig.VERTICAL_BLOCK, -1));
-							arrDoublePathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 4, RoadConfig.VERTICAL_BLOCK, -1));
+							arrPathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 4, RoadConfig.VERTICAL_BLOCK, RoadConfig.BOTTOM_TO_BOTTOM_DIRECTION));
+							arrDoublePathPoint.addAll(RoundAboutBlockSingle.getPath(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, (short) 4, RoadConfig.VERTICAL_BLOCK, RoadConfig.BOTTOM_TO_BOTTOM_DIRECTION));
 							
 							y+=1;
 							direction=1;
