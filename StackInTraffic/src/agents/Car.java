@@ -265,6 +265,7 @@ public class Car {
 		short roadBlockType = this.getRoadBlockType();
 		int direction = this.getDirection();
 		RoadBlock nextRoadBlock;
+		RoadBlock currentRoadBlock = rdBlocks!=null?(RoadBlock)rdBlocks[currentI][currentJ]:null;
 		System.out.println("roadBlockType: " + roadBlockType );
 		 
 			switch(roadBlockType){
@@ -351,7 +352,7 @@ public class Car {
 		*/
 		
 		//Other Cars Rule 2
-		acceleration(7);
+		acceleration(currentRoadBlock.getSpeedLimit());
 		int distance = 0;
 		if (((RoadBlock)rdBlocks[this.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE][this.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE]).isCarInside()){
 			ArrayList<Car> carList = ((RoadBlock)rdBlocks[this.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE][this.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE]).getCarList();
