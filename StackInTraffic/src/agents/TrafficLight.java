@@ -42,6 +42,8 @@ public class TrafficLight {
 	/** The number. */
 	private short number;
 	
+	private short type;
+	
 	/**
 	 * Instantiates a new traffic light.
 	 *
@@ -51,12 +53,16 @@ public class TrafficLight {
 	 * @param y the y
 	 * @param number the number
 	 */
-	public TrafficLight(short direction, short roadBlock , int x , int y, short number){
+	public TrafficLight(short direction, short roadBlock , int x , int y,short type, short number){
+		this.type = type;
 		this.number = number;
 		this.direction = direction;
 		this.gridX = x;
 		this.gridY = y;
 		this.roadBlock = roadBlock;
+		if (type == 2){
+			trafficLightState = AgentConfig.TRAFFIC_LIGHT_GREEN;
+		}
 		
 	}
 	
@@ -70,7 +76,7 @@ public class TrafficLight {
 	 * @return the distance to traffic light
 	 */
 	public int getDistanceToTrafficLight(int x, int y){
-		if (this.roadBlock == RoadConfig.HORIZONTAL_BLOCK || this.roadBlock == RoadConfig.HORIZONTAL_ENTER_BLOCK || this.roadBlock == RoadConfig.HORIZONTAL_EXIT_BLOCK){
+		if (this.roadBlock == RoadConfig.HORIZONTAL_BLOCK || this.roadBlock == RoadConfig.HORIZONTAL_ENTER_BLOCK || this.roadBlock == RoadConfig.HORIZONTAL_EXIT_BLOCK || this.roadBlock == RoadConfig.HORIZONTAL_DOUBLE_BLOCK || this.roadBlock == RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK || this.roadBlock == RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK ){
 			if (this.direction==RoadConfig.ORIGINAL_TRAFFIC_DIRECTION){
 				return Math.abs(this.gridX*GraphicsConfig.BLOCK_SIDE_SIZE+49 - x)-GraphicsConfig.CAR_LENGTH/2;
 			}
@@ -78,7 +84,7 @@ public class TrafficLight {
 				return Math.abs(this.gridX*GraphicsConfig.BLOCK_SIDE_SIZE - x)-GraphicsConfig.CAR_LENGTH/2;
 			}
 		}
-		else if (this.roadBlock == RoadConfig.VERTICAL_BLOCK || this.roadBlock == RoadConfig.VERTICAL_ENTER_BLOCK || this.roadBlock == RoadConfig.VERTICAL_EXIT_BLOCK){
+		else if (this.roadBlock == RoadConfig.VERTICAL_BLOCK || this.roadBlock == RoadConfig.VERTICAL_ENTER_BLOCK || this.roadBlock == RoadConfig.VERTICAL_EXIT_BLOCK || this.roadBlock == RoadConfig.VERTICAL_DOUBLE_BLOCK || this.roadBlock == RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK || this.roadBlock == RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK){
 			if (this.direction==RoadConfig.ORIGINAL_TRAFFIC_DIRECTION){
 				return Math.abs(this.gridY*GraphicsConfig.BLOCK_SIDE_SIZE+49 - y)-GraphicsConfig.CAR_LENGTH/2;
 			}
@@ -100,7 +106,7 @@ public class TrafficLight {
 		
 		Image trafficLight;
 		
-		if  (this.roadBlock == RoadConfig.HORIZONTAL_BLOCK || this.roadBlock == RoadConfig.HORIZONTAL_ENTER_BLOCK || this.roadBlock == RoadConfig.HORIZONTAL_EXIT_BLOCK){
+		if  (this.roadBlock == RoadConfig.HORIZONTAL_BLOCK || this.roadBlock == RoadConfig.HORIZONTAL_ENTER_BLOCK || this.roadBlock == RoadConfig.HORIZONTAL_EXIT_BLOCK || this.roadBlock == RoadConfig.HORIZONTAL_DOUBLE_BLOCK || this.roadBlock == RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK || this.roadBlock == RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK){
 			if(this.trafficLightState == AgentConfig.TRAFFIC_LIGHT_RED){
 				trafficLight = ib.getRedLightV();
 			} else if(this.trafficLightState == AgentConfig.TRAFFIC_LIGHT_GREEN){
@@ -110,14 +116,23 @@ public class TrafficLight {
 				trafficLight = ib.getYellowLightV();
 			}
 			if (this.direction == RoadConfig.ORIGINAL_TRAFFIC_DIRECTION){
-				g.drawImage(trafficLight,this.gridX*50+GraphicsConfig.TRAFFIC_LIGHT_POSITION_WIDTH_DISTANCE,this.gridY*50, GraphicsConfig.TRAFFIC_LIGHT_LINE_WIDTH, GraphicsConfig.TRAFFIC_LIGHT_LINE_LENGTH,null );
+				if (this.type == AgentConfig.TRAFFIC_LIGHT_1_LANE){
+					g.drawImage(trafficLight,this.gridX*50+GraphicsConfig.TRAFFIC_LIGHT_POSITION_WIDTH_DISTANCE,this.gridY*50, GraphicsConfig.TRAFFIC_LIGHT_LINE_WIDTH, GraphicsConfig.TRAFFIC_LIGHT_LINE_LENGTH,null );
+				} else {
+					g.drawImage(trafficLight,this.gridX*50+GraphicsConfig.TRAFFIC_LIGHT_POSITION_WIDTH_DISTANCE,this.gridY*50+GraphicsConfig.BLOCK_SIDE_SIZE/2, GraphicsConfig.TRAFFIC_LIGHT_LINE_WIDTH, GraphicsConfig.TRAFFIC_LIGHT_LINE_LENGTH,null );
+				}
 			}
 			else {
-				g.drawImage(trafficLight,this.gridX*50,this.gridY*50+GraphicsConfig.TRAFFIC_LIGHT_POSITION_LENGTH_DISTANCE, GraphicsConfig.TRAFFIC_LIGHT_LINE_WIDTH, GraphicsConfig.TRAFFIC_LIGHT_LINE_LENGTH,null );
+				if (this.type == AgentConfig.TRAFFIC_LIGHT_1_LANE){
+					g.drawImage(trafficLight,this.gridX*50,this.gridY*50+GraphicsConfig.TRAFFIC_LIGHT_POSITION_LENGTH_DISTANCE, GraphicsConfig.TRAFFIC_LIGHT_LINE_WIDTH, GraphicsConfig.TRAFFIC_LIGHT_LINE_LENGTH,null );
+				} else {
+					g.drawImage(trafficLight,this.gridX*50,this.gridY*50, GraphicsConfig.TRAFFIC_LIGHT_LINE_WIDTH, GraphicsConfig.TRAFFIC_LIGHT_LINE_LENGTH,null );
+					
+				}
 			}
 		}
 		
-		if  (this.roadBlock == RoadConfig.VERTICAL_BLOCK || this.roadBlock == RoadConfig.VERTICAL_ENTER_BLOCK || this.roadBlock == RoadConfig.VERTICAL_EXIT_BLOCK){
+		if  (this.roadBlock == RoadConfig.VERTICAL_BLOCK || this.roadBlock == RoadConfig.VERTICAL_ENTER_BLOCK || this.roadBlock == RoadConfig.VERTICAL_EXIT_BLOCK || this.roadBlock == RoadConfig.VERTICAL_DOUBLE_BLOCK || this.roadBlock == RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK || this.roadBlock == RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK){
 			if(this.trafficLightState == AgentConfig.TRAFFIC_LIGHT_RED){
 				trafficLight = ib.getRedLightH();
 			} else if(this.trafficLightState == AgentConfig.TRAFFIC_LIGHT_GREEN){
@@ -127,10 +142,18 @@ public class TrafficLight {
 				trafficLight = ib.getYellowLightH();
 			}
 			if (this.direction == RoadConfig.ORIGINAL_TRAFFIC_DIRECTION){
-				g.drawImage(trafficLight,this.gridX*50+GraphicsConfig.TRAFFIC_LIGHT_POSITION_LENGTH_DISTANCE,this.gridY*50+GraphicsConfig.TRAFFIC_LIGHT_POSITION_WIDTH_DISTANCE, GraphicsConfig.TRAFFIC_LIGHT_LINE_LENGTH, GraphicsConfig.TRAFFIC_LIGHT_LINE_WIDTH,null );
-			}
-			else {
-				g.drawImage(trafficLight,this.gridX*50,this.gridY*50, GraphicsConfig.TRAFFIC_LIGHT_LINE_LENGTH, GraphicsConfig.TRAFFIC_LIGHT_LINE_WIDTH,null );
+				if (this.type == AgentConfig.TRAFFIC_LIGHT_1_LANE){
+					g.drawImage(trafficLight,this.gridX*50+GraphicsConfig.TRAFFIC_LIGHT_POSITION_LENGTH_DISTANCE,this.gridY*50+GraphicsConfig.TRAFFIC_LIGHT_POSITION_WIDTH_DISTANCE, GraphicsConfig.TRAFFIC_LIGHT_LINE_LENGTH, GraphicsConfig.TRAFFIC_LIGHT_LINE_WIDTH,null );
+				} else {
+					g.drawImage(trafficLight,this.gridX*50,this.gridY*50+GraphicsConfig.TRAFFIC_LIGHT_POSITION_WIDTH_DISTANCE, GraphicsConfig.TRAFFIC_LIGHT_LINE_LENGTH, GraphicsConfig.TRAFFIC_LIGHT_LINE_WIDTH,null );
+				}
+			} else {
+				if (this.type == AgentConfig.TRAFFIC_LIGHT_1_LANE){
+					g.drawImage(trafficLight,this.gridX*50,this.gridY*50, GraphicsConfig.TRAFFIC_LIGHT_LINE_LENGTH, GraphicsConfig.TRAFFIC_LIGHT_LINE_WIDTH,null );
+				} else {
+					g.drawImage(trafficLight,this.gridX*50+GraphicsConfig.TRAFFIC_LIGHT_LINE_LENGTH,this.gridY*50, GraphicsConfig.TRAFFIC_LIGHT_LINE_LENGTH, GraphicsConfig.TRAFFIC_LIGHT_LINE_WIDTH,null );
+				}
+				
 			}
 		}
 	}

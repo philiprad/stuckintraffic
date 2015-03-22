@@ -26,4 +26,8 @@ public class AgentConfig {
 	
 	public static final short BUS_TYPE = 11;
 	
+	public static final short TRAFFIC_LIGHT_1_LANE = 1;
+	
+	public static final short TRAFFIC_LIGHT_2_LANE = 2;
+	
 }

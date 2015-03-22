@@ -22,6 +22,7 @@ import javax.swing.Timer;
 
 import main.MainConfig;
 import simulationBuilder.RoadBlocksBuffer;
+import simulationBuilder.TrafficLightsBuilder;
 import trafficInfrastructure.grid.GridBuilder;
 import trafficInfrastructure.road.BlockGraphicPoint;
 import trafficInfrastructure.roadPath.DoublePath;
@@ -109,7 +110,12 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		///this.roadBlockGrid = tm.getRoadBlockArray();
 		RoadBlocksBuffer roadBlockBuffer = new RoadBlocksBuffer(fileName);
 		this.roadBlockGrid = roadBlockBuffer.getRoadBlockBufferArray();
+		
+		TrafficLightsBuilder trafficLightBuilder = new TrafficLightsBuilder(gridBuilder, this.roadBlockGrid);
+		trafficLightBuilder.buildTrafficLights();
+		this.trafficLightList =trafficLightBuilder.getTrafficLightList();
 		this.carList = new ArrayList<Car>();
+		
 		this.timer = new Timer (this.delay, this);
 	}
 	
@@ -148,16 +154,15 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		super.paintComponent(g);     // paint parent's background
         setBackground(Color.GRAY);
         drawRoads(g);
-        /*for (TrafficLight tl: this.trafficLightList){
+        for (TrafficLight tl: this.trafficLightList){
         	tl.drawTrafficLights(g, ib);
-        }*/
+        }
         if (!this.carList.isEmpty()){
         	Graphics2D g2d=(Graphics2D)g;
         	for(Car cr :this.carList){
         		cr.drawCar(g2d, ib);
         	}
         }
-        timer.start();
 	}
 	
 	/* (non-Javadoc)

@@ -46,7 +46,7 @@ public class TrafficManager {
 		this.grid = (GridBuilder) FileRW.readObject(MainConfig.GRID_PATH + "/" + trafficInfrastructureName + MainConfig.GRID_SUFFIX);
 		rdBlocks = new Object [this.grid.getGrid().length] [this.grid.getGrid()[0].length];
 		this.buildRoaddBlockArray();
-		this.buildTrafficLights();
+		//this.buildTrafficLights();
 	}
 	
 	/**
@@ -71,7 +71,7 @@ public class TrafficManager {
 	/**
 	 * Builds the traffic lights.
 	 */
-	public void buildTrafficLights (){
+	/*public void buildTrafficLights (){
 		short trafficLightCounter = 0;
 		for (int i = 0; i < this.grid.getGrid().length; i++){
 			for (int j = 0; j < this.grid.getGrid()[0].length; j++){
@@ -93,6 +93,8 @@ public class TrafficManager {
 					this.arrTrafficLights.add(new TrafficLight(RoadConfig.INVERSE_TRAFFIC_DIRECTION, grid.getGrid()[i+1][j], i+1, j,(short) 4));
 					((RoadBlock) this.rdBlocks[i+1][j]).addTrafficLightIndex(trafficLightCounter);
 					trafficLightCounter++;
+				
+					
 				}
 			}
 		}
@@ -100,7 +102,7 @@ public class TrafficManager {
 		
 		
 			System.out.println(this.arrTrafficLights.size());
-	}
+	}*/
 	
 	/**
 	 * Gets the traffic light list.
