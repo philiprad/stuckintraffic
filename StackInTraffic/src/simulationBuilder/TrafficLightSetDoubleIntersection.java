@@ -74,14 +74,14 @@ public class TrafficLightSetDoubleIntersection {
 			nextTrafficLight1+=2;
 		}
 		
-		for(int i=0; i<arrTrafficLight.size(); i++){
+		/*for(int i=0; i<arrTrafficLight.size(); i++){
 			if( i==currentTrafficLight || i==nextTrafficLight){
 				arrTrafficLight.get(i).changeTrafficLightState(AgentConfig.TRAFFIC_LIGHT_YELLOW);
 			}
 			else {
 				arrTrafficLight.get(i).changeTrafficLightState(AgentConfig.TRAFFIC_LIGHT_RED);
 			}
-		}
+		}*/
 		
 	}
 	
