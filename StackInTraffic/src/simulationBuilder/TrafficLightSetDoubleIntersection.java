@@ -15,6 +15,7 @@ public class TrafficLightSetDoubleIntersection {
 	private boolean isYellowState = false;
 	private int greenTimeInterval = 50;
 	private int yellowTimeInterval= 30;
+	private boolean isWholeLane = false;
 	
 	public TrafficLightSetDoubleIntersection(ArrayList<TrafficLight> arrTrafficLight){
 		this.timer = 0;
@@ -29,7 +30,11 @@ public class TrafficLightSetDoubleIntersection {
 			if(this.timer == yellowTimeInterval){
 				this.isYellowState = false;
 				this.timer = 0;
-				this.setGreenColor();
+				if (this.isWholeLane){
+					this.setGreenColorWholeLaneTurn();
+				} else {
+					this.setGreenColor();
+				}
 			}
 			
 		} else {
@@ -51,6 +56,8 @@ public class TrafficLightSetDoubleIntersection {
 			else{
 				arrTrafficLight.get(i).changeTrafficLightState(AgentConfig.TRAFFIC_LIGHT_RED);
 			}
+			this.isWholeLane = true;
+			
 		}
 	}
 	
@@ -62,26 +69,51 @@ public class TrafficLightSetDoubleIntersection {
 			else{
 				arrTrafficLight.get(i).changeTrafficLightState(AgentConfig.TRAFFIC_LIGHT_RED);
 			}
+			
+			this.isWholeLane = false;
+			
 		}
 	}
 	
 	public void setYellowColor(){
-		int currentTrafficLight1 = nextTrafficLight1;
-		if (nextTrafficLight1 == arrTrafficLight.size()-2){
-			nextTrafficLight1=0;
-		}
-		else {
-			nextTrafficLight1+=2;
-		}
 		
-		/*for(int i=0; i<arrTrafficLight.size(); i++){
-			if( i==currentTrafficLight || i==nextTrafficLight){
-				arrTrafficLight.get(i).changeTrafficLightState(AgentConfig.TRAFFIC_LIGHT_YELLOW);
-			}
+		if (this.isWholeLane){
+			
+			for(int i=0; i<arrTrafficLight.size(); i++){
+				if( i==nextTrafficLight1 || i==nextTrafficLight2 || i == parallelTrafficLight1){
+					arrTrafficLight.get(i).changeTrafficLightState(AgentConfig.TRAFFIC_LIGHT_YELLOW);
+				}
+				else {
+					arrTrafficLight.get(i).changeTrafficLightState(AgentConfig.TRAFFIC_LIGHT_RED);
+				}
+			 }
+			
+			
+			
+		} else {
+			
+			int currentTrafficLight1 = nextTrafficLight1;
+			int currentTrafficLight2 = nextTrafficLight2;
+			if (nextTrafficLight1 == arrTrafficLight.size()-2){
+				nextTrafficLight1=0;
+			}	
 			else {
-				arrTrafficLight.get(i).changeTrafficLightState(AgentConfig.TRAFFIC_LIGHT_RED);
+				nextTrafficLight1+=2;
 			}
-		}*/
+			this.calculateIndexOfTrafficLigth();
+		
+			for(int i=0; i<arrTrafficLight.size(); i++){
+				if( i==currentTrafficLight1 || i==currentTrafficLight2 || i==nextTrafficLight1 || i==parallelTrafficLight1){
+					arrTrafficLight.get(i).changeTrafficLightState(AgentConfig.TRAFFIC_LIGHT_YELLOW);
+				}
+				else {
+					arrTrafficLight.get(i).changeTrafficLightState(AgentConfig.TRAFFIC_LIGHT_RED);
+				}
+			}
+			
+			
+		
+		}
 		
 	}
 	
@@ -104,7 +136,7 @@ public class TrafficLightSetDoubleIntersection {
 		nextTrafficLight2 = nextTrafficLight1+1;
 		parallelTrafficLight1 = nextTrafficLight1 + 4;
 		if(parallelTrafficLight1>7){
-			parallelTrafficLight1--;
+			parallelTrafficLight1-=8;
 		}
 	}
 }
