@@ -47,10 +47,10 @@ public class HorizontalBlock {
 		 *            the block type
 		 * @return the path points
 		 */
-		public static ArrayList<PathPoint> getPathPoints(int x, int y, short blockType){
+		public static ArrayList<PathPoint> getPathPoints(int x, int y, short blockType, short direction){
 			ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 			for (int i = 0; i < GraphicsConfig.BLOCK_SIDE_SIZE; i++){
-			arrPathPoints.add(new PathPoint(blockType, x+i, y+GraphicsConfig.CAR_POSITION, 1 , 90));
+			arrPathPoints.add(new PathPoint(blockType, x+i, y+GraphicsConfig.CAR_POSITION, direction , 90));
 			}
 			return arrPathPoints;
 		}
@@ -66,10 +66,10 @@ public class HorizontalBlock {
 		 *            the block type
 		 * @return the inverse path points
 		 */
-		public static ArrayList<PathPoint> getInversePathPoints(int x, int y, short blockType){
+		public static ArrayList<PathPoint> getInversePathPoints(int x, int y, short blockType, short direction){
 			ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 			for (int i = 0; i < GraphicsConfig.BLOCK_SIDE_SIZE; i++){
-				arrPathPoints.add(new PathPoint(blockType, x+GraphicsConfig.BLOCK_SIDE_SIZE-i, y+GraphicsConfig.CAR_INVERSE_POSITION,-1, 270));
+				arrPathPoints.add(new PathPoint(blockType, x+GraphicsConfig.BLOCK_SIDE_SIZE-i, y+GraphicsConfig.CAR_INVERSE_POSITION,direction, 270));
 			}
 			return arrPathPoints;
 		}
