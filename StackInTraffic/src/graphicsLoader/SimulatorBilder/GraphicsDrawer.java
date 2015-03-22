@@ -23,6 +23,7 @@ import javax.swing.Timer;
 import main.MainConfig;
 import simulationBuilder.RoadBlocksBuffer;
 import simulationBuilder.TrafficLightSetDoubleIntersection;
+import simulationBuilder.TrafficLightSetMixedIntersection;
 import simulationBuilder.TrafficLightSetSingleIntersection;
 import simulationBuilder.TrafficLightsBuilder;
 import trafficInfrastructure.grid.GridBuilder;
@@ -73,6 +74,8 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	
 	private ArrayList<TrafficLightSetDoubleIntersection> arrTrafficLightSetDouble;
 	
+	private ArrayList<TrafficLightSetMixedIntersection> arrTrafficLightSetMixed;
+	
 	/** The road block grid. */
 	private Object [][] roadBlockGrid;
 	
@@ -119,6 +122,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		this.trafficLightList =trafficLightBuilder.getTrafficLightList();
 		this.arrTrafficLightSetSingle = trafficLightBuilder.getTrafficLightSetSingleList();
 		this.arrTrafficLightSetDouble = trafficLightBuilder.getTrafficLightSetDoubleList();
+		this.arrTrafficLightSetMixed = trafficLightBuilder.getTrafficLightSetMixedList();
 		this.carList = new ArrayList<Car>();
 		
 		this.timer = new Timer (this.delay, this);
@@ -166,6 +170,9 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
         	tlSet.updateState();
         }
         for (TrafficLightSetDoubleIntersection tlSet : this.arrTrafficLightSetDouble){
+        	tlSet.updateState();
+        }
+        for (TrafficLightSetMixedIntersection tlSet : this.arrTrafficLightSetMixed){
         	tlSet.updateState();
         }
         if (!this.carList.isEmpty()){
