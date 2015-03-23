@@ -166,15 +166,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
         for (TrafficLight tl: this.trafficLightList){
         	tl.drawTrafficLights(g, ib);
         }
-        for (TrafficLightSetSingleIntersection tlSet : this.arrTrafficLightSetSingle){
-        	tlSet.updateState();
-        }
-        for (TrafficLightSetDoubleIntersection tlSet : this.arrTrafficLightSetDouble){
-        	tlSet.updateState();
-        }
-        for (TrafficLightSetMixedIntersection tlSet : this.arrTrafficLightSetMixed){
-        	tlSet.updateState();
-        }
+        
         if (!this.carList.isEmpty()){
         	Graphics2D g2d=(Graphics2D)g;
         	for(Car cr :this.carList){
@@ -189,6 +181,16 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.carAddCounter++;
+		
+		for (TrafficLightSetSingleIntersection tlSet : this.arrTrafficLightSetSingle){
+        	tlSet.updateState();
+        }
+        for (TrafficLightSetDoubleIntersection tlSet : this.arrTrafficLightSetDouble){
+        	tlSet.updateState();
+        }
+        for (TrafficLightSetMixedIntersection tlSet : this.arrTrafficLightSetMixed){
+        	tlSet.updateState();
+        }
 		
 		if (this.carList.isEmpty()){
 			

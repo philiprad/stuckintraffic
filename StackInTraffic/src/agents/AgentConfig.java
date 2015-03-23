@@ -30,4 +30,17 @@ public class AgentConfig {
 	
 	public static final short TRAFFIC_LIGHT_2_LANE = 2;
 	
+	public static final short FAMILY_DRIVER = 1;
+	
+	public static final short NORMAL_DRIVER = 2;
+	
+	public static final short FAST_DRIVER = 3;
+	
+	public static final float FAMILY_DRIVER_ACCELERATION =  0.3f;
+	
+	public static final float NORMAL_DRIVER_ACCELERATION = 0.5f;
+	
+	public static final float FAST_DRIVER_ACCELERATION = 0.6f;
+	
+	
 }

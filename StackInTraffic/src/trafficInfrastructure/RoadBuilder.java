@@ -530,8 +530,8 @@ public class RoadBuilder {
 						
 						this.discoverPaths(arr1,arrDouble1,arrPathSwitch,viop1, 1, x, y+1, previousX , previousY);
 						this.discoverPaths(arr2,arrDouble2,arrPathSwitch,viop2, -1, x, y-1, previousX , previousY);
-						arrPathPoint.addAll(HorizontalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.LEFT_TO_RIGHT_DIRECTION));
-						arrDoublePathPoint.addAll(HorizontalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.LEFT_TO_RIGHT_DIRECTION));
+						arrPathPoint.addAll(HorizontalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y], RoadConfig.LEFT_TO_RIGHT_DIRECTION));
+						arrDoublePathPoint.addAll(HorizontalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y], RoadConfig.LEFT_TO_RIGHT_DIRECTION));
 						
 						x++;
 						
@@ -564,8 +564,8 @@ public class RoadBuilder {
 						
 						this.discoverPaths(arr1,arrDouble1,arrPathSwitch,viop1, 1, x, y+1, previousX , previousY);
 						this.discoverPaths(arr2,arrDouble2,arrPathSwitch,viop2, -1, x, y-1, previousX , previousY);
-						arrPathPoint.addAll(HorizontalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, RoadConfig.HORIZONTAL_BLOCK,RoadConfig.RIGHT_TO_LEFT_DIRECTION));
-						arrDoublePathPoint.addAll(HorizontalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.RIGHT_TO_LEFT_DIRECTION));
+						arrPathPoint.addAll(HorizontalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, this.roadGrid.getGrid() [x] [y],RoadConfig.RIGHT_TO_LEFT_DIRECTION));
+						arrDoublePathPoint.addAll(HorizontalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, this.roadGrid.getGrid() [x] [y], RoadConfig.RIGHT_TO_LEFT_DIRECTION));
 						
 						x--;
 						
@@ -606,8 +606,8 @@ public class RoadBuilder {
 						
 						this.discoverPaths(arr1,arrDouble1, arrPathSwitch, viop1, 1, x+1, y, previousX , previousY);
 						this.discoverPaths(arr2,arrDouble2, arrPathSwitch, viop2, -1, x-1, y, previousX , previousY);
-						arrPathPoint.addAll(VerticalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, RoadConfig.VERTICAL_BLOCK, RoadConfig.TOP_TO_BOTTOM_DIRECTION));
-						arrDoublePathPoint.addAll(VerticalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, RoadConfig.VERTICAL_BLOCK, RoadConfig.TOP_TO_BOTTOM_DIRECTION));
+						arrPathPoint.addAll(VerticalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y], RoadConfig.TOP_TO_BOTTOM_DIRECTION));
+						arrDoublePathPoint.addAll(VerticalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y], RoadConfig.TOP_TO_BOTTOM_DIRECTION));
 						y++;
 						
 						
@@ -637,8 +637,8 @@ public class RoadBuilder {
 						
 						this.discoverPaths(arr1,arrDouble1,arrPathSwitch, viop1, 1, x+1, y, previousX , previousY);
 						this.discoverPaths(arr2,arrDouble2,arrPathSwitch, viop2, -1, x-1, y, previousX , previousY);
-						arrPathPoint.addAll(VerticalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, RoadConfig.VERTICAL_BLOCK, RoadConfig.BOTTOM_TO_TOP_DIRECTION));
-						arrDoublePathPoint.addAll(VerticalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, RoadConfig.VERTICAL_BLOCK,RoadConfig.BOTTOM_TO_TOP_DIRECTION));
+						arrPathPoint.addAll(VerticalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, this.roadGrid.getGrid() [x] [y], RoadConfig.BOTTOM_TO_TOP_DIRECTION));
+						arrDoublePathPoint.addAll(VerticalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, this.roadGrid.getGrid() [x] [y],RoadConfig.BOTTOM_TO_TOP_DIRECTION));
 						y--;
 						
 					}
@@ -696,8 +696,8 @@ public class RoadBuilder {
 						viop1.addAllIntersections(viop.getIntersections());
 						
 						this.discoverPaths(arr,arrDouble, arrPathSwitch, viop1, -1, x-1, y, previousX , previousY);
-						arrPathPoint.addAll(VerticalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, RoadConfig.VERTICAL_BLOCK, RoadConfig.TOP_TO_BOTTOM_DIRECTION));
-						arrDoublePathPoint.addAll(VerticalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, RoadConfig.VERTICAL_BLOCK, RoadConfig.TOP_TO_BOTTOM_DIRECTION));
+						arrPathPoint.addAll(VerticalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y], RoadConfig.TOP_TO_BOTTOM_DIRECTION));
+						arrDoublePathPoint.addAll(VerticalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE,this.roadGrid.getGrid() [x] [y], RoadConfig.TOP_TO_BOTTOM_DIRECTION));
 						
 						y++;
 						
@@ -715,8 +715,8 @@ public class RoadBuilder {
 
 						viop1.addAllIntersections(viop.getIntersections());
 						this.discoverPaths(arr,arrDouble, arrPathSwitch, viop1, -1, x-1, y, previousX , previousY);
-						arrPathPoint.addAll(VerticalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, RoadConfig.VERTICAL_BLOCK, RoadConfig.BOTTOM_TO_TOP_DIRECTION));
-						arrDoublePathPoint.addAll(VerticalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, RoadConfig.VERTICAL_BLOCK, RoadConfig.BOTTOM_TO_TOP_DIRECTION));
+						arrPathPoint.addAll(VerticalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, this.roadGrid.getGrid() [x] [y], RoadConfig.BOTTOM_TO_TOP_DIRECTION));
+						arrDoublePathPoint.addAll(VerticalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1,this.roadGrid.getGrid() [x] [y], RoadConfig.BOTTOM_TO_TOP_DIRECTION));
 						y--;
 						
 					}
@@ -774,8 +774,8 @@ public class RoadBuilder {
 
 							viop1.addAllIntersections(viop.getIntersections());
 							this.discoverPaths(arr,arrDouble,arrPathSwitch, viop1, 1, x+1, y, previousX , previousY);
-							arrPathPoint.addAll(VerticalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, RoadConfig.VERTICAL_BLOCK, RoadConfig.TOP_TO_BOTTOM_DIRECTION));
-							arrDoublePathPoint.addAll(VerticalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, RoadConfig.VERTICAL_BLOCK, RoadConfig.TOP_TO_BOTTOM_DIRECTION));
+							arrPathPoint.addAll(VerticalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y], RoadConfig.TOP_TO_BOTTOM_DIRECTION));
+							arrDoublePathPoint.addAll(VerticalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y], RoadConfig.TOP_TO_BOTTOM_DIRECTION));
 							
 							y++;
 							
@@ -793,8 +793,8 @@ public class RoadBuilder {
 
 							viop1.addAllIntersections(viop.getIntersections());
 							this.discoverPaths(arr,arrDouble, arrPathSwitch, viop1, 1, x+1, y, previousX , previousY);
-							arrPathPoint.addAll(VerticalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, RoadConfig.VERTICAL_BLOCK, RoadConfig.BOTTOM_TO_TOP_DIRECTION));
-							arrDoublePathPoint.addAll(VerticalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, RoadConfig.VERTICAL_BLOCK, RoadConfig.BOTTOM_TO_TOP_DIRECTION));
+							arrPathPoint.addAll(VerticalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, this.roadGrid.getGrid() [x] [y], RoadConfig.BOTTOM_TO_TOP_DIRECTION));
+							arrDoublePathPoint.addAll(VerticalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, this.roadGrid.getGrid() [x] [y], RoadConfig.BOTTOM_TO_TOP_DIRECTION));
 							y--;
 							
 						}
@@ -827,8 +827,8 @@ public class RoadBuilder {
 
 							viop1.addAllIntersections(viop.getIntersections());
 							this.discoverPaths(arr, arrDouble,arrPathSwitch,viop1, -1, x, y-1, previousX , previousY);
-							arrPathPoint.addAll(HorizontalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.LEFT_TO_RIGHT_DIRECTION));
-							arrDoublePathPoint.addAll(HorizontalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.LEFT_TO_RIGHT_DIRECTION));
+							arrPathPoint.addAll(HorizontalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y], RoadConfig.LEFT_TO_RIGHT_DIRECTION));
+							arrDoublePathPoint.addAll(HorizontalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE,this.roadGrid.getGrid() [x] [y], RoadConfig.LEFT_TO_RIGHT_DIRECTION));
 							
 							x++;
 							
@@ -848,8 +848,8 @@ public class RoadBuilder {
 
 							viop1.addAllIntersections(viop.getIntersections());
 							this.discoverPaths(arr, arrDouble, arrPathSwitch, viop1, -1, x, y-1, previousX , previousY);
-							arrPathPoint.addAll(HorizontalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.RIGHT_TO_LEFT_DIRECTION));
-							arrDoublePathPoint.addAll(HorizontalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.RIGHT_TO_LEFT_DIRECTION));
+							arrPathPoint.addAll(HorizontalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, this.roadGrid.getGrid() [x] [y], RoadConfig.RIGHT_TO_LEFT_DIRECTION));
+							arrDoublePathPoint.addAll(HorizontalBlock.getInversePathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE-1, y*GraphicsConfig.BLOCK_SIDE_SIZE-1, this.roadGrid.getGrid() [x] [y], RoadConfig.RIGHT_TO_LEFT_DIRECTION));
 							x--;
 							
 							
@@ -906,8 +906,8 @@ public class RoadBuilder {
 
 							viop1.addAllIntersections(viop.getIntersections());
 							this.discoverPaths(arr,arrDouble,arrPathSwitch,viop1, 1, x, y+1, previousX , previousY);
-							arrPathPoint.addAll(HorizontalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.LEFT_TO_RIGHT_DIRECTION));
-							arrDoublePathPoint.addAll(HorizontalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, RoadConfig.HORIZONTAL_BLOCK, RoadConfig.LEFT_TO_RIGHT_DIRECTION));
+							arrPathPoint.addAll(HorizontalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y], RoadConfig.LEFT_TO_RIGHT_DIRECTION));
+							arrDoublePathPoint.addAll(HorizontalBlock.getPathPoints(x*GraphicsConfig.BLOCK_SIDE_SIZE, y*GraphicsConfig.BLOCK_SIDE_SIZE, this.roadGrid.getGrid() [x] [y], RoadConfig.LEFT_TO_RIGHT_DIRECTION));
 							x++;
 							
 							
