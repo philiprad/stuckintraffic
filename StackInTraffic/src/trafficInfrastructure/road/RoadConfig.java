@@ -107,16 +107,16 @@ public class RoadConfig {
 	public static final short BOTTOM_TO_RIGHT_DIRECTION = 9;
 	
 	/** The Constant LEFT_TO_RIGHT_DIRECTION. */
-	public static final short LEFT_TO_RIGHT_DIRECTION = -180;
+	public static final short LEFT_TO_RIGHT_DIRECTION = -80;
 	
 	/** The Constant RIGHT_TO_LEFT_DIRECTION. */
-	public static final short RIGHT_TO_LEFT_DIRECTION = -181;
+	public static final short RIGHT_TO_LEFT_DIRECTION = -81;
 	
 	/** The Constant TOP_TO_BOTTOM_DIRECTION. */
-	public static final short TOP_TO_BOTTOM_DIRECTION = -182;
+	public static final short TOP_TO_BOTTOM_DIRECTION = -82;
 	
 	/** The Constant BOTTOM_TO_TOP_DIRECTION. */
-	public static final short BOTTOM_TO_TOP_DIRECTION = -183;
+	public static final short BOTTOM_TO_TOP_DIRECTION = -83;
 	
 	/** The Constant LEFT_TO_LEFT_DIRECTION. */
 	public static final short LEFT_TO_LEFT_DIRECTION = 12;
