@@ -107,16 +107,16 @@ public class RoadConfig {
 	public static final short BOTTOM_TO_RIGHT_DIRECTION = 9;
 	
 	/** The Constant LEFT_TO_RIGHT_DIRECTION. */
-	public static final short LEFT_TO_RIGHT_DIRECTION = 10;
+	public static final short LEFT_TO_RIGHT_DIRECTION = -180;
 	
 	/** The Constant RIGHT_TO_LEFT_DIRECTION. */
-	public static final short RIGHT_TO_LEFT_DIRECTION = -10;
+	public static final short RIGHT_TO_LEFT_DIRECTION = -181;
 	
 	/** The Constant TOP_TO_BOTTOM_DIRECTION. */
-	public static final short TOP_TO_BOTTOM_DIRECTION = 11;
+	public static final short TOP_TO_BOTTOM_DIRECTION = -182;
 	
 	/** The Constant BOTTOM_TO_TOP_DIRECTION. */
-	public static final short BOTTOM_TO_TOP_DIRECTION = -11;
+	public static final short BOTTOM_TO_TOP_DIRECTION = -183;
 	
 	/** The Constant LEFT_TO_LEFT_DIRECTION. */
 	public static final short LEFT_TO_LEFT_DIRECTION = 12;
@@ -134,87 +134,87 @@ public class RoadConfig {
 	public static final short LEFT_2_TO_BOTTOM_1_DIRECTION = 32;
 	
 	/** The Constant LEFT_2_TO_BOTTOM_2_DIRECTION. */
-	public static final short LEFT_2_TO_BOTTOM_2_DIRECTION = 33;
+	public static final short LEFT_2_TO_BOTTOM_2_DIRECTION = 133;
 	
 	/** The Constant LEFT_TO_TOP_DIRECTION. */
-	public static final short LEFT_1_TO_TOP_1_DIRECTION = 34;
+	public static final short LEFT_1_TO_TOP_1_DIRECTION = -34;
 	
 	/** The Constant LEFT_1_TO_TOP_2_DIRECTION. */
-	public static final short LEFT_1_TO_TOP_2_DIRECTION = 35;
+	public static final short LEFT_1_TO_TOP_2_DIRECTION = -135;
 	
 	/** The Constant LEFT_TO_BOTTOM_DIRECTION. */
 	public static final short RIGHT_2_TO_TOP_1_DIRECTION = 36;
 	
 	/** The Constant LEFT_2_TO_BOTTOM_2_DIRECTION. */
-	public static final short RIGHT_2_TO_TOP_2_DIRECTION = 37;
+	public static final short RIGHT_2_TO_TOP_2_DIRECTION = 137;
 	
 	/** The Constant LEFT_TO_TOP_DIRECTION. */
-	public static final short RIGHT_1_TO_BOTTOM_1_DIRECTION = 38;
+	public static final short RIGHT_1_TO_BOTTOM_1_DIRECTION = -38;
 	
 	/** The Constant LEFT_1_TO_TOP_2_DIRECTION. */
-	public static final short RIGHT_1_TO_BOTTOM_2_DIRECTION = 39;
+	public static final short RIGHT_1_TO_BOTTOM_2_DIRECTION = -139;
 	
 	/** The Constant LEFT_TO_BOTTOM_DIRECTION. */
 	public static final short TOP_2_TO_LEFT_1_DIRECTION = 40;
 	
 	/** The Constant LEFT_2_TO_BOTTOM_2_DIRECTION. */
-	public static final short TOP_2_TO_LEFT_2_DIRECTION = 41;
+	public static final short TOP_2_TO_LEFT_2_DIRECTION = 141;
 	
 	/** The Constant LEFT_TO_TOP_DIRECTION. */
-	public static final short TOP_1_TO_RIGHT_1_DIRECTION = 42;
+	public static final short TOP_1_TO_RIGHT_1_DIRECTION = -42;
 	
 	/** The Constant LEFT_1_TO_TOP_2_DIRECTION. */
-	public static final short TOP_1_TO_RIGHT_2_DIRECTION = 43;
+	public static final short TOP_1_TO_RIGHT_2_DIRECTION = -143;
 	
 	/** The Constant LEFT_TO_BOTTOM_DIRECTION. */
 	public static final short BOTTOM_2_TO_RIGHT_1_DIRECTION = 44;
 	
 	/** The Constant LEFT_2_TO_BOTTOM_2_DIRECTION. */
-	public static final short BOTTOM_2_TO_RIGHT_2_DIRECTION = 45;
+	public static final short BOTTOM_2_TO_RIGHT_2_DIRECTION = 145;
 	
 	/** The Constant LEFT_TO_TOP_DIRECTION. */
-	public static final short BOTTOM_1_TO_LEFT_1_DIRECTION = 46;
+	public static final short BOTTOM_1_TO_LEFT_1_DIRECTION = -46;
 	
 	/** The Constant LEFT_1_TO_TOP_2_DIRECTION. */
-	public static final short BOTTOM_1_TO_LEFT_2_DIRECTION = 47;
+	public static final short BOTTOM_1_TO_LEFT_2_DIRECTION = -147;
 	
 	/** The Constant LEFT_1_TO_1_RIGHT. */
-	public static final short LEFT_1_TO_1_RIGHT = 48;
+	public static final short LEFT_1_TO_1_RIGHT = -48;
 	
 	/** The Constant RIGHT_1_TO_1_LEFT. */
-	public static final short RIGHT_1_TO_1_LEFT = 49;
+	public static final short RIGHT_1_TO_1_LEFT = -49;
 	
 	/** The Constant TOP_1_TO_1_BOTTOM. */
-	public static final short TOP_1_TO_1_BOTTOM = 50;
+	public static final short TOP_1_TO_1_BOTTOM = -50;
 	
 	/** The Constant BOTTOM_1_TO_1_TOP. */
-	public static final short BOTTOM_1_TO_1_TOP = 51;
+	public static final short BOTTOM_1_TO_1_TOP = -51;
 	
 	/** The Constant LEFT_2_TO_2_RIGHT. */
-	public static final short LEFT_2_TO_2_RIGHT = 48;
+	public static final short LEFT_2_TO_2_RIGHT = 148;
 	
 	/** The Constant RIGHT_2_TO_2_LEFT. */
-	public static final short RIGHT_2_TO_2_LEFT = 49;
+	public static final short RIGHT_2_TO_2_LEFT = 149;
 	
 	/** The Constant TOP_2_TO_2_BOTTOM. */
-	public static final short TOP_2_TO_2_BOTTOM = 50;
+	public static final short TOP_2_TO_2_BOTTOM = 150;
 	
 	/** The Constant BOTTOM_2_TO_2_TOP. */
-	public static final short BOTTOM_2_TO_2_TOP = 51;
+	public static final short BOTTOM_2_TO_2_TOP = 151;
 	
-	public static final short LEFT_1_TO_1_BOTTOM = 52;
+	public static final short LEFT_1_TO_1_BOTTOM = -52;
 	
-	public static final short LEFT_1_TO_2_BOTTOM = 53;
+	public static final short LEFT_1_TO_2_BOTTOM = -153;
 	
-	public static final short RIGHT_1_TO_1_TOP = 54;
+	public static final short RIGHT_1_TO_1_TOP = -54;
 	
-	public static final short RIGHT_1_TO_2_TOP = 55;
+	public static final short RIGHT_1_TO_2_TOP = -155;
 	
-	public static final short TOP_1_TO_1_LEFT = 55;
+	public static final short TOP_1_TO_1_LEFT = -55;
 	
-	public static final short BOTTOM_1_TO_1_RIGHT = 56;
+	public static final short BOTTOM_1_TO_1_RIGHT = -56;
 	
-	public static final short BOTTOM_1_TO_2_RIGHT = 57;
+	public static final short BOTTOM_1_TO_2_RIGHT = -157;
 	
 	public static final short HORIZONTAL_DOUBLE_BLOCK_TEMP = -101;
 	

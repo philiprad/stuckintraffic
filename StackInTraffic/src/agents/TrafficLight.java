@@ -181,4 +181,8 @@ public class TrafficLight {
 	public short getState(){
 		return this.trafficLightState;
 	}
+	
+	public short getType(){
+		return this.type;
+	}
 }

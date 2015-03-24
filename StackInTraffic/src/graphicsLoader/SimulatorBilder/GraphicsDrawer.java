@@ -28,10 +28,11 @@ import simulationBuilder.TrafficLightSetSingleIntersection;
 import simulationBuilder.TrafficLightsBuilder;
 import trafficInfrastructure.grid.GridBuilder;
 import trafficInfrastructure.road.BlockGraphicPoint;
+import trafficInfrastructure.road.RoadConfig;
 import trafficInfrastructure.roadPath.DoublePath;
 import trafficInfrastructure.roadPath.Path;
 import util.FileRW;
-import agents.Car;
+import agents.StandartCar;
 import agents.RoadBlock;
 import agents.TrafficLight;
 
@@ -65,7 +66,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	private ArrayList<DoublePath> arrDoublePath;
 	
 	/** The car list. */
-	private ArrayList<Car> carList ;
+	private ArrayList<StandartCar> carList ;
 	
 	/** The traffic light list. */
 	private ArrayList<TrafficLight> trafficLightList;
@@ -82,14 +83,6 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	/** The path counter. */
 	private short pathCounter = 0;
 	
-	/** The traffic light counter. */
-	private short trafficLightCounter = 100;
-	
-	/** The traffic light number. */
-	private short trafficLightNumber = 1;
-	
-	/** The is next yellow. */
-	private short isNextYellow = 0;
 	
 	/** The car add counter. */
 	private int carAddCounter = 0;
@@ -123,7 +116,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		this.arrTrafficLightSetSingle = trafficLightBuilder.getTrafficLightSetSingleList();
 		this.arrTrafficLightSetDouble = trafficLightBuilder.getTrafficLightSetDoubleList();
 		this.arrTrafficLightSetMixed = trafficLightBuilder.getTrafficLightSetMixedList();
-		this.carList = new ArrayList<Car>();
+		this.carList = new ArrayList<StandartCar>();
 		
 		this.timer = new Timer (this.delay, this);
 	}
@@ -169,7 +162,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
         
         if (!this.carList.isEmpty()){
         	Graphics2D g2d=(Graphics2D)g;
-        	for(Car cr :this.carList){
+        	for(StandartCar cr :this.carList){
         		cr.drawCar(g2d, ib);
         	}
         }
@@ -198,20 +191,16 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 				
 				
 		} else {
-			this.carAddCounter++;
-			if(this.carAddCounter>40){
-				this.putCarOnEveryPath();
-				this.carAddCounter = 0;
-			}
+			
 			ArrayList <Integer> arr = new ArrayList <Integer>();
 			for (int i=0; i<this.carList.size(); i++){
-				if (this.carList.get(i).ifPathEnd()){
+				if (this.carList.get(i).isPathEnd()){
 					arr.add((Integer)i);
 					
 					
 				} else {
 					
-					this.carList.get(i).speedManagement(this.roadBlockGrid/*, this.trafficLightList*/);
+					this.carList.get(i).updateSpeed();
 					this.carList.get(i).move();
 					
 				}
@@ -223,6 +212,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 			}
 		
 		}
+		
 		this.carGridPositionUpdate();
 		
 		repaint();
@@ -255,9 +245,10 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 			}
 		}
 		if (!this.carList.isEmpty()){
-			for (Car car : this.carList){
+			for (StandartCar car : this.carList){
 				int i = car.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE;
 				int j = car.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE;
+				System.out.println(i+ " and " + j);
 				((RoadBlock)this.roadBlockGrid[i][j]).addCar(car);
 			}
 		}
@@ -269,8 +260,18 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	public void putCarOnEveryPath(){
 		Random rand = new Random();
 		int x = rand.nextInt(this.arrPath.size());
-		Car car = new Car(this.arrPath.get(x));
-		car.setLane(3);
-		this.carList.add(car);
+		int driver = rand.nextInt(3);
+		driver++;
+		RoadBlock roadBk =(RoadBlock)this.roadBlockGrid[this.arrPath.get(x).getPathPoints().get(0).getX()/GraphicsConfig.BLOCK_SIDE_SIZE][this.arrPath.get(x).getPathPoints().get(0).getY()/GraphicsConfig.BLOCK_SIDE_SIZE];
+		if(!roadBk.isCarInside()){
+			if(roadBk.getBlockType() == RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK || roadBk.getBlockType()==RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK || roadBk.getBlockType() == RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK || roadBk.getBlockType()==RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK){
+				StandartCar car = new StandartCar(this.arrPath.get(x), (short) driver, this.roadBlockGrid, 2 , this.trafficLightList);
+				this.carList.add(car);
+			} else {
+				StandartCar car = new StandartCar(this.arrPath.get(x), (short) driver, this.roadBlockGrid, 1 , this.trafficLightList);
+				this.carList.add(car);
+			}
+			
+		}
 	}
 }

@@ -14,7 +14,7 @@ import trafficInfrastructure.road.RoadConfig;
 public class RoadBlock {
 	
 	/** The ArrayList with cars. */
-	private ArrayList<Car> arrCar = new ArrayList<Car>();
+	private ArrayList<StandartCar> arrCar = new ArrayList<StandartCar>();
 	
 	/** The traffic light index. */
 	private ArrayList <Short> trafficLightIndex = new ArrayList <Short>();
@@ -76,10 +76,28 @@ public class RoadBlock {
 		case RoadConfig.VERTICAL_DOUBLE_BLOCK:{
 			this.speedLimit=7;
 			break;
+		} case RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK:{
+			this.speedLimit=7;
+			break;
+		}
+		case RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK:{
+			this.speedLimit=7;
+			break;
+		}
+		
+		case RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK:{
+			this.speedLimit=7;
+			break;
+		}
+		case RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK:{
+			this.speedLimit=7;
+			break;
 		}
 		default:{
 			this.speedLimit=5;
 		}
+		
+		
 		}
 	}
 	
@@ -89,7 +107,7 @@ public class RoadBlock {
 	 * @param car
 	 *            the car
 	 */
-	public void addCar(Car car){
+	public void addCar(StandartCar car){
 		this.arrCar.add(car);
 	}
 	
@@ -110,7 +128,7 @@ public class RoadBlock {
 	 * @param car
 	 *            the car
 	 */
-	public void deleteCar(Car car){
+	public void deleteCar(StandartCar car){
 		int k = -1;
 		
 		for (int i = 0; i < this.arrCar.size()-1; i++){
@@ -136,7 +154,7 @@ public class RoadBlock {
 	 *
 	 * @return the car list
 	 */
-	public ArrayList<Car> getCarList(){
+	public ArrayList<StandartCar> getCarList(){
 		return this.arrCar;
 	}
 	
