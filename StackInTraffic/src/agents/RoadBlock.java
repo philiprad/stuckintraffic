@@ -25,6 +25,8 @@ public class RoadBlock {
 	/** The speed limit. */
 	private int speedLimit = AgentConfig.DEFAULT_SPEED_LIMIT;
 	
+	private ArrayList<StandartCar> arrivingCars = new ArrayList<StandartCar>();
+	
 	/**
 	 * Instantiates a new road block.
 	 *
@@ -101,6 +103,33 @@ public class RoadBlock {
 		}
 	}
 	
+	public ArrayList<StandartCar> getArrivingCarList(){
+		return this.arrivingCars;
+	}
+	
+	public void addArrivingCar(StandartCar car){
+		this.arrivingCars.add(car);
+	}
+	
+	public void deleteArrivingCar(){
+		if (!this.arrivingCars.isEmpty()){
+				for (StandartCar car : this.arrCar){
+					int k = -1;
+			
+					for (int i = 0; i < this.arrivingCars.size(); i++){
+						if (car.equals(this.arrivingCars.get(i))){
+							k = i;
+						}
+					}
+			
+					if (k!=-1){
+						this.arrivingCars.get(k).setIsArriving(false);
+						this.arrivingCars.remove(k);
+					}
+				}
+		}
+	}
+	
 	/**
 	 * Adds the car to the block container.
 	 *
@@ -131,7 +160,7 @@ public class RoadBlock {
 	public void deleteCar(StandartCar car){
 		int k = -1;
 		
-		for (int i = 0; i < this.arrCar.size()-1; i++){
+		for (int i = 0; i < this.arrCar.size(); i++){
 			if (car.equals(this.arrCar.get(i))){
 				k = i;
 			}
