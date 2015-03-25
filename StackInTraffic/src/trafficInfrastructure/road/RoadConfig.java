@@ -212,6 +212,8 @@ public class RoadConfig {
 	
 	public static final short TOP_1_TO_1_LEFT = -55;
 	
+	public static final short TOP_1_TO_2_LEFT = -158;
+	
 	public static final short BOTTOM_1_TO_1_RIGHT = -56;
 	
 	public static final short BOTTOM_1_TO_2_RIGHT = -157;

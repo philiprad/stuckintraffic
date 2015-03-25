@@ -252,11 +252,11 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 			}
 		}
 		if (!this.carList.isEmpty()){
-			//System.out.println ("Start Car Update");
+			
 			for (StandartCar car : this.carList){
 				int i = car.getCarX()/GraphicsConfig.BLOCK_SIDE_SIZE;
 				int j = car.getCarY()/GraphicsConfig.BLOCK_SIDE_SIZE;
-				//System.out.println ("PutCar i = " + i + " j = " + j);
+				
 				((RoadBlock)this.roadBlockGrid[i][j]).addCar(car);
 				
 			}
@@ -274,29 +274,18 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		int roadBkX = this.arrPath.get(x).getPathPoints().get(0).getX()/GraphicsConfig.BLOCK_SIDE_SIZE;
 		int roadBkY = this.arrPath.get(x).getPathPoints().get(0).getY()/GraphicsConfig.BLOCK_SIDE_SIZE;
 		RoadBlock roadBk =(RoadBlock)this.roadBlockGrid[roadBkX][roadBkY];
-		for (int i = 0; i<this.roadBlockGrid.length; i++){
-			for (int j = 0; j<this.roadBlockGrid.length; j++){
-				if(this.roadBlockGrid[i][j]==null){
-					System.out.print("\t"+0);
-				} else {
-					System.out.print("\t"+((RoadBlock)this.roadBlockGrid[i][j]).getBlockType());
-				}
-			}
-			System.out.println("\n");
-		}
+		
 		RoadBlock nextBk = (RoadBlock) this.roadBlockGrid[this.arrPath.get(x).getPathPoints().get(55).getX()/GraphicsConfig.BLOCK_SIDE_SIZE][this.arrPath.get(x).getPathPoints().get(55).getY()/GraphicsConfig.BLOCK_SIDE_SIZE];
 		if(!roadBk.isCarInside()){
 			
 				if(roadBk.getBlockType() == RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK || roadBk.getBlockType()==RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK || roadBk.getBlockType() == RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK || roadBk.getBlockType()==RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK){
 					if(!nextBk.isCarInside()){
-						System.out.println ("Put car on Double Block");
-						StandartCar car = new StandartCar(this.arrPath.get(x), (short) driver, this.roadBlockGrid, 2 , this.trafficLightList);
+						StandartCar car = new StandartCar(this.arrPath.get(x), (short) driver, this.roadBlockGrid, 2 , this.trafficLightList, 1);
 						this.carList.add(car);
 					}
 				}
 			 else {
-				StandartCar car = new StandartCar(this.arrPath.get(x), (short) driver, this.roadBlockGrid, 1 , this.trafficLightList);
-				System.out.println ("Put car on singleBlock");
+				StandartCar car = new StandartCar(this.arrPath.get(x), (short) driver, this.roadBlockGrid, 1 , this.trafficLightList,2);
 				this.carList.add(car);
 			}
 		}

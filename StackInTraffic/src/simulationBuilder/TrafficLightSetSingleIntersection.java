@@ -11,7 +11,7 @@ public class TrafficLightSetSingleIntersection {
 	private int timer;
 	private int nextTrafficLight = 0;
 	private boolean isYellowState = false;
-	private int greenTimeInterval = 50;
+	private int greenTimeInterval = 100;
 	private int yellowTimeInterval= 30;
 	
 	public TrafficLightSetSingleIntersection(ArrayList<TrafficLight> arrTrafficLight){

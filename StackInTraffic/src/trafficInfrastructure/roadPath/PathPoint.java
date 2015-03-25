@@ -30,7 +30,11 @@ public class PathPoint implements Serializable{
 	/** The direction. */
 	private int direction;
 	
-	private int idDouble;
+	private int roundAboutCenterX = 0;
+	
+	private int roundAboutCenterY = 0;
+	
+	private int exit = 0;
 	
 	/**
 	 * Instantiates a new path point.
@@ -99,6 +103,30 @@ public class PathPoint implements Serializable{
 	 */
 	public int getDirection(){
 		return direction;
+	}
+	
+	public void setRoundAboutCenterX( int x){
+		this.roundAboutCenterX = x;
+	}
+	
+	public void setRoundAboutCenterY(int y){
+		this.roundAboutCenterY = y;
+	}
+	
+	public int getRoundAboutCenterX(){
+		return this.roundAboutCenterX;
+	}
+	
+	public int getRoundAboutCenterY(){
+		return this.roundAboutCenterY;
+	}
+	
+	public void setRoundAboutExit(int i){
+		this.exit = i;
+	}
+	
+	public int getRoundAboutExit(){
+		return this.exit;
 	}
 	
 }

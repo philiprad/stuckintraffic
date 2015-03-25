@@ -17,8 +17,10 @@ public class StandartCar {
 		/** The car type. */
 		private short driverType;
 		
+		private short carType;
+		
 		/** The co emission. */
-		private double coEmission;
+		private double coEmission = 0;
 		
 		/** The path. */
 		private Path path;
@@ -52,7 +54,7 @@ public class StandartCar {
 		
 		private int securityDistance = 0;
 		
-		private int securityZeroDistance = 5+GraphicsConfig.CAR_LENGTH;
+		private int securityZeroDistance = 10;
 		
 		private ArrayList <TrafficLight> trafficLights;
 		
@@ -68,7 +70,10 @@ public class StandartCar {
 		
 		private int nextRoadBlockY = -1;
 		
-		public StandartCar(Path path, short driverType, Object [] [] roadBlock,int laneChoise,  ArrayList <TrafficLight> trafficLights){
+		private RoadBlock currentRoadBlock;
+		private RoadBlock nextRoadBlock ;
+		
+		public StandartCar(Path path, short driverType, Object [] [] roadBlock,int laneChoise,  ArrayList <TrafficLight> trafficLights, int carType){
 			this.trafficLights = trafficLights;
 			this.driverType = driverType;
 			this.path = path;
@@ -277,6 +282,19 @@ public class StandartCar {
 			return this.speed;
 		}
 		
+		public int getExit(){
+			return this.path.getPathPoints().get(this.counter).getRoundAboutExit();
+		}
+		
+		public int getCenterX(){
+			return this.path.getPathPoints().get(this.counter).getRoundAboutCenterX();
+		}
+		
+		public int getCenterY(){
+			return this.path.getPathPoints().get(this.counter).getRoundAboutCenterY();
+		}
+		
+		
 		public int getCarXAfter(int n){
 			
 			if (this.counter + n > this.path.getPathPoints().size()){
@@ -348,15 +366,16 @@ public class StandartCar {
 			return next2roadBlock;
 		}*/
 		
+		
 		public RoadBlock getBlockAfterIntersection(){
 			RoadBlock roadBlock = null;
 			
 			
-			for(int i = 50 ; i<=200 ;i+=20){
+			for(int i = 70 ; i<=200 ;i+=10){
 				if(counter+i<this.path.getPathPoints().size()){
 					RoadBlock tempRoadBlock = (RoadBlock)this.roadBlock[this.getCarXAfter(i)/GraphicsConfig.BLOCK_SIDE_SIZE][this.getCarYAfter(i)/GraphicsConfig.BLOCK_SIDE_SIZE];
 					
-					if((tempRoadBlock.getBlockType()<3 || tempRoadBlock.getBlockType()>8) && tempRoadBlock.getBlockType()!=RoadConfig.INTERSECTION_DOUBLE_BLOCK && tempRoadBlock.getBlockType()!=RoadConfig.INTERSECTION_MIXED_HORIZONTAL_BLOCK && tempRoadBlock.getBlockType()!= RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK){
+					if((tempRoadBlock.getBlockType()<4 || tempRoadBlock.getBlockType()>8) && tempRoadBlock.getBlockType()!=RoadConfig.INTERSECTION_DOUBLE_BLOCK && tempRoadBlock.getBlockType()!=RoadConfig.INTERSECTION_MIXED_HORIZONTAL_BLOCK && tempRoadBlock.getBlockType()!= RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK){
 						
 						roadBlock = tempRoadBlock;
 						this.directionAfterTrafficLight = this.path.getPathPoints().get(counter+i).getDirection();
@@ -376,10 +395,17 @@ public class StandartCar {
 						if(blockType == RoadConfig.INTERSECTION_DOUBLE_BLOCK || blockType == RoadConfig.INTERSECTION_MIXED_HORIZONTAL_BLOCK || blockType == RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK){
 							if(this.path.getPathPoints().get(counter+i).getDirection()<0 && this.laneChoise == 2 ){
 								
-								return 4;
+								if (this.couldChange(1)){
+									return 4;
+								} else {
+									return -1;
+								}
 							} else if (this.path.getPathPoints().get(counter+i).getDirection()>0 && this.laneChoise == 1 ){
-								
-								return 3;
+								if (this.couldChange(2)){
+									return 3;
+								} else {
+									return -1;
+								}
 							}
 							
 						}
@@ -393,11 +419,37 @@ public class StandartCar {
 			}
 		}
 		
+		public boolean couldChange(int way){
+			this.updateScanningBlocs();
+			boolean desicion = true;
+			if(this.currentRoadBlock.getCarList().size() > 1){
+				for(StandartCar car : this.currentRoadBlock.getCarList()){
+					if(car.getLaneChoice()==way){
+						desicion = false;
+					}
+				}
+			}
+			
+			if(this.nextRoadBlock.getCarList().size() > 0){
+				for(StandartCar car : this.currentRoadBlock.getCarList()){
+					if(car.getLaneChoice()==way){
+						desicion = false;
+					}
+				}
+			}
+			
+			return desicion;
+		}
+		
+		public void updateScanningBlocs(){
+			currentRoadBlock = (RoadBlock)this.roadBlock[this.carX/GraphicsConfig.BLOCK_SIDE_SIZE][this.carY/GraphicsConfig.BLOCK_SIDE_SIZE];
+			nextRoadBlock = this.nextRoadBlock();
+		}
 		
 		
 		public void updateSpeed(){
-			RoadBlock currentRoadBlock = (RoadBlock)this.roadBlock[this.carX/GraphicsConfig.BLOCK_SIDE_SIZE][this.carY/GraphicsConfig.BLOCK_SIDE_SIZE];
-			RoadBlock nextRoadBlock = this.nextRoadBlock();
+			
+			this.updateScanningBlocs();
 			//RoadBlock next2RoadBlock = this.next2RoadBlock();
 			boolean trafficLightOnPath = false;
 			short trafficLightIndex = -1;
@@ -449,25 +501,61 @@ public class StandartCar {
 				int distanceToNextBlock = this.getDistanceToObject(this.nextRoadBlockX, this.nextRoadBlockY);
 				for(StandartCar car: carList){ //Except the roand about it could be only 2 cars with the same direction and the same lane
 						
-						if (!this.equals(car) && distanceToNextBlock>car.getDistanceToObject(this.nextRoadBlockX, this.nextRoadBlockY)){
+						if (currentRoadBlock.getBlockType()!=RoadConfig.ROUND_ABOUT_BLOCK){
+							if (!this.equals(car) && distanceToNextBlock>car.getDistanceToObject(this.nextRoadBlockX, this.nextRoadBlockY)){
 							
-							if(this.getPathDirection()==car.getPathDirection() && (this.getLaneChoice() == car.getLaneChoice() || car.getLaneChoice() == 3 || car.getLaneChoice() == 4) ){
-								int distance = this.getDistanceToObject(car.getCarX(), car.getCarY());
-								if (distance<minDistance){
-									nextObjectSpeed = car.getSpeed();
-									minDistance = distance-GraphicsConfig.CAR_LENGTH;
-									distanceToNextObject = minDistance;
-									this.updateSecurityDistance();
-									if (nextObjectSpeed>0){
-										decelerationDistance = minDistance - nextObjectSpeed*3;
-									} else {
-										decelerationDistance = minDistance - this.securityZeroDistance;
-									}
-									isCarCurrentBlock = true;
+								if(this.getPathDirection()==car.getPathDirection() && (this.getLaneChoice() == car.getLaneChoice() || car.getLaneChoice() == 3 || car.getLaneChoice() == 4) ){
+									int distance = this.getDistanceToObject(car.getCarX(), car.getCarY());
+									if (distance<minDistance){
+										nextObjectSpeed = car.getSpeed();
+										minDistance = distance-GraphicsConfig.CAR_LENGTH;
+										distanceToNextObject = minDistance;
+										this.updateSecurityDistance();
+										if (nextObjectSpeed>0){
+											decelerationDistance = minDistance - nextObjectSpeed*3;
+										} else {
+											decelerationDistance = minDistance - this.securityZeroDistance;
+										}
+										isCarCurrentBlock = true;
 									//System.out.println("there is a car in the next block");
+									}
+								}
+						} else {
+							if(!this.equals(car) && distanceToNextBlock>car.getDistanceToObject(this.nextRoadBlockX, this.nextRoadBlockY)){
+								if((this.getExit() == 1 || this.getExit() == 2) && (car.getExit() == 1 || car.getExit() == 2)){
+									int distance = this.getDistanceToObject(car.getCarX(), car.getCarY());
+									if (distance<minDistance){
+										nextObjectSpeed = car.getSpeed();
+										minDistance = distance-GraphicsConfig.CAR_LENGTH;
+										distanceToNextObject = minDistance;
+										this.updateSecurityDistance();
+										if (nextObjectSpeed>0){
+											decelerationDistance = minDistance - nextObjectSpeed*3;
+										} else {
+											decelerationDistance = minDistance - this.securityZeroDistance;
+										}
+										isCarCurrentBlock = true;
+									//System.out.println("there is a car in the next block");
+									}
+								} else if((this.getExit() == 3 || this.getExit() == 4) && (car.getExit() == 3 || car.getExit() == 4)){
+									int distance = this.getDistanceToObject(car.getCarX(), car.getCarY());
+									if (distance<minDistance){
+										nextObjectSpeed = car.getSpeed();
+										minDistance = distance-GraphicsConfig.CAR_LENGTH;
+										distanceToNextObject = minDistance;
+										this.updateSecurityDistance();
+										if (nextObjectSpeed>0){
+											decelerationDistance = minDistance - nextObjectSpeed*3;
+										} else {
+											decelerationDistance = minDistance - this.securityZeroDistance;
+										}
+										isCarCurrentBlock = true;
+									//System.out.println("there is a car in the next block");
+									}
 								}
 							}
 						}
+					}
 				}
 			}  
 			
@@ -482,7 +570,7 @@ public class StandartCar {
 						for(StandartCar car: carList){ //Except the roand about it could be only 2 cars with the same direction and the same lane
 
 								if (!this.equals(car)){
-									
+									if (nextRoadBlock.getBlockType() != RoadConfig.ROUND_ABOUT_BLOCK){
 									if(carDirectionNextBlock==car.getPathDirection() && (this.getLaneChoice() == car.getLaneChoice() || car.getLaneChoice() == 3 || car.getLaneChoice() == 4) ){
 										int distance = this.getDistanceToObject(car.getCarX(), car.getCarY());
 										
@@ -501,6 +589,41 @@ public class StandartCar {
 											isCarNextBlock = true;
 										}
 									}
+								}
+								} else {
+									
+										if((this.getExit() == 1 || this.getExit() == 2) && (car.getExit() == 1 || car.getExit() == 2)){
+											int distance = this.getDistanceToObject(car.getCarX(), car.getCarY());
+											if (distance<minDistance){
+												nextObjectSpeed = car.getSpeed();
+												minDistance = distance-GraphicsConfig.CAR_LENGTH;
+												distanceToNextObject = minDistance;
+												this.updateSecurityDistance();
+												if (nextObjectSpeed>0){
+													decelerationDistance = minDistance - nextObjectSpeed*3;
+												} else {
+													decelerationDistance = minDistance - this.securityZeroDistance;
+												}
+												isCarCurrentBlock = true;
+											//System.out.println("there is a car in the next block");
+											}
+										} else if((this.getExit() == 3 || this.getExit() == 4) && (car.getExit() == 3 || car.getExit() == 4)){
+											int distance = this.getDistanceToObject(car.getCarX(), car.getCarY());
+											if (distance<minDistance){
+												nextObjectSpeed = car.getSpeed();
+												minDistance = distance-GraphicsConfig.CAR_LENGTH;
+												distanceToNextObject = minDistance;
+												this.updateSecurityDistance();
+												if (nextObjectSpeed>0){
+													decelerationDistance = minDistance - nextObjectSpeed*3;
+												} else {
+													decelerationDistance = minDistance - this.securityZeroDistance;
+												}
+												isCarCurrentBlock = true;
+											//System.out.println("there is a car in the next block");
+											}
+										}
+									
 								}
 							}
 						}
@@ -563,6 +686,11 @@ public class StandartCar {
 
 				if (trafficLights.get(trafficLightIndex).getState()!=AgentConfig.TRAFFIC_LIGHT_GREEN){
 					
+					
+					if(trafficLights.get(trafficLightIndex).getState()==AgentConfig.TRAFFIC_LIGHT_YELLOW && this.speed>4){
+						this.acceleration();
+					} else {
+					
 					if (trafficLights.get(trafficLightIndex).getDistanceToTrafficLight(this.getCarX(), this.getCarY())<GraphicsConfig.BLOCK_SIDE_SIZE/10){
 						this.accelerationCounter =0;
 						this.decelerationCounter = 0;
@@ -570,21 +698,70 @@ public class StandartCar {
 						
 
 					} else {
-						 if(this.speed>2){
+						 if(this.speed>3){
 							 this.accelerationCounter = 0;
 							 this.deceleration(trafficLights.get(trafficLightIndex).getDistanceToTrafficLight(this.getCarX(), this.getCarY()), this.speed);
 						 }
 						 else {
-							 this.acceleration();
+							 this.speed++;
 						 }
 						
 					}
+				}
+	
 				} else {
 					
+						boolean canGo = true;
+						if (nextRoadBlock!=null){
+							if ((nextRoadBlock.getBlockType()>3 && nextRoadBlock.getBlockType()<9) && nextRoadBlock.isCarInside()){
+								canGo = false;
+								System.out.println("CanGO");
+							}
+						}
 					
+					/*for (StandartCar car : nextRoadBlock.getCarList()){
+						if (car.getPathDirection() == this.directionAfterTrafficLight && car.getLaneChoice() == 1){
+							n++;
+							System.out.println("there is a car");
+						}
+					}*/
+					RoadBlock afterIntersectionBlock = this.getBlockAfterIntersection();
+					if (afterIntersectionBlock!=null){
+						int n = 0;
+						for (StandartCar car : afterIntersectionBlock.getCarList()){
+							if (car.getPathDirection() == this.directionAfterTrafficLight && car.getLaneChoice() == 1){
+								n++;
+								System.out.println("there is a car");
+							}
+						}
+						
+						if (n<1 && canGo){
+							this.go(currentRoadBlock, nextRoadBlock);
+							System.out.println("there is NO  car");
+						} else {
+							if (trafficLights.get(trafficLightIndex).getDistanceToTrafficLight(this.getCarX(), this.getCarY())<GraphicsConfig.BLOCK_SIDE_SIZE/10){
+								this.accelerationCounter =0;
+								this.decelerationCounter = 0;
+								this.speed=0;
+								
+
+							} else {
+								 if(this.speed>3){
+									 this.accelerationCounter = 0;
+									 this.deceleration(trafficLights.get(trafficLightIndex).getDistanceToTrafficLight(this.getCarX(), this.getCarY()), this.speed);
+								 }
+								 else {
+									 this.speed++;
+								 }
+								
+							}
+						}
+					} else {
+						System.out.println("Null afterIntersectionBlock");
+					}
 					//if(nextRoadBlock!=null){
 						//if (!nextRoadBlock.isCarInside()){
-							this.go(currentRoadBlock, nextRoadBlock);
+							
 							/*if(!this.isArriving){
 								afterIntersectionBlock.addArrivingCar(this);
 								this.isArriving = true;
@@ -633,7 +810,8 @@ public class StandartCar {
 			if(this.speed<this.getBlockSpeedLimitForDriver(currentRoadBlock.getSpeedLimit())){
 				if(nextRoadBlock!=null){
 					if(this.speed<this.getBlockSpeedLimitForDriver(nextRoadBlock.getSpeedLimit())){
-						this.acceleration();
+						//this.acceleration();
+						this.speed++;
 						
 					} else {
 						this.accelerationCounter = 0;
@@ -641,8 +819,8 @@ public class StandartCar {
 					}
 				}
 				else {
-					this.acceleration();
-					
+				//	this.acceleration();
+					this.speed++;
 				}
 			}
 			else {
@@ -659,12 +837,12 @@ public class StandartCar {
 			if(this.driverType == AgentConfig.FAMILY_DRIVER){
 				
 					sLimit=speedLimit*80/100;
-					System.out.println(speedLimit);
+					
 				
 			} else if (this.driverType == AgentConfig.FAST_DRIVER){
 				
 					sLimit=speedLimit*110/100;
-					System.out.println(speedLimit);
+					
 			}
 
 			return sLimit;
@@ -823,4 +1001,6 @@ public class StandartCar {
 			
 			return index;
 		}
+		
+		
 }

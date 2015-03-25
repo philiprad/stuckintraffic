@@ -42,7 +42,10 @@ public class AgentConfig {
 	
 	public static final float FAST_DRIVER_ACCELERATION = 0.4f;
 	
-
+	public static final short ELECTRIC_CAR = 1;
 	
+	public static final short HYBRID_CAR = 2;
 	
+	public static final short PETROL_CAR = 3;
+		
 }
