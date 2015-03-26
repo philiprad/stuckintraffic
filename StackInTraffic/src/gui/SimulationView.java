@@ -13,6 +13,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -33,6 +35,7 @@ import main.MainConfig;
 import trafficInfrastructure.grid.GridBuilder;
 //import gui.RoadEditorView.OpenListener;
 import trafficInfrastructure.road.BlockGraphicPoint;
+import trafficInfrastructure.road.RoadConfig;
 import util.FileRW;
 
 
@@ -79,6 +82,18 @@ public class SimulationView extends JPanel{
 	/** The frame. */
 	public ApplicationFrame frame;
 	
+	private String mapName = "";
+	
+	private JScrollBar carScrollBar;
+	
+	private JScrollBar motionScrollBar;
+	
+	private GraphicsDrawer gDrawer;
+	
+
+	
+	private JLabel numberLabel;
+	
 	/**
 	 * Instantiates a new simulation view.
 	 *
@@ -89,14 +104,29 @@ public class SimulationView extends JPanel{
 		this.frame = frame;
 		this.loadMainContent();
 		MapChoiceView mapChoiceView = new MapChoiceView(frame, this, this.gridBuilder);
+		
 	}
 	
+	
+	
 	public SimulationView(ApplicationFrame frame, String mapName){
+		this.mapName = mapName;
+		this.gridBuilder = (GridBuilder) (FileRW.readObject(MainConfig.GRID_PATH + "/"+mapName+MainConfig.GRID_SUFFIX));
+		
 		this.frame = frame;
 		this.loadMainContent();
 		this.loadMap(mapName);
 		
 		//MapChoiceView mapChoiceView = new MapChoiceView(frame, this, this.gridBuilder);
+	}
+	
+	
+	public void setMapName(String mapName){
+		this.mapName = mapName;
+	}
+	
+	public void setGridBuilder(GridBuilder gridBuilder){
+		this.gridBuilder = gridBuilder;
 	}
 	
 	public void loadMainContent(){
@@ -109,24 +139,20 @@ public class SimulationView extends JPanel{
 	    
 	    frame.setJMenuBar(menuBarTop);
 	    
-	    JMenuItem newMap = new JMenuItem("New");
 	    JMenuItem openMap = new JMenuItem("Open");
 	    //openMap.addActionListener(new OpenListener());
 	    JMenuItem exitMainMenu = new JMenuItem("Main Menu");
 	    exitMainMenu.addActionListener(new MainMenuListener());
 	    JMenuItem exit = new JMenuItem("Exit");
 	    exit.addActionListener(new ExitListener());
-        JMenuItem saveMap = new JMenuItem("Save");
-        JMenuItem deleteMap = new JMenuItem("Delete");
-        JMenuItem clearMap = new JMenuItem("Clear");
-        fileMenu.add(newMap);
+        JMenuItem editMap = new JMenuItem("Map Editor");
+        
         fileMenu.add(openMap);
         fileMenu.addSeparator();
         fileMenu.add(exitMainMenu);
         fileMenu.add(exit);
-        editMenu.add(saveMap);
-        editMenu.add(clearMap);
-        editMenu.add(deleteMap);
+        editMenu.add(editMap);
+        
         
         
 		this.frame.add(this, BorderLayout.WEST);
@@ -138,14 +164,14 @@ public class SimulationView extends JPanel{
 	    /**
 	     * TODO resize images
 	     */
-	    ImageIcon playImage = new ImageIcon("./images/play.png");
-		ImageIcon stopImage = new ImageIcon("./images/stop.png");
-		ImageIcon pauseImage = new ImageIcon("./images/pause.png");
+	    ImageIcon playImage = new ImageIcon(ib.getPlayButton());
+		ImageIcon stopImage = new ImageIcon(ib.getStopButton());
+		ImageIcon pauseImage = new ImageIcon(ib.getPauseButton());
 		
 		/**
 		 * TODO get refresh image from Max 
 		 */
-		ImageIcon refreshImage = new ImageIcon("./images/refresh.jpg");
+		ImageIcon refreshImage = new ImageIcon(ib.getStepButton());
 		
 		playButton = new JButton(playImage);
 		pauseButton = new JButton(pauseImage);
@@ -211,63 +237,102 @@ public class SimulationView extends JPanel{
 		//selectMapButton.setBackground(new Color(100,100,204));
 		Font font = new Font("Avenir Book", Font.BOLD, 14);
 		toolbar.setPreferredSize(new Dimension(200,200));
-		toolbar.addSeparator(new Dimension(100,150));
+		toolbar.addSeparator(new Dimension(100,30));
 		
-		JLabel carLabel= new JLabel("Set Number of Cars");
+		JLabel carLabel= new JLabel("Number of Cars");
 		carLabel.setFont(font);
 		carLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		toolbar.add(carLabel);
 		
 		// 0 to n. n will be automatically calculated
 		//TODO SET TO MAX
-		JScrollBar carScrollBar = new JScrollBar(JScrollBar.HORIZONTAL, 1, 10, 0, 100); 
+		carScrollBar = new JScrollBar(JScrollBar.HORIZONTAL, 1, 10, 0, 100); 
 		carScrollBar.setAlignmentY(Component.TOP_ALIGNMENT);
 		carScrollBar.setMinimum(1);
 		carScrollBar.setMaximum(100);
 		JLabel limitsLabel = new JLabel();
-		limitsLabel.setText("" +carScrollBar.getMinimum() + "                              " + carScrollBar.getMaximum());
+		limitsLabel.setText("Min" + "                              " + "Max");
 		limitsLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		toolbar.setPreferredSize(new Dimension(200,200));
 		toolbar.add(carScrollBar);
 		toolbar.add(limitsLabel);
-		toolbar.addSeparator(new Dimension(100,150));
+		toolbar.addSeparator(new Dimension(100,30));
 	
 		
-		JLabel motionLabel= new JLabel("Set Simulation Speed"); 
+		JLabel motionLabel= new JLabel("Simulation Speed"); 
 		motionLabel.setFont(font);
 		motionLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
 		toolbar.add(motionLabel);
-		JScrollBar motionScrollBar = new JScrollBar(JScrollBar.HORIZONTAL,1, 1, 0, 10);
+		motionScrollBar = new JScrollBar(JScrollBar.HORIZONTAL,1, 1, 0, 10);
 		motionScrollBar.setAlignmentY(Component.TOP_ALIGNMENT);
-		motionScrollBar.setMinimum(1);
-		motionScrollBar.setMaximum(10);
-		JLabel mLabel = new JLabel();
-		mLabel.setText("" +motionScrollBar.getMinimum() + "                               " + motionScrollBar.getMaximum());
-		mLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
+		
+		
+		
+		JLabel mLabel = new JLabel();
+		mLabel.setText("Fast" + "                              " + "Slow");
+		mLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		Font font1 = new Font("Avenir Book", Font.BOLD, 20);
 		toolbar.setPreferredSize(new Dimension(200,200));
 		toolbar.add(motionScrollBar);
 		toolbar.add(mLabel);
-		toolbar.addSeparator(new Dimension(100,150)); //(new JSeparator(SwingConstants.HORIZONTAL));
+		toolbar.addSeparator(new Dimension(100,30)); //(new JSeparator(SwingConstants.HORIZONTAL));
+		JLabel carsLabel = new JLabel();
+		carsLabel.setText("Cars current number: ");
+		carsLabel.setFont(font);
+		carsLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		numberLabel = new JLabel();
+		numberLabel.setText("");
+		numberLabel.setFont(font1);
+		numberLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		toolbar.add(carsLabel);
+		toolbar.add(numberLabel);
 
 	}
 	
 	@SuppressWarnings("unchecked")
 	public void loadMap(String mapName){
-		
 		ArrayList<BlockGraphicPoint> arrBG =(ArrayList<BlockGraphicPoint>) FileRW.readObject(MainConfig.ROADBLOCK_PATH+"/"+mapName+MainConfig.ROADBLOCK_GRAPHICS_SUFFIX);
-		GraphicsDrawer gDrawer = new GraphicsDrawer(50 ,mapName, arrBG , ib );
+		gDrawer = new GraphicsDrawer(this, 50 ,mapName, arrBG , ib );
+		motionScrollBar.setMinimum(20);
+		motionScrollBar.setMaximum(100);
+		motionScrollBar.setValue(50);
+		carScrollBar.setMinimum(1);
+		int numberOfCars = gDrawer.getMaximumNumberOfCars();
+		carScrollBar.setMaximum(numberOfCars);
+		carScrollBar.setValue(numberOfCars/2);
+		this.numberLabel.setText(""+gDrawer.getCarListSize());
+		carScrollBar.addAdjustmentListener(new AdjustmentListener() {
+		
+			public void adjustmentValueChanged(AdjustmentEvent e) {
+				
+				SimulationView.this.gDrawer.updateCars(carScrollBar.getValue());
+				
+			}
+		});
+		
+		motionScrollBar.addAdjustmentListener(new AdjustmentListener() {
+			
+			public void adjustmentValueChanged(AdjustmentEvent e) {
+				
+				gDrawer.setDelay(motionScrollBar.getValue());
+			}
+		});
 		playButton.addActionListener(new PlayListener(gDrawer));
 		pauseButton.addActionListener(new PauseListener(gDrawer));
 		stopButton.addActionListener(new StopListener(gDrawer));
-		refreshButton.addActionListener(new RefreshListener());
+		refreshButton.addActionListener(new StepListener(gDrawer));
 		this.scrollPane = new JScrollPane(gDrawer);
 		this.add(this.scrollPane);
 		this.revalidate();
 		this.validate();
 	
 	}
+	
+		public void updateNumberOfCars(){
+			SimulationView.this.numberLabel.setText(""+gDrawer.getCarListSize());
+		}
 	
 	
 	
@@ -336,8 +401,10 @@ public class SimulationView extends JPanel{
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
 		public void actionPerformed(ActionEvent arg0) {
-			simulationTimer.start();
-			gDrawer.start();
+			if(!mapName.equals("")){
+				simulationTimer.start();
+				gDrawer.start();
+			}
 		}
 	}
 	
@@ -363,9 +430,10 @@ public class SimulationView extends JPanel{
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
 		public void actionPerformed(ActionEvent arg0){
-			simulationTimer.stop();
-			gDrawer.pause();
-			
+			if(!mapName.equals("")){
+				simulationTimer.stop();
+				gDrawer.pause();
+			}
 		}
 	}
 	
@@ -391,8 +459,20 @@ public class SimulationView extends JPanel{
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
 		public void actionPerformed(ActionEvent arg0){
-			simulationTimer.stop();
-			this.gDrawer.stop();
+			if(!mapName.equals("")){
+				simulationTimer.stop();
+				this.gDrawer.stop();
+				simulationTimer.stop();
+
+				centiseconds = 0;
+            seconds = 0;
+            minutes = 0;
+
+            displayTimer.setText(timeFormatter.format(minutes) + ":"
+                    + timeFormatter.format(seconds) + "."
+                    + timeFormatter.format(centiseconds));
+            loadMap(mapName);
+			}
 		}
 	}
 	
@@ -406,47 +486,25 @@ public class SimulationView extends JPanel{
 	 *
 	 * @see RefreshEvent
 	 */
-	public class RefreshListener implements ActionListener{
+	public class StepListener implements ActionListener{
+		
+		private GraphicsDrawer gDrawer;
+		
+		public StepListener(GraphicsDrawer gDrawer){
+			this.gDrawer = gDrawer;
+		}
+		
 		
 		/* (non-Javadoc)
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
 		public void actionPerformed(ActionEvent arg0){
-			 simulationTimer.stop();
-
-             centiseconds = 0;
-             seconds = 0;
-             minutes = 0;
-
-             displayTimer.setText(timeFormatter.format(minutes) + ":"
-                     + timeFormatter.format(seconds) + "."
-                     + timeFormatter.format(centiseconds));
+			if(!mapName.equals("")){
+				this.gDrawer.stepUpdate();
+			}
 		}
 	}
 	
-	/*public class TimerListener implements ActionListener{
-        @Override
-        public void actionPerformed(ActionEvent e) {
-        	if(centiseconds<99){	
-        		centiseconds++;
-        	} else {
-        		if(centiseconds==99){
-        			seconds++;
-        			centiseconds=0; 
-        		}else if(seconds<60){
-        				seconds++;
-        			} else {
-        				if(seconds==60){
-        				minutes++;
-        				seconds=0;
-        			}
-        		}
-        	}
-        	displayTimer.setText(timeFormatter.format(minutes) + ":"
-                    + timeFormatter.format(seconds) + "."
-                    + timeFormatter.format(centiseconds));
-        }
-    }*/
 	
 	/**
 	 * The Class IncreaseNumberOfCars.

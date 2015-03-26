@@ -39,7 +39,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
-import main.Main;
 import main.MainConfig;
 import trafficInfrastructure.RoadBuilder;
 import trafficInfrastructure.grid.GridBuilder;

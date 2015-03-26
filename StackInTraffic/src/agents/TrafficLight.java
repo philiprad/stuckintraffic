@@ -53,6 +53,9 @@ public class TrafficLight {
 	 * @param y the y
 	 * @param number the number
 	 */
+	
+	//TODO discard Number, not needed in the last version
+	
 	public TrafficLight(short direction, short roadBlock , int x , int y,short type, short number){
 		this.type = type;
 		this.number = number;

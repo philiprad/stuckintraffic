@@ -7,6 +7,7 @@ package graphicsLoader.SimulatorBilder;
 import graphicsLoader.GraphicsConfig;
 import graphicsLoader.ImagesBuilder;
 import graphicsLoader.ImagesSelector;
+import gui.SimulationView;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -32,8 +33,8 @@ import trafficInfrastructure.road.RoadConfig;
 import trafficInfrastructure.roadPath.DoublePath;
 import trafficInfrastructure.roadPath.Path;
 import util.FileRW;
-import agents.StandartCar;
 import agents.RoadBlock;
+import agents.StandartCar;
 import agents.TrafficLight;
 
 // TODO: Auto-generated Javadoc
@@ -52,7 +53,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	private Timer timer;
 	
 	/** The grid road. */
-	private GridBuilder gridRoad;
+	private GridBuilder gridBuilder;
 	
 	/** The ib. */
 	private ImagesBuilder ib;
@@ -87,6 +88,10 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	/** The car add counter. */
 	private int carAddCounter = 0;
 	
+	private int maximumCars = 0;
+	
+	private SimulationView view;
+	
 	/**
 	 * Instantiates a new graphics drawer.
 	 *
@@ -96,20 +101,20 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	 * @param ib the ib
 	 */
 	@SuppressWarnings({ "unchecked", "unused" })
-	public GraphicsDrawer(int delay , String fileName , ArrayList<BlockGraphicPoint> arrBG , ImagesBuilder ib){
-		GridBuilder gridBuilder = (GridBuilder)FileRW.readObject(MainConfig.GRID_PATH + "/" + fileName + MainConfig.GRID_SUFFIX);
+	public GraphicsDrawer(SimulationView view, int delay , String fileName , ArrayList<BlockGraphicPoint> arrBG , ImagesBuilder ib){
+		gridBuilder = (GridBuilder)FileRW.readObject(MainConfig.GRID_PATH + "/" + fileName + MainConfig.GRID_SUFFIX);
 		
 		//this.setSize(gridBuilder.getGrid()[0].length*GraphicsConfig.BLOCK_SIDE_SIZE, gridBuilder.getGrid().length*GraphicsConfig.BLOCK_SIDE_SIZE);
 		this.setPreferredSize(new Dimension(gridBuilder.getGrid()[0].length*GraphicsConfig.BLOCK_SIDE_SIZE, gridBuilder.getGrid().length*GraphicsConfig.BLOCK_SIDE_SIZE));
 		this.delay =  delay;
-		
+		this.view = view;
 		this.ib = ib;
 		this.arrBG = arrBG;
 		this.arrPath = (ArrayList<Path>)FileRW.readObject(MainConfig.PATHS_PATH + "/" + fileName + MainConfig.PATH_SUFFIX);
 		
 		RoadBlocksBuffer roadBlockBuffer = new RoadBlocksBuffer(fileName);
 		this.roadBlockGrid = roadBlockBuffer.getRoadBlockBufferArray();
-		
+		this.maximumCars = this.getMaximumNumberOfCars()/2;
 		TrafficLightsBuilder trafficLightBuilder = new TrafficLightsBuilder(gridBuilder, this.roadBlockGrid);
 		trafficLightBuilder.buildTrafficLights();
 		this.trafficLightList =trafficLightBuilder.getTrafficLightList();
@@ -140,13 +145,19 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		this.timer.stop();
 	}
 	
+	public int getNumberOfCars(){
+		return this.maximumCars;
+	}
+	
 	/**
 	 * Sets the delay.
 	 *
 	 * @param newDelay the new delay
 	 */
 	public void setDelay(int newDelay){
-		this.timer.setInitialDelay(newDelay);
+		this.stop();
+		this.timer.setDelay(newDelay);
+		this.start();
 	}
 	
 	/* (non-Javadoc)
@@ -173,6 +184,10 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		stepUpdate();
+	}
+	
+	public void stepUpdate(){
 		this.carAddCounter++;
 		
 		for (TrafficLightSetSingleIntersection tlSet : this.arrTrafficLightSetSingle){
@@ -193,7 +208,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		} else {
 			
 			this.carAddCounter++;
-			if(this.carAddCounter>20 && this.carList.size()<40){
+			if(this.carAddCounter>20 && this.carList.size()<=this.maximumCars){
 				this.putCarOnEveryPath();
 				this.carAddCounter = 0;
 			}
@@ -218,7 +233,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 			}
 		
 		}
-		
+		view.updateNumberOfCars();
 		this.carGridPositionUpdate();
 		
 		repaint();
@@ -261,6 +276,46 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 				
 			}
 		}
+	}
+	
+	public void updateCars(int n){
+		int difference = this.carList.size() - n;
+		if (difference>0){
+			this.deleteRandomCars(difference);
+			this.maximumCars = n;
+		} else {
+			this.maximumCars = n;
+		}
+		
+	}
+	
+	public int getMaximumNumberOfCars(){
+		int counter = 0;
+		for (int i = 0 ;i<this.gridBuilder.getGrid().length; i++){
+			for (int j = 0 ;j<this.gridBuilder.getGrid()[0].length; j++){
+				if(this.gridBuilder.getGrid()[i][j]==RoadConfig.VERTICAL_BLOCK || this.gridBuilder.getGrid()[i][j]==RoadConfig.HORIZONTAL_BLOCK){
+					counter+=2;
+				} 
+				if(this.gridBuilder.getGrid()[i][j]==RoadConfig.VERTICAL_DOUBLE_BLOCK || this.gridBuilder.getGrid()[i][j]==RoadConfig.HORIZONTAL_DOUBLE_BLOCK){
+					counter+=8;
+				} 
+			}
+		}
+		return counter;
+	}
+	
+	public int getCarListSize(){
+		return this.carList.size();
+	}
+	
+	public void deleteRandomCars(int n){
+		
+		for(int i = 0; i<=n ; i++){
+			Random rand = new Random();
+			int x = rand.nextInt(this.carList.size());
+			this.carList.remove(x);
+		}
+		
 	}
 	
 	/**

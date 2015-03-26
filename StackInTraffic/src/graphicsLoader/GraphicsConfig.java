@@ -26,6 +26,15 @@ public class GraphicsConfig {
 	//public static final int GRID_WIDTH = MAIN_WIDTH/BLOCK_SIDE_SIZE;
 	
 	/** The Constant VERTICAL_ROAD_IMG. */
+	
+	public static final String PAUSE_BUTTON = "./images/pause.png";
+	
+	public static final String STOP_BUTTON = "./images/stop.png";
+	
+	public static final String PLAY_BUTTON = "./images/play.png";
+	
+	public static final String STEP_BUTTON = "./images/step.png";
+	
 	public static final String VERTICAL_ROAD_IMG = "./images2/verticalRoad.png";
 	
 	/** The Constant HORIZONTAL_ROAD_IMG. */

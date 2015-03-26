@@ -154,6 +154,14 @@ public class ImagesBuilder {
 	/** The mixed intersection vertical cr. */
 	private Image mixedIntersectionVerticalCr;
 	
+	private Image playButton;
+	
+	private Image stopButton;
+	
+	private Image pauseButton;
+	
+	private Image stepButton;
+	
 	
 	
 	/** The car up. */
@@ -267,7 +275,10 @@ public class ImagesBuilder {
 		this.mixedIntersectionHorizontalTb = loadImage(GraphicsConfig.MIXED_INTERSECTION_HORIZONTAL_IMG_TOOLBAR);
 		this.mixedIntersectionVerticalTb = loadImage(GraphicsConfig.MIXED_INTERSECTION_VERTICAL_IMG_TOOLBAR);
 		
-		
+		this.pauseButton =  loadImage(GraphicsConfig.PAUSE_BUTTON);
+		this.stepButton =  loadImage(GraphicsConfig.STEP_BUTTON);
+		this.playButton =  loadImage(GraphicsConfig.PLAY_BUTTON);
+		this.stopButton =  loadImage(GraphicsConfig.STOP_BUTTON);
 	}
 	
 	/**
@@ -814,6 +825,21 @@ public class ImagesBuilder {
 	 */
 	public Image getMixedIntersectionVTb(){
 		return this.mixedIntersectionVerticalTb;
+	}
+	
+	public Image getPlayButton(){
+		return this.playButton;
+	}
+	
+	public Image getPauseButton(){
+		return this.pauseButton;
+	}
+	
+	public Image getStopButton(){
+		return this.stopButton;
+	}
+	public Image getStepButton(){
+		return this.stepButton;
 	}
 }
 
