@@ -15,6 +15,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -234,6 +235,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		
 		}
 		view.updateNumberOfCars();
+		view.updateAvgSpeedOfCars();
 		this.carGridPositionUpdate();
 		
 		repaint();
@@ -276,6 +278,20 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 				
 			}
 		}
+	}
+	
+	public double avgSpeed(){
+		double speed = 0;
+		if (!this.carList.isEmpty()){
+			for (StandartCar cr : this.carList)	{
+				speed+=cr.getCarSpeed();
+			}
+		
+			double avgSpeed = speed/carList.size()*0.18/this.timer.getDelay()*1000;
+			Double avgRounded=new BigDecimal(avgSpeed ).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+			speed = avgRounded;
+		}
+		return speed;
 	}
 	
 	public void updateCars(int n){
@@ -325,6 +341,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		Random rand = new Random();
 		int x = rand.nextInt(this.arrPath.size());
 		int driver = rand.nextInt(3);
+		int carType = rand.nextInt(3);
 		driver++;
 		int roadBkX = this.arrPath.get(x).getPathPoints().get(0).getX()/GraphicsConfig.BLOCK_SIDE_SIZE;
 		int roadBkY = this.arrPath.get(x).getPathPoints().get(0).getY()/GraphicsConfig.BLOCK_SIDE_SIZE;
@@ -335,12 +352,12 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 			
 				if(roadBk.getBlockType() == RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK || roadBk.getBlockType()==RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK || roadBk.getBlockType() == RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK || roadBk.getBlockType()==RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK){
 					if(!nextBk.isCarInside()){
-						StandartCar car = new StandartCar(this.arrPath.get(x), (short) driver, this.roadBlockGrid, 2 , this.trafficLightList, 1);
+						StandartCar car = new StandartCar(this.arrPath.get(x), (short) driver, this.roadBlockGrid, 2 , this.trafficLightList, carType);
 						this.carList.add(car);
 					}
 				}
 			 else {
-				StandartCar car = new StandartCar(this.arrPath.get(x), (short) driver, this.roadBlockGrid, 1 , this.trafficLightList,2);
+				StandartCar car = new StandartCar(this.arrPath.get(x), (short) driver, this.roadBlockGrid, 1 , this.trafficLightList,carType);
 				this.carList.add(car);
 			}
 		}

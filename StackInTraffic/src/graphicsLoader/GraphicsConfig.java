@@ -35,16 +35,16 @@ public class GraphicsConfig {
 	
 	public static final String STEP_BUTTON = "./images/step.png";
 	
-	public static final String VERTICAL_ROAD_IMG = "./images2/verticalRoad.png";
+	public static final String VERTICAL_ROAD_IMG = "./images/verticalRoad.png";
 	
 	/** The Constant HORIZONTAL_ROAD_IMG. */
-	public static final String HORIZONTAL_ROAD_IMG = "./images2/horizontalRoad.png";
+	public static final String HORIZONTAL_ROAD_IMG = "./images/horizontalRoad.png";
 	
 	/** The Constant VERTICAL_DOUBLE_ROAD_IMG. */
-	public static final String VERTICAL_DOUBLE_ROAD_IMG = "./images2/verticalDoubleRoad.png";
+	public static final String VERTICAL_DOUBLE_ROAD_IMG = "./images/verticalDoubleRoad.png";
 	
 	/** The Constant HORIZONTAL_ROAD_IMG. */
-	public static final String HORIZONTAL_DOUBLE_ROAD_IMG = "./images2/horizontalDoubleRoad.png";
+	public static final String HORIZONTAL_DOUBLE_ROAD_IMG = "./images/horizontalDoubleRoad.png";
 	
 	/** The Constant VERTICAL_GREEN_LIGHT_IMG. */
 	public static final String VERTICAL_GREEN_LIGHT_IMG = "./images/verticalGreenLight.png";
@@ -65,31 +65,31 @@ public class GraphicsConfig {
 	public static final String HORIZONTAL_YELLOW_LIGHT_IMG = "./images/horizontalYellowLight.png";
 	
 	/** The Constant INTERSECTION_IMG. */
-	public static final String INTERSECTION_IMG = "./images2/intersection.png";
+	public static final String INTERSECTION_IMG = "./images/intersection.png";
 	
 	/** The Constant INTERSECTION_DOUBLE_IMG. */
-	public static final String INTERSECTION_DOUBLE_IMG = "./images2/intersectionDouble.png";
+	public static final String INTERSECTION_DOUBLE_IMG = "./images/intersectionDouble.png";
 	
 	/** The Constant INTERSECTION_UP_IMG. */
-	public static final String INTERSECTION_UP_IMG = "./images2/intersectionUp.png";
+	public static final String INTERSECTION_UP_IMG = "./images/intersectionUp.png";
 	
 	/** The Constant INTERSECTION_DOWN_IMG. */
-	public static final String INTERSECTION_DOWN_IMG = "./images2/intersectionDown.png";
+	public static final String INTERSECTION_DOWN_IMG = "./images/intersectionDown.png";
 	
 	/** The Constant INTERSECTION_LEFT_IMG. */
-	public static final String INTERSECTION_LEFT_IMG = "./images2/intersectionLeft.png";
+	public static final String INTERSECTION_LEFT_IMG = "./images/intersectionLeft.png";
 	
 	/** The Constant INTERSECTION_RIGHT_IMG. */
-	public static final String INTERSECTION_RIGHT_IMG = "./images2/intersectionRight.png";
+	public static final String INTERSECTION_RIGHT_IMG = "./images/intersectionRight.png";
 	
 	/** The Constant ROUND_ABOUT. */
-	public static final String ROUND_ABOUT = "./images2/roundAbout.png";
+	public static final String ROUND_ABOUT = "./images/roundAbout.png";
 	
 /** The Constant MIXED_INTERSECTION_HORIZONTAL_IMG. */
-public static final String MIXED_INTERSECTION_HORIZONTAL_IMG = "./images2/mixedIntersectionHorizontal.png";
+public static final String MIXED_INTERSECTION_HORIZONTAL_IMG = "./images/mixedIntersectionHorizontal.png";
 	
 	/** The Constant MIXED_INTERSECTION_VERTICAL_IMG. */
-	public static final String MIXED_INTERSECTION_VERTICAL_IMG = "./images2/mixedIntersectionVertical.png";
+	public static final String MIXED_INTERSECTION_VERTICAL_IMG = "./images/mixedIntersectionVertical.png";
 	
 	
 	/** The Constant VERTICAL_ROAD_IMG_SCALED. */
@@ -188,6 +188,108 @@ public static final String MIXED_INTERSECTION_HORIZONTAL_IMG = "./images2/mixedI
 	
 	/** The Constant MIXED_INTERSECTION_VERTICAL_IMG_CURSOR. */
 	public static final String MIXED_INTERSECTION_VERTICAL_IMG_CURSOR = "./images/cursorPictures/mixedIntersectionVertical.png";
+	
+	
+	
+	/** The Constant CAR_UP_IMG. */
+	public static final String CAR_REDH_UP_IMG = "./images/cars/carRedHUp.png";
+	
+	/** The Constant CAR_DOWN_IMG. */
+	public static final String CAR_REDH_DOWN_IMG = "./images/cars/carRedHDown.png";
+	
+	/** The Constant CAR_RIGHT_IMG. */
+	public static final String CAR_REDH_RIGHT_IMG = "./images/cars/carRedHRight.png";
+	
+	/** The Constant CAR_LEFT_IMG. */
+	public static final String CAR_REDH_LEFT_IMG = "./images/cars/carRedHLeft.png";
+	
+	public static final String CAR_REDP_UP_IMG = "./images/cars/carRedPUp.png";
+	
+	/** The Constant CAR_DOWN_IMG. */
+	public static final String CAR_REDP_DOWN_IMG = "./images/cars/carRedPDown.png";
+	
+	/** The Constant CAR_RIGHT_IMG. */
+	public static final String CAR_REDP_RIGHT_IMG = "./images/cars/carRedPRight.png";
+	
+	/** The Constant CAR_LEFT_IMG. */
+	public static final String CAR_REDP_LEFT_IMG = "./images/cars/carRedPLeft.png";
+	
+	public static final String CAR_REDE_UP_IMG = "./images/cars/carRedEUp.png";
+	
+	/** The Constant CAR_DOWN_IMG. */
+	public static final String CAR_REDE_DOWN_IMG = "./images/cars/carRedEDown.png";
+	
+	/** The Constant CAR_RIGHT_IMG. */
+	public static final String CAR_REDE_RIGHT_IMG = "./images/cars/carRedERight.png";
+	
+	/** The Constant CAR_LEFT_IMG. */
+	public static final String CAR_REDE_LEFT_IMG = "./images/cars/carRedELeft.png";
+	
+	public static final String CAR_YELLOWH_UP_IMG = "./images/cars/carYellowHUp.png";
+	
+	/** The Constant CAR_DOWN_IMG. */
+	public static final String CAR_YELLOWH_DOWN_IMG = "./images/cars/carYellowHDown.png";
+	
+	/** The Constant CAR_RIGHT_IMG. */
+	public static final String CAR_YELLOWH_RIGHT_IMG = "./images/cars/carYellowHRight.png";
+	
+	/** The Constant CAR_LEFT_IMG. */
+	public static final String CAR_YELLOWH_LEFT_IMG = "./images/cars/carYellowHLeft.png";
+	
+	public static final String CAR_YELLOWP_UP_IMG = "./images/cars/carYellowPUp.png";
+	
+	/** The Constant CAR_DOWN_IMG. */
+	public static final String CAR_YELLOWP_DOWN_IMG = "./images/cars/carYellowPDown.png";
+	
+	/** The Constant CAR_RIGHT_IMG. */
+	public static final String CAR_YELLOWP_RIGHT_IMG = "./images/cars/carYellowPRight.png";
+	
+	/** The Constant CAR_LEFT_IMG. */
+	public static final String CAR_YELLOWP_LEFT_IMG = "./images/cars/carYellowPLeft.png";
+	
+	public static final String CAR_YELLOWE_UP_IMG = "./images/cars/carYellowEUp.png";
+	
+	/** The Constant CAR_DOWN_IMG. */
+	public static final String CAR_YELLOWE_DOWN_IMG = "./images/cars/carYellowEDown.png";
+	
+	/** The Constant CAR_RIGHT_IMG. */
+	public static final String CAR_YELLOWE_RIGHT_IMG = "./images/cars/carYellowERight.png";
+	
+	/** The Constant CAR_LEFT_IMG. */
+	public static final String CAR_YELLOWE_LEFT_IMG = "./images/cars/carYellowELeft.png";
+	
+	public static final String CAR_BLUEH_UP_IMG = "./images/cars/carBlueHUp.png";
+	
+	/** The Constant CAR_DOWN_IMG. */
+	public static final String CAR_BLUEH_DOWN_IMG = "./images/cars/carBlueHDown.png";
+	
+	/** The Constant CAR_RIGHT_IMG. */
+	public static final String CAR_BLUEH_RIGHT_IMG = "./images/cars/carBlueHRight.png";
+	
+	/** The Constant CAR_LEFT_IMG. */
+	public static final String CAR_BLUEH_LEFT_IMG = "./images/cars/carBlueHLeft.png";
+	
+	public static final String CAR_BLUEP_UP_IMG = "./images/cars/carBluePUp.png";
+	
+	/** The Constant CAR_DOWN_IMG. */
+	public static final String CAR_BLUEP_DOWN_IMG = "./images/cars/carBluePDown.png";
+	
+	/** The Constant CAR_RIGHT_IMG. */
+	public static final String CAR_BLUEP_RIGHT_IMG = "./images/cars/carBluePRight.png";
+	
+	/** The Constant CAR_LEFT_IMG. */
+	public static final String CAR_BLUEP_LEFT_IMG = "./images/cars/carBluePLeft.png";
+	
+	public static final String CAR_BLUEE_UP_IMG = "./images/cars/carBlueEUp.png";
+	
+	/** The Constant CAR_DOWN_IMG. */
+	public static final String CAR_BLUEE_DOWN_IMG = "./images/cars/carBlueEDown.png";
+	
+	/** The Constant CAR_RIGHT_IMG. */
+	public static final String CAR_BLUEE_RIGHT_IMG = "./images/cars/carBlueERight.png";
+	
+	/** The Constant CAR_LEFT_IMG. */
+	public static final String CAR_BLUEE_LEFT_IMG = "./images/cars/carBlueELeft.png";
 	
 	
 	

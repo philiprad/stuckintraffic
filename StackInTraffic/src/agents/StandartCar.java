@@ -2,6 +2,7 @@ package agents;
 
 import graphicsLoader.GraphicsConfig;
 import graphicsLoader.ImagesBuilder;
+import graphicsLoader.ImagesSelector;
 
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
@@ -74,6 +75,7 @@ public class StandartCar {
 		private RoadBlock nextRoadBlock ;
 		
 		public StandartCar(Path path, short driverType, Object [] [] roadBlock,int laneChoise,  ArrayList <TrafficLight> trafficLights, int carType){
+			this.carType = (short) carType;
 			this.trafficLights = trafficLights;
 			this.driverType = driverType;
 			this.path = path;
@@ -852,116 +854,116 @@ public class StandartCar {
 		public void drawCar(Graphics2D g2d, ImagesBuilder ib){
 			PathPoint pathP = this.path.getPathPoints().get(counter);
 			if  (pathP.getBlockType() == RoadConfig.HORIZONTAL_BLOCK || pathP.getBlockType() == RoadConfig.HORIZONTAL_ENTER_BLOCK || pathP.getBlockType() == RoadConfig.HORIZONTAL_EXIT_BLOCK ){
-				if (pathP.getDirection() == 1) g2d.drawImage(ib.getCarRight(),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
-				else g2d.drawImage(ib.getCarLeft(),pathP.getX() - GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
+				if (pathP.getDirection() == 1) g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.RIGHT, ib),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
+				else g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.LEFT, ib),pathP.getX() - GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
 			} else if (pathP.getBlockType() == RoadConfig.HORIZONTAL_DOUBLE_BLOCK || pathP.getBlockType() == RoadConfig.HORIZONTAL_ENTER_DOUBLE_BLOCK || pathP.getBlockType() == RoadConfig.HORIZONTAL_EXIT_DOUBLE_BLOCK){
 				if (pathP.getDirection() == 1){
 					if(this.laneChoise == 2){
-						g2d.drawImage(ib.getCarRight(),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2+GraphicsConfig.DISTANCE_BETWEEN_LANES, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
+						g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.RIGHT, ib),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2+GraphicsConfig.DISTANCE_BETWEEN_LANES, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
 					} else if (this.laneChoise == 3) {
 						this.changeLaneCounter+=this.speed/2;
 						if(this.changeLaneCounter<GraphicsConfig.DISTANCE_BETWEEN_LANES){
-							g2d.drawImage(ib.getCarRight(),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2+this.changeLaneCounter, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
+							g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.RIGHT, ib),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2+this.changeLaneCounter, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
 						} else {
-							g2d.drawImage(ib.getCarRight(),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2+GraphicsConfig.DISTANCE_BETWEEN_LANES, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
+							g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.RIGHT, ib),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2+GraphicsConfig.DISTANCE_BETWEEN_LANES, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
 							this.changeLaneCounter = 0;
 							this.laneChoise = 2;
 						}
 					} else if (this.laneChoise == 4) {
 						this.changeLaneCounter+=this.speed/2;
 						if(this.changeLaneCounter<GraphicsConfig.DISTANCE_BETWEEN_LANES){
-							g2d.drawImage(ib.getCarRight(),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2+GraphicsConfig.DISTANCE_BETWEEN_LANES-this.changeLaneCounter, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
+							g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.RIGHT, ib),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2+GraphicsConfig.DISTANCE_BETWEEN_LANES-this.changeLaneCounter, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
 						} else {
-							g2d.drawImage(ib.getCarRight(),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
+							g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.RIGHT, ib),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
 							this.changeLaneCounter = 0;
 							this.laneChoise = 1;
 						}
 					}
 						else {
-						g2d.drawImage(ib.getCarRight(),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
+						g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.RIGHT, ib),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
 					}
 				}
 				else{
 					
 					if(this.laneChoise == 2){
-						g2d.drawImage(ib.getCarLeft(),pathP.getX() - GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2 - GraphicsConfig.DISTANCE_BETWEEN_LANES, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
+						g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.LEFT, ib),pathP.getX() - GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2 - GraphicsConfig.DISTANCE_BETWEEN_LANES, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
 					} else if (this.laneChoise == 3) {
 						this.changeLaneCounter+=this.speed/2;
 						if(this.changeLaneCounter<GraphicsConfig.DISTANCE_BETWEEN_LANES){
-							g2d.drawImage(ib.getCarLeft(),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2-this.changeLaneCounter, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
+							g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.LEFT, ib),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2-this.changeLaneCounter, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
 						} else {
-							g2d.drawImage(ib.getCarLeft(),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2-GraphicsConfig.DISTANCE_BETWEEN_LANES, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
+							g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.LEFT, ib),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2-GraphicsConfig.DISTANCE_BETWEEN_LANES, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
 							this.changeLaneCounter = 0;
 							this.laneChoise = 2;
 						}
 					} else if (this.laneChoise == 4) {
 						this.changeLaneCounter+=this.speed/2;
 						if(this.changeLaneCounter<GraphicsConfig.DISTANCE_BETWEEN_LANES){
-							g2d.drawImage(ib.getCarLeft(),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2-GraphicsConfig.DISTANCE_BETWEEN_LANES+this.changeLaneCounter, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
+							g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.LEFT, ib),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2-GraphicsConfig.DISTANCE_BETWEEN_LANES+this.changeLaneCounter, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
 						} else {
-							g2d.drawImage(ib.getCarLeft(),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
+							g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.LEFT, ib),pathP.getX()-GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
 							this.changeLaneCounter = 0;
 							this.laneChoise = 1;
 						}
 					}
 					else{
-						g2d.drawImage(ib.getCarLeft(),pathP.getX() - GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
+						g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.LEFT, ib),pathP.getX() - GraphicsConfig.CAR_LENGTH/2, pathP.getY() - GraphicsConfig.CAR_WIDTH/2, GraphicsConfig.CAR_LENGTH, GraphicsConfig.CAR_WIDTH, null );
 					} 
 				}
 			}
 			else if (pathP.getBlockType() == RoadConfig.VERTICAL_BLOCK || pathP.getBlockType() == RoadConfig.VERTICAL_ENTER_BLOCK || pathP.getBlockType() == RoadConfig.VERTICAL_EXIT_BLOCK){
-				if (pathP.getDirection() == 1) g2d.drawImage(ib.getCarDown(),pathP.getX()-GraphicsConfig.CAR_WIDTH/2, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
-				else g2d.drawImage(ib.getCarUp(),pathP.getX()-GraphicsConfig.CAR_WIDTH/2, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
+				if (pathP.getDirection() == 1) g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.DOWN, ib),pathP.getX()-GraphicsConfig.CAR_WIDTH/2, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
+				else g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.UP, ib),pathP.getX()-GraphicsConfig.CAR_WIDTH/2, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
 			}
 			else if (pathP.getBlockType() == RoadConfig.VERTICAL_DOUBLE_BLOCK || pathP.getBlockType() == RoadConfig.VERTICAL_ENTER_DOUBLE_BLOCK || pathP.getBlockType() == RoadConfig.VERTICAL_EXIT_DOUBLE_BLOCK){
 				if (pathP.getDirection() == 1) {
 					if(this.laneChoise == 2){
-						g2d.drawImage(ib.getCarDown(),pathP.getX()-GraphicsConfig.CAR_WIDTH/2- GraphicsConfig.DISTANCE_BETWEEN_LANES, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
+						g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.DOWN, ib),pathP.getX()-GraphicsConfig.CAR_WIDTH/2- GraphicsConfig.DISTANCE_BETWEEN_LANES, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
 					} else if (this.laneChoise == 3) {
 						this.changeLaneCounter+=this.speed/2;
 						if(this.changeLaneCounter<GraphicsConfig.DISTANCE_BETWEEN_LANES){
-							g2d.drawImage(ib.getCarDown(),pathP.getX()-GraphicsConfig.CAR_WIDTH/2-this.changeLaneCounter, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
+							g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.DOWN, ib),pathP.getX()-GraphicsConfig.CAR_WIDTH/2-this.changeLaneCounter, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
 						} else {
-							g2d.drawImage(ib.getCarDown(),pathP.getX()-GraphicsConfig.CAR_WIDTH/2 - GraphicsConfig.DISTANCE_BETWEEN_LANES, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
+							g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.DOWN, ib),pathP.getX()-GraphicsConfig.CAR_WIDTH/2 - GraphicsConfig.DISTANCE_BETWEEN_LANES, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
 							this.changeLaneCounter = 0;
 							this.laneChoise = 2;
 						}
 					} else if (this.laneChoise == 4) {
 						this.changeLaneCounter+=this.speed/2;
 						if(this.changeLaneCounter<GraphicsConfig.DISTANCE_BETWEEN_LANES){
-							g2d.drawImage(ib.getCarDown(),pathP.getX()-GraphicsConfig.CAR_WIDTH/2 - GraphicsConfig.DISTANCE_BETWEEN_LANES + this.changeLaneCounter, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
+							g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.DOWN, ib),pathP.getX()-GraphicsConfig.CAR_WIDTH/2 - GraphicsConfig.DISTANCE_BETWEEN_LANES + this.changeLaneCounter, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
 						} else {
-							g2d.drawImage(ib.getCarDown(),pathP.getX()-GraphicsConfig.CAR_WIDTH/2, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
+							g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.DOWN, ib),pathP.getX()-GraphicsConfig.CAR_WIDTH/2, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
 							this.changeLaneCounter = 0;
 							this.laneChoise = 1;
 						}
 					} else {
-						g2d.drawImage(ib.getCarDown(),pathP.getX()-GraphicsConfig.CAR_WIDTH/2, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
+						g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.DOWN, ib),pathP.getX()-GraphicsConfig.CAR_WIDTH/2, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
 					}
 				}
 				else {
 					if(this.laneChoise == 2){
-						g2d.drawImage(ib.getCarUp(),pathP.getX()-GraphicsConfig.CAR_WIDTH/2+ GraphicsConfig.DISTANCE_BETWEEN_LANES, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
+						g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.UP, ib),pathP.getX()-GraphicsConfig.CAR_WIDTH/2+ GraphicsConfig.DISTANCE_BETWEEN_LANES, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
 					} else if (this.laneChoise == 3) {
 						this.changeLaneCounter+=this.speed/2;
 						if(this.changeLaneCounter<GraphicsConfig.DISTANCE_BETWEEN_LANES){
-							g2d.drawImage(ib.getCarUp(),pathP.getX()-GraphicsConfig.CAR_WIDTH/2+this.changeLaneCounter, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
+							g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.UP, ib),pathP.getX()-GraphicsConfig.CAR_WIDTH/2+this.changeLaneCounter, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
 						} else {
-							g2d.drawImage(ib.getCarUp(),pathP.getX()-GraphicsConfig.CAR_WIDTH/2 + GraphicsConfig.DISTANCE_BETWEEN_LANES, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
+							g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.UP, ib),pathP.getX()-GraphicsConfig.CAR_WIDTH/2 + GraphicsConfig.DISTANCE_BETWEEN_LANES, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
 							this.changeLaneCounter = 0;
 							this.laneChoise = 2;
 						}
 					} else if (this.laneChoise == 4) {
 						this.changeLaneCounter+=this.speed/2;
 						if(this.changeLaneCounter<GraphicsConfig.DISTANCE_BETWEEN_LANES){
-							g2d.drawImage(ib.getCarUp(),pathP.getX()-GraphicsConfig.CAR_WIDTH/2 + GraphicsConfig.DISTANCE_BETWEEN_LANES - this.changeLaneCounter, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
+							g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.UP, ib),pathP.getX()-GraphicsConfig.CAR_WIDTH/2 + GraphicsConfig.DISTANCE_BETWEEN_LANES - this.changeLaneCounter, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
 						} else {
-							g2d.drawImage(ib.getCarUp(),pathP.getX()-GraphicsConfig.CAR_WIDTH/2, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
+							g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.UP, ib),pathP.getX()-GraphicsConfig.CAR_WIDTH/2, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
 							this.changeLaneCounter = 0;
 							this.laneChoise = 1;
 						}
 					} else {
-						g2d.drawImage(ib.getCarUp(),pathP.getX()-GraphicsConfig.CAR_WIDTH/2, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
+						g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.UP, ib),pathP.getX()-GraphicsConfig.CAR_WIDTH/2, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null );
 						
 					}
 				}
@@ -975,7 +977,7 @@ public class StandartCar {
 			     newXform.rotate(Math.toRadians(pathP.getRotation()), xRot, yRot);
 			     g2d.setTransform(newXform);
 			     //draw image centered in panel
-			     g2d.drawImage(ib.getCarUp(),pathP.getX() - GraphicsConfig.CAR_WIDTH/2, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null);
+			     g2d.drawImage(ImagesSelector.carSelector(carType, driverType, AgentConfig.UP, ib),pathP.getX() - GraphicsConfig.CAR_WIDTH/2, pathP.getY() - GraphicsConfig.CAR_LENGTH/2, GraphicsConfig.CAR_WIDTH, GraphicsConfig.CAR_LENGTH, null);
 			    
 			     g2d.setTransform(origXform);
 			 

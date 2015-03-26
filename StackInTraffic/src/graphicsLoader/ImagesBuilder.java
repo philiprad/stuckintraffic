@@ -165,16 +165,16 @@ public class ImagesBuilder {
 	
 	
 	/** The car up. */
-	private Image carUp;
+	public Image carUp;
 	
 	/** The car down. */
-	private Image carDown;
+	public Image carDown;
 	
 	/** The car left. */
-	private Image carLeft;
+	public Image carLeft;
 	
 	/** The car right. */
-	private Image carRight;
+	public Image carRight;
 	
 	/** The vertical red light. */
 	private Image verticalRedLight;
@@ -203,7 +203,104 @@ public class ImagesBuilder {
 	/** The cursor delete. */
 	private Image cursorDelete;
 	
+	public Image carBHUp;
 	
+	/** The car down. */
+	public Image carBHDown;
+	
+	/** The car left. */
+	public Image carBHLeft;
+	
+	/** The car right. */
+	public Image carBHRight;
+	
+	public Image carBEUp;
+	
+	/** The car down. */
+	public Image carBEDown;
+	
+	/** The car left. */
+	public Image carBELeft;
+	
+	/** The car right. */
+	public Image carBERight;
+	
+	public Image carBPUp;
+	
+	/** The car down. */
+	public Image carBPDown;
+	
+	/** The car left. */
+	public Image carBPLeft;
+	
+	/** The car right. */
+	public Image carBPRight;
+	
+	public Image carYHUp;
+	
+	/** The car down. */
+	public Image carYHDown;
+	
+	/** The car left. */
+	public Image carYHLeft;
+	
+	/** The car right. */
+	public Image carYHRight;
+	
+	public Image carYEUp;
+	
+	/** The car down. */
+	public Image carYEDown;
+	
+	/** The car left. */
+	public Image carYELeft;
+	
+	/** The car right. */
+	public Image carYERight;
+	
+	public Image carYPUp;
+	
+	/** The car down. */
+	public Image carYPDown;
+	
+	/** The car left. */
+	public Image carYPLeft;
+	
+	/** The car right. */
+	public Image carYPRight;
+	
+	public Image carRHUp;
+	
+	/** The car down. */
+	public Image carRHDown;
+	
+	/** The car left. */
+	public Image carRHLeft;
+	
+	/** The car right. */
+	public Image carRHRight;
+	
+	public Image carREUp;
+	
+	/** The car down. */
+	public Image carREDown;
+	
+	/** The car left. */
+	public Image carRELeft;
+	
+	/** The car right. */
+	public Image carRERight;
+	
+	public Image carRPUp;
+	
+	/** The car down. */
+	public Image carRPDown;
+	
+	/** The car left. */
+	public Image carRPLeft;
+	
+	/** The car right. */
+	public Image carRPRight;
 	
 	/**
 	 * Instantiates a new images builder.
@@ -279,6 +376,51 @@ public class ImagesBuilder {
 		this.stepButton =  loadImage(GraphicsConfig.STEP_BUTTON);
 		this.playButton =  loadImage(GraphicsConfig.PLAY_BUTTON);
 		this.stopButton =  loadImage(GraphicsConfig.STOP_BUTTON);
+		
+		this.carBEUp = loadImage(GraphicsConfig.CAR_BLUEE_UP_IMG);
+		this.carBEDown = loadImage(GraphicsConfig.CAR_BLUEE_DOWN_IMG);
+		this.carBERight = loadImage(GraphicsConfig.CAR_BLUEE_RIGHT_IMG);
+		this.carBELeft = loadImage(GraphicsConfig.CAR_BLUEE_LEFT_IMG);
+		
+		this.carBHUp = loadImage(GraphicsConfig.CAR_BLUEH_UP_IMG);
+		this.carBHDown = loadImage(GraphicsConfig.CAR_BLUEH_DOWN_IMG);
+		this.carBHRight = loadImage(GraphicsConfig.CAR_BLUEH_RIGHT_IMG);
+		this.carBHLeft = loadImage(GraphicsConfig.CAR_BLUEH_LEFT_IMG);
+		
+		this.carBPUp = loadImage(GraphicsConfig.CAR_BLUEP_UP_IMG);
+		this.carBPDown = loadImage(GraphicsConfig.CAR_BLUEP_DOWN_IMG);
+		this.carBPRight = loadImage(GraphicsConfig.CAR_BLUEP_RIGHT_IMG);
+		this.carBPLeft = loadImage(GraphicsConfig.CAR_BLUEP_LEFT_IMG);
+		
+		this.carREUp = loadImage(GraphicsConfig.CAR_REDE_UP_IMG);
+		this.carREDown = loadImage(GraphicsConfig.CAR_REDE_DOWN_IMG);
+		this.carRERight = loadImage(GraphicsConfig.CAR_REDE_RIGHT_IMG);
+		this.carRELeft = loadImage(GraphicsConfig.CAR_REDE_LEFT_IMG);
+		
+		this.carRPUp = loadImage(GraphicsConfig.CAR_REDP_UP_IMG);
+		this.carRPDown = loadImage(GraphicsConfig.CAR_REDP_DOWN_IMG);
+		this.carRPRight = loadImage(GraphicsConfig.CAR_REDP_RIGHT_IMG);
+		this.carRPLeft = loadImage(GraphicsConfig.CAR_REDP_LEFT_IMG);
+		
+		this.carRHUp = loadImage(GraphicsConfig.CAR_REDE_UP_IMG);
+		this.carRHDown = loadImage(GraphicsConfig.CAR_REDE_DOWN_IMG);
+		this.carRHRight = loadImage(GraphicsConfig.CAR_REDE_RIGHT_IMG);
+		this.carRHLeft = loadImage(GraphicsConfig.CAR_REDE_LEFT_IMG);
+		
+		this.carYEUp = loadImage(GraphicsConfig.CAR_YELLOWE_UP_IMG);
+		this.carYEDown = loadImage(GraphicsConfig.CAR_YELLOWE_DOWN_IMG);
+		this.carYERight = loadImage(GraphicsConfig.CAR_YELLOWE_RIGHT_IMG);
+		this.carYELeft = loadImage(GraphicsConfig.CAR_YELLOWE_LEFT_IMG);
+		
+		this.carYPUp = loadImage(GraphicsConfig.CAR_YELLOWP_UP_IMG);
+		this.carYPDown = loadImage(GraphicsConfig.CAR_YELLOWP_DOWN_IMG);
+		this.carYPRight = loadImage(GraphicsConfig.CAR_YELLOWP_RIGHT_IMG);
+		this.carYPLeft = loadImage(GraphicsConfig.CAR_YELLOWP_LEFT_IMG);
+		
+		this.carYHUp = loadImage(GraphicsConfig.CAR_YELLOWH_UP_IMG);
+		this.carYHDown = loadImage(GraphicsConfig.CAR_YELLOWH_DOWN_IMG);
+		this.carYHRight = loadImage(GraphicsConfig.CAR_YELLOWH_RIGHT_IMG);
+		this.carYHLeft = loadImage(GraphicsConfig.CAR_YELLOWH_LEFT_IMG);
 	}
 	
 	/**

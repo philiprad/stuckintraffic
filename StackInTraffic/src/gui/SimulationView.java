@@ -94,6 +94,8 @@ public class SimulationView extends JPanel{
 	
 	private JLabel numberLabel;
 	
+	private JLabel speedLabel;
+	
 	/**
 	 * Instantiates a new simulation view.
 	 *
@@ -155,7 +157,7 @@ public class SimulationView extends JPanel{
         
         
         
-		this.frame.add(this, BorderLayout.WEST);
+		this.frame.add(this, BorderLayout.CENTER);
      
         //-----------------------------timer implementation
 		JMenuBar menubar = new JMenuBar();
@@ -288,6 +290,17 @@ public class SimulationView extends JPanel{
 		numberLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		toolbar.add(carsLabel);
 		toolbar.add(numberLabel);
+		
+		JLabel carsAvgLabel = new JLabel();
+		carsAvgLabel.setText("Avg car speed: ");
+		carsAvgLabel.setFont(font);
+		carsAvgLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		speedLabel = new JLabel();
+		speedLabel.setText("");
+		speedLabel.setFont(font1);
+		speedLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		toolbar.add(carsAvgLabel);
+		toolbar.add(speedLabel);
 
 	}
 	
@@ -303,6 +316,7 @@ public class SimulationView extends JPanel{
 		carScrollBar.setMaximum(numberOfCars);
 		carScrollBar.setValue(numberOfCars/2);
 		this.numberLabel.setText(""+gDrawer.getCarListSize());
+		this.updateAvgSpeedOfCars();
 		carScrollBar.addAdjustmentListener(new AdjustmentListener() {
 		
 			public void adjustmentValueChanged(AdjustmentEvent e) {
@@ -324,7 +338,7 @@ public class SimulationView extends JPanel{
 		stopButton.addActionListener(new StopListener(gDrawer));
 		refreshButton.addActionListener(new StepListener(gDrawer));
 		this.scrollPane = new JScrollPane(gDrawer);
-		this.add(this.scrollPane);
+		this.add(this.scrollPane, BorderLayout.CENTER);
 		this.revalidate();
 		this.validate();
 	
@@ -332,6 +346,10 @@ public class SimulationView extends JPanel{
 	
 		public void updateNumberOfCars(){
 			SimulationView.this.numberLabel.setText(""+gDrawer.getCarListSize());
+		}
+		
+		public void updateAvgSpeedOfCars(){
+			SimulationView.this.speedLabel.setText(""+gDrawer.avgSpeed()+" M/S");
 		}
 	
 	

@@ -6,6 +6,7 @@ package graphicsLoader;
 
 import java.awt.Image;
 
+import agents.AgentConfig;
 import trafficInfrastructure.road.RoadConfig;
 
 // TODO: Auto-generated Javadoc
@@ -190,4 +191,174 @@ public static Image selectCarImage(int blockType, int direction, ImagesBuilder i
 		
 		}
 	}
+
+
+
+public static Image carSelector(int carType,int driverType, int direction, ImagesBuilder ib){
+	
+	Image img = null;
+	switch(driverType){
+	case AgentConfig.NORMAL_DRIVER :
+		switch(carType){
+		case AgentConfig.PETROL_CAR:
+			switch(direction){
+			case AgentConfig.RIGHT:
+				img = ib.carBPRight;
+				break;
+			case AgentConfig.LEFT:
+				img = ib.carBPLeft;
+				break;
+			case AgentConfig.UP:
+				img = ib.carBPUp;
+				break;
+			case AgentConfig.DOWN:
+				img = ib.carBPDown;
+				break;
+			}break;
+		case AgentConfig.ELECTRIC_CAR :
+			switch(direction){
+			case AgentConfig.RIGHT:
+				img = ib.carBERight;
+				break;
+			case AgentConfig.LEFT:
+				img = ib.carBELeft;
+				break;
+			case AgentConfig.UP:
+				img = ib.carBEUp;
+				break;
+			case AgentConfig.DOWN:
+				img = ib.carBEDown;
+				break;
+			}break;
+		case AgentConfig.HYBRID_CAR :
+			switch(direction){
+			case AgentConfig.RIGHT:
+				img = ib.carBHRight;
+				break;
+			case AgentConfig.LEFT:
+				img = ib.carBHLeft;
+				break;
+			case AgentConfig.UP:
+				img = ib.carBHUp;
+				break;
+			case AgentConfig.DOWN:
+				img = ib.carBHDown;
+				break;
+			}break;
+	
+		}break;
+		
+		
+	
+	case AgentConfig.FAST_DRIVER :
+		switch(carType){
+		case AgentConfig.PETROL_CAR:
+			switch(direction){
+			case AgentConfig.RIGHT:
+				img = ib.carRPRight;
+				break;
+			case AgentConfig.LEFT:
+				img = ib.carRPLeft;
+				break;
+			case AgentConfig.UP:
+				img = ib.carRPUp;
+				break;
+			case AgentConfig.DOWN:
+				img = ib.carRPDown;
+				break;
+			} break;
+		case AgentConfig.ELECTRIC_CAR :
+			switch(direction){
+			case AgentConfig.RIGHT:
+				img = ib.carRERight;
+				break;
+			case AgentConfig.LEFT:
+				img = ib.carRELeft;
+				break;
+			case AgentConfig.UP:
+				img = ib.carREUp;
+			case AgentConfig.DOWN:
+				
+				img = ib.carREDown;
+				break;
+			}break;
+		case AgentConfig.HYBRID_CAR :
+			switch(direction){
+			case AgentConfig.RIGHT:
+				img = ib.carRHRight;
+				break;
+			case AgentConfig.LEFT:
+				img = ib.carRHLeft;
+				break;
+			case AgentConfig.UP:
+				img = ib.carRHUp;
+				break;
+			case AgentConfig.DOWN:
+				img = ib.carRHDown;
+				break;
+			} break;
+	
+		}break;
+		
+	case AgentConfig.FAMILY_DRIVER :
+		switch(carType){
+		case AgentConfig.PETROL_CAR:
+			switch(direction){
+			case AgentConfig.RIGHT:
+				img = ib.carYPRight;
+				break;
+			case AgentConfig.LEFT:
+				img = ib.carYPLeft;
+				break;
+			case AgentConfig.UP:
+				img = ib.carYPUp;
+				break;
+			case AgentConfig.DOWN:
+				img = ib.carYPDown;
+				break;
+			} break;
+		case AgentConfig.ELECTRIC_CAR :
+			switch(direction){
+			case AgentConfig.RIGHT:
+				img = ib.carYERight;
+				break;
+			case AgentConfig.LEFT:
+				img = ib.carYELeft;
+				break;
+			case AgentConfig.UP:
+				img = ib.carYEUp;
+				break;
+			case AgentConfig.DOWN:
+				img = ib.carYEDown;
+				break;
+			}break;
+		case AgentConfig.HYBRID_CAR :
+			switch(direction){
+			case AgentConfig.RIGHT:
+				img = ib.carYHRight;
+				break;
+			case AgentConfig.LEFT:
+				img = ib.carYHLeft;
+				break;
+			case AgentConfig.UP:
+				img = ib.carYHUp;
+				break;
+			case AgentConfig.DOWN:
+				img = ib.carYHDown;
+				break;
+			}break;
+	
+		}break;
+		
+		
+	
+		
+		
+	}
+	return img;
 }
+
+}
+
+
+

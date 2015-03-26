@@ -47,5 +47,13 @@ public class AgentConfig {
 	public static final short HYBRID_CAR = 2;
 	
 	public static final short PETROL_CAR = 3;
+	
+	public static final short RIGHT = 3;
+	
+	public static final short LEFT = 4;
+	
+	public static final short UP = 1;
+	
+	public static final short DOWN = 2;
 		
 }
