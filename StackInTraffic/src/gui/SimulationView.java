@@ -96,6 +96,18 @@ public class SimulationView extends JPanel{
 	
 	private JLabel speedLabel;
 	
+	private JLabel petrolNumber;
+	
+	private JLabel coNumber;
+	
+	private JLabel usageNumber;
+	
+	private JLabel numberOfElectricCars;
+	
+	private JLabel numberOfPetrolCars;
+	
+	private JLabel numberOfHybridCars;
+	
 	/**
 	 * Instantiates a new simulation view.
 	 *
@@ -291,6 +303,22 @@ public class SimulationView extends JPanel{
 		toolbar.add(carsLabel);
 		toolbar.add(numberLabel);
 		
+		toolbar.addSeparator(new Dimension(100,30));
+		
+		
+		JLabel usageLabel = new JLabel();
+		usageLabel.setText("Roads usage: ");
+		usageLabel.setFont(font);
+		usageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		usageNumber = new JLabel();
+		usageNumber.setText("");
+		usageNumber.setFont(font1);
+		usageNumber.setAlignmentX(Component.CENTER_ALIGNMENT);
+		toolbar.add(usageLabel);
+		toolbar.add(usageNumber);
+		
+		toolbar.addSeparator(new Dimension(100,30));
+		
 		JLabel carsAvgLabel = new JLabel();
 		carsAvgLabel.setText("Avg car speed: ");
 		carsAvgLabel.setFont(font);
@@ -301,6 +329,41 @@ public class SimulationView extends JPanel{
 		speedLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		toolbar.add(carsAvgLabel);
 		toolbar.add(speedLabel);
+		
+		toolbar.addSeparator(new Dimension(100,30));
+		
+		JLabel petrolLabel = new JLabel();
+		petrolLabel.setText("Avg petrol consumption: ");
+		JLabel petrol1Label = new JLabel();
+		petrol1Label.setText("per 100 miles");
+		petrolLabel.setFont(font);
+		petrolLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		petrol1Label.setFont(font);
+		petrol1Label.setAlignmentX(Component.CENTER_ALIGNMENT);
+		petrolNumber = new JLabel();
+		petrolNumber.setText("");
+		petrolNumber.setFont(font1);
+		petrolNumber.setAlignmentX(Component.CENTER_ALIGNMENT);
+		toolbar.add(petrolLabel);
+		toolbar.add(petrol1Label);
+		toolbar.add(petrolNumber);
+		
+		toolbar.addSeparator(new Dimension(100,30));
+		
+		JLabel coLabel = new JLabel();
+		coLabel.setText("Avg CO2 emission: ");
+		coLabel.setFont(font);
+		coLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		coNumber = new JLabel();
+		coNumber.setText("");
+		coNumber.setFont(font1);
+		coNumber.setAlignmentX(Component.CENTER_ALIGNMENT);
+		toolbar.add(coLabel);
+		toolbar.add(coNumber);
+		
+		toolbar.addSeparator(new Dimension(100,30));
+		
+		
 
 	}
 	
@@ -316,7 +379,7 @@ public class SimulationView extends JPanel{
 		carScrollBar.setMaximum(numberOfCars);
 		carScrollBar.setValue(numberOfCars/2);
 		this.numberLabel.setText(""+gDrawer.getCarListSize());
-		this.updateAvgSpeedOfCars();
+		this.updateStatistics();
 		carScrollBar.addAdjustmentListener(new AdjustmentListener() {
 		
 			public void adjustmentValueChanged(AdjustmentEvent e) {
@@ -344,13 +407,15 @@ public class SimulationView extends JPanel{
 	
 	}
 	
-		public void updateNumberOfCars(){
+		public void updateStatistics(){
 			SimulationView.this.numberLabel.setText(""+gDrawer.getCarListSize());
+			SimulationView.this.speedLabel.setText(""+gDrawer.avgSpeed()+" MPH");
+			SimulationView.this.petrolNumber.setText(""+gDrawer.getAvgPetrolConsumption()+" L");
+			SimulationView.this.usageNumber.setText(""+gDrawer.getUtilisationOfRoads()+" %");
+			SimulationView.this.coNumber.setText(""+gDrawer.getAvgCoEmission()+"g/Km");
+			
 		}
 		
-		public void updateAvgSpeedOfCars(){
-			SimulationView.this.speedLabel.setText(""+gDrawer.avgSpeed()+" M/S");
-		}
 	
 	
 	

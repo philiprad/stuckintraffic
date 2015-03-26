@@ -93,6 +93,12 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	
 	private SimulationView view;
 	
+	private double petrolConsumption;
+	
+	private double coEmission;
+	
+	private int maximumMapCapacity;
+	
 	/**
 	 * Instantiates a new graphics drawer.
 	 *
@@ -116,6 +122,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		RoadBlocksBuffer roadBlockBuffer = new RoadBlocksBuffer(fileName);
 		this.roadBlockGrid = roadBlockBuffer.getRoadBlockBufferArray();
 		this.maximumCars = this.getMaximumNumberOfCars()/2;
+		this.maximumMapCapacity = this.getMaximumNumberOfCars();
 		TrafficLightsBuilder trafficLightBuilder = new TrafficLightsBuilder(gridBuilder, this.roadBlockGrid);
 		trafficLightBuilder.buildTrafficLights();
 		this.trafficLightList =trafficLightBuilder.getTrafficLightList();
@@ -142,12 +149,24 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		this.timer.stop();
 	}
 	
+	public double getAvgCoEmission(){
+		return this.coEmission;
+	}
+	
+	public double getAvgPetrolConsumption(){
+		return this.petrolConsumption;
+	}
+	
 	public void pause(){
 		this.timer.stop();
 	}
 	
 	public int getNumberOfCars(){
 		return this.maximumCars;
+	}
+	
+	public double getUtilisationOfRoads(){
+		return this.maximumMapCapacity/100*this.carList.size();
 	}
 	
 	/**
@@ -234,8 +253,8 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 			}
 		
 		}
-		view.updateNumberOfCars();
-		view.updateAvgSpeedOfCars();
+		
+		view.updateStatistics();
 		this.carGridPositionUpdate();
 		
 		repaint();
@@ -282,13 +301,22 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	
 	public double avgSpeed(){
 		double speed = 0;
+		double coEmission = 0;
+		double petrolConsumption = 0;
 		if (!this.carList.isEmpty()){
 			for (StandartCar cr : this.carList)	{
 				speed+=cr.getCarSpeed();
+				coEmission+=cr.getCoEmission();
+				petrolConsumption+=cr.getPetrolEmission();
 			}
-		
-			double avgSpeed = speed/carList.size()*0.18/this.timer.getDelay()*1000;
-			Double avgRounded=new BigDecimal(avgSpeed ).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+			
+			
+			Double avgRounded=new BigDecimal(coEmission/this.carList.size()).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+			this.coEmission = avgRounded;
+			avgRounded=new BigDecimal(petrolConsumption/this.carList.size()).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+			this.petrolConsumption = avgRounded;
+			double avgSpeed = speed/carList.size()*0.18/40*1000*2.236936;
+		    avgRounded=new BigDecimal(avgSpeed ).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 			speed = avgRounded;
 		}
 		return speed;
@@ -343,6 +371,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		int driver = rand.nextInt(3);
 		int carType = rand.nextInt(3);
 		driver++;
+		carType++;
 		int roadBkX = this.arrPath.get(x).getPathPoints().get(0).getX()/GraphicsConfig.BLOCK_SIDE_SIZE;
 		int roadBkY = this.arrPath.get(x).getPathPoints().get(0).getY()/GraphicsConfig.BLOCK_SIDE_SIZE;
 		RoadBlock roadBk =(RoadBlock)this.roadBlockGrid[roadBkX][roadBkY];

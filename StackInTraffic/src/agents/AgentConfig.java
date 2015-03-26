@@ -55,5 +55,20 @@ public class AgentConfig {
 	public static final short UP = 1;
 	
 	public static final short DOWN = 2;
-		
+	
+	// EMISSION g/Mile
+	
+	public static final double ELECTRIC_CAR_EMISSION = 0;
+	
+	public static final double PETROL_CAR_EMISSION = 156;
+	
+	public static final double HYBRID_CAR_EMISSION = 93;
+	
+	// Petrol Cosumption per 100 mile
+	
+	public static final double ELECTRIC_CAR_CONSUMPTION = 0;
+	
+	public static final double PETROL_CAR_CONSUMPTION = 6.33;
+	
+	public static final double HYBRID_CAR_CONSUMPTION = 2.8;
 }

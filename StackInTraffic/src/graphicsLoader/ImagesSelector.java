@@ -277,8 +277,8 @@ public static Image carSelector(int carType,int driverType, int direction, Image
 				break;
 			case AgentConfig.UP:
 				img = ib.carREUp;
+				break;
 			case AgentConfig.DOWN:
-				
 				img = ib.carREDown;
 				break;
 			}break;

@@ -23,6 +23,8 @@ public class StandartCar {
 		/** The co emission. */
 		private double coEmission = 0;
 		
+		private double petroConsumption = 0;
+		
 		/** The path. */
 		private Path path;
 		
@@ -83,14 +85,31 @@ public class StandartCar {
 			this.speed =((RoadBlock)roadBlock[this.carX/GraphicsConfig.BLOCK_SIDE_SIZE][this.carY/GraphicsConfig.BLOCK_SIDE_SIZE]).getSpeedLimit();
 			this.driverSpeedUpdate();
 			this.updateSecurityDistance();
-			
+			switch(this.carType){
+			case AgentConfig.ELECTRIC_CAR :
+				this.coEmission = AgentConfig.ELECTRIC_CAR_EMISSION;
+				this.petroConsumption = AgentConfig.ELECTRIC_CAR_CONSUMPTION;
+				break;
+			case AgentConfig.HYBRID_CAR :
+				this.coEmission = AgentConfig.HYBRID_CAR_EMISSION;
+				this.petroConsumption = AgentConfig.HYBRID_CAR_CONSUMPTION;
+				break;
+			case AgentConfig.PETROL_CAR :
+				this.coEmission = AgentConfig.PETROL_CAR_EMISSION;
+				this.petroConsumption = AgentConfig.PETROL_CAR_CONSUMPTION;
+				break;
+			}
 			if(this.driverType == AgentConfig.FAMILY_DRIVER){
 				
 					this.acceleration = AgentConfig.FAMILY_DRIVER_ACCELERATION;
+					this.coEmission = this.coEmission*110/100;
+					this.petroConsumption = this.petroConsumption*110/100;
 			
 			} else if (this.driverType == AgentConfig.FAST_DRIVER){
 				
 					this.acceleration = AgentConfig.FAST_DRIVER_ACCELERATION;
+					this.coEmission = this.coEmission*120/100;
+					this.petroConsumption = this.petroConsumption*120/100;
 			} else {
 				this.acceleration = AgentConfig.NORMAL_DRIVER_ACCELERATION;
 			}
@@ -102,8 +121,16 @@ public class StandartCar {
 			this.isArriving = n;
 		}
 		
-		private int getSpeed(){
+		public int getSpeed(){
 			return this.speed;
+		}
+		
+		public double getCoEmission(){
+			return this.coEmission;
+		}
+		
+		public double getPetrolEmission(){
+			return this.petroConsumption;
 		}
 		
 		public void updateSecurityDistance(){
@@ -191,7 +218,7 @@ public class StandartCar {
 				}
 			} else if (this.driverType == AgentConfig.FAST_DRIVER){
 				if(this.speed>3){
-					//this.speed=this.speed*120/100;
+					this.speed=this.speed*110/100;
 				}
 			}
 		}
@@ -736,7 +763,17 @@ public class StandartCar {
 						}
 						
 						if (n<1 && canGo){
-							this.go(currentRoadBlock, nextRoadBlock);
+							if (isCarNextBlock && distanceToNextObjectNextBlock<this.securityDistance){
+								if (distanceToNextObjectNextBlock<=this.securityZeroDistance){
+									this.speed = 0;
+								} else {
+									this.deceleration(decelerationDistanceNextBlock, nextObjectSpeedNextBlock);
+								}
+								
+							} else {
+								this.go(currentRoadBlock, nextRoadBlock);//this.acceleration(); 
+							}
+							//this.go(currentRoadBlock, nextRoadBlock);
 							System.out.println("there is NO  car");
 						} else {
 							if (trafficLights.get(trafficLightIndex).getDistanceToTrafficLight(this.getCarX(), this.getCarY())<GraphicsConfig.BLOCK_SIDE_SIZE/10){
