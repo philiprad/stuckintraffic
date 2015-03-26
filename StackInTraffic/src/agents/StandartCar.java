@@ -738,7 +738,7 @@ public class StandartCar {
 									}
 								}
 							}
-						} else {
+						} /*else {
 							if(!this.equals(car) && distanceToNextBlock>car.getDistanceToObject(this.nextRoadBlockX, this.nextRoadBlockY)){
 								if((this.getExit() == 1 || this.getExit() == 2) && (car.getExit() == 1 || car.getExit() == 2 || car.getExit() == 3 || car.getExit() == 4) && (car.getDistanceToObject(car.getCenterX(), car.getCenterY())<GraphicsConfig.CAR_ROUND_ABOUT_POSITION_1 + 2) && (car.getDistanceToObject(this.getCenterX(), this.getCenterY())>GraphicsConfig.CAR_ROUND_ABOUT_POSITION_1 + 2)){
 									int distance = this.getDistanceToObject(car.getCarX(), car.getCarY());
@@ -773,7 +773,7 @@ public class StandartCar {
 								}
 							}
 						}
-					}
+					}*/
 				}
 			}  
 			
@@ -788,7 +788,7 @@ public class StandartCar {
 						for(StandartCar car: carList){ //Except the roand about it could be only 2 cars with the same direction and the same lane
 
 								if (!this.equals(car)){
-									if (nextRoadBlock.getBlockType() != RoadConfig.ROUND_ABOUT_BLOCK){
+									//if (nextRoadBlock.getBlockType() != RoadConfig.ROUND_ABOUT_BLOCK){
 									if(carDirectionNextBlock==car.getPathDirection() && (this.getLaneChoice() == car.getLaneChoice() || car.getLaneChoice() == 3 || car.getLaneChoice() == 4) ){
 										int distance = this.getDistanceToObject(car.getCarX(), car.getCarY());
 										
@@ -808,7 +808,7 @@ public class StandartCar {
 										}
 									}
 								
-								} else {
+								} /*else {
 									
 									if((this.getExit() == 1 || this.getExit() == 2) && (car.getExit() == 1 || car.getExit() == 2 || car.getExit() == 3 || car.getExit() == 4) && (car.getDistanceToObject(car.getCenterX(), car.getCenterY())<GraphicsConfig.CAR_ROUND_ABOUT_POSITION_1 + 2) && (car.getDistanceToObject(this.getCenterX(), this.getCenterY())>GraphicsConfig.CAR_ROUND_ABOUT_POSITION_1 + 2)){
 											int distance = this.getDistanceToObject(car.getCarX(), car.getCarY());
@@ -842,7 +842,7 @@ public class StandartCar {
 											}
 										}
 									}
-								}
+								}*/
 							}
 						}
 					} 
@@ -896,9 +896,9 @@ public class StandartCar {
 			
 			
 			if(isCarCurrentBlock && distanceToNextObject<this.securityDistance){
-				if(nextRoadBlock.getBlockType() == RoadConfig.ROUND_ABOUT_BLOCK && nextRoadBlock.isCarInside()){
+				/*if(nextRoadBlock.getBlockType() == RoadConfig.ROUND_ABOUT_BLOCK && nextRoadBlock.isCarInside()){
 					this.speed--;
-				} 
+				} else*/
 				
 				if (distanceToNextObject<=this.securityZeroDistance){
 					this.speed = 0;
