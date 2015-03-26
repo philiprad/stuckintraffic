@@ -1,6 +1,6 @@
 /*
  * @author  Maxim Vasilishin
- * @version 1.0
+ * @version 4.0
  */
 package graphicsLoader.SimulatorBilder;
 
@@ -65,6 +65,7 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	/** The arr path. */
 	private ArrayList<Path> arrPath;
 	
+	/** The arr double path. */
 	private ArrayList<DoublePath> arrDoublePath;
 	
 	/** The car list. */
@@ -73,10 +74,13 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	/** The traffic light list. */
 	private ArrayList<TrafficLight> trafficLightList;
 	
+	/** The arr traffic light set single. */
 	private ArrayList<TrafficLightSetSingleIntersection> arrTrafficLightSetSingle;
 	
+	/** The arr traffic light set double. */
 	private ArrayList<TrafficLightSetDoubleIntersection> arrTrafficLightSetDouble;
 	
+	/** The arr traffic light set mixed. */
 	private ArrayList<TrafficLightSetMixedIntersection> arrTrafficLightSetMixed;
 	
 	/** The road block grid. */
@@ -89,19 +93,25 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 	/** The car add counter. */
 	private int carAddCounter = 0;
 	
+	/** The maximum cars. */
 	private int maximumCars = 0;
 	
+	/** The view. */
 	private SimulationView view;
 	
+	/** The petrol consumption. */
 	private double petrolConsumption;
 	
+	/** The co emission. */
 	private double coEmission;
 	
+	/** The maximum map capacity. */
 	private int maximumMapCapacity;
 	
 	/**
 	 * Instantiates a new graphics drawer.
 	 *
+	 * @param view the view
 	 * @param delay the delay
 	 * @param fileName the file name
 	 * @param arrBG the arr bg
@@ -149,22 +159,45 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		this.timer.stop();
 	}
 	
+	/**
+	 * Gets the avg co emission.
+	 *
+	 * @return the avg co emission
+	 */
 	public double getAvgCoEmission(){
 		return this.coEmission;
 	}
 	
+	/**
+	 * Gets the avg petrol consumption.
+	 *
+	 * @return the avg petrol consumption
+	 */
 	public double getAvgPetrolConsumption(){
 		return this.petrolConsumption;
 	}
 	
+	/**
+	 * Pause.
+	 */
 	public void pause(){
 		this.timer.stop();
 	}
 	
+	/**
+	 * Gets the number of cars.
+	 *
+	 * @return the number of cars
+	 */
 	public int getNumberOfCars(){
 		return this.maximumCars;
 	}
 	
+	/**
+	 * Gets the utilisation of roads.
+	 *
+	 * @return the utilisation of roads
+	 */
 	public double getUtilisationOfRoads(){
 		return this.maximumMapCapacity/100*this.carList.size();
 	}
@@ -207,6 +240,9 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		stepUpdate();
 	}
 	
+	/**
+	 * Step update.
+	 */
 	public void stepUpdate(){
 		this.carAddCounter++;
 		
@@ -299,6 +335,11 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		}
 	}
 	
+	/**
+	 * Avg speed.
+	 *
+	 * @return the double
+	 */
 	public double avgSpeed(){
 		double speed = 0;
 		double coEmission = 0;
@@ -322,6 +363,11 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		return speed;
 	}
 	
+	/**
+	 * Update cars.
+	 *
+	 * @param n the n
+	 */
 	public void updateCars(int n){
 		int difference = this.carList.size() - n;
 		if (difference>0){
@@ -333,6 +379,11 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		
 	}
 	
+	/**
+	 * Gets the maximum number of cars.
+	 *
+	 * @return the maximum number of cars
+	 */
 	public int getMaximumNumberOfCars(){
 		int counter = 0;
 		for (int i = 0 ;i<this.gridBuilder.getGrid().length; i++){
@@ -348,10 +399,20 @@ public class GraphicsDrawer extends JPanel implements ActionListener{
 		return counter;
 	}
 	
+	/**
+	 * Gets the car list size.
+	 *
+	 * @return the car list size
+	 */
 	public int getCarListSize(){
 		return this.carList.size();
 	}
 	
+	/**
+	 * Delete random cars.
+	 *
+	 * @param n the n
+	 */
 	public void deleteRandomCars(int n){
 		
 		for(int i = 0; i<=n ; i++){

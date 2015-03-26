@@ -1,6 +1,6 @@
 /*
  * @author  Maxim Vasilishin
- * @version 1.0
+ * @version 4.0
  */
 package trafficInfrastructure.road;
 
@@ -202,30 +202,43 @@ public class RoadConfig {
 	/** The Constant BOTTOM_2_TO_2_TOP. */
 	public static final short BOTTOM_2_TO_2_TOP = 151;
 	
+	/** The Constant LEFT_1_TO_1_BOTTOM. */
 	public static final short LEFT_1_TO_1_BOTTOM = -52;
 	
+	/** The Constant LEFT_1_TO_2_BOTTOM. */
 	public static final short LEFT_1_TO_2_BOTTOM = -153;
 	
+	/** The Constant RIGHT_1_TO_1_TOP. */
 	public static final short RIGHT_1_TO_1_TOP = -54;
 	
+	/** The Constant RIGHT_1_TO_2_TOP. */
 	public static final short RIGHT_1_TO_2_TOP = -155;
 	
+	/** The Constant TOP_1_TO_1_LEFT. */
 	public static final short TOP_1_TO_1_LEFT = -55;
 	
+	/** The Constant TOP_1_TO_2_LEFT. */
 	public static final short TOP_1_TO_2_LEFT = -158;
 	
+	/** The Constant BOTTOM_1_TO_1_RIGHT. */
 	public static final short BOTTOM_1_TO_1_RIGHT = -56;
 	
+	/** The Constant BOTTOM_1_TO_2_RIGHT. */
 	public static final short BOTTOM_1_TO_2_RIGHT = -157;
 	
+	/** The Constant HORIZONTAL_DOUBLE_BLOCK_TEMP. */
 	public static final short HORIZONTAL_DOUBLE_BLOCK_TEMP = -101;
 	
+	/** The Constant VERTICAL_DOUBLE_BLOCK_TEMP. */
 	public static final short VERTICAL_DOUBLE_BLOCK_TEMP = -102;
 	
+	/** The Constant INTERSECTION_DOUBLE_TEMP. */
 	public static final short INTERSECTION_DOUBLE_TEMP = -104;
 	
+	/** The Constant MIXED_HORIZONTAL_INTERSECTION_TEMP. */
 	public static final short MIXED_HORIZONTAL_INTERSECTION_TEMP = -105;
 	
+	/** The Constant MIXED_VERTICAL_INTERSECTION_TEMP. */
 	public static final short MIXED_VERTICAL_INTERSECTION_TEMP = -106;
 	
 }

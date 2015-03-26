@@ -1,6 +1,6 @@
 /*
  * @author  Maxim Vasilishin
- * @version 1.0
+ * @version 4.0
  */
 package trafficInfrastructure.roadPath;
 
@@ -30,10 +30,13 @@ public class PathPoint implements Serializable{
 	/** The direction. */
 	private int direction;
 	
+	/** The round about center x. */
 	private int roundAboutCenterX = 0;
 	
+	/** The round about center y. */
 	private int roundAboutCenterY = 0;
 	
+	/** The exit. */
 	private int exit = 0;
 	
 	/**
@@ -105,26 +108,56 @@ public class PathPoint implements Serializable{
 		return direction;
 	}
 	
+	/**
+	 * Sets the round about center x.
+	 *
+	 * @param x the new round about center x
+	 */
 	public void setRoundAboutCenterX( int x){
 		this.roundAboutCenterX = x;
 	}
 	
+	/**
+	 * Sets the round about center y.
+	 *
+	 * @param y the new round about center y
+	 */
 	public void setRoundAboutCenterY(int y){
 		this.roundAboutCenterY = y;
 	}
 	
+	/**
+	 * Gets the round about center x.
+	 *
+	 * @return the round about center x
+	 */
 	public int getRoundAboutCenterX(){
 		return this.roundAboutCenterX;
 	}
 	
+	/**
+	 * Gets the round about center y.
+	 *
+	 * @return the round about center y
+	 */
 	public int getRoundAboutCenterY(){
 		return this.roundAboutCenterY;
 	}
 	
+	/**
+	 * Sets the round about exit.
+	 *
+	 * @param i the new round about exit
+	 */
 	public void setRoundAboutExit(int i){
 		this.exit = i;
 	}
 	
+	/**
+	 * Gets the round about exit.
+	 *
+	 * @return the round about exit
+	 */
 	public int getRoundAboutExit(){
 		return this.exit;
 	}

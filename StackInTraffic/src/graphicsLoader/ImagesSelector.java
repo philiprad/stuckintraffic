@@ -1,6 +1,6 @@
 /*
  * @author  Maxim Vasilishin
- * @version 1.0
+ * @version 4.0
  */
 package graphicsLoader;
 
@@ -194,6 +194,15 @@ public static Image selectCarImage(int blockType, int direction, ImagesBuilder i
 
 
 
+/**
+ * Car selector.
+ *
+ * @param carType the car type
+ * @param driverType the driver type
+ * @param direction the direction
+ * @param ib the ib
+ * @return the image
+ */
 public static Image carSelector(int carType,int driverType, int direction, ImagesBuilder ib){
 	
 	Image img = null;

@@ -1,6 +1,6 @@
 /*
  * @author  Maxim Vasilishin
- * @version 1.0
+ * @version 4.0
  */
 package agents;
 
@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import trafficInfrastructure.road.RoadConfig;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class RoadBlock.
  */
@@ -25,6 +26,7 @@ public class RoadBlock {
 	/** The speed limit. */
 	private int speedLimit = AgentConfig.DEFAULT_SPEED_LIMIT;
 	
+	/** The arriving cars. */
 	private ArrayList<StandartCar> arrivingCars = new ArrayList<StandartCar>();
 	
 	/**
@@ -103,14 +105,27 @@ public class RoadBlock {
 		}
 	}
 	
+	/**
+	 * Gets the arriving car list.
+	 *
+	 * @return the arriving car list
+	 */
 	public ArrayList<StandartCar> getArrivingCarList(){
 		return this.arrivingCars;
 	}
 	
+	/**
+	 * Adds the arriving car.
+	 *
+	 * @param car the car
+	 */
 	public void addArrivingCar(StandartCar car){
 		this.arrivingCars.add(car);
 	}
 	
+	/**
+	 * Delete arriving car.
+	 */
 	public void deleteArrivingCar(){
 		if (!this.arrivingCars.isEmpty()){
 				for (StandartCar car : this.arrCar){

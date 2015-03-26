@@ -1,6 +1,6 @@
 /*
  * @author  Maxim Vasilishin
- * @version 1.0
+ * @version 4.0
  */
 package trafficInfrastructure;
 
@@ -368,20 +368,15 @@ public class RoadBuilder {
 	/**
 	 * Discover paths.
 	 *
-	 * @param arrPathPoint
-	 *            the arr path point
-	 * @param viop
-	 *            the viop
-	 * @param direction
-	 *            the direction
-	 * @param x
-	 *            the x
-	 * @param y
-	 *            the y
-	 * @param prevX
-	 *            the prev x
-	 * @param prevY
-	 *            the prev y
+	 * @param arrPathPoint            the arr path point
+	 * @param arrDoublePathPoint the arr double path point
+	 * @param arrPathSwitch the arr path switch
+	 * @param viop            the viop
+	 * @param direction            the direction
+	 * @param x            the x
+	 * @param y            the y
+	 * @param prevX            the prev x
+	 * @param prevY            the prev y
 	 */
 	public void discoverPaths(ArrayList<PathPoint> arrPathPoint, ArrayList<PathPoint> arrDoublePathPoint, ArrayList<PathSwitchingDifference> arrPathSwitch,  VisitedIntersectionsOnPath viop, int direction, int x, int y ,int prevX,int prevY){
 		int previousX = prevX;

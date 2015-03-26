@@ -1,3 +1,7 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 4.0
+ */
 package trafficInfrastructure.road;
 
 import graphicsLoader.GraphicsConfig;
@@ -6,9 +10,21 @@ import java.util.ArrayList;
 
 import trafficInfrastructure.roadPath.PathPoint;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class IntersectionMixedVerticalBlock.
+ */
 public class IntersectionMixedVerticalBlock {
 
 	
+	/**
+	 * Gets the left1 to1 top path.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @param blockType the block type
+	 * @return the left1 to1 top path
+	 */
 	public static ArrayList<PathPoint> getLeft1To1TopPath(int x, int y, short blockType){
 
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
@@ -32,6 +48,14 @@ public class IntersectionMixedVerticalBlock {
 	}
 	
 	
+	/**
+	 * Gets the left2 to1 bottom path.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @param blockType the block type
+	 * @return the left2 to1 bottom path
+	 */
 	public static ArrayList<PathPoint> getLeft2To1BottomPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		y+=GraphicsConfig.BLOCK_SIDE_SIZE+GraphicsConfig.DISTANCE_BETWEEN_LANES;
@@ -57,6 +81,14 @@ public class IntersectionMixedVerticalBlock {
 	}
  
 
+	/**
+	 * Gets the right1 to1 bottom path.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @param blockType the block type
+	 * @return the right1 to1 bottom path
+	 */
 	public static ArrayList<PathPoint> getRight1To1BottomPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		y+=GraphicsConfig.BLOCK_SIDE_SIZE*2;
@@ -79,6 +111,14 @@ public class IntersectionMixedVerticalBlock {
 		return arrPathPoints;
 	}
 
+	/**
+	 * Gets the right2 to1 top path.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @param blockType the block type
+	 * @return the right2 to1 top path
+	 */
 	public static ArrayList<PathPoint> getRight2To1TopPath(int x, int y, short blockType){
 		ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 		y+=GraphicsConfig.BLOCK_SIDE_SIZE - GraphicsConfig.DISTANCE_BETWEEN_LANES;
@@ -177,6 +217,14 @@ public static ArrayList<PathPoint> getTop1To2RightPath(int x, int y, short block
 return arrPathPoints;
 }
 
+/**
+ * Gets the top1 to1 left path.
+ *
+ * @param x the x
+ * @param y the y
+ * @param blockType the block type
+ * @return the top1 to1 left path
+ */
 public static ArrayList<PathPoint> getTop1To1LeftPath(int x, int y, short blockType){
 	ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 	for (int i = 0; i < GraphicsConfig.BLOCK_SIDE_SIZE; i++){
@@ -201,6 +249,14 @@ public static ArrayList<PathPoint> getTop1To1LeftPath(int x, int y, short blockT
 return arrPathPoints;
 }
 
+/**
+ * Gets the top1 to2 left path.
+ *
+ * @param x the x
+ * @param y the y
+ * @param blockType the block type
+ * @return the top1 to2 left path
+ */
 public static ArrayList<PathPoint> getTop1To2LeftPath(int x, int y, short blockType){
 	ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
 	for (int i = 0; i < GraphicsConfig.BLOCK_SIDE_SIZE-GraphicsConfig.DISTANCE_BETWEEN_LANES; i++){
@@ -294,6 +350,14 @@ public static ArrayList<PathPoint> getBottom1To2LeftPath(int x, int y, short blo
 return arrPathPoints;
 }
 
+/**
+ * Gets the bottom1 to1 right path.
+ *
+ * @param x the x
+ * @param y the y
+ * @param blockType the block type
+ * @return the bottom1 to1 right path
+ */
 public static ArrayList<PathPoint> getBottom1To1RightPath(int x, int y, short blockType){
 	
 	ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();
@@ -323,6 +387,14 @@ public static ArrayList<PathPoint> getBottom1To1RightPath(int x, int y, short bl
 return arrPathPoints;
 }
 
+/**
+ * Gets the bottom1 to2 right path.
+ *
+ * @param x the x
+ * @param y the y
+ * @param blockType the block type
+ * @return the bottom1 to2 right path
+ */
 public static ArrayList<PathPoint> getBottom1To2RightPath(int x, int y, short blockType){
 	
 	ArrayList<PathPoint> arrPathPoints = new ArrayList<PathPoint>();

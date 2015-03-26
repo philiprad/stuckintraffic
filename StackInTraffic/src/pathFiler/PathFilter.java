@@ -1,3 +1,7 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 4.0
+ */
 package pathFiler;
 
 import java.util.ArrayList;
@@ -9,10 +13,20 @@ import trafficInfrastructure.roadPath.Path;
 import trafficInfrastructure.roadPath.PathPoint;
 import util.FileRW;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PathFilter.
+ */
 public class PathFilter {
 	
+	/** The arr path. */
 	private static ArrayList<Path> arrPath;
 	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main (String[] args){
 	
 	String fileName = "Map1";

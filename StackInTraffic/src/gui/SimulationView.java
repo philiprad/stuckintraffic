@@ -1,6 +1,6 @@
 /*
  * @author  Maxim Vasilishin
- * @version 1.0
+ * @version 4.0
  */
 package gui;
 
@@ -45,6 +45,7 @@ import util.FileRW;
  */
 public class SimulationView extends JPanel{
 
+	/** The grid builder. */
 	private GridBuilder gridBuilder;
     /** The play button. */
     private JButton playButton;
@@ -76,36 +77,50 @@ public class SimulationView extends JPanel{
     /** The simulation timer. */
     private Timer simulationTimer;
     
+    /** The ib. */
     private ImagesBuilder ib = new ImagesBuilder(); 
 	
+    /** The scroll pane. */
     private JScrollPane scrollPane;
 	/** The frame. */
 	public ApplicationFrame frame;
 	
+	/** The map name. */
 	private String mapName = "";
 	
+	/** The car scroll bar. */
 	private JScrollBar carScrollBar;
 	
+	/** The motion scroll bar. */
 	private JScrollBar motionScrollBar;
 	
+	/** The g drawer. */
 	private GraphicsDrawer gDrawer;
 	
 
 	
+	/** The number label. */
 	private JLabel numberLabel;
 	
+	/** The speed label. */
 	private JLabel speedLabel;
 	
+	/** The petrol number. */
 	private JLabel petrolNumber;
 	
+	/** The co number. */
 	private JLabel coNumber;
 	
+	/** The usage number. */
 	private JLabel usageNumber;
 	
+	/** The number of electric cars. */
 	private JLabel numberOfElectricCars;
 	
+	/** The number of petrol cars. */
 	private JLabel numberOfPetrolCars;
 	
+	/** The number of hybrid cars. */
 	private JLabel numberOfHybridCars;
 	
 	/**
@@ -123,6 +138,12 @@ public class SimulationView extends JPanel{
 	
 	
 	
+	/**
+	 * Instantiates a new simulation view.
+	 *
+	 * @param frame the frame
+	 * @param mapName the map name
+	 */
 	public SimulationView(ApplicationFrame frame, String mapName){
 		this.mapName = mapName;
 		this.gridBuilder = (GridBuilder) (FileRW.readObject(MainConfig.GRID_PATH + "/"+mapName+MainConfig.GRID_SUFFIX));
@@ -135,14 +156,27 @@ public class SimulationView extends JPanel{
 	}
 	
 	
+	/**
+	 * Sets the map name.
+	 *
+	 * @param mapName the new map name
+	 */
 	public void setMapName(String mapName){
 		this.mapName = mapName;
 	}
 	
+	/**
+	 * Sets the grid builder.
+	 *
+	 * @param gridBuilder the new grid builder
+	 */
 	public void setGridBuilder(GridBuilder gridBuilder){
 		this.gridBuilder = gridBuilder;
 	}
 	
+	/**
+	 * Load main content.
+	 */
 	public void loadMainContent(){
 		this.setLayout(new BorderLayout());
 		JMenuBar menuBarTop = new JMenuBar();
@@ -154,12 +188,13 @@ public class SimulationView extends JPanel{
 	    frame.setJMenuBar(menuBarTop);
 	    
 	    JMenuItem openMap = new JMenuItem("Open");
-	    //openMap.addActionListener(new OpenListener());
+	    openMap.addActionListener(new OpenListener());
 	    JMenuItem exitMainMenu = new JMenuItem("Main Menu");
 	    exitMainMenu.addActionListener(new MainMenuListener());
 	    JMenuItem exit = new JMenuItem("Exit");
 	    exit.addActionListener(new ExitListener());
         JMenuItem editMap = new JMenuItem("Map Editor");
+        editMap.addActionListener(new MapBuilderListener());
         
         fileMenu.add(openMap);
         fileMenu.addSeparator();
@@ -367,6 +402,11 @@ public class SimulationView extends JPanel{
 
 	}
 	
+	/**
+	 * Load map.
+	 *
+	 * @param mapName the map name
+	 */
 	@SuppressWarnings("unchecked")
 	public void loadMap(String mapName){
 		ArrayList<BlockGraphicPoint> arrBG =(ArrayList<BlockGraphicPoint>) FileRW.readObject(MainConfig.ROADBLOCK_PATH+"/"+mapName+MainConfig.ROADBLOCK_GRAPHICS_SUFFIX);
@@ -407,6 +447,9 @@ public class SimulationView extends JPanel{
 	
 	}
 	
+		/**
+		 * Update statistics.
+		 */
 		public void updateStatistics(){
 			SimulationView.this.numberLabel.setText(""+gDrawer.getCarListSize());
 			SimulationView.this.speedLabel.setText(""+gDrawer.avgSpeed()+" MPH");
@@ -442,6 +485,30 @@ public class SimulationView extends JPanel{
 		}
 	}
 	
+	
+	/**
+	 * The listener interface for receiving open events.
+	 * The class that is interested in processing a open
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addOpenListener<code> method. When
+	 * the open event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see OpenEvent
+	 */
+	public class OpenListener implements ActionListener{
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
+		public void actionPerformed(ActionEvent arg0){
+			SimulationView.this.removeAll();
+			loadMainContent();
+			MapChoiceView mapChoiceView = new MapChoiceView(frame, SimulationView.this, gridBuilder);
+		}
+	}
+	
 	//listener for exit
 	/**
 	 * The listener interface for receiving exit events. The class that is
@@ -463,6 +530,29 @@ public class SimulationView extends JPanel{
 	}
 	
 	/**
+	 * The listener interface for receiving mapBuilder events.
+	 * The class that is interested in processing a mapBuilder
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addMapBuilderListener<code> method. When
+	 * the mapBuilder event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see MapBuilderEvent
+	 */
+	public class MapBuilderListener implements ActionListener{
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
+		public void actionPerformed(ActionEvent arg0){
+			frame.removeView();
+			frame.addView(new RoadEditorView(frame));
+			
+		}
+	}
+	
+	/**
 	 * The listener interface for receiving play events. The class that is
 	 * interested in processing a play event implements this interface, and the
 	 * object created with that class is registered with a component using the
@@ -474,8 +564,14 @@ public class SimulationView extends JPanel{
 	 */
 	public class PlayListener implements ActionListener{
 		
+		/** The g drawer. */
 		private GraphicsDrawer gDrawer;
 		
+		/**
+		 * Instantiates a new play listener.
+		 *
+		 * @param gDrawer the g drawer
+		 */
 		public PlayListener (GraphicsDrawer gDrawer){
 			this.gDrawer = gDrawer;
 		}
@@ -503,8 +599,14 @@ public class SimulationView extends JPanel{
 	 */
 	public class PauseListener implements ActionListener{
 		
+		/** The g drawer. */
 		private GraphicsDrawer gDrawer;
 		
+		/**
+		 * Instantiates a new pause listener.
+		 *
+		 * @param gDrawer the g drawer
+		 */
 		public PauseListener(GraphicsDrawer gDrawer){
 			this.gDrawer = gDrawer;
 		}
@@ -532,8 +634,14 @@ public class SimulationView extends JPanel{
 	 */
 	public class StopListener implements ActionListener{
 		
+		/** The g drawer. */
 		private GraphicsDrawer gDrawer;
 		
+		/**
+		 * Instantiates a new stop listener.
+		 *
+		 * @param gDrawer the g drawer
+		 */
 		public StopListener(GraphicsDrawer gDrawer){
 			this.gDrawer = gDrawer;
 		}
@@ -554,6 +662,8 @@ public class SimulationView extends JPanel{
             displayTimer.setText(timeFormatter.format(minutes) + ":"
                     + timeFormatter.format(seconds) + "."
                     + timeFormatter.format(centiseconds));
+            SimulationView.this.removeAll();
+            loadMainContent();
             loadMap(mapName);
 			}
 		}
@@ -571,8 +681,14 @@ public class SimulationView extends JPanel{
 	 */
 	public class StepListener implements ActionListener{
 		
+		/** The g drawer. */
 		private GraphicsDrawer gDrawer;
 		
+		/**
+		 * Instantiates a new step listener.
+		 *
+		 * @param gDrawer the g drawer
+		 */
 		public StepListener(GraphicsDrawer gDrawer){
 			this.gDrawer = gDrawer;
 		}
@@ -589,31 +705,6 @@ public class SimulationView extends JPanel{
 	}
 	
 	
-	/**
-	 * The Class IncreaseNumberOfCars.
-	 */
-	public class IncreaseNumberOfCars implements ActionListener{
-		
-		/* (non-Javadoc)
-		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-		 */
-		public void actionPerformed(ActionEvent arg0){
-			//TODO Implement listener for increase number of cars
-		
-	}
-}
 	
-	/**
-	 * The Class IncreaseCarSpeed.
-	 */
-	public class IncreaseCarSpeed implements ActionListener{
-		
-		/* (non-Javadoc)
-		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-		 */
-		public void actionPerformed(ActionEvent arg0){
-			//TODO Implement listener for increase car speed 
-		}
-	}
 }
 

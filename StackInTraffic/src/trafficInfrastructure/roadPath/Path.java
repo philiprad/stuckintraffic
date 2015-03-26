@@ -1,6 +1,6 @@
 /*
  * @author  Maxim Vasilishin
- * @version 1.0
+ * @version 4.0
  */
 package trafficInfrastructure.roadPath;
 
@@ -19,13 +19,14 @@ public class Path implements Serializable{
 	/** The arr path point. */
 	private ArrayList<PathPoint> arrPathPoint;
 	
+	/** The double path. */
 	private DoublePath doublePath;
 	
 	/**
 	 * Instantiates a new path.
 	 *
-	 * @param arrPathPoint
-	 *            the arr path point
+	 * @param arrPathPoint            the arr path point
+	 * @param doublePath the double path
 	 */
 	public Path (ArrayList<PathPoint> arrPathPoint, DoublePath doublePath){
 		this.arrPathPoint = arrPathPoint;

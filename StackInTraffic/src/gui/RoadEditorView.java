@@ -1,6 +1,6 @@
 /*
  * @author  Maxim Vasilishin
- * @version 1.0
+ * @version 4.0
  */
 package gui;
 
@@ -305,10 +305,44 @@ public class RoadEditorView extends JPanel {
 		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			frame.removeView();
-			frame.addView(new SimulationView(frame, mapName));
+			
+			if(!mapName.equals("")){
+				
+				boolean isValid = MapValidator.isMapValid(gridBuilder.getGrid());
+				
+				if (isValid){
+					System.out.println("Map is Valid");
+					ArrayList <String> mapNameList = (ArrayList<String>) FileRW.readObject(MainConfig.SAVES_FILE_PATH);
+					if (!mapName.isEmpty()){
+						int isEdition = -1;
+						for(String mapNameTemp: mapNameList){
+							if(mapNameTemp.equals(mapName)){
+								isEdition = 1;
+							}
+						}
+						if (isEdition<0){
+							mapNameList.add(mapName);
+							FileRW.writeObject(mapNameList, MainConfig.SAVES_FILE_PATH);
+						}
+					
+					
+						FileRW.writeObject(gridBuilder, MainConfig.GRID_PATH+"/"+mapName+MainConfig.GRID_SUFFIX);
+						RoadBuilder roadBuilder = new RoadBuilder(mapName, gridBuilder);
+						roadBuilder.buildRoad();
+						
+				
+				
+				
+				frame.removeView();
+				frame.addView(new SimulationView(frame, mapName));
+			}
+		} else {
+			new AlertMessageView("Map didn't pass validation and wasn't saved");
+			MapValidator.deleteEndPoints(gridBuilder);
 		}
-		
+	
+		}
+		}
 	}
 	
 	/**

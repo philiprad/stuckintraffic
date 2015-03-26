@@ -1,3 +1,7 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 4.0
+ */
 package simulationBuilder;
 
 import main.MainConfig;
@@ -6,6 +10,10 @@ import trafficInfrastructure.road.RoadConfig;
 import util.FileRW;
 import agents.RoadBlock;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class RoadBlocksBuffer.
+ */
 public class RoadBlocksBuffer {
 	/** The rd blocks. */
 	private Object [][] rdBlocks;
@@ -68,6 +76,11 @@ public class RoadBlocksBuffer {
 		}
 	}
 	
+	/**
+	 * Gets the road block buffer array.
+	 *
+	 * @return the road block buffer array
+	 */
 	public Object [][] getRoadBlockBufferArray(){
 		return this.rdBlocks;
 	}

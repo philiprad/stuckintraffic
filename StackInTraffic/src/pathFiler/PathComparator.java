@@ -1,10 +1,21 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 4.0
+ */
 package pathFiler;
 
 import java.util.Comparator;
 import trafficInfrastructure.roadPath.Path;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PathComparator.
+ */
 public class PathComparator implements Comparator<Path>{
 
+	/* (non-Javadoc)
+	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+	 */
 	@Override
 	public int compare(Path o1, Path o2) {
 		

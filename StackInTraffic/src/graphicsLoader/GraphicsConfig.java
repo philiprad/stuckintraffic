@@ -1,6 +1,6 @@
 /*
  * @author  Maxim Vasilishin
- * @version 1.0
+ * @version 4.0
  */
 package graphicsLoader;
 
@@ -29,12 +29,16 @@ public class GraphicsConfig {
 	
 	public static final String PAUSE_BUTTON = "./images/pause.png";
 	
+	/** The Constant STOP_BUTTON. */
 	public static final String STOP_BUTTON = "./images/stop.png";
 	
+	/** The Constant PLAY_BUTTON. */
 	public static final String PLAY_BUTTON = "./images/play.png";
 	
+	/** The Constant STEP_BUTTON. */
 	public static final String STEP_BUTTON = "./images/step.png";
 	
+	/** The Constant VERTICAL_ROAD_IMG. */
 	public static final String VERTICAL_ROAD_IMG = "./images/verticalRoad.png";
 	
 	/** The Constant HORIZONTAL_ROAD_IMG. */
@@ -203,6 +207,7 @@ public static final String MIXED_INTERSECTION_HORIZONTAL_IMG = "./images/mixedIn
 	/** The Constant CAR_LEFT_IMG. */
 	public static final String CAR_REDH_LEFT_IMG = "./images/cars/carRedHLeft.png";
 	
+	/** The Constant CAR_REDP_UP_IMG. */
 	public static final String CAR_REDP_UP_IMG = "./images/cars/carRedPUp.png";
 	
 	/** The Constant CAR_DOWN_IMG. */
@@ -214,6 +219,7 @@ public static final String MIXED_INTERSECTION_HORIZONTAL_IMG = "./images/mixedIn
 	/** The Constant CAR_LEFT_IMG. */
 	public static final String CAR_REDP_LEFT_IMG = "./images/cars/carRedPLeft.png";
 	
+	/** The Constant CAR_REDE_UP_IMG. */
 	public static final String CAR_REDE_UP_IMG = "./images/cars/carRedEUp.png";
 	
 	/** The Constant CAR_DOWN_IMG. */
@@ -225,6 +231,7 @@ public static final String MIXED_INTERSECTION_HORIZONTAL_IMG = "./images/mixedIn
 	/** The Constant CAR_LEFT_IMG. */
 	public static final String CAR_REDE_LEFT_IMG = "./images/cars/carRedELeft.png";
 	
+	/** The Constant CAR_YELLOWH_UP_IMG. */
 	public static final String CAR_YELLOWH_UP_IMG = "./images/cars/carYellowHUp.png";
 	
 	/** The Constant CAR_DOWN_IMG. */
@@ -236,6 +243,7 @@ public static final String MIXED_INTERSECTION_HORIZONTAL_IMG = "./images/mixedIn
 	/** The Constant CAR_LEFT_IMG. */
 	public static final String CAR_YELLOWH_LEFT_IMG = "./images/cars/carYellowHLeft.png";
 	
+	/** The Constant CAR_YELLOWP_UP_IMG. */
 	public static final String CAR_YELLOWP_UP_IMG = "./images/cars/carYellowPUp.png";
 	
 	/** The Constant CAR_DOWN_IMG. */
@@ -247,6 +255,7 @@ public static final String MIXED_INTERSECTION_HORIZONTAL_IMG = "./images/mixedIn
 	/** The Constant CAR_LEFT_IMG. */
 	public static final String CAR_YELLOWP_LEFT_IMG = "./images/cars/carYellowPLeft.png";
 	
+	/** The Constant CAR_YELLOWE_UP_IMG. */
 	public static final String CAR_YELLOWE_UP_IMG = "./images/cars/carYellowEUp.png";
 	
 	/** The Constant CAR_DOWN_IMG. */
@@ -258,6 +267,7 @@ public static final String MIXED_INTERSECTION_HORIZONTAL_IMG = "./images/mixedIn
 	/** The Constant CAR_LEFT_IMG. */
 	public static final String CAR_YELLOWE_LEFT_IMG = "./images/cars/carYellowELeft.png";
 	
+	/** The Constant CAR_BLUEH_UP_IMG. */
 	public static final String CAR_BLUEH_UP_IMG = "./images/cars/carBlueHUp.png";
 	
 	/** The Constant CAR_DOWN_IMG. */
@@ -269,6 +279,7 @@ public static final String MIXED_INTERSECTION_HORIZONTAL_IMG = "./images/mixedIn
 	/** The Constant CAR_LEFT_IMG. */
 	public static final String CAR_BLUEH_LEFT_IMG = "./images/cars/carBlueHLeft.png";
 	
+	/** The Constant CAR_BLUEP_UP_IMG. */
 	public static final String CAR_BLUEP_UP_IMG = "./images/cars/carBluePUp.png";
 	
 	/** The Constant CAR_DOWN_IMG. */
@@ -280,6 +291,7 @@ public static final String MIXED_INTERSECTION_HORIZONTAL_IMG = "./images/mixedIn
 	/** The Constant CAR_LEFT_IMG. */
 	public static final String CAR_BLUEP_LEFT_IMG = "./images/cars/carBluePLeft.png";
 	
+	/** The Constant CAR_BLUEE_UP_IMG. */
 	public static final String CAR_BLUEE_UP_IMG = "./images/cars/carBlueEUp.png";
 	
 	/** The Constant CAR_DOWN_IMG. */

@@ -1,6 +1,6 @@
 /*
  * @author  Maxim Vasilishin
- * @version 1.0
+ * @version 4.0
  */
 package graphicsLoader;
 
@@ -154,12 +154,16 @@ public class ImagesBuilder {
 	/** The mixed intersection vertical cr. */
 	private Image mixedIntersectionVerticalCr;
 	
+	/** The play button. */
 	private Image playButton;
 	
+	/** The stop button. */
 	private Image stopButton;
 	
+	/** The pause button. */
 	private Image pauseButton;
 	
+	/** The step button. */
 	private Image stepButton;
 	
 	
@@ -203,6 +207,7 @@ public class ImagesBuilder {
 	/** The cursor delete. */
 	private Image cursorDelete;
 	
+	/** The car bh up. */
 	public Image carBHUp;
 	
 	/** The car down. */
@@ -214,6 +219,7 @@ public class ImagesBuilder {
 	/** The car right. */
 	public Image carBHRight;
 	
+	/** The car be up. */
 	public Image carBEUp;
 	
 	/** The car down. */
@@ -225,6 +231,7 @@ public class ImagesBuilder {
 	/** The car right. */
 	public Image carBERight;
 	
+	/** The car bp up. */
 	public Image carBPUp;
 	
 	/** The car down. */
@@ -236,6 +243,7 @@ public class ImagesBuilder {
 	/** The car right. */
 	public Image carBPRight;
 	
+	/** The car yh up. */
 	public Image carYHUp;
 	
 	/** The car down. */
@@ -247,6 +255,7 @@ public class ImagesBuilder {
 	/** The car right. */
 	public Image carYHRight;
 	
+	/** The car ye up. */
 	public Image carYEUp;
 	
 	/** The car down. */
@@ -258,6 +267,7 @@ public class ImagesBuilder {
 	/** The car right. */
 	public Image carYERight;
 	
+	/** The car yp up. */
 	public Image carYPUp;
 	
 	/** The car down. */
@@ -269,6 +279,7 @@ public class ImagesBuilder {
 	/** The car right. */
 	public Image carYPRight;
 	
+	/** The car rh up. */
 	public Image carRHUp;
 	
 	/** The car down. */
@@ -280,6 +291,7 @@ public class ImagesBuilder {
 	/** The car right. */
 	public Image carRHRight;
 	
+	/** The car re up. */
 	public Image carREUp;
 	
 	/** The car down. */
@@ -291,6 +303,7 @@ public class ImagesBuilder {
 	/** The car right. */
 	public Image carRERight;
 	
+	/** The car rp up. */
 	public Image carRPUp;
 	
 	/** The car down. */
@@ -969,17 +982,38 @@ public class ImagesBuilder {
 		return this.mixedIntersectionVerticalTb;
 	}
 	
+	/**
+	 * Gets the play button.
+	 *
+	 * @return the play button
+	 */
 	public Image getPlayButton(){
 		return this.playButton;
 	}
 	
+	/**
+	 * Gets the pause button.
+	 *
+	 * @return the pause button
+	 */
 	public Image getPauseButton(){
 		return this.pauseButton;
 	}
 	
+	/**
+	 * Gets the stop button.
+	 *
+	 * @return the stop button
+	 */
 	public Image getStopButton(){
 		return this.stopButton;
 	}
+	
+	/**
+	 * Gets the step button.
+	 *
+	 * @return the step button
+	 */
 	public Image getStepButton(){
 		return this.stepButton;
 	}

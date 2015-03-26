@@ -1,6 +1,6 @@
 /*
  * @author  Maxim Vasilishin
- * @version 1.0
+ * @version 4.0
  */
 package trafficInfrastructure.roadPath;
 
@@ -36,6 +36,11 @@ public class VisitedIntersectionsOnPath {
 		this.arrGridPoint.add(new GridPoint(x,y));
 	}
 	
+	/**
+	 * Gets the intersections.
+	 *
+	 * @return the intersections
+	 */
 	public ArrayList<GridPoint> getIntersections(){
 		return this.arrGridPoint;
 	}
@@ -58,6 +63,11 @@ public class VisitedIntersectionsOnPath {
 		return false;
 	}
 	
+	/**
+	 * Adds the all intersections.
+	 *
+	 * @param arrGridPoint the arr grid point
+	 */
 	public void addAllIntersections(ArrayList<GridPoint> arrGridPoint){
 		this.arrGridPoint.addAll(arrGridPoint);
 	}

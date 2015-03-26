@@ -1,6 +1,6 @@
 /*
  * @author  Maxim Vasilishin
- * @version 1.0
+ * @version 4.0
  */
 package simulationBuilder;
 
@@ -70,6 +70,8 @@ public class TrafficManager {
 	
 	/**
 	 * Builds the traffic lights.
+	 *
+	 * @return the traffic light list
 	 */
 	/*public void buildTrafficLights (){
 		short trafficLightCounter = 0;

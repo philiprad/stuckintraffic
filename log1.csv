@@ -1,0 +1,1083 @@
+commit 7d1c6d7a943437ad90588e53633faee00d83428c
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Thu Mar 26 13:16:04 2015 +0000
+
+    Bugs Fixing
+
+commit 28bb30ee1cf6f63d627325685715effe9002f0d7
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 26 12:23:41 2015 +0000
+
+    removed unused car attribute
+
+commit eb7d539d2aa22ab546cd7ab9542ecde84a3bb355
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Thu Mar 26 05:20:29 2015 +0000
+
+    Avg Speed implemented in GUI
+
+commit e49f095c8649e8eda593955ef881140cb058aa7e
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Thu Mar 26 02:33:18 2015 +0000
+
+    Added statistics and controls to GUI
+
+commit e5183997202ce9c31bc8ae0c1b423850b8a92459
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Wed Mar 25 21:41:14 2015 +0000
+
+    Bug Fixing
+
+commit 3233c050d53659ac639b3362117c8b90335b36c6
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Wed Mar 25 15:32:33 2015 +0000
+
+    BugFixed calculation of the distance to next Car in the same RoadBlock
+    
+    New Round (Spiral Mode) of development is started, because 60 % of car
+    rules didn’t pass the test. Some rules could not be applied for the
+    last version which contains new RoadBlocks
+
+commit e03f84b1d2a0b1d561d766c57d1efb60681a4446
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Tue Mar 24 04:49:54 2015 +0000
+
+    ChangeLaneSingle car Fixed
+    
+    Next debug for car interaction during lane change
+
+commit eb9386bc96e8afef1403cbdc258df236f05c13d7
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Tue Mar 24 04:44:35 2015 +0000
+
+    TestMode
+    
+    Every traffic light was tested again, 6 bugs fixed. Testing of line
+    change again, bug wasn’t fixed during firs testing
+
+commit 5e9321721936f28cd8e36b854dffebfd3eda2950
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Mon Mar 23 02:32:46 2015 +0000
+
+    TrafficLight Scroll issue fixed and StandartCar implementation with 3 different driver type
+
+commit 898dd6701f8d1eb0d17c507a522af17188b4f4b2
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Sun Mar 22 23:26:44 2015 +0000
+
+    TrafficLight for Mixed Intersection is fixed and tested
+
+commit 3edb81a1f593565a58c7a373bbb1a618447c7bd8
+Merge: 14aeef1 c0bd7b6
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 22 21:26:58 2015 +0000
+
+    Merge remote-tracking branch 'origin/master'
+    
+    Conflicts:
+    	StackInTraffic/bin/agents/Car.class
+
+commit 14aeef1bea3d114ad04e5cede000f42d678a1857
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 22 21:26:07 2015 +0000
+
+    ignore .class
+
+commit 5429b78325c082b47d4ae09a77337e404d9b8a02
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 22 21:25:06 2015 +0000
+
+    removed some test logs plus minor corrections
+
+commit c0bd7b6aef9eba32bbc02efae3e86cc9584313ff
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Sun Mar 22 21:22:37 2015 +0000
+
+    Double Intersection trafficLight fixed and tested
+
+commit 78d6f417a339d4ec472184f823273738d321fe62
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 22 20:31:23 2015 +0000
+
+    ignore class
+
+commit 9ee40f952b676ac8ee1de2ad4e51401435e6c05e
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 22 20:31:07 2015 +0000
+
+    acceleration deceleration and next block identification
+
+commit 09d828e5c77956fc736b2fd0ebc3893eee59eebe
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Sun Mar 22 19:52:32 2015 +0000
+
+    RoundAbout fixed
+
+commit b853a45f5bffd7e031a1481bfc965dec63fccf6a
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Sun Mar 22 19:39:42 2015 +0000
+
+    Directions fix
+
+commit d7a8eeb20b440c9c19cdaa08b8ed42acb4dd2e8f
+Merge: 5379ae2 68beb15
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Sun Mar 22 19:38:27 2015 +0000
+
+    On master: GitHub: Stashing to pull in remote changes
+
+commit 68beb1534e8e285d676fbf4184639dd86853267a
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Sun Mar 22 19:38:27 2015 +0000
+
+    index on master: 5379ae2 fixed speed limit getter
+
+commit af2ab3746ffca5bbaaeb0edcebc73d4d304b3173
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 22 19:37:42 2015 +0000
+
+    road builder changes
+
+commit 5379ae2b40cba92e6b99fda4f13900f16ca89b2c
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 22 17:09:21 2015 +0000
+
+    fixed speed limit getter
+
+commit e4bb4eafd6c3a34a170957fb7397c953b445a78d
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 22 17:07:14 2015 +0000
+
+    implemented speed limit in cars
+
+commit 370f86ecb7743597003bd112adeeeab5cfe0428e
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 22 17:00:26 2015 +0000
+
+    speed limits and identification of next roadblock type
+
+commit f5772e111f1ec44fc9bf376c16e527b6e2d3d70e
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Sun Mar 22 16:01:34 2015 +0000
+
+    Traffic Lights Are implemented for all types of single Intersections and tested.
+
+commit 789f40f47e2acf3d7e9ac410e52fc0297b814f0a
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Sun Mar 22 14:48:50 2015 +0000
+
+    TrafficLight Management
+    
+    Need GUI For to allow the user to manage traffic lights states and time
+    intervals between colour switching
+
+commit 1d4b00ddd773fe0a53c2457c68d1379984a9420e
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 22 14:09:22 2015 +0000
+
+    changes for acceleration
+
+commit cb328745a2bcb770fee681e1d0cb036bcc8366f3
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 22 12:34:27 2015 +0000
+
+    deceleration function
+
+commit 051e72e5fbdc86441430f66fac4302ac1e5e5005
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Sun Mar 22 02:05:06 2015 +0000
+
+    TrafficLights adapted for all types of intersections
+
+commit 9784f695738b262ff4c5c6bae6c3da1df6f52d5a
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Sat Mar 21 18:59:41 2015 +0000
+
+    Car logic speedManagement
+
+commit 71f091c86a342b7e311d218ea273b54c2ff4e451
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Sat Mar 21 18:16:44 2015 +0000
+
+    RoadBlockBuffer fixed
+
+commit fe028304c645218a626e3e192e42c478da1225e8
+Author: Filippo <Filippo@ubitechit.com>
+Date:   Sat Mar 21 17:26:44 2015 +0000
+
+    First final report draft
+    
+    Final report draft
+
+commit da11197cf1c415aa9733a9942999834222694169
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sat Mar 21 17:15:39 2015 +0000
+
+    removed unused imports and code
+
+commit f4dbb383d553a004a7426bc06603fbddad2ec26d
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Sat Mar 21 17:07:05 2015 +0000
+
+    RoadBlocks Graphics V2.1
+
+commit 03f349d49071cc099f87b417a58305ec8ab7a5c2
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Sat Mar 21 16:26:28 2015 +0000
+
+    Scroll is fixed in simulationView
+
+commit 4971f3801f7a9113119bf8b1f8a020e840a8321a
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sat Mar 21 16:18:31 2015 +0000
+
+    horizontal block fix
+
+commit d3b5ee3639fa86593eb4d27e423f418fa4092a62
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sat Mar 21 15:39:57 2015 +0000
+
+    bug fixes
+
+commit d3c310430d84bc93b838b9891d95db18a5c7372e
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Sat Mar 21 14:14:49 2015 +0000
+
+    Simulation View is connected to Road Edtor View
+
+commit c70a337998d57c30b3ed4acfacf9e8bd6d9df925
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Fri Mar 20 23:52:43 2015 +0000
+
+    PathDiscovery function finished and tested. RoundAbout radius  fixed
+
+commit 252b9fcd1960bab5e3817848383d9c658aad72f9
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Fri Mar 20 16:43:47 2015 +0000
+
+    added filtering
+
+commit eb711dfbcde2eff3b0d6a8c939d54172e4b7ab1e
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Fri Mar 20 01:56:40 2015 +0000
+
+    DoubleIntersectionTested
+    
+    Next Step, Test with TrafficLight.
+    ChangeLane functionality was implemented for cars
+
+commit 4fc6c42c5f327d8bd71e43f3cc55eea8527aa4bb
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 19 18:46:03 2015 +0000
+
+    path filter
+
+commit 5add25d5ee5e9194fbf5faf4d8c5e73eeb5ab095
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 19 18:42:41 2015 +0000
+
+    added path filter package
+
+commit 5722cbba9d1d1679b2cff4ea2fa3b147170f3f4b
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Thu Mar 19 18:41:13 2015 +0000
+
+    Road Builder Update, Double path implemented
+
+commit db7c3a2f23c440a42b8f99659a7df7525baf96db
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Thu Mar 19 15:40:39 2015 +0000
+
+    ToolBar Scroll
+
+commit 116e7f899e960507a943208465420002709d3c8c
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Wed Mar 18 19:20:33 2015 +0000
+
+    PathDiscovery function is completed for all roadBlocks and tested
+
+commit 9ec5e9cd61036e26ffc21b7496ca68a9ddc7260a
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Wed Mar 18 19:04:35 2015 +0000
+
+    map validation fixes
+
+commit 86de3fb55fd3cc28229d47695348d243619bdd63
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Wed Mar 18 19:04:24 2015 +0000
+
+    Vertical mixed block Path Discovery
+
+commit dd8e2b51bc6dbed921f3c0475c69ad95dfe87d76
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Wed Mar 18 18:09:43 2015 +0000
+
+    ignore class files
+
+commit a8c8a112237660a0ab347f0631736f066d5c683b
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Wed Mar 18 18:09:13 2015 +0000
+
+    added junit jar and fixed horizontal block validation
+
+commit 55d7c1ad4148a558c907c85074f214a2841faca3
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Wed Mar 18 18:06:19 2015 +0000
+
+    Horizontal Mixed Block Completed and Tested
+
+commit f595847e1cb670a678230e1a5a441e717d3f4c49
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Wed Mar 18 13:59:54 2015 +0000
+
+    fixed bugs for vertical exit blocks
+
+commit 6af06611bdd920cb69168c2927fcf67e5a906200
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Wed Mar 18 12:52:17 2015 +0000
+
+    Horizontal mixed block path discovery
+
+commit c02f2face8799e809d2a497d634eb445d8a6bc6e
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Wed Mar 18 10:29:27 2015 +0000
+
+    vertical block fix
+
+commit 628e0b6e449a4d31921a5ee526180b41c356c204
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Wed Mar 18 01:19:49 2015 +0000
+
+    Path Discovery for Mixed horizontalBlock
+
+commit 911fa87159a00e647ee8eccf0b38c898c0f983a0
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Wed Mar 18 01:18:44 2015 +0000
+
+    bug fix intersection horizontal mixed block
+
+commit a1f668c61482f23af3fea5c76c4d664714875818
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Wed Mar 18 00:48:19 2015 +0000
+
+    added map validations for mixed intersection blocks
+
+commit 9fe42c8af1359481d0abc8d012e13020e120060c
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Tue Mar 17 16:44:46 2015 +0000
+
+    New graphics, that fit. Implementation of mixed intersection block in road Editor
+    
+    next step is implementation of mixed intersection block in road builder.
+
+commit a79061eb9d968bfcf9e9ed4e478f222f2ffcb3b4
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Tue Mar 17 16:19:50 2015 +0000
+
+    fixed 3 input intersection bug
+
+commit 7c997e1dde5b5b823b886b731f07baf4d8f90fb5
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Tue Mar 17 00:29:47 2015 +0000
+
+    First part of double lane Logic
+
+commit 674f7140eacd7a2aa2fcea449a29abd50afd2586
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Mon Mar 16 20:40:53 2015 +0000
+
+    JavaDoc correction
+
+commit 0133b1a528814e9b611f2f79f5a2197573ed5ca1
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Mon Mar 16 20:30:46 2015 +0000
+
+    correction for width and height lengths
+
+commit d407da3e7075a826ebb72a2186bce5a3bb6658b4
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Mon Mar 16 19:49:47 2015 +0000
+
+    GIT logs for last month
+
+commit 7e999835528ff4dfc6448025deddb6c52933c13d
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Mon Mar 16 19:30:48 2015 +0000
+
+    andria's fixes for the timer
+
+commit 28c988dd692ea38210d0855e1664a46fd0f6e52c
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Mon Mar 16 19:18:14 2015 +0000
+
+    PathDiscovery for RoundAbout is completed and tested
+
+commit c633ae9d6aa806225cb98a0dbc67bf6654a0c01b
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Mon Mar 16 19:10:04 2015 +0000
+
+    vertical block bug fix
+
+commit d7a781006eb591df185a6fd59bf049554a2ee1da
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Mon Mar 16 18:42:26 2015 +0000
+
+    bug fixes
+    
+    fixed map boundaries to support different widths and heights in maps
+    
+    fixed bug for roundabouts
+
+commit 1c82b395fc6d1abbfbb1f37054ee24d2d37d8b75
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Mon Mar 16 18:33:03 2015 +0000
+
+    RounAboutFixed
+
+commit 3a538c5dd23ef574b0285e4d0794bf4157dfbd0b
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Mon Mar 16 18:02:07 2015 +0000
+
+    RoundAbout are completed
+
+commit 714898efc7c6aa542df532c13916634b4cf5429b
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 15 17:55:03 2015 +0000
+
+    added extra validations for round about
+
+commit f1e24b712b5358dc6dfa93713baac15eb4d27f81
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 15 17:11:26 2015 +0000
+
+    fix for intersection right block
+
+commit 284673e7f9fd7bd8cb91c740e20ca927fe06cae1
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 15 16:56:12 2015 +0000
+
+    fixes for test case 2 as well as for 3 input intersections
+
+commit 62d35fa0e33b02e0d051fe349170a1c045a23a29
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Sun Mar 15 16:33:56 2015 +0000
+
+    RoundAbout update
+
+commit 47cf48b3b40e9de8094b3ff21d636e08488c1cd8
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Fri Mar 13 22:31:51 2015 +0000
+
+    Implementation of RoundAbout roadBlock functions
+
+commit 9278220df306c1a662659fa908b044b56a79cc45
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Thu Mar 12 19:06:02 2015 +0000
+
+    Verification for Map creation added
+
+commit 26a190656b5c5282eadfbdac83dc720cc53cbe66
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Thu Mar 12 18:37:53 2015 +0000
+
+    Implementation of path discovery in DoubleIntersectionBlock
+
+commit 776968498a3e8ad9a73bbe3df994bcf42aa7dc83
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Thu Mar 12 17:58:08 2015 +0000
+
+    Path discovery for double intersection block
+
+commit a9c796ffc55b5555b071cb41a6e99c9c55987e18
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 12 16:02:38 2015 +0000
+
+    removed unnecessary latex files
+
+commit 2456f19974edea68c266b352c4d7d850ff676535
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 12 16:01:42 2015 +0000
+
+    removed pdf documents
+
+commit faec41556c3a07bcff9583a61a4432ecaf4692d7
+Author: Filippo <Filippo@ubitechit.com>
+Date:   Thu Mar 12 15:47:50 2015 +0000
+
+    Added Resize picture
+    
+    Added resize picture
+
+commit 86f23182160d01afa4258514c6a97935a8069c65
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 12 15:46:46 2015 +0000
+
+    added todo
+
+commit d64eb34b358083b20edb68bbe8f352835b702061
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 12 15:45:15 2015 +0000
+
+    added filippo and andria's changes
+    
+    simulation view changes
+
+commit 97af2b762f094ec5535ddaa5140434ffbebb1485
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 12 15:44:27 2015 +0000
+
+    ignore class files
+
+commit 659a46dbd58e51c81931899e685ba50d54e87108
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 12 15:44:09 2015 +0000
+
+    ignore class files
+
+commit de25c1b8d72e684ddbd8925150bbb2489aaf0ce8
+Author: Filippo <Filippo@ubitechit.com>
+Date:   Thu Mar 12 15:41:38 2015 +0000
+
+    resized picture
+    
+    Simulation view picture
+
+commit 01fa20055d10821d175aa1068c35a4fc46f3edc9
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Thu Mar 12 14:59:56 2015 +0000
+
+    Implementation of Double Intersection Block
+
+commit 691b781e2dd5c2104bb4f60f53830d1a8a346591
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 12 12:04:57 2015 +0000
+
+    added todo
+
+commit 24ec76c01bd1df73a1a3409f9b4152e5a5441490
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Thu Mar 12 12:01:27 2015 +0000
+
+    Implementation of AlertView. RoadEditor save function BUG fixed
+
+commit 77b8f44a5f67a9f766ec168dfba526c6d39dbca3
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 12 11:26:40 2015 +0000
+
+    mixed style intersection fix
+
+commit e1f162ff110d18de5a6995490d8011c95044c1cc
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 12 00:49:40 2015 +0000
+
+    fixes for map validator
+
+commit 36db1c9b2603f1b6b03723855dd4d781dcbdea4c
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Thu Mar 12 00:42:13 2015 +0000
+
+    Map size starts at 10x10
+
+commit a350d623d859badb77ad22cc2f558e748492778a
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Wed Mar 11 22:55:01 2015 +0000
+
+    First simulator launch after editing of the map
+
+commit 226a619bc1689e55b2847b1986b5d6d5ec01ad60
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Wed Mar 11 22:05:39 2015 +0000
+
+    Delete endpoint function added to MapValidator
+
+commit 14660069af729ca4fd713e70b89c640c39ac6b50
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Wed Mar 11 21:06:59 2015 +0000
+
+    Triple intersection added to MapValidator
+
+commit d1d8a8e0c000bb9ed3036f9fee117691eace50c7
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Wed Mar 11 19:44:01 2015 +0000
+
+    RoadBuilder Implementation of 3 input intersections
+
+commit 49bb5927a6c26307c583cd40ad96166a4d00280c
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Tue Mar 10 15:32:40 2015 +0000
+
+    RoadEditor Delete map function implemented
+
+commit 70db9029469d1d57b78dad5c5c149f0552f235b1
+Merge: 26c2914 ecc32db
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Tue Mar 10 14:04:43 2015 +0000
+
+    Merge remote-tracking branch 'origin/master'
+    
+    Conflicts:
+    	StackInTraffic/bin/.gitignore
+
+commit ecc32db8bfdb6f8a80d5d0740f6b1e611b495a80
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Tue Mar 10 14:02:06 2015 +0000
+
+    minor fixes for map validator
+
+commit 26c2914e5c9a2a322743702d9201edcaa9a0a434
+Author: MaximVasilishin <maxim.vasilishin@corexsoft.com>
+Date:   Tue Mar 10 13:55:36 2015 +0000
+
+    Clear function implemented in the Roadeditor
+
+commit 5865915a2a8ab7b5cdb19bdb0a8e36768b67238e
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Tue Mar 10 13:34:53 2015 +0000
+
+    added map validator
+
+commit df30cb28ee24d1272526ada01e71c5a33aa46ef7
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Tue Mar 10 13:31:54 2015 +0000
+
+    map validator
+
+commit 5778d5d6fb20a86ef5e9d3d68cb1537c92769630
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Mon Mar 9 21:24:21 2015 +0000
+
+    RoadEditor. Implementation of map creation
+    
+    User can choose the map name and choose the size of the grid
+
+commit 26dfd837d323c527c145031344b05f42c1764f9f
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Sun Mar 8 19:14:38 2015 +0000
+
+    RoadEditor gridBuilder is edited to private
+
+commit 8a6b144809601f00196d12733f543627ce29180b
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 8 18:41:02 2015 +0000
+
+    adding the validate button
+
+commit cf18b8e4004156298ee24aad0227a33097cc2187
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 8 15:02:36 2015 +0000
+
+    included more rules for more scenarios on exit points
+
+commit b4680f9bcb1140579ca981c17b1e9631bbe00c9f
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 8 14:57:49 2015 +0000
+
+    partially fixed exit point
+
+commit 6b6c9af8ed28370e9ef86006eaf72d76d85232cd
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 8 14:47:52 2015 +0000
+
+    ignore
+
+commit 5514882d2a2ae4a9ef9d1439f7782027a9d3b151
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 8 14:47:26 2015 +0000
+
+    ignore class files
+
+commit e5cca2755a1d10410f152ea4bdc1811e86af07c7
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 8 14:47:13 2015 +0000
+
+    map validation
+
+commit 464a87ce4739515c5f076bb6012f4514ed346a6a
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 8 00:14:37 2015 +0000
+
+    added images
+
+commit 21bd02a930d09ed6ff3647740edda99b62df93d7
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 8 00:13:27 2015 +0000
+
+    ignore class files
+
+commit d15f190500892ed36dfacc2d592d4e26f6b777c8
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 8 00:12:37 2015 +0000
+
+    new gui_tests
+
+commit 23f6b8a5f6d47891c354231a9fce7c8eea219cba
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 8 00:12:17 2015 +0000
+
+    testing map validation
+
+commit 2492888096bb496c3198412255313ab594e966f1
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Sun Mar 8 00:10:18 2015 +0000
+
+    ignore class files
+
+commit 693e7d3bfb597dd67ae36e659b09c7666127299e
+Author: Filippo <Filippo@ubitechit.com>
+Date:   Sat Mar 7 15:06:55 2015 +0000
+
+    Updated SimulationView
+    
+    Updated simulation view
+
+commit 2bbafc257a9af93e62a2539b66871c242007fe57
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Sat Mar 7 13:54:53 2015 +0000
+
+    Bug correction in MapEditor loader
+
+commit 57f870091a1683bf2c08b845a706156756faed1a
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Fri Mar 6 22:22:55 2015 +0000
+
+    Road Building rules were added, road Infrastructure now loads from open menu
+    
+    The next step correct road builder class for the width and height.
+    Remove fixed dimension and make it dynamic
+
+commit ad414aa47dae19837fe9b7bdb0e63c80859d3dff
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Thu Mar 5 20:46:21 2015 +0000
+
+    Implementation of different types of road block in road editor
+
+commit 6e4510315216790b567c1e31052dcb5d6ae7ddbb
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 5 17:53:04 2015 +0000
+
+    changes
+
+commit 9adc15615a818fe91406d3b4204068ac4c7652c4
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 5 17:32:11 2015 +0000
+
+    ignore .class files
+
+commit ba2a30e60cd1ecb37c90eac3c56768a617007a87
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 5 17:31:51 2015 +0000
+
+    ignore .class files
+
+commit 45b723f34ff7bb8372ebca1b0ae5db1d83b2bcbb
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 5 17:24:21 2015 +0000
+
+    removed duplicates
+
+commit 69d7bce67013718d797f084daedd5619d292f765
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 5 17:07:59 2015 +0000
+
+    merged with master changes
+
+commit d56e94d01761466b867ea87f5f9262fdcb5315b0
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 5 15:45:44 2015 +0000
+
+    ignore .class files
+
+commit 39abe1cfcf6ab96fdc74fd0c930867007d754c17
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Thu Mar 5 15:44:36 2015 +0000
+
+    Map chooser is connected with file system
+
+commit 88268351b51752554ccdcdfe494b918eee9b4da2
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 5 11:32:57 2015 +0000
+
+    list selection
+
+commit 3899a4012c7f0aa59bbb2c2be8d6c8210dfdd5d0
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Thu Mar 5 11:15:45 2015 +0000
+
+    Implementation of map chooser frame
+
+commit b6a133299f4a9f8fd9b8fb8c6d7c12ec6b204e31
+Author: Filippo <Filippo@ubitechit.com>
+Date:   Thu Mar 5 11:14:49 2015 +0000
+
+    First Gui
+    
+    First proposed GUI
+
+commit 31a63157526b84e934b1a0b3e8e16c5c4ceaca87
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 5 10:52:37 2015 +0000
+
+    added gui tests package
+
+commit dc9536ca5858b8f464e5396ca5b0b2ac9a673cef
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Thu Mar 5 10:51:00 2015 +0000
+
+    Map editor implementation of movement action of road blocks
+
+commit 01764e208de9582aa2d02b0e45ab3ce2f8e74abd
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Mar 5 10:46:43 2015 +0000
+
+    added separate package for gui tests
+
+commit adc636569e71c97562ff68713cbb9b60de495a7b
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Tue Mar 3 16:11:15 2015 +0000
+
+    MapEditor implementation of action toolbar
+
+commit ff6743d90e4a20797bc439aa6dd776364fcd091b
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Mon Mar 2 22:17:18 2015 +0000
+
+    gui related changes
+
+commit 01fcbd1b605044cb7a993aa77a061eaf35bf5cb6
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Mon Mar 2 20:55:54 2015 +0000
+
+    Road Editor 2 second step is done. Next step map Validation
+    
+    Implementation of possibility to add roadblock to the new or already
+    existing map
+
+commit 1c2945b8072dd73cd87ead626551fc7949bf6f78
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Mon Mar 2 15:49:48 2015 +0000
+
+    MenuBarChanges
+
+commit 2aef1e4efcb781768c1f99df06405636e46cf731
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Mon Mar 2 14:48:24 2015 +0000
+
+    Implementation of Double road Block in RoadEditor
+    
+    Grid Issues were fixed, due to GridBagLayout
+
+commit 30effea95c4675075ef6147c1943883173551f2a
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Sun Mar 1 20:41:35 2015 +0000
+
+    Implementation of Cursor Manger for roadEditor
+    
+    next Step Implement RoadBuilder functions in RoadEditor
+
+commit c95ce3b7545d3823769f7deeba9f124acff2b72d
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Sun Mar 1 19:15:13 2015 +0000
+
+    Implementation of road editor grid and toolbar
+    
+    Second step is to implement functionality of toolbar buttons and the
+    third step is to create road map validation
+
+commit 79d501ac7ebd9410ac94419c3b80e602a7d7d5df
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Fri Feb 27 22:25:45 2015 +0000
+
+    test car cursor
+
+commit 897b3c68694c997f1968d850f3b828f7f227fcb0
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Feb 26 23:45:26 2015 +0000
+
+    added test code for grid buttons
+
+commit 40e1e52240456dae98e14f4791b7ea730270f4d1
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Feb 26 23:36:15 2015 +0000
+
+    Added grid package
+
+commit ef9821dd37a23964f5b7746b6ebe6d9249a0fe29
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Thu Feb 26 12:02:04 2015 +0000
+
+    clean up
+
+commit 148dee97c0c993b0c5081bac5307065c89c09a73
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Thu Feb 26 11:55:21 2015 +0000
+
+    Cleaning of repository
+
+commit 8e40d4df8b88f2fb40c7c3247e5953fc9398d3c9
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Thu Feb 26 11:32:09 2015 +0000
+
+    GUI Template
+    
+    Implementation of the GUI template. MVC code and test were removed.
+
+commit d159999e4d5c1663239ca0562c4cee897afe56e9
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Tue Feb 24 15:22:49 2015 +0000
+
+    implementation of Double lane road block. GUI Tests (package guy)
+    
+    Double lane road block is implemented in road builder. TODO implement
+    rules for cars for this road sections.
+    Andrea started GUI tests. IMPORTANT!!! gui package is for tests, for to
+    launch simulation use Class Main
+
+commit 075a02cbe89ddaee745da953ceb3b9bc9abb1ceb
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Mon Feb 23 12:13:53 2015 +0000
+
+    BUG with turn resolved
+    
+    Cars keep security distance on turn from right to top
+
+commit 9d6a4d0e8336d9b4556e5c14f868e1f48349efe4
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Sun Feb 22 19:37:55 2015 +0000
+
+    Car Traffic were added
+    
+    TODO turn from right to top Bug
+
+commit 27e2518cac357c61088b1f749bfbac55b835ca62
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Sun Feb 22 19:33:08 2015 +0000
+
+    TrafficLights
+    
+    Traffic Lights were added
+
+commit d78a7388a219316f26c27f20fab811839bbe5433
+Merge: 3caa710 d33ff58
+Author: philiprad <philiprad@gmail.com>
+Date:   Wed Feb 11 13:20:07 2015 +0000
+
+    Merge pull request #6 from UbiFil/master
+    
+    Updated Initial Research Library
+
+commit d33ff58a523deb8e4a9d169c017aa1bc082eae10
+Author: Filippo <Filippo@ubitechit.com>
+Date:   Wed Feb 11 13:12:04 2015 +0000
+
+    Updated Initial Research Library
+
+commit 3caa710551fddcc209a3fd66983b82712fcd2259
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Mon Feb 9 16:22:41 2015 +0000
+
+    Initial commit
+    
+    V1.0
+
+commit 1a736f06294b2ebe68f6eb59d486340f5ad9ae73
+Author: MaximVasilishin <vasilishinmaxim@gmail.com>
+Date:   Wed Feb 4 15:47:19 2015 +0000
+
+    Bus
+    
+    Image of bus
+
+commit 4ef4fb73ea21b8f29370f1b695fe3d7e745fdc8c
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Mon Feb 9 15:53:10 2015 +0000
+
+    Intermediate Report
+
+commit 0e61831d6b90189d094d85c94a3fc1dcc0299595
+Merge: ead055a 3add228
+Author: UbiFil <Filippo@ubitechit.com>
+Date:   Wed Feb 4 17:10:41 2015 +0000
+
+    Merge pull request #5 from UbiFil/master
+    
+    Updated Initial Research Library
+
+commit ead055a331882237fc225f499a08c2f25856a887
+Merge: aa394d0 978e09d
+Author: UbiFil <Filippo@ubitechit.com>
+Date:   Wed Feb 4 17:06:30 2015 +0000
+
+    Merge pull request #4 from UbiFil/master
+    
+    delete pdf
+
+commit 3add2285dd8c3dbaded2f165762effab8c3fc4cd
+Author: Filippo <Filippo@ubitechit.com>
+Date:   Wed Feb 4 17:03:44 2015 +0000
+
+    Updated Initial Research Library
+    
+    Initial Library Investigation
+
+commit aa394d0031850c522add4e3c8b3ae16dbeaf717b
+Merge: e2bf6aa c713054
+Author: philiprad <philiprad@gmail.com>
+Date:   Wed Feb 4 17:01:07 2015 +0000
+
+    Merge pull request #3 from UbiFil/master
+    
+    test
+
+commit 978e09dff4d4fd6ce6e72ab358f17c97bc9ad479
+Author: Filippo <Filippo@ubitechit.com>
+Date:   Wed Feb 4 17:00:29 2015 +0000
+
+    delete pdf
+    
+    delete pdf
+
+commit c7130543bfc7c97ca2295960db06915fa5fb9e99
+Author: Filippo <Filippo@ubitechit.com>
+Date:   Wed Feb 4 16:34:22 2015 +0000
+
+    tt
+    
+    test
+
+commit 96cbe9021191fa92c31264c0b5a5b516fe1da126
+Author: Filippo <Filippo@ubitechit.com>
+Date:   Wed Feb 4 16:33:09 2015 +0000
+
+    testing
+    
+    Push test
+
+commit 5bbccf31fbffa795056b75fec56b9eb9b5aa305a
+Merge: d7e5af8 e2bf6aa
+Author: philiprad <philiprad@gmail.com>
+Date:   Wed Feb 4 16:24:20 2015 +0000
+
+    Merge pull request #2 from UbiFil/testBranch
+    
+    Merge pull request #1 from philiprad/testBranch
+
+commit e2bf6aada3b370d0138446111abc56926dd3b21d
+Merge: 37a358d d7e5af8
+Author: philiprad <philiprad@gmail.com>
+Date:   Wed Feb 4 14:39:15 2015 +0000
+
+    Merge pull request #1 from philiprad/testBranch
+    
+    repast testing
+
+commit d7e5af81f2986e901047f2cd4ddd651e1c6045e2
+Author: philiprad <philiprad@Phils-MacBook-Pro.local>
+Date:   Fri Jan 16 18:11:42 2015 +0000
+
+    repast testing
+
+commit 37a358d3d02a6bdaebfefa281980ae5fc8216535
+Author: philiprad <philiprad@gmail.com>
+Date:   Thu Jan 15 15:49:23 2015 +0000
+
+    Create README.md

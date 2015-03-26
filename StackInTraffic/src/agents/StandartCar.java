@@ -1,3 +1,7 @@
+/*
+ * @author  Maxim Vasilishin
+ * @version 4.0
+ */
 package agents;
 
 import graphicsLoader.GraphicsConfig;
@@ -12,17 +16,23 @@ import trafficInfrastructure.road.RoadConfig;
 import trafficInfrastructure.roadPath.Path;
 import trafficInfrastructure.roadPath.PathPoint;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class StandartCar.
+ */
 public class StandartCar {
 	
 		
 		/** The car type. */
 		private short driverType;
 		
+		/** The car type. */
 		private short carType;
 		
 		/** The co emission. */
 		private double coEmission = 0;
 		
+		/** The petro consumption. */
 		private double petroConsumption = 0;
 		
 		/** The path. */
@@ -37,43 +47,73 @@ public class StandartCar {
 		/** The path end. */
 		private short pathEnd = -1;
 		
+		/** The lane choise. */
 		private int laneChoise = -1;
 		
+		/** The change lane counter. */
 		private int changeLaneCounter = 0;
 		
+		/** The car x. */
 		private int carX;
 		
+		/** The car y. */
 		private int carY;
 				
+		/** The road block. */
 		private Object [] [] roadBlock;
 		
+		/** The acceleration. */
 		private float acceleration;
 		
+		/** The acceleration counter. */
 		private float accelerationCounter = 0;
 		
+		/** The deceleration counter. */
 		private float decelerationCounter = 0;
 		
+		/** The security distance. */
 		private int securityDistance = 0;
 		
+		/** The security zero distance. */
 		private int securityZeroDistance = 10;
 		
+		/** The traffic lights. */
 		private ArrayList <TrafficLight> trafficLights;
 		
+		/** The direction after traffic light. */
 		private int directionAfterTrafficLight = 0;
 		
+		/** The is arriving. */
 		private boolean isArriving = false;
 		
+		/** The car direction next block. */
 		private short carDirectionNextBlock = 0;
 		
+		/** The car direction2 next road block. */
 		private short carDirection2NextRoadBlock = 0;
 		
+		/** The next road block x. */
 		private int nextRoadBlockX = -1;
 		
+		/** The next road block y. */
 		private int nextRoadBlockY = -1;
 		
+		/** The current road block. */
 		private RoadBlock currentRoadBlock;
+		
+		/** The next road block. */
 		private RoadBlock nextRoadBlock ;
 		
+		/**
+		 * Instantiates a new standart car.
+		 *
+		 * @param path the path
+		 * @param driverType the driver type
+		 * @param roadBlock the road block
+		 * @param laneChoise the lane choise
+		 * @param trafficLights the traffic lights
+		 * @param carType the car type
+		 */
 		public StandartCar(Path path, short driverType, Object [] [] roadBlock,int laneChoise,  ArrayList <TrafficLight> trafficLights, int carType){
 			this.carType = (short) carType;
 			this.trafficLights = trafficLights;
@@ -117,22 +157,45 @@ public class StandartCar {
 			
 		}
 		
+		/**
+		 * Sets the checks if is arriving.
+		 *
+		 * @param n the new checks if is arriving
+		 */
 		public void setIsArriving(boolean n){
 			this.isArriving = n;
 		}
 		
+		/**
+		 * Gets the speed.
+		 *
+		 * @return the speed
+		 */
 		public int getSpeed(){
 			return this.speed;
 		}
 		
+		/**
+		 * Gets the co emission.
+		 *
+		 * @return the co emission
+		 */
 		public double getCoEmission(){
 			return this.coEmission;
 		}
 		
+		/**
+		 * Gets the petrol emission.
+		 *
+		 * @return the petrol emission
+		 */
 		public double getPetrolEmission(){
 			return this.petroConsumption;
 		}
 		
+		/**
+		 * Update security distance.
+		 */
 		public void updateSecurityDistance(){
 			if (this.speed == 0){
 				this.securityDistance = this.securityZeroDistance;
@@ -140,6 +203,10 @@ public class StandartCar {
 				this.securityDistance = this.speed*3 + GraphicsConfig.CAR_LENGTH;
 			}
 		}
+		
+		/**
+		 * Update lane choise.
+		 */
 		public void updateLaneChoise(){
 			if (this.getPathRoadBlockType()==RoadConfig.INTERSECTION_DOUBLE_BLOCK || this.getPathRoadBlockType()==RoadConfig.INTERSECTION_MIXED_HORIZONTAL_BLOCK || this.getPathRoadBlockType()==RoadConfig.INTERSECTION_MIXED_VERTICAL_BLOCK){
 				if(this.getPathDirection()>100 || this.getPathDirection()<-100){
@@ -149,6 +216,10 @@ public class StandartCar {
 				}
 			}
 		}
+		
+		/**
+		 * Update car coordinates.
+		 */
 		public void updateCarCoordinates(){
 			if (this.laneChoise == 1){
 				this.carX = this.getCarPathX();
@@ -211,6 +282,9 @@ public class StandartCar {
 			}
 		}
 		
+		/**
+		 * Driver speed update.
+		 */
 		public void driverSpeedUpdate(){
 			if(this.driverType == AgentConfig.FAMILY_DRIVER){
 				if(this.speed>3){
@@ -225,6 +299,9 @@ public class StandartCar {
 		
 		
 		
+		/**
+		 * Move.
+		 */
 		public void move(){
 			
 			
@@ -242,6 +319,9 @@ public class StandartCar {
 			}
 		}
 		
+		/**
+		 * Acceleration.
+		 */
 		public void acceleration(){
 			if (((RoadBlock)this.roadBlock[this.carX/GraphicsConfig.BLOCK_SIDE_SIZE][this.carY/GraphicsConfig.BLOCK_SIDE_SIZE]).getSpeedLimit()>this.speed){
 				this.accelerationCounter+= this.acceleration;
@@ -253,6 +333,12 @@ public class StandartCar {
 			}
 		}
 		
+		/**
+		 * Deceleration.
+		 *
+		 * @param distance the distance
+		 * @param finalDeceleration the final deceleration
+		 */
 		public void deceleration(int distance, int finalDeceleration){
 			double decelerator = ((double)speed - finalDeceleration)/(double)distance;
 			this.decelerationCounter+= decelerator;
@@ -268,60 +354,131 @@ public class StandartCar {
 		
 		
 		
+		/**
+		 * Gets the car x.
+		 *
+		 * @return the car x
+		 */
 		public int getCarX(){
 			return this.carX;
 		}
 		
+		/**
+		 * Gets the car y.
+		 *
+		 * @return the car y
+		 */
 		public int getCarY(){
 			return this.carY;
 		}
 		
+		/**
+		 * Gets the lane choice.
+		 *
+		 * @return the lane choice
+		 */
 		public int getLaneChoice(){
 			return this.laneChoise;
 		}
 		
+		/**
+		 * Sets the lane.
+		 *
+		 * @param choise the new lane
+		 */
 		public void setLane(int choise){
 			this.laneChoise = choise;
 		}
 		
+		/**
+		 * Checks if is path end.
+		 *
+		 * @return true, if is path end
+		 */
 		public boolean isPathEnd(){
 			if (this.pathEnd == 1) return true;
 			else return false;
 		}
 		
+		/**
+		 * Gets the car path x.
+		 *
+		 * @return the car path x
+		 */
 		public int getCarPathX(){
 			return this.path.getPathPoints().get(this.counter).getX();
 		}
 		
+		/**
+		 * Gets the car path y.
+		 *
+		 * @return the car path y
+		 */
 		public int getCarPathY(){
 			return this.path.getPathPoints().get(this.counter).getY();
 		}
 		
+		/**
+		 * Gets the path road block type.
+		 *
+		 * @return the path road block type
+		 */
 		public short getPathRoadBlockType(){
 			return this.path.getPathPoints().get(this.counter).getBlockType();
 		}
 		
+		/**
+		 * Gets the path direction.
+		 *
+		 * @return the path direction
+		 */
 		public int getPathDirection(){
 			return this.path.getPathPoints().get(this.counter).getDirection();
 		}
 		
+		/**
+		 * Gets the car speed.
+		 *
+		 * @return the car speed
+		 */
 		public int getCarSpeed(){
 			return this.speed;
 		}
 		
+		/**
+		 * Gets the exit.
+		 *
+		 * @return the exit
+		 */
 		public int getExit(){
 			return this.path.getPathPoints().get(this.counter).getRoundAboutExit();
 		}
 		
+		/**
+		 * Gets the center x.
+		 *
+		 * @return the center x
+		 */
 		public int getCenterX(){
 			return this.path.getPathPoints().get(this.counter).getRoundAboutCenterX();
 		}
 		
+		/**
+		 * Gets the center y.
+		 *
+		 * @return the center y
+		 */
 		public int getCenterY(){
 			return this.path.getPathPoints().get(this.counter).getRoundAboutCenterY();
 		}
 		
 		
+		/**
+		 * Gets the car x after.
+		 *
+		 * @param n the n
+		 * @return the car x after
+		 */
 		public int getCarXAfter(int n){
 			
 			if (this.counter + n > this.path.getPathPoints().size()){
@@ -336,6 +493,12 @@ public class StandartCar {
 		
 		
 		
+		/**
+		 * Gets the car y after.
+		 *
+		 * @param n the n
+		 * @return the car y after
+		 */
 		public int getCarYAfter(int n){
 			
 			if (this.counter + n > this.path.getPathPoints().size()){
@@ -348,6 +511,11 @@ public class StandartCar {
 		}
 		
 		
+		/**
+		 * Next road block.
+		 *
+		 * @return the road block
+		 */
 		public RoadBlock nextRoadBlock(){
 			RoadBlock roadBlock = null;
 			for(int i = 10 ; i<=50 ;i+=10){
@@ -394,6 +562,11 @@ public class StandartCar {
 		}*/
 		
 		
+		/**
+		 * Gets the block after intersection.
+		 *
+		 * @return the block after intersection
+		 */
 		public RoadBlock getBlockAfterIntersection(){
 			RoadBlock roadBlock = null;
 			
@@ -414,6 +587,11 @@ public class StandartCar {
 			return roadBlock;
 		}
 		
+		/**
+		 * Need change.
+		 *
+		 * @return the int
+		 */
 		public int needChange(){
 			if(this.getPathRoadBlockType()>10 && this.getPathRoadBlockType()<17){
 				for(int i = 10 ; i<=200 ;i+=10){
@@ -446,6 +624,12 @@ public class StandartCar {
 			}
 		}
 		
+		/**
+		 * Could change.
+		 *
+		 * @param way the way
+		 * @return true, if successful
+		 */
 		public boolean couldChange(int way){
 			this.updateScanningBlocs();
 			boolean desicion = true;
@@ -468,12 +652,18 @@ public class StandartCar {
 			return desicion;
 		}
 		
+		/**
+		 * Update scanning blocs.
+		 */
 		public void updateScanningBlocs(){
 			currentRoadBlock = (RoadBlock)this.roadBlock[this.carX/GraphicsConfig.BLOCK_SIDE_SIZE][this.carY/GraphicsConfig.BLOCK_SIDE_SIZE];
 			nextRoadBlock = this.nextRoadBlock();
 		}
 		
 		
+		/**
+		 * Update speed.
+		 */
 		public void updateSpeed(){
 			
 			this.updateScanningBlocs();
@@ -547,9 +737,10 @@ public class StandartCar {
 									//System.out.println("there is a car in the next block");
 									}
 								}
+							}
 						} else {
 							if(!this.equals(car) && distanceToNextBlock>car.getDistanceToObject(this.nextRoadBlockX, this.nextRoadBlockY)){
-								if((this.getExit() == 1 || this.getExit() == 2) && (car.getExit() == 1 || car.getExit() == 2)){
+								if((this.getExit() == 1 || this.getExit() == 2) && (car.getExit() == 1 || car.getExit() == 2 || car.getExit() == 3 || car.getExit() == 4) && (car.getDistanceToObject(car.getCenterX(), car.getCenterY())<GraphicsConfig.CAR_ROUND_ABOUT_POSITION_1 + 2) && (car.getDistanceToObject(this.getCenterX(), this.getCenterY())>GraphicsConfig.CAR_ROUND_ABOUT_POSITION_1 + 2)){
 									int distance = this.getDistanceToObject(car.getCarX(), car.getCarY());
 									if (distance<minDistance){
 										nextObjectSpeed = car.getSpeed();
@@ -564,7 +755,7 @@ public class StandartCar {
 										isCarCurrentBlock = true;
 									//System.out.println("there is a car in the next block");
 									}
-								} else if((this.getExit() == 3 || this.getExit() == 4) && (car.getExit() == 3 || car.getExit() == 4)){
+								} else if((this.getExit() == 3 || this.getExit() == 4) && (car.getExit() == 3 || car.getExit() == 4 || this.getExit() == 1 || this.getExit() == 2) && (car.getDistanceToObject(car.getCenterX(), car.getCenterY())<GraphicsConfig.CAR_ROUND_ABOUT_POSITION_2 + 2) && (car.getDistanceToObject(this.getCenterX(), this.getCenterY())>GraphicsConfig.CAR_ROUND_ABOUT_POSITION_2 + 2)){
 									int distance = this.getDistanceToObject(car.getCarX(), car.getCarY());
 									if (distance<minDistance){
 										nextObjectSpeed = car.getSpeed();
@@ -578,7 +769,7 @@ public class StandartCar {
 										}
 										isCarCurrentBlock = true;
 									//System.out.println("there is a car in the next block");
-									}
+									
 								}
 							}
 						}
@@ -616,41 +807,41 @@ public class StandartCar {
 											isCarNextBlock = true;
 										}
 									}
-								}
+								
 								} else {
 									
-										if((this.getExit() == 1 || this.getExit() == 2) && (car.getExit() == 1 || car.getExit() == 2)){
+									if((this.getExit() == 1 || this.getExit() == 2) && (car.getExit() == 1 || car.getExit() == 2 || car.getExit() == 3 || car.getExit() == 4) && (car.getDistanceToObject(car.getCenterX(), car.getCenterY())<GraphicsConfig.CAR_ROUND_ABOUT_POSITION_1 + 2) && (car.getDistanceToObject(this.getCenterX(), this.getCenterY())>GraphicsConfig.CAR_ROUND_ABOUT_POSITION_1 + 2)){
 											int distance = this.getDistanceToObject(car.getCarX(), car.getCarY());
 											if (distance<minDistance){
-												nextObjectSpeed = car.getSpeed();
+												nextObjectSpeedNextBlock = car.getSpeed();
 												minDistance = distance-GraphicsConfig.CAR_LENGTH;
-												distanceToNextObject = minDistance;
+												distanceToNextObjectNextBlock = minDistance;
 												this.updateSecurityDistance();
-												if (nextObjectSpeed>0){
-													decelerationDistance = minDistance - nextObjectSpeed*3;
+												if (nextObjectSpeedNextBlock>0){
+													decelerationDistanceNextBlock = minDistance - nextObjectSpeedNextBlock*3;
 												} else {
-													decelerationDistance = minDistance - this.securityZeroDistance;
+													decelerationDistanceNextBlock = minDistance - this.securityZeroDistance;
 												}
-												isCarCurrentBlock = true;
+												isCarNextBlock = true;
 											//System.out.println("there is a car in the next block");
 											}
-										} else if((this.getExit() == 3 || this.getExit() == 4) && (car.getExit() == 3 || car.getExit() == 4)){
+										} else if((this.getExit() == 3 || this.getExit() == 4) && (car.getExit() == 3 || car.getExit() == 4 || this.getExit() == 1 || this.getExit() == 2) || (car.getDistanceToObject(car.getCenterX(), car.getCenterY())<GraphicsConfig.CAR_ROUND_ABOUT_POSITION_2 + 2) && (car.getDistanceToObject(this.getCenterX(), this.getCenterY())>GraphicsConfig.CAR_ROUND_ABOUT_POSITION_2 + 2)){
 											int distance = this.getDistanceToObject(car.getCarX(), car.getCarY());
 											if (distance<minDistance){
-												nextObjectSpeed = car.getSpeed();
+												nextObjectSpeedNextBlock = car.getSpeed();
 												minDistance = distance-GraphicsConfig.CAR_LENGTH;
 												distanceToNextObject = minDistance;
 												this.updateSecurityDistance();
-												if (nextObjectSpeed>0){
-													decelerationDistance = minDistance - nextObjectSpeed*3;
+												if (nextObjectSpeedNextBlock>0){
+													decelerationDistanceNextBlock = minDistance - nextObjectSpeedNextBlock*3;
 												} else {
-													decelerationDistance = minDistance - this.securityZeroDistance;
+													decelerationDistanceNextBlock = minDistance - this.securityZeroDistance;
 												}
-												isCarCurrentBlock = true;
+												isCarNextBlock = true;
 											//System.out.println("there is a car in the next block");
 											}
 										}
-									
+									}
 								}
 							}
 						}
@@ -701,7 +892,14 @@ public class StandartCar {
 				this.speed--;
 			}
 			
+			
+			
+			
 			if(isCarCurrentBlock && distanceToNextObject<this.securityDistance){
+				if(nextRoadBlock.getBlockType() == RoadConfig.ROUND_ABOUT_BLOCK && nextRoadBlock.isCarInside()){
+					this.speed--;
+				} 
+				
 				if (distanceToNextObject<=this.securityZeroDistance){
 					this.speed = 0;
 				} else {
@@ -830,6 +1028,7 @@ public class StandartCar {
 				}
 				
 			} else if (isCarNextBlock && distanceToNextObjectNextBlock<this.securityDistance){
+				
 				if (distanceToNextObjectNextBlock<=this.securityZeroDistance){
 					this.speed = 0;
 				} else {
@@ -838,11 +1037,43 @@ public class StandartCar {
 				
 			} else {
 				this.go(currentRoadBlock, nextRoadBlock);//this.acceleration(); 
-			}
+			} 
+			
+			//Round about Rule
+			/*if (nextRoadBlock!=null){
+				if (nextRoadBlock.getBlockType() == RoadConfig.ROUND_ABOUT_BLOCK && currentRoadBlock.getBlockType()!=RoadConfig.ROUND_ABOUT_BLOCK){
+					
+					int distanceToNextBlock = this.getDistanceToObject(this.nextRoadBlockX, this.nextRoadBlockY);
+					if(nextRoadBlock.isCarInside()){
+						if (distanceToNextBlock<GraphicsConfig.BLOCK_SIDE_SIZE/10){
+							this.accelerationCounter =0;
+							this.decelerationCounter = 0;
+							this.speed=0;
+						
+						}	
+						else {
+							if(this.speed>3){
+								this.accelerationCounter = 0;
+								this.deceleration(trafficLights.get(trafficLightIndex).getDistanceToTrafficLight(this.getCarX(), this.getCarY()), this.speed);
+							}
+							else {
+								this.speed++;
+							}
+						
+						}
+					}
+				}
+			} */
 			
 		}
 		
 		
+		/**
+		 * Go.
+		 *
+		 * @param currentRoadBlock the current road block
+		 * @param nextRoadBlock the next road block
+		 */
 		public void go(RoadBlock currentRoadBlock , RoadBlock nextRoadBlock){
 			if(this.speed<this.getBlockSpeedLimitForDriver(currentRoadBlock.getSpeedLimit())){
 				if(nextRoadBlock!=null){
@@ -865,10 +1096,19 @@ public class StandartCar {
 			}
 		}
 		
+		/**
+		 * Stop.
+		 */
 		public void stop(){
 			this.speed = 0;
 		}
 		
+		/**
+		 * Gets the block speed limit for driver.
+		 *
+		 * @param speedLimit the speed limit
+		 * @return the block speed limit for driver
+		 */
 		public int getBlockSpeedLimitForDriver(int speedLimit){
 			int sLimit = speedLimit;
 			if(this.driverType == AgentConfig.FAMILY_DRIVER){
@@ -886,6 +1126,12 @@ public class StandartCar {
 		}
 		
 		
+		/**
+		 * Draw car.
+		 *
+		 * @param g2d the g2d
+		 * @param ib the ib
+		 */
 		public void drawCar(Graphics2D g2d, ImagesBuilder ib){
 			PathPoint pathP = this.path.getPathPoints().get(counter);
 			if  (pathP.getBlockType() == RoadConfig.HORIZONTAL_BLOCK || pathP.getBlockType() == RoadConfig.HORIZONTAL_ENTER_BLOCK || pathP.getBlockType() == RoadConfig.HORIZONTAL_EXIT_BLOCK ){
@@ -1022,11 +1268,25 @@ public class StandartCar {
 			
 		}
 		
+		/**
+		 * Gets the distance to object.
+		 *
+		 * @param x the x
+		 * @param y the y
+		 * @return the distance to object
+		 */
 		public int getDistanceToObject(int x, int y){
 			int distance = (int)Math.sqrt( Math.pow((double)(this.carX - x), 2) + Math.pow((double)(this.carY - y), 2));
 			return distance;
 		}
 		
+		/**
+		 * Gets the car list index.
+		 *
+		 * @param list the list
+		 * @param car the car
+		 * @return the car list index
+		 */
 		public int getCarListIndex(ArrayList<StandartCar>list, StandartCar car){
 			int index = 0;
 			for (int i=0; i<list.size(); i++){

@@ -1,6 +1,6 @@
 /*
  * @author  Maxim Vasilishin
- * @version 1.0
+ * @version 4.0
  */
 package agents;
 
@@ -42,6 +42,7 @@ public class TrafficLight {
 	/** The number. */
 	private short number;
 	
+	/** The type. */
 	private short type;
 	
 	/**
@@ -51,6 +52,7 @@ public class TrafficLight {
 	 * @param roadBlock the road block
 	 * @param x the x
 	 * @param y the y
+	 * @param type the type
 	 * @param number the number
 	 */
 	
@@ -185,6 +187,11 @@ public class TrafficLight {
 		return this.trafficLightState;
 	}
 	
+	/**
+	 * Gets the type.
+	 *
+	 * @return the type
+	 */
 	public short getType(){
 		return this.type;
 	}

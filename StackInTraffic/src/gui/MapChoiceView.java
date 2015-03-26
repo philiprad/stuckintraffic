@@ -1,6 +1,6 @@
 /*
  * @author  Maxim Vasilishin
- * @version 1.0
+ * @version 4.0
  */
 package gui;
 import java.awt.BorderLayout;
@@ -154,7 +154,7 @@ public class MapChoiceView extends JFrame implements ActionListener{
 				}
 			}else{
 					if(selection!=""){
-						//panel.removeAll();
+						
 						gridBuilder = (GridBuilder) (FileRW.readObject(MainConfig.GRID_PATH + "/"+selection+MainConfig.GRID_SUFFIX));
 						
 						((SimulationView) panel).setGridBuilder(gridBuilder);
