@@ -42,9 +42,7 @@ public class StandartCar {
 		private int carX;
 		
 		private int carY;
-		
-		private boolean canMove;
-		
+				
 		private Object [] [] roadBlock;
 		
 		private float acceleration;
